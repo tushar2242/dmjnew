@@ -1,0 +1,473 @@
+import React, { useState } from 'react';
+import axios from 'axios';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { addSearch } from '../redux/dmjSlice';
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import './ProductWrapper'
+
+const url = 'https://api.diwamjewels.com/DMJ/'
+const sEnd = "api/v1/products/search?query=";
+const searchEnd = 'api/v1/products/type?type='
+
+const imgUrl = 'https://squid-app-2-7wbvi.ondigitalocean.app/';
+// import FavoriteIcon from '@mui/icons-material/Favorite';
+// import LocalMallIcon from '@mui/icons-material/LocalMall';
+
+const proto = 'https://api.diwamjewels.com/DMJ'
+const endPoint = '/api/v1/category';
+
+
+const ProductWrapper = () => {
+
+    const [cateData, setCateData] = useState([]);
+
+
+    const fetchData = async () => {
+        try {
+            const res = await axios.get(proto + endPoint)
+            // console.log(res.data.data)
+            setCateData(res.data.data)
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+
+    return (
+        <>
+
+            {
+                cateData && cateData.map((category, index) => {
+                    // console.log(category)
+                    return (
+                        <ItemCard
+                            key={index}
+                            category={category}
+                        />
+                    )
+                })
+            }
+
+        </>
+    )
+}
+
+
+export default ProductWrapper;
+
+
+
+
+class ItemCard extends React.Component {
+
+
+    render() {
+        const { category } = this.props;
+        // console.log(category)
+
+        return (
+            <>
+
+                {
+                    category && <div className="jewel-bg mt-2">
+                        <div className="container-fluid">
+                            <div className="row">
+                                <div className="col-md-12 text-center mt-4">
+                                    <h3 className="heading-text"><b>{category[0].name}</b></h3>
+                                    <h6 className="text-secondary text-h6" dangerouslySetInnerHTML={{ __html: category[0].seo_description }}></h6>
+                                </div>
+                            </div>
+
+                            <div className="row">
+
+                                <ItemImageCard
+                                    category={category[0].name}
+                                    img={imgUrl + category[0].image} title={category[0].slug} />
+                                <div className="col-md-6 mt-3 itemImg">
+
+                                    <ItemImageRowCard
+                                        category={category[0].name}
+                                        subCategory={category[0].subCategory === null ? [] : category[0].subCategory}
+                                    />
+
+
+                                </div>
+                            </div>
+
+                            {
+                                <CarouselForProduct
+                                    category={category[0].type}
+                                    productData={category[0].subCategory === null ? [] : category[0].subCategory}
+                                    item='img'
+                                />
+                            }
+
+                            <div className="showCardCarousel">
+                                <CarouselForProduct
+                                    category={category[0].type}
+                                    item="Card"
+                                    productData={category[0].subCategory === null ? [] : category[0].subCategory}
+                                />
+                            </div>
+
+
+                            <div className="pb-5"></div>
+                            {/* <div className="text-center">
+                            <NavLink href="/carpet">
+                                <button className="px-4 py-2 view-btn mt-3">View More</button>
+                            </NavLink>
+                        </div> */}
+                        </div>
+                    </div>
+                }
+
+            </>
+        );
+    }
+}
+
+
+const ItemImageCard = ({ img, title, category }) => {
+
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    // console.log(img)
+    async function handleNavigate(val) {
+        await dispatch(addSearch(val));
+        navigate('/search')
+    }
+
+
+
+    return (
+        <>
+
+            <div className="col-md-6 mt-3">
+                <div onClick={() => handleNavigate(category)}>
+                    <div className="contain">
+                        <img src={img} className="img-fluid arrival-img new" alt="design" />
+
+                        <div className="text-block text-center">
+                            {/* <h6 className="mt-2 perfect-text-sz"><b>{title}</b></h6> */}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+const ItemImageRowCard = ({ subCategory, category }) => {
+
+
+
+    return (
+        <>
+            <div className="row">
+                {
+
+                    subCategory.length > 0 && subCategory.map((item, index) => {
+                        if (index < 9) {
+                            return (
+                                <SmallImageCard
+                                    key={item.id}
+                                    img={item.image}
+                                    name={item.seo_title}
+                                    category={category}
+                                />
+                            )
+                        }
+                        else {
+                            return null;
+                        }
+
+
+                    })
+
+                }
+            </div>
+
+        </>
+    )
+}
+
+
+const SmallImageCard = ({ img, name, category }) => {
+
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    // console.log(img)
+    async function handleNavigate(val) {
+        await dispatch(addSearch(val));
+        navigate('/search')
+    }
+
+    const [subCategory1, setSubCategory] = useState([])
+
+    async function fetchProductDetails() {
+        try {
+            const res = await axios.get(`${url}${sEnd}${category}&pageSize=0`);
+            // console.log(res.data)
+            setSubCategory(res.data.data)
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
+
+    useEffect(() => {
+        fetchProductDetails()
+    }, [])
+
+    return (
+        <>
+            <div className="col-md-4 text-center">
+                <div onClick={() => handleNavigate(category)} className="text-decoration-none home-text">
+                    <div className="product-card-box">
+                        <img src={imgUrl + img} className="img-fluid rounded new-img" alt="design" />
+                        <p className="mt-3 perfect-text">{name.length < 20 ? name : name.slice(0, 20) + '...'}</p>
+                        {/* <p className="sale-offer">Up to 50%</p> */}
+
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+
+
+
+
+
+
+
+
+// carousel for product 
+
+
+
+
+
+const responsive = {
+    superLargeDesktop: {
+        breakpoint: { max: 4000, min: 3000 },
+        items: 5
+    },
+    desktop: {
+        breakpoint: { max: 3000, min: 1024 },
+        items: 5
+    },
+    tablet: {
+        breakpoint: { max: 1024, min: 464 },
+        items: 3
+    },
+    mobile: {
+        breakpoint: { max: 464, min: 0 },
+        items: 2
+    }
+};
+
+
+const CarouselForProduct = ({ productData, category, item }) => {
+
+    // console.log(category)
+
+    const [subCategory1, setSubCategory] = useState([])
+
+    async function fetchProductDetails() {
+        try {
+            const res = await axios.get(`${url}${searchEnd}${category}`);
+            // console.log(`${url}${searchEnd}${category}`)
+            // console.log(res.data.data)
+            if (res.data.data.length > 0) {
+                setSubCategory(res.data.data)
+            }
+
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
+
+    useEffect(() => {
+        fetchProductDetails()
+    }, [category])
+    // console.log(productData)
+
+
+
+    return (
+        <div className="IndicatorCarousel">
+            {/* <div className="IndicatorCarouselText">
+            Select your preferred stock indicators
+        </div> */}
+
+            <br></br>
+
+            {item === 'img' ?
+                // If item is 'img', render a CarouselCard for each image
+                <Carousel
+                    swipeable={true}
+                    draggable={true}
+                    showDots={false}
+                    responsive={responsive}
+                    ssr={true} // means to render carousel on server-side.
+                    infinite={true}
+                    autoPlay={true}
+                    autoPlaySpeed={2000}
+                    keyBoardControl={true}
+
+                    customTransition="all .5s"
+                    transitionDuration={500}
+                    containerClass="carousel-container"
+                    removeArrowOnDeviceType={["desktop", "tablet", "mobil1e"]}
+                    dotListClass="custom-dot-list-style"
+                    itemClass="carousel-item-padding-40-px"
+
+                >
+
+
+                    {subCategory1.length > 0 && subCategory1.map((product) => {
+                        return (<CarouselCard
+                            key={product.id}
+                            img={product.images.length > 0 && product.images[0].thumbImage}
+                            title={product.seo_title}
+                            category={category}
+                            sku={product.sku}
+                            slug={product.slug}
+                            discount={product.images.length > 0 && product.images[0].productVariantEntities.length > 0 && product.images[0].productVariantEntities[0].price}
+                        />
+                        )
+                    })}
+                </Carousel>
+                :
+                <Carousel
+                    swipeable={true}
+                    draggable={true}
+                    showDots={false}
+                    responsive={responsive}
+                    ssr={true}
+                    infinite={true}
+                    autoPlay={true}
+                    autoPlaySpeed={2000}
+                    keyBoardControl={true}
+                    customTransition="all .5s"
+                    transitionDuration={500}
+                    containerClass="carousel-container"
+                    removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
+                    dotListClass="custom-dot-list-style"
+                    itemClass="carousel-item-padding-40-px"
+
+                >
+                    {productData.length > 0 && productData.map((item) => {
+                        return (
+                            <ProductCard
+                                key={item.id}
+                                img={imgUrl + item.image}
+                                name={item.seo_title}
+                                cate={item.name}
+                                category={category}
+
+                            />
+                        )
+                    })}
+
+
+
+                </Carousel>
+            }
+
+
+        </div>
+    );
+};
+
+
+
+
+const CarouselCard = ({ img, title, category, discount, sku, slug }) => {
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    // console.log(img)
+    async function handleNavigate(val) {
+        await dispatch(addSearch(val));
+        navigate(`/productDetails/` + slug + '/' + sku)
+    }
+
+    return (
+        <>
+            <div onClick={() => handleNavigate(category)} style={{ cursor: "pointer" }} className="text-decoration-none"><div className="product-card-box">
+                <div className='sliderCard'>
+                    <div className="sliderCardImg slider-fav-iconvw">
+                        <img src={imgUrl + img} className="img-fluid sliderImg" alt="Image" />
+                    </div>
+                    <div className='sldr-iconvw-fnt'><FavoriteBorderIcon /></div>
+                    <p className="mt-3 product-font">{title.length < 20 ? title : title.slice(0, 20) + '...'}</p>
+                    <p className="sale-offer">Price :{'₹ '}{discount}</p>
+                    <div><h6 className='addtocart-btn-sldr'>Add to cart <i className="bi bi-box-arrow-right"></i></h6></div>
+                </div>
+            </div>
+            </div>
+        </>
+    )
+}
+
+const ProductCard = ({ img, name, cate, category }) => {
+
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    // console.log(img)
+    async function handleNavigate(val) {
+        await dispatch(addSearch(val));
+        navigate('/search')
+    }
+
+
+    return (
+        <>
+            {/* <div>
+                    <div className="text-decoration-none text-dark" style={{ cursor: 'pointer', userSelect: 'none' }}>
+                        <div className="card slide-card">
+                            <img src={img} className="card-img-top slider-card-img " alt="slider" />
+                            <div className="card-body">
+                                <p className="jewel-text mt-2"><b>{cate}</b></p>
+                                <p className="jewel-text1">{name}</p>
+                                <p className="jewel-text1">5000$</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> */}
+
+            <div onClick={() => handleNavigate(category)} className="text-decoration-none"><div className="product-card-box">
+                <div className='sliderCard'>
+                    <div className="sliderCardImg">
+                        <img src={img} className="img-fluid sliderImg" alt="Image" />
+                    </div>
+                    <p className="mt-3 product-font text-center">{name.slice(0, 13)}</p>
+                    {/* <p className="sale-offer text-center">Up to 50%</p> */}
+                </div>
+            </div>
+            </div>
+        </>
+    )
+}
