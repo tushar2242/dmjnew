@@ -15,7 +15,6 @@ const verifyEndPoint = 'verify/otp';
 const endPoint = 'send/otp/login';
 const signIn = 'signin/withEmailOrPhoneNumber';
 
-
 export default class LoginPage extends React.Component {
 
     render() {
@@ -55,28 +54,28 @@ const LoginWithMobileNo = () => {
         try {
             const otpRes = await axios.post(url + verifyEndPoint, otpValue)
 
-            if(otpRes.data.message==='OTP verified'){
+            if (otpRes.data.message === 'OTP verified') {
 
                 // console.log('fired')
                 let formdata = new FormData()
 
-                formdata.append('userName',mobileNo)
-                formdata.append('password',password)
-                
-                try{
-                    const loginRes = await axios.post(url+signIn,formdata)
+                formdata.append('userName', mobileNo)
+                formdata.append('password', password)
+
+                try {
+                    const loginRes = await axios.post(url + signIn, formdata)
                     console.log(loginRes.data.data)
-                    localStorage.setItem('userId',loginRes.data.data.id)
-                    if(loginRes.data.data.id){
+                    localStorage.setItem('userId', loginRes.data.data.id)
+                    if (loginRes.data.data.id) {
                         navigate('/')
                         window.location.reload()
                     }
                 }
-                catch(err){
+                catch (err) {
                     console.log(err)
                 }
             }
-            else{
+            else {
                 console.log('expired')
             }
         }
@@ -88,6 +87,9 @@ const LoginWithMobileNo = () => {
 
     async function sentOtp(e) {
         e.preventDefault()
+        const headers = {
+            'Content-Type': 'application/json', // You may need to adjust the content type based on your server's requirements
+        };
 
         const formdata = new FormData()
 
@@ -95,9 +97,9 @@ const LoginWithMobileNo = () => {
         formdata.append('password', password)
 
         try {
-            const otpRes = await axios.post(url + endPoint, formdata)
+            const otpRes = await axios.post(url + endPoint, formdata, { headers })
 
-            if(otpRes.data.message==='OTP send successfully'){
+            if (otpRes.data.message === 'OTP send successfully') {
                 setOtp(true)
             }
             console.log(otpRes)
@@ -144,7 +146,8 @@ const LoginWithMobileNo = () => {
                                         }
                                         {/* <label className="error" style={{ display: showError }}>Enter a Correct Email-Id / Phone No.</label> */}
                                         <br />
-                                        <p className="tp-text">By Continuing, I agree to the <span className="tp-color"><b>Terms of Use & Privacy Policy</b></span></p>
+                                        <p className="tp-text">By Continuing, I agree to the <NavLink to='/termscondition'>
+                                            <span className="tp-color"><b>Terms of Use & Privacy Policy</b></span></NavLink></p>
                                         {isOtp ? <button type="button" className="continue-btn" onClick={(e) => {
                                             verifyOtp(e)
 
@@ -153,7 +156,7 @@ const LoginWithMobileNo = () => {
                                                 sentOtp(e)
                                             }}>SIGN IN</button>
                                         }
-                                        <p className="tp-text">New to DMJ ? <NavLink to="/login" className="tp-color"><span className="text-danger"><b>Sign Up</b></span></NavLink></p>
+                                        <p className="tp-text">New to DMJ ? <NavLink to="/defaultLogin" className="tp-color"><span className="text-danger"><b>Sign Up</b></span></NavLink></p>
                                     </form>
                                 </div>
                             </div>
