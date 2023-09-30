@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { addSearch } from '../redux/dmjSlice';
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import './ProductWrapper'
+import ImageLoader from '../loader/ImageLoader';
 
 const url = 'https://api.diwamjewels.com/DMJ/'
 const sEnd = "api/v1/products/search?query=";
@@ -149,14 +150,14 @@ const ItemImageCard = ({ img, title, category }) => {
     }
 
 
-
+const [isImageLoad, setIsImageLoad] = useState(false)
     return (
         <>
 
-            <div className="col-md-6 mt-3">
+            <div className="col-md-6 mt-3" style={{position:' relative'}}>
                 <div onClick={() => handleNavigate(category)}>
                     <div className="contain">
-                        <img src={img} className="img-fluid arrival-img new" alt="design" />
+                        {img ? <img src={img} className="img-fluid arrival-img new" alt="design" /> : <ImageLoader/>}
 
                         <div className="text-block text-center">
                             {/* <h6 className="mt-2 perfect-text-sz"><b>{title}</b></h6> */}
@@ -239,7 +240,7 @@ const SmallImageCard = ({ img, name, category }) => {
                 <div onClick={() => handleNavigate(category)} className="text-decoration-none home-text">
                     <div className="product-card-box">
                         <img src={imgUrl + img} className="img-fluid rounded new-img" alt="design" />
-                        <p className="mt-3 perfect-text">{name.length < 20 ? name : name.slice(0, 20) + '...'}</p>
+                        <p className="mt-3 perfect-text">{name.length < 10 ? name : name.slice(0, 10) + '...'}</p>
                         {/* <p className="sale-offer">Up to 50%</p> */}
 
                     </div>

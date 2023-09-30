@@ -192,7 +192,7 @@ const LoginWithMobileNo = () => {
                                         }}>Verify OTP</button>
 
                                     }
-                                    <p className="tp-text">Already Have an account ? <NavLink to="/defaultLogin" className="tp-color"><span className="text-danger"><b>Login</b></span></NavLink></p>
+                                    <p className="tp-text">Already Have an account ? <NavLink to="/login" className="tp-color"><span className="text-danger"><b>Login</b></span></NavLink></p>
                                 </form>
                             </div>
                         </div>
