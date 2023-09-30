@@ -78,7 +78,7 @@ class ItemCard extends React.Component {
             <>
 
                 {
-                    category && <div className="jewel-bg mt-2">
+                    category && <div className="jewel-bg">
                         <div className="container-fluid">
                             <div className="row">
                                 <div className="col-md-12 text-center mt-4">
@@ -120,7 +120,7 @@ class ItemCard extends React.Component {
                             </div>
 
 
-                            <div className="pb-5"></div>
+                            {/* <div className="pb-5"></div> */}
                             {/* <div className="text-center">
                             <NavLink href="/carpet">
                                 <button className="px-4 py-2 view-btn mt-3">View More</button>

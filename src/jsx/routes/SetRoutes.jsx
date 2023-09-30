@@ -37,6 +37,21 @@ import Refund from '../refundpolicy/Refund'
 import TrendingProducts from '../carousel/TrendingProducts'
 import PaymentGateway from '../payment-gateway/PaymentGateway'
 import ReviewPage from '../reviewpage/ReviewPage';
+// import Sidebar from '../profile/Sidebar'
+
+
+import Sidebar from '../sidebar/Sidebar';
+import Overview from '../sidebar/Overview';
+import Order from '../sidebar/Order';
+import Coupon from '../sidebar/Coupon';
+import Savedcard from '../sidebar/Savedcard';
+import Vpasaved from '../sidebar/Vpasaved';
+import Address from '../sidebar/Address';
+import Profile from '../sidebar/Profile';
+// import Terms from './sidebar/Terms';
+import Orderdetails from '../sidebar/Orderdetails';
+import Editprofile from '../sidebar/Editprofile';
+
 export default class SetRoutes extends React.Component {
     render() {
         return (
@@ -81,7 +96,20 @@ export default class SetRoutes extends React.Component {
                     <Route path='/paymentgateway' element={<PaymentGateway />} />
 
                     <Route path='/rating' element={<ReviewPage/>} />
-              
+                    {/* <Route path='/sidebar' element={<Sidebar/>} /> */}
+
+
+                    <Route path="/sidebar" element={<Sidebar />} />
+        <Route path="/overview" element={<Overview />} />
+        <Route path="/order" element={<Order />} />
+        <Route path="/coupon" element={<Coupon />} />
+        <Route path="/savedcard" element={<Savedcard />} />
+        <Route path="/Vpasaved" element={<Vpasaved />} />
+        <Route path="/Address" element={<Address />} />
+        <Route path="/Profile" element={<Profile />} />
+        <Route path="/Terms" element={<Terms />} />
+        <Route path="/Orderdetails" element={<Orderdetails />} />
+        <Route path="/Editprofile" element={<Editprofile />} />
                 </Routes>
 
             </>

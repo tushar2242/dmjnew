@@ -495,7 +495,8 @@ body {
 
   padding-top: 10px;
 
-  color: white
+  color: white;
+  overflow-x: hidden;
 }
 
 .header-text {
@@ -949,7 +950,7 @@ body {
 
   /* background-size: cover; */
 
-  padding: 15px
+  /* padding: 15px */
 }
 
 .craft-bg {

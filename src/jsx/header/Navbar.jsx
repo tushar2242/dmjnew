@@ -460,6 +460,34 @@ function Navbar() {
               {" "}
               <i className="bi bi-cart4 nav-icon-item ms-3"></i>
             </NavLink>
+
+            <NavLink
+                  className=""
+                  onClick={() => {
+                    setProfile(!profile);
+                  }}
+                >
+                  <i className="bi bi-person-circle nav-icon-item ms-3"></i>
+                </NavLink>
+                {profile && (
+                  <div className="more-profile">
+                    {userId ? (
+                      <li
+                        onClick={async () => {
+                          navigate("/login");
+                        }}
+                      >
+                        Login / Sign Up
+                      </li>
+                    ) : (
+                      <>
+                        <li>Profile</li>
+                        <li className="mt-2">Sign Out</li>
+                      </>
+                    )}
+                  </div>
+                )}
+            
             {/* <MenuBarList  /> */}
             <div className="mobile-navbarview">
               {["start"].map((placement, idx) => (
