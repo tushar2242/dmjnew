@@ -1,7 +1,7 @@
 .checkout-bg{
     background-color: rgb(233, 233, 233);
     padding:50px;
-    
+ 
 }
 .del-ct-bg{
     background-color: white;
@@ -142,7 +142,7 @@ select.sel-box:focus{
 }
 .stk-box-item{
     position:sticky !important;
-    top:10px
+    top:10px !important;
 }
 .check-verify-btn{
     font-size:15px;
@@ -158,7 +158,29 @@ select.sel-box:focus{
     border-radius: 10px;
     margin-left:7px;
 }
+
+.accordion-button{
+    font-size:16px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.75px !important;
+    background-color: transparent !important;
+    padding-left:10px !important;
+        padding-right:10px !important;
+}
+.accordion-body{
+    padding-left:10px !important;
+    padding-right:10px !important; 
+}
 @media only screen and (max-width:767.98px){
+
+    .accordion-button{
+        font-size:13.5px !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.75px !important;
+        background-color: transparent !important;
+        padding-left:10px !important;
+        padding-right:10px !important;
+    }
     .check-verify-btn{
         font-size:14px;
         font-weight:600;
