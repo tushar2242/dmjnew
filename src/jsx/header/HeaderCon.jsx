@@ -33,7 +33,7 @@ export default class HeaderCon extends React.Component {
           <div className="header-bg">
             <div className="header-cont-box">
               <div className="header-icon header-box-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <FmdGoodIcon />
+              <i className="bi bi-geo-alt"></i>
                 <p onClick={()=>{
                   this.setState({isShow:!isShow})
                 }}>

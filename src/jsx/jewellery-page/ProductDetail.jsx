@@ -794,7 +794,7 @@ function RatingBox() {
         <h5 className="mt-3 offer-heading-txt">
           <b>Ratings</b> <StarsIcon />
         </h5>
-        <button className="rate-prod-btn shadow-sm">Rate Product</button>
+        {/* <button className="rate-prod-btn shadow-sm">Rate Product</button> */}
       </div>
       <div className="d-flex justify-content-evenly mt-4">
         <div>

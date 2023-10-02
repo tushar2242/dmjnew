@@ -139,6 +139,7 @@ const ProductItemCard = ({ img, item, price }) => {
                     {/* {item.manualPrice} */}
                   </b>
                 </p>
+                <div className="pro-price-fx">
                 <p className="trend-price1 ml-2">
                   <b>
                     <CurrencyRupeeIcon className="rup-icon-sz ms-1" />
@@ -160,9 +161,11 @@ const ProductItemCard = ({ img, item, price }) => {
                     {' '}
                    
                   </b>
-                  <span className="off-font" style={{fontSize:'1rem'}}>( {(item.images.length > 0 && item.images[0].productVariantEntities.length > 0)? item.images[0].productVariantEntities[0].discount :0 }% OFF )</span>
+                 
                   {/* <span className="span-pr-fnt">on wards</span> */}
                 </p>
+                <p className="off-font">( {(item.images.length > 0 && item.images[0].productVariantEntities.length > 0)? item.images[0].productVariantEntities[0].discount :0 }% OFF )</p>
+               </div>
               </div>
               <div className="d-flex p-2">
                 <p className="trend-rt-box1">

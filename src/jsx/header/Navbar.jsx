@@ -613,11 +613,6 @@ function MobileMenuBar({ cateData, ...props }) {
   );
 }
 
-// function MenuBarList() {
-//     return (
-
-//     );
-// }
 
 function AccordianMenuList({ title, subCateDate }) {
   // console.log(subCateDate)
@@ -657,6 +652,7 @@ function AccordianSubMenu({ title, id }) {
       console.log(err);
       setSubCate([]);
     }
+
   }
   useEffect(() => {
     getSubSubCate(id);
