@@ -47,6 +47,11 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.min.css";
 import { GlassMagnifier } from "react-image-magnifiers";
 import { Helmet } from "react-helmet";
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Box from '@mui/material/Box';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
 // import Switch from '@mui/material/Switch';
 // import Stack from '@mui/material/Stack';
 // import Typography from '@mui/material/Typography';
@@ -106,7 +111,7 @@ const responsive1 = {
 
 function Product() {
   const [decryptedProductId, setDecryptedProductId] = useState("");
-  const [quantity, setQuantity] = useState(1);
+
   const [showDescription, setShowDescription] = useState(true);
   const [showReview, setShowReview] = useState(false);
   const [images, setImages] = useState([]);
@@ -200,6 +205,8 @@ function Product() {
 
   // console.log(productId)
   // console.log(id)
+
+
 
   return (
     <>
@@ -458,7 +465,7 @@ const ProductPrice = ({ title, des, rating, variant, prodes }) => {
   const [selectedSize, setSelectedSize] = useState("");
   const [currencyRate, setRate] = useState("");
   const [currencyValue, setCurrencyValue] = useState("Rupee");
-
+  const [quantity, setQuantity] = useState(1);
   async function fetchPrice() {
     if (variant[0].productVariantEntities.length > 0) {
 
@@ -530,6 +537,16 @@ const ProductPrice = ({ title, des, rating, variant, prodes }) => {
     setSelectedSize(color);
   }
 
+  const increment = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const decrement = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
   return (
     <>
       <div>
@@ -576,6 +593,28 @@ const ProductPrice = ({ title, des, rating, variant, prodes }) => {
       </div>
       <p className="tax-font">Inclusive of all taxes</p>
 
+         {/* -----------------------Quantity------------------------------ */}
+         <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        marginBottom:'15px',
+        alignItems: 'start',
+        '& > *': {
+          m: 1,
+        },
+      }}
+    >
+    <div className="d-flex">
+    <h5 className="mt-2"><b>Quantity :</b></h5>
+      <ButtonGroup variant="outlined" aria-label="outlined button group" style={{marginLeft:'40px'}}>
+        <Button onClick={decrement}><RemoveIcon /></Button>
+        <Button>{quantity}</Button>
+        <Button onClick={increment}><AddIcon /></Button>
+      </ButtonGroup>
+      </div>
+    </Box>
+        {/*---------------------------------------------------------------- */}
       <p className="col-fnt-sz offer-heading-txt">MORE COLORS</p>
       <div className="color-container">
         {/* <div
