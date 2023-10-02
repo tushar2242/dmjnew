@@ -107,17 +107,10 @@ const responsive1 = {
 // export {fetchData}
 
 function Product() {
-<<<<<<< HEAD
-  const [decryptedProductId, setDecryptedProductId] = useState("");
-
-  const [showDescription, setShowDescription] = useState(true);
-  const [showReview, setShowReview] = useState(false);
-=======
   // const [decryptedProductId, setDecryptedProductId] = useState("");
   // const [quantity, setQuantity] = useState(1);
   // const [showDescription, setShowDescription] = useState(true);
   // const [showReview, setShowReview] = useState(false);
->>>>>>> d3c6e844203859624e87a788ce496e0f563ba3d0
   const [images, setImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState("");
   const [apiCheck, setApiCheck] = useState(true);
@@ -644,7 +637,7 @@ const ProductPrice = ({ title, des, rating, variant, prodes }) => {
     >
     <div className="d-flex">
     <h5 className="mt-2"><b>Quantity :</b></h5>
-      <ButtonGroup variant="outlined" aria-label="outlined button group" style={{marginLeft:'40px'}}>
+      <ButtonGroup variant="outlined" aria-label="outlined button group" style={{marginLeft:'30px'}}>
         <Button onClick={decrement}><RemoveIcon /></Button>
         <Button>{quantity}</Button>
         <Button onClick={increment}><AddIcon /></Button>
