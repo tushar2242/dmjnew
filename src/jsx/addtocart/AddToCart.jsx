@@ -13,65 +13,53 @@ import { LocalConvenienceStoreOutlined } from "@mui/icons-material";
 
 const url = 'https://api.diwamjewels.com/DMJ/'
 const endPoint = 'api/v1/products/';
-const productEndPoint = 'api/v1/products';
+const productEndPoint = 'api/v1/products/';
 const imgUrl = 'https://squid-app-2-7wbvi.ondigitalocean.app/';
 
-var cart = JSON.parse(localStorage.getItem('pdIds')) || [];
+var cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 
 const AddToCart = () => {
+    const [proDetails, setProDetails] = useState([]);
+    const [adtCart, setAdtCart] = useState([]);
+    const [isUpdate, setIsUpdate] = useState(false);
 
-    const [proDetails, setProDetails] = useState([])
-
-    const [adtCart, setAdtCart] = useState([])
-
-    const [isUpdate, setIsUpdate] = useState(false)
-
-
-    // async function addProductData() {
-
-
-
-    async function fethcProductData(id) {
-        // console.log(id)
+    // Fetch product data by ID
+    async function fetchProductData(id) {
+        console.log(id)
         try {
-            const res = await axios.get(url + productEndPoint + '/' + id)
-            console.log(res.data.data)
-            setProDetails((items) => [...items, res.data.data])
-
-            // console.log(proDetails)
-        }
-        catch (err) {
-            console.log(err)
+            const res = await axios.get(url + productEndPoint + id);
+            const product = res.data.data;
+            setProDetails((prevDetails) => [...prevDetails, product]);
+        } catch (err) {
+            console.log(err);
         }
     }
 
+    // Update the cart
+    const updateCart = (productId, quantity) => {
+        const updatedCart = [...adtCart];
+        const index = updatedCart.findIndex((item) => item.productId === productId);
 
-    async function updateCart(value) {
-
-        // await setAdtCart(cart)
-        if (cart.length > 0) {
-            var updatingCard = cart.filter(item => value != item)
-            // console.log(updatingCard)
-            localStorage.setItem('pdIds', JSON.stringify(updatingCard));
-            setIsUpdate(!isUpdate)
+        if (index !== -1) {
+            updatedCart[index].quantity += quantity;
+        } else {
+            updatedCart.push({ productId, quantity });
         }
 
-    }
+        setAdtCart(updatedCart);
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+        setIsUpdate(!isUpdate);
+    };
 
-
-
-
+    // Load cart data from localStorage on initial render
     useEffect(() => {
-        cart = JSON.parse(localStorage.getItem('pdIds')) || [];
-        window.scrollTo(0, 0);
-        setProDetails([])
-        setAdtCart(cart)
-        cart.map((id) => fethcProductData(id));
-
-    }, [isUpdate])
-
-
+        cart = JSON.parse(localStorage.getItem("cart")) || [];
+        setAdtCart(cart);
+        cart.forEach(({ productId, quantity }) => {
+            fetchProductData(productId);
+        });
+    }, []);
 
     return (
         <>
@@ -174,7 +162,7 @@ class Products extends React.Component {
         this.setState({
             itemQuan: 2,
             productName: product.seo_title,
-            price: 3,
+            price: product.images.length > 0 && product.images[0].productVariantEntities.length > 0 && product.images[0].productVariantEntities[0].price,
             totalPrice: product.images.length > 0 && product.images[0].productVariantEntities.length > 0 && product.images[0].productVariantEntities[0].price,
             thumb_img: imgUrl + product.images[0].thumbImage,
             itemId: product.id

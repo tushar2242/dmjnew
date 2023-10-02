@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import HeaderCon from "../header/HeaderCon";
 import Navbar from "../header/Navbar";
-
 // import RemoveIcon from "@mui/icons-material/Remove";
 // import AddIcon from "@mui/icons-material/Add";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -61,9 +60,7 @@ import AddIcon from '@mui/icons-material/Add';
 const url = "https://api.diwamjewels.com/DMJ/";
 const endPoint = "api/v1/products";
 const ratingEnd = "api/v1/Rating/count";
-// const variantEnd = "api/v1/variantproduct/productId";
-// const sizeEnd = "api/v1/variantproduct/productIdwithSize/1?size=";
-// const colorEnd = "api/v1/variantproduct/productIdwithColor/1?color=green";
+
 const getProductEnd = "api/v1/products/sku/";
 const imgUrl = 'https://squid-app-2-7wbvi.ondigitalocean.app/';
 const typeEnd = 'api/v1/products/type?type=';
@@ -110,10 +107,17 @@ const responsive1 = {
 // export {fetchData}
 
 function Product() {
+<<<<<<< HEAD
   const [decryptedProductId, setDecryptedProductId] = useState("");
 
   const [showDescription, setShowDescription] = useState(true);
   const [showReview, setShowReview] = useState(false);
+=======
+  // const [decryptedProductId, setDecryptedProductId] = useState("");
+  // const [quantity, setQuantity] = useState(1);
+  // const [showDescription, setShowDescription] = useState(true);
+  // const [showReview, setShowReview] = useState(false);
+>>>>>>> d3c6e844203859624e87a788ce496e0f563ba3d0
   const [images, setImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState("");
   const [apiCheck, setApiCheck] = useState(true);
@@ -147,7 +151,7 @@ function Product() {
   }
 
   const fetchData = async () => {
-
+    setIsLoad(true)
     if (slug && skuid) {
       // const id = await decryptProductId(pId)
 
@@ -194,11 +198,30 @@ function Product() {
     localStorage.setItem("wishList", JSON.stringify(existingCart));
   };
 
-  const addToCart = (id) => {
-    const existingCart = JSON.parse(localStorage.getItem("pdIds")) || [];
-    existingCart.push(id);
 
-    localStorage.setItem("pdIds", JSON.stringify(existingCart));
+
+  const addToCart = (productId) => {
+    // Get the existing cart from localStorage or initialize an empty array if it doesn't exist
+    let quantity = 1;
+    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Check if the product with the same ID already exists in the cart
+    const existingProduct = existingCart.find(item => item.productId === productId);
+
+    if (existingProduct) {
+      // If the product exists, update its quantity
+      existingProduct.quantity += quantity;
+    } else {
+      // If the product doesn't exist, add it to the cart as a new item
+      const newItem = {
+        productId: productId,
+        quantity: quantity
+      };
+      existingCart.push(newItem);
+    }
+
+    // Save the updated cart back to localStorage
+    localStorage.setItem("cart", JSON.stringify(existingCart));
   };
 
   // const location = useLocation();
@@ -220,7 +243,7 @@ function Product() {
             <meta name="keywords" content={itemInfo && itemInfo.search_keywords} />
 
           </Helmet>
-          <div className="container-fluid">
+          <div className="container-fluid" >
 
             <div className="row detl-page-mobvw no gutters">
               <div className="col-md-6">
@@ -449,7 +472,13 @@ function Product() {
           </div>
         </>
       ) : (
-        <Loader />
+        <>
+
+          <div style={{ height: '120vh' }}></div>
+          <Loader />
+
+        </>
+
       )}
     </>
   );
@@ -507,6 +536,14 @@ const ProductPrice = ({ title, des, rating, variant, prodes }) => {
   }
 
   async function fetchCurrancy() {
+    // try{
+    //   const convert = await Convert().from("USD").fetch();
+    //   // console.log(convert.rates.INR)
+    //   setRate(convert.rates.INR)
+    // }
+    // catch(err){
+    //   console.log(err)
+    // }
     try {
       const res = await axios.get(
         "https://v6.exchangerate-api.com/v6/b8b9cf1587f8ce9a8ab97b74/latest/USD"
@@ -557,12 +594,12 @@ const ProductPrice = ({ title, des, rating, variant, prodes }) => {
         ></p> */}
 
 
-       
+
         <div className="rate-icon-box">
           <p>
             <b>4.5</b> <i className="bi bi-star-fill rate-icon-col"></i> |{" "}
             {rating} Ratings
-          {/* <ShareIcon/> */}
+            {/* <ShareIcon/> */}
           </p>
         </div>
       </div>
@@ -666,10 +703,10 @@ const ProductPrice = ({ title, des, rating, variant, prodes }) => {
       {/*  */}
       <p className="tagline-line"></p>
       <AccordionTxt
-          title='Product Details'
-          des={<DetailsBox des={prodes} />}
-          className="AccordionTxt"
-        />
+        title='Product Details'
+        des={<DetailsBox des={prodes} />}
+        className="AccordionTxt"
+      />
       <p className="tagline-line"></p>
       <AccordionTxt
         title='Dimension'
@@ -685,7 +722,7 @@ const ProductPrice = ({ title, des, rating, variant, prodes }) => {
 
         }
       />
-      
+
       <>
       </>
       <p className="tagline-line"></p>

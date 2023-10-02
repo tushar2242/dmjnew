@@ -10,7 +10,7 @@ import axios from 'axios';
 // import { withRouter } from 'react-router-dom';
 
 
-const url = 'https://api.diwamjewels.com/DMJ/'
+const url = 'https://api.diwamjewels.com/DMJ/api/v1/user/'
 const verifyEndPoint = 'verify/otp';
 const endPoint = 'send/otp/login';
 const signIn = 'signin/withEmailOrPhoneNumber';
@@ -73,10 +73,11 @@ const LoginWithMobileNo = () => {
                 }
                 catch (err) {
                     console.log(err)
+                    alert("Please Enter a Correct OTP")
                 }
             }
             else {
-                console.log('expired')
+                console.log('Otp Expired')
             }
         }
         catch (err) {
@@ -88,7 +89,7 @@ const LoginWithMobileNo = () => {
     async function sentOtp(e) {
         e.preventDefault()
         const headers = {
-            'Content-Type': 'application/json', // You may need to adjust the content type based on your server's requirements
+            'Content-Type': 'multipart/form-data',
         };
 
         const formdata = new FormData()
@@ -106,6 +107,9 @@ const LoginWithMobileNo = () => {
         }
         catch (err) {
             console.log(err)
+            if (err.response.data.message == 'Bad credentials') {
+                alert("Invalid Email Or Password")
+            }
         }
 
     }
