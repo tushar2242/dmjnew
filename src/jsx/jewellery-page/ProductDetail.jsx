@@ -29,6 +29,9 @@ import img2 from "../../assets/images/ring1.jpg";
 import img3 from "../../assets/images/ring2.jpg";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import StarsIcon from "@mui/icons-material/Stars";
+import StarRateIcon from '@mui/icons-material/StarRate';
+import StarHalfIcon from '@mui/icons-material/StarHalf';
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import Switch from "@mui/material/Switch";
@@ -439,7 +442,7 @@ function Product() {
                         Buy Now
                       </button>
                     </div>
-                    <p className="tagline-line"></p>
+                   
                     <RatingBox />
 
                     <p className="tagline-line"></p>
@@ -815,44 +818,19 @@ function RatingBox() {
         <div>
           <div>
             <p className="pro-dtl-ft-sz">
-              <span>50</span>
-              <i className="bi bi-star-fill" style={{ color: "#b79d33" }}></i>
-              <i className="bi bi-star-fill" style={{ color: "#b79d33" }}></i>
-              <i className="bi bi-star-fill" style={{ color: "#b79d33" }}></i>
-              <i className="bi bi-star-fill" style={{ color: "#b79d33" }}></i>
-              <i className="bi bi-star-fill" style={{ color: "#b79d33" }}></i>
+              50<span style={{marginLeft:'8px',color:'#b79d33'}}><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarRateIcon /></span>
             </p>
-            <p className="pro-dtl-ft-sz" style={{ marginTop: "-11px" }}>
-              <span>45</span>
-              <i className="bi bi-star-fill" style={{ color: "#b79d33" }}></i>
-              <i className="bi bi-star-fill" style={{ color: "#b79d33" }}></i>
-              <i className="bi bi-star-fill" style={{ color: "#b79d33" }}></i>
-              <i className="bi bi-star-fill" style={{ color: "#b79d33" }}></i>
-              <i className="bi bi-star" style={{ color: "#b79d33" }}></i>
+            <p className="pro-dtl-ft-sz">
+              40<span style={{marginLeft:'8px',color:'#b79d33'}}><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarHalfIcon /></span>
             </p>
-            <p className="pro-dtl-ft-sz" style={{ marginTop: "-11px" }}>
-              <span>35</span>
-              <i className="bi bi-star-fill" style={{ color: "#b79d33" }}></i>
-              <i className="bi bi-star-fill" style={{ color: "#b79d33" }}></i>
-              <i className="bi bi-star-fill" style={{ color: "#b79d33" }}></i>
-              <i className="bi bi-star" style={{ color: "#b79d33" }}></i>
-              <i className="bi bi-star" style={{ color: "#b79d33" }}></i>
+            <p className="pro-dtl-ft-sz">
+              35<span style={{marginLeft:'8px',color:'#b79d33'}}><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarHalfIcon /><StarOutlineIcon /></span>
             </p>
-            <p className="pro-dtl-ft-sz" style={{ marginTop: "-11px" }}>
-              <span>14</span>
-              <i className="bi bi-star-fill" style={{ color: "#b79d33" }}></i>
-              <i className="bi bi-star-fill" style={{ color: "#b79d33" }}></i>
-              <i className="bi bi-star" style={{ color: "#b79d33" }}></i>
-              <i className="bi bi-star" style={{ color: "#b79d33" }}></i>
-              <i className="bi bi-star" style={{ color: "#b79d33" }}></i>
+            <p className="pro-dtl-ft-sz">
+              14<span style={{marginLeft:'8px',color:'#b79d33'}}><StarRateIcon /><StarRateIcon /><StarHalfIcon /><StarOutlineIcon /><StarOutlineIcon /></span>
             </p>
-            <p className="pro-dtl-ft-sz" style={{ marginTop: "-11px" }}>
-              <span>5</span>
-              <i className="bi bi-star-fill" style={{ color: "#b79d33" }}></i>
-              <i className="bi bi-star" style={{ color: "#b79d33" }}></i>
-              <i className="bi bi-star" style={{ color: "#b79d33" }}></i>
-              <i className="bi bi-star" style={{ color: "#b79d33" }}></i>
-              <i className="bi bi-star" style={{ color: "#b79d33" }}></i>
+            <p className="pro-dtl-ft-sz">
+              05<span style={{marginLeft:'8px',color:'#b79d33'}}><StarRateIcon /><StarHalfIcon /><StarOutlineIcon /><StarOutlineIcon /><StarOutlineIcon /></span>
             </p>
           </div>
         </div>
