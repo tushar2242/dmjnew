@@ -252,11 +252,7 @@
   .upperButton button {
     width: 150px;
   }
-  .css-ahj2mt-MuiTypography-root h5{
-    font-size: 14px !important;
-    font-weight:600 !important;
-    font-family: 'AcariSansNeueRegular' !important;
-  }
+
 }
 
 @media screen and (max-width: 450px) {
@@ -1077,7 +1073,9 @@
 
 }
 
-/* .glass-magnify-sz{
-  width:1000px !important;
-  height:1000px !important
-} */
+.css-1rwt2y5-MuiButtonBase-root-MuiButton-root{
+  border:solid 1px #b79d33 !important;
+  color:#b79d33 !important;
+  /* border-left:none !important;
+  border-right:none !important; */
+}

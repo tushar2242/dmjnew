@@ -165,8 +165,10 @@ const PromoCode = () => {
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-              malesuada lacus ex, sit amet blandit leo lobortis eget.
+             <form action="" className='d-flex'>
+               <input type="text" className='input-box-bdr' placeholder="Enter your promo code" />
+               <button className='check-verify-btn'>Verify</button>
+             </form>
             </Typography>
           </AccordionDetails>
         </Accordion>
