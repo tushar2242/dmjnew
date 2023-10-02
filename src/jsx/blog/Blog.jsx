@@ -9,8 +9,8 @@ import Banner from '../Banner/Banner';
 
 export default class Blog extends React.Component {
 
-    componentDidMount(){
-        window.scrollTo(0,0)
+    componentDidMount() {
+        window.scrollTo(0, 0)
     }
     render() {
         return (
@@ -27,9 +27,9 @@ export default class Blog extends React.Component {
                             <BlogCardRow />
                             <BlogCardRow />
                             <BlogCardRow />
-                            <div class="text-center">
+                            {/* <div class="text-center">
                                 <button class="px-5 py-2 text-white border-0 bg-primary mt-5 rounded shadow ">Load More</button>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="col-md-3 mt-3">
                             <div className="cate-box">
@@ -89,7 +89,7 @@ export default class Blog extends React.Component {
 
                     </div>
                 </div>
-              
+
                 <Footer />
             </>
         )

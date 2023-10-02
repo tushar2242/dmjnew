@@ -8,7 +8,8 @@ import { useDispatch } from 'react-redux';
 import { addSearch } from '../redux/dmjSlice';
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import './ProductWrapper'
-import ImageLoader from '../loader/ImageLoader';
+import ImageLoader, { ImageLoader1 } from '../loader/ImageLoader';
+import { LoadImg } from '../../customhooks/LoadImg';
 
 const url = 'https://api.diwamjewels.com/DMJ/'
 const sEnd = "api/v1/products/search?query=";
@@ -20,6 +21,12 @@ const imgUrl = 'https://squid-app-2-7wbvi.ondigitalocean.app/';
 
 const proto = 'https://api.diwamjewels.com/DMJ'
 const endPoint = '/api/v1/category';
+
+import img1 from '../../assets/images/banner/img1.png'
+import img2 from '../../assets/images/banner/img2.png'
+import img3 from '../../assets/images/banner/img3.png'
+
+const image = [img1, img2, img3]
 
 
 const ProductWrapper = () => {
@@ -49,12 +56,18 @@ const ProductWrapper = () => {
             {
                 cateData && cateData.map((category, index) => {
                     // console.log(category)
+
                     return (
                         <ItemCard
                             key={index}
                             category={category}
+                            bgImg={index === 0 ? img1
+                                : index === 1 ? img2
+                                    : img3
+                            }
                         />
                     )
+
                 })
             }
 
@@ -72,14 +85,15 @@ class ItemCard extends React.Component {
 
 
     render() {
-        const { category } = this.props;
-        // console.log(category)
+        const { category, bgImg } = this.props;
+        console.log(bgImg)
+
 
         return (
             <>
 
                 {
-                    category && <div className="jewel-bg mt-2">
+                    category && <div className="jewel-bg" style={{ backgroundImage: `url(${bgImg})` }}>
                         <div className="container-fluid">
                             <div className="row">
                                 <div className="col-md-12 text-center mt-4">
@@ -150,14 +164,14 @@ const ItemImageCard = ({ img, title, category }) => {
     }
 
 
-const [isImageLoad, setIsImageLoad] = useState(false)
+    const [isImageLoad, setIsImageLoad] = useState(false)
     return (
         <>
 
-            <div className="col-md-6 mt-3" style={{position:' relative'}}>
+            <div className="col-md-6 mt-3" style={{ position: ' relative' }}>
                 <div onClick={() => handleNavigate(category)}>
                     <div className="contain">
-                        {img ? <img src={img} className="img-fluid arrival-img new" alt="design" /> : <ImageLoader/>}
+                        {img ? <img src={img} className="img-fluid arrival-img new" alt="design" /> : <ImageLoader />}
 
                         <div className="text-block text-center">
                             {/* <h6 className="mt-2 perfect-text-sz"><b>{title}</b></h6> */}
@@ -216,6 +230,8 @@ const SmallImageCard = ({ img, name, category }) => {
         navigate('/search')
     }
 
+    const [isImgLoad, setIsImageLoad] = useState(false)
+
     const [subCategory1, setSubCategory] = useState([])
 
     async function fetchProductDetails() {
@@ -239,7 +255,13 @@ const SmallImageCard = ({ img, name, category }) => {
             <div className="col-md-4 text-center">
                 <div onClick={() => handleNavigate(category)} className="text-decoration-none home-text">
                     <div className="product-card-box">
-                        <img src={imgUrl + img} className="img-fluid rounded new-img" alt="design" />
+
+                        <LoadImg
+                            styleClass='img-fluid new-img'
+                            img={imgUrl + img}
+                        />
+                        {/* <ImageLoader1
+                            img={<img src={imgUrl + img} className="img-fluid new-img" alt="design" onLoad={() => setIsImageLoad(true)} />} /> */}
                         <p className="mt-3 perfect-text">{name.length < 10 ? name : name.slice(0, 10) + '...'}</p>
                         {/* <p className="sale-offer">Up to 50%</p> */}
 

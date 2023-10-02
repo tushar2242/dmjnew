@@ -12,9 +12,9 @@ import Loader from '../loader/Loader';
 // import { withRouter } from 'react-router-dom';
 
 
-const url = 'http://137.184.3.191:8080/DMJ/';
-const endPoint = 'api/v1/user/send/otp/signup';
-const otpEndPoint = 'api/v1/user/verify/otp'
+const url = 'https://api.diwamjewels.com/DMJ/api/v1/user/'
+const endPoint = 'send/otp/signup';
+const otpEndPoint = 'verify/otp'
 
 export default class Login2 extends React.Component {
 
