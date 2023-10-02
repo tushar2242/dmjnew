@@ -34,6 +34,6 @@ const productSlice = createSlice({
 });
 
 
-export const { addSearch,updateAmount } = productSlice.actions
+export const { addSearch, updateAmount } = productSlice.actions
 
 export default productSlice.reducer;

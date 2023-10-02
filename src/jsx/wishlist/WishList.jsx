@@ -144,13 +144,32 @@ const WhiteItemCard = ({ item }) => {
     }
 
 
-    const addToCart = (id) => {
-        const existingCart = JSON.parse(localStorage.getItem("pdIds")) || [];
-        existingCart.push(id);
 
-        localStorage.setItem("pdIds", JSON.stringify(existingCart));
+
+    const addToCart = (productId) => {
+        // Get the existing cart from localStorage or initialize an empty array if it doesn't exist
+        let quantity = 2;
+        const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Check if the product with the same ID already exists in the cart
+        const existingProduct = existingCart.find(item => item.productId === productId);
+
+        if (existingProduct) {
+            // If the product exists, update its quantity
+            existingProduct.quantity += quantity;
+        } else {
+            // If the product doesn't exist, add it to the cart as a new item
+            const newItem = {
+                productId: productId,
+                quantity: quantity
+            };
+            existingCart.push(newItem);
+        }
+
+        // Save the updated cart back to localStorage
+        localStorage.setItem("cart", JSON.stringify(existingCart));
+        navigate('/addToCart')
     };
-
 
     return (
         <>

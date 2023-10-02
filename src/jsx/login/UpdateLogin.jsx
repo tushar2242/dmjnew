@@ -45,7 +45,7 @@ class UpdateLogin extends React.Component {
             isPhoneEmail: false,
             isVerfy: false,
 
-            
+
             isLoading: false
         };
 
@@ -105,17 +105,19 @@ class UpdateLogin extends React.Component {
                 "roles": ["user"]
             })
             .then(response => {
+                localStorage.removeItem('userId')
                 console.log(response.data);
-                localStorage.setItem('userId', response.data.id)
+                localStorage.setItem('userId', response.data.data.id)
                 this.setState({
                     isLoading: false
                 })
-                window.location.href = '/';
+                
                 if (response.data.message === 'Phone Number Already Registered') {
                     alert("User Registered Please Go To Login Page")
                     window.location.href = '/'
                 }
                 // console.log(formData);
+                window.location.href = '/'
             })
             .catch(error => {
                 alert(error)

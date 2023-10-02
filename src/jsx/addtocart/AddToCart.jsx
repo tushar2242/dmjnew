@@ -9,6 +9,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import { LocalConvenienceStoreOutlined } from "@mui/icons-material";
+import { updateAmount } from "../redux/dmjSlice";
+import { useDispatch } from "react-redux";
 
 
 const url = 'https://api.diwamjewels.com/DMJ/'
@@ -179,6 +181,8 @@ const Products = ({ product, quantity }) => {
     const [thumb_img, setThumbImg] = useState(productImg);
     const [itemId, setItemId] = useState(0);
 
+    const dispatch = useDispatch()
+
     useEffect(() => {
         setItemQuan(quantity);
         setProductName(product.seo_title);
@@ -213,6 +217,8 @@ const Products = ({ product, quantity }) => {
 
             // Save the updated cart back to localStorage
             localStorage.setItem('cart', JSON.stringify(cart));
+            dispatch(updateAmount(cart))
+
         }
 
         // let totalPrice = totalPrice;
@@ -237,6 +243,7 @@ const Products = ({ product, quantity }) => {
 
             // Save the updated cart back to localStorage
             localStorage.setItem('cart', JSON.stringify(cart));
+            dispatch(updateAmount(cart))
         }
 
 
@@ -479,7 +486,6 @@ const OrderDetails = ({ item, price }) => {
 
     var cart = JSON.parse(localStorage.getItem('cart')) || [];
     useEffect(() => {
-
         handleAllPrice(item)
         cart = JSON.parse(localStorage.getItem('cart')) || [];
         // handleAllPrice(item)
