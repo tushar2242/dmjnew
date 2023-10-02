@@ -1,71 +1,94 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // import { NavLink } from 'react-router-dom';
 import './Sidebar';
 import './dashboard.css';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import HeaderCon from '../header/HeaderCon';
+import Navbar from '../header/Navbar';
+
+const url = 'https://api.diwamjewels.com/DMJ/';
+const endPoint = 'api/v1/user/';
+
+const userId = localStorage.getItem('userId')
 
 
-export default class Profileinfo extends React.Component {
-    render() {
-        return (
-            <>
+const Profileinfo = () => {
+
+    const navigate = useNavigate();
+    const [userInfo, setUserInfo] = useState(false)
+
+    async function fetchUserData() {
+        try {
+            const res = await axios.get(url + endPoint + userId)
+            // console.log(res.data.data)
+            setUserInfo(res.data.data)
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
+
+    useEffect(() => {
+        fetchUserData()
+    }, [])
+
+    return (
+        <>
+        <HeaderCon/>
+        <Navbar/>
             <div className="sidebar-content">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <Profile />
+                            <div className="shadow-sm profile-info-box">
+                                <h5>Profile Details</h5>
+                                <hr></hr>
+                                <div className="user-add-info">
+                                    <p className="profile-info-text">Full Name</p>
+                                    <p className="profile-info-text">{userInfo.userName}</p>
+                                </div>
+                                <div className="user-add-info">
+                                    <p className="profile-info-text">Mobile Number</p>
+                                    <p className="profile-info-text">{userInfo.phoneNumber}</p>
+                                </div>
+
+                                <div className="user-add-info">
+                                    <p className="profile-info-text">Email ID</p>
+                                    <p className="profile-info-text">{userInfo.email}</p>
+                                </div>
+                                <div className="user-add-info">
+                                    <p className="profile-info-text">Gender</p>
+                                    <p className="profile-info-text">{userInfo.gender}</p>
+                                </div>
+                                <div className="user-add-info">
+                                    <p className="profile-info-text">Age</p>
+                                    <p className="profile-info-text">{userInfo.age}</p>
+                                </div>
+                                {/* <div className="user-add-info">
+                                    <p className="profile-info-text">Location</p>
+                                    <p className="profile-info-text">Jaipur</p>
+                                </div>
+                                <div className="user-add-info">
+                                    <p className="profile-info-text">Alternate Mobile</p>
+                                    <p className="profile-info-text">not added</p>
+                                </div>
+                                <div className="user-add-info">
+                                    <p className="profile-info-text">Hint Name</p>
+                                    <p className="profile-info-text">not added</p>
+                                </div> */}
+                                <button className="pro-ed-btn" onClick={() => {
+                                    navigate('/')
+                                }}>Go Back to Home Page</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                </div>
-            </>
-        )
-    }
+            </div>
+        </>
+    )
 }
 
-class Profile extends React.Component {
-    render() {
-        return (
-            <>
-                <div className="shadow-sm profile-info-box">
-                    <h5>Profile Details</h5>
-                    <hr></hr>
-                    <div className="user-add-info">
-                        <p className="profile-info-text">Full Name</p>
-                        <p className="profile-info-text">Ankit Samant</p>
-                    </div>
-                    <div className="user-add-info">
-                        <p className="profile-info-text">Mobile Number</p>
-                        <p className="profile-info-text">8005779031</p>
-                    </div>
 
-                    <div className="user-add-info">
-                        <p className="profile-info-text">Email ID</p>
-                        <p className="profile-info-text">ankit.samant.ank@gmail.com</p>
-                    </div>
-                    <div className="user-add-info">
-                        <p className="profile-info-text">Gender</p>
-                        <p className="profile-info-text">MALE</p>
-                    </div>
-                    <div className="user-add-info">
-                        <p className="profile-info-text">Date of Birth</p>
-                        <p className="profile-info-text">16/06/1999</p>
-                    </div>
-                    <div className="user-add-info">
-                        <p className="profile-info-text">Location</p>
-                        <p className="profile-info-text">Jaipur</p>
-                    </div>
-                    <div className="user-add-info">
-                        <p className="profile-info-text">Alternate Mobile</p>
-                        <p className="profile-info-text">not added</p>
-                    </div>
-                    <div className="user-add-info">
-                        <p className="profile-info-text">Hint Name</p>
-                        <p className="profile-info-text">not added</p>
-                    </div>
-                    <button className="pro-ed-btn">Edit</button>
-                </div>
-            </>
-        )
-    }
-}
-
+export default Profileinfo

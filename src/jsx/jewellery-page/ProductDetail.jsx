@@ -195,7 +195,7 @@ function Product() {
 
   const addToCart = (productId) => {
     // Get the existing cart from localStorage or initialize an empty array if it doesn't exist
-    let quantity = 1;
+    let quantity = 2;
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
 
     // Check if the product with the same ID already exists in the cart
@@ -285,7 +285,7 @@ function Product() {
                     />
                   </div>
                 </div>
-                
+
 
                 <div className="desktop-dis-view mobview-contdtl">
                   <div id="carouselExampleIndicators" className="carousel slide">
@@ -432,7 +432,7 @@ function Product() {
                     <OfferDetails />
                     <p className="tagline-line"></p>
                     <div>
-                      <button className="add-to-cart-btn-sz w-100" onClick={async()=>{
+                      <button className="add-to-cart-btn-sz w-100" onClick={async () => {
                         await addToCart(itemInfo.id);
                         navigate("/checkout");
                       }}>
@@ -627,28 +627,28 @@ const ProductPrice = ({ title, des, rating, variant, prodes }) => {
       </div>
       <p className="tax-font">Inclusive of all taxes</p>
 
-         {/* -----------------------Quantity------------------------------ */}
-         <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        marginBottom:'15px',
-        alignItems: 'start',
-        '& > *': {
-          m: 1,
-        },
-      }}
-    >
-    <div className="d-flex">
-    <h5 className="mt-2"><b>Quantity :</b></h5>
-      <ButtonGroup variant="outlined" aria-label="outlined button group" style={{marginLeft:'30px'}}>
-        <Button onClick={decrement}><RemoveIcon /></Button>
-        <Button>{quantity}</Button>
-        <Button onClick={increment}><AddIcon /></Button>
-      </ButtonGroup>
-      </div>
-    </Box>
-        {/*---------------------------------------------------------------- */}
+      {/* -----------------------Quantity------------------------------ */}
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          marginBottom: '15px',
+          alignItems: 'start',
+          '& > *': {
+            m: 1,
+          },
+        }}
+      >
+        <div className="d-flex">
+          <h5 className="mt-2"><b>Quantity :</b></h5>
+          <ButtonGroup variant="outlined" aria-label="outlined button group" style={{ marginLeft: '30px' }}>
+            <Button onClick={decrement}><RemoveIcon /></Button>
+            <Button>{quantity}</Button>
+            <Button onClick={increment}><AddIcon /></Button>
+          </ButtonGroup>
+        </div>
+      </Box>
+      {/*---------------------------------------------------------------- */}
       <p className="col-fnt-sz offer-heading-txt">MORE COLORS</p>
       <div className="color-container">
         {/* <div

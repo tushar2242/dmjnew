@@ -4,10 +4,10 @@ body{
 }
 .sidenav {
     width: 250px;
-    height: 100%;
+    /* height: 100%; */
     
     background-color: rgb(243, 243, 243);
-    position: fixed
+    position: relative
 }
 .sidenav:hover{
     overflow-y: scroll;

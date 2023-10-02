@@ -34,6 +34,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const url = 'https://api.diwamjewels.com/DMJ/';
 const imgUrl = 'https://squid-app-2-7wbvi.ondigitalocean.app/';
+
+const userId = localStorage.getItem('userId')
+
+const endPoint = 'api/v1/user/';
 // const endPoint = 'api/v1/products/';
 const productEndPoint = 'api/v1/products';
 var cart = JSON.parse(localStorage.getItem('pdIds')) || [];
@@ -52,8 +56,22 @@ const CheckoutPage = () => {
     postalCode: '',
   }])
 
+  const [userInfo, setUserInfo] = useState(false)
 
+  async function fetchUserData() {
+    try {
+      const res = await axios.get(url + endPoint + userId)
+      // console.log(res.data.data)
+      setUserInfo(res.data.data)
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
 
+  useEffect(() => {
+    fetchUserData()
+  }, [])
 
 
   return (
@@ -65,7 +83,10 @@ const CheckoutPage = () => {
           <div className="col-md-7 mt-3">
             <DeliveryCountry />
             <PromoCode />
-            <EmailAddress />
+            <div className="del-ct-bg mt-2">
+              <h3 className="hd-tag-font">EMAIL ADDRESS</h3>
+              <p className="em-add-font">{userInfo.email}</p>
+            </div>
             <DlryAddress
               delivery={delivery}
               setDelivery={setDelivery}
@@ -165,10 +186,10 @@ const PromoCode = () => {
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-             <form action="" className='d-flex'>
-               <input type="text" className='input-box-bdr' placeholder="Enter your promo code" />
-               <button className='check-verify-btn'>Verify</button>
-             </form>
+              <form action="" className='d-flex'>
+                <input type="text" className='input-box-bdr' placeholder="Enter your promo code" />
+                <button className='check-verify-btn'>Verify</button>
+              </form>
             </Typography>
           </AccordionDetails>
         </Accordion>
@@ -181,10 +202,7 @@ const PromoCode = () => {
 const EmailAddress = () => {
   return (
     <>
-      <div className="del-ct-bg mt-2">
-        <h3 className="hd-tag-font">EMAIL ADDRESS</h3>
-        <p className="em-add-font">himanshi.sharma.ahit@gmail.com</p>
-      </div>
+
     </>
   );
 }
@@ -341,36 +359,64 @@ const CheckoutItem = () => {
     }
   }
 
+  async function handleAllPrice() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    setTotal('');
+    setDisTotal('');
+    let total = 0;
+    let discountTotal = 0;
 
-  async function handleAllPrice(item1) {
-    // console.log(item1)/
-    var total = 0;
-    // let discount = 0;
-    var discountTotal = 0;
-    // let deliveryCharges = 150
 
-    item1.length > 0 && item1.map((item) => {
-      total = parseInt(item.images[0].productVariantEntities[0].price) + total
-      discountTotal = parseInt(item.images[0].productVariantEntities[0].manualPrice) + discountTotal
-    })
 
-    await setTotal(total)
-    await setDisTotal(discountTotal)
-    // setIsUpdate(false)
-    // console.log(total)
+    cart.forEach((cartItem) => {
+      const product = proDetails.find((item) => item.id === cartItem.productId);
+      if (product && product.images.length > 0 && product.images[0].productVariantEntities.length > 0) {
+        const productPrice = parseInt(product.images[0].productVariantEntities[0].price);
+        const productManualPrice = parseInt(product.images[0].productVariantEntities[0].manualPrice);
+        total += productPrice * cartItem.quantity;
+        discountTotal += productManualPrice * cartItem.quantity;
+      }
+
+    });
+
+    setTotal(total);
+    console.log(total)
+    setDisTotal(discountTotal);
   }
+
+
+  // async function handleAllPrice() {
+  //   // console.log(item1)/
+  //  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  //   setTotal('')
+  //   setDisTotal('')
+  //   let total = 0;
+  //   // let discount = 0;
+  //   let discountTotal = 0;
+  //   // let deliveryCharges = 150
+
+  //   item1.length > 0 && item1.map((item) => {
+  //     total = parseInt(item.images[0].productVariantEntities[0].price) + total
+  //     discountTotal = parseInt(item.images[0].productVariantEntities[0].manualPrice) + discountTotal
+  //   })
+
+  //   await setTotal(total)
+  //   await setDisTotal(discountTotal)
+  //   // setIsUpdate(false)
+
+  // }
 
 
 
   useEffect(() => {
-    cart = JSON.parse(localStorage.getItem('pdIds')) || [];
-    window.scrollTo(0, 0);
+    cart = JSON.parse(localStorage.getItem('cart')) || [];
+
     setProDetails([])
     // setAdtCart(cart)
-    cart.map((id) => fethcProductData(id));
-    handleAllPrice(proDetails)
-  }, [isUpdate])
-
+    cart.map((id) => fethcProductData(id.productId));
+    window.scrollTo(0, 0);
+    handleAllPrice()
+  }, [])
 
 
 

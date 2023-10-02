@@ -86,12 +86,29 @@ const ProductItemCard = ({ img, item, price }) => {
   const navigate = useNavigate();
 
 
-  const addToCart = (id) => {
+  const addToCart = (productId) => {
+    // Get the existing cart from localStorage or initialize an empty array if it doesn't exist
+    let quantity = 2;
+    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    const existingCart = JSON.parse(localStorage.getItem('pdIds')) || [];
-    existingCart.push(id);
+    // Check if the product with the same ID already exists in the cart
+    const existingProduct = existingCart.find(item => item.productId === productId);
 
-    localStorage.setItem('pdIds', JSON.stringify(existingCart));
+    if (existingProduct) {
+      // If the product exists, update its quantity
+      existingProduct.quantity += quantity;
+    } else {
+      // If the product doesn't exist, add it to the cart as a new item
+      const newItem = {
+        productId: productId,
+        quantity: quantity
+      };
+      existingCart.push(newItem);
+    }
+
+    // Save the updated cart back to localStorage
+    localStorage.setItem("cart", JSON.stringify(existingCart));
+    navigate('/addToCart')
   };
 
   const dispatch = useDispatch()
@@ -178,7 +195,7 @@ const ProductItemCard = ({ img, item, price }) => {
             </div>
             <div onClick={async () => {
               await addToCart(item.id)
-              navigate('/addtocart')
+             
             }} >
               <button className="trend-cart-btn">
                 <b>Add To Cart</b>

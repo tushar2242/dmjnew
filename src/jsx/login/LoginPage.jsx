@@ -6,6 +6,7 @@ import '../../assets/css/login.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import loginImg1 from '../../assets/images/banner/login1.png';
+import Loader from '../loader/Loader';
 
 // import { TextField } from '@mui/material';
 // import { withRouter } from 'react-router-dom';
@@ -36,6 +37,8 @@ const LoginWithMobileNo = () => {
     const [isOtp, setOtp] = useState(false);
     const [otp, setOtpValue] = useState('')
 
+    const [isLoading, setLoading] = useState(false)
+
     const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
@@ -46,6 +49,7 @@ const LoginWithMobileNo = () => {
     }
 
     async function verifyOtp(e) {
+        setLoading(true)
         e.preventDefault()
         const otpValue = {
             "userName": mobileNo,
@@ -84,10 +88,12 @@ const LoginWithMobileNo = () => {
         catch (err) {
             console.log(err)
         }
+        setLoading(false)
     }
 
 
     async function sentOtp(e) {
+        setLoading(true)
         e.preventDefault()
         const headers = {
             'Content-Type': 'multipart/form-data',
@@ -112,6 +118,7 @@ const LoginWithMobileNo = () => {
                 alert("Invalid Email Or Password")
             }
         }
+        setLoading(false)
 
     }
 
@@ -119,57 +126,59 @@ const LoginWithMobileNo = () => {
 
     return (
         <>
+            {
+                !isLoading ?
+                    <div className="fullpage-bg" style={{ backgroundImage: `url(${loginImg1})` }}>
+                        <div className="container">
+                            <div className="login-bg shadow-sm">
+                                <div className="row">
+                                    <div className="col-md-12">
+                                        <img src={img1} className="coupon-img" alt="Coupon" />
+                                        <div className="user-login">
+                                            <h6><b>Login</b></h6>
+                                            <form onSubmit={(e) => { e.preventDefault() }}>
 
-            <div className="fullpage-bg" style={{backgroundImage:`url(${loginImg1})`}}>
-                <div className="container">
-                    <div className="login-bg shadow-sm">
-                        <div className="row">
-                            <div className="col-md-12">
-                                <img src={img1} className="coupon-img" alt="Coupon" />
-                                <div className="user-login">
-                                    <h6><b>Login</b></h6>
-                                    <form onSubmit={(e) => { e.preventDefault() }}>
-
-                                        <input type="text" className="login-input" id="login-number" placeholder="Mobile Number / Email-id *" value={mobileNo} onChange={(e) => {
-                                            setMobileNo(e.target.value)
-                                        }} required />
-
-                                        <input type="password" className="login-input" id="login-number1" placeholder="Enter the Password*" value={password} onChange={(e) => {
-                                            setPassword(e.target.value)
-                                        }} required />
-
-                                        {
-                                            isOtp &&
-                                            <>
-                                                <b style={{ color: 'green', letterSpacing: '0.3px', padding: '4px' }}>Otp Sent Successfully</b>
-
-
-                                                <input type="number" className="login-input" placeholder="Enter the Otp*" value={otp} onChange={(e) => {
-                                                    setOtpValue(e.target.value)
+                                                <input type="text" className="login-input" id="login-number" placeholder="Mobile Number / Email-id *" value={mobileNo} onChange={(e) => {
+                                                    setMobileNo(e.target.value)
                                                 }} required />
-                                            </>
-                                        }
-                                        {/* <label className="error" style={{ display: showError }}>Enter a Correct Email-Id / Phone No.</label> */}
-                                        <br />
-                                        <p className="tp-text">By Continuing, I agree to the <NavLink to='/termscondition'>
-                                            <span className="tp-color"><b>Terms of Use & Privacy Policy</b></span></NavLink></p>
-                                        {isOtp ? <button type="button" className="continue-btn" onClick={(e) => {
-                                            verifyOtp(e)
 
-                                        }}>Verify and Login</button>
-                                            : <button type="button" className="continue-btn" onClick={(e) => {
-                                                sentOtp(e)
-                                            }}>SIGN IN</button>
-                                        }
-                                        <p className="tp-text">New to DMJ ? <NavLink to="/defaultLogin" className="tp-color"><span className="text-danger"><b>Sign Up</b></span></NavLink></p>
-                                    </form>
+                                                <input type="password" className="login-input" id="login-number1" placeholder="Enter the Password*" value={password} onChange={(e) => {
+                                                    setPassword(e.target.value)
+                                                }} required />
+
+                                                {
+                                                    isOtp &&
+                                                    <>
+                                                        <b style={{ color: 'green', letterSpacing: '0.3px', padding: '4px' }}>Otp Sent Successfully</b>
+
+
+                                                        <input type="number" className="login-input" placeholder="Enter the Otp*" value={otp} onChange={(e) => {
+                                                            setOtpValue(e.target.value)
+                                                        }} required />
+                                                    </>
+                                                }
+                                                {/* <label className="error" style={{ display: showError }}>Enter a Correct Email-Id / Phone No.</label> */}
+                                                <br />
+                                                <p className="tp-text">By Continuing, I agree to the <NavLink to='/termscondition'>
+                                                    <span className="tp-color"><b>Terms of Use & Privacy Policy</b></span></NavLink></p>
+                                                {isOtp ? <button type="button" className="continue-btn" onClick={(e) => {
+                                                    verifyOtp(e)
+
+                                                }}>Verify and Login</button>
+                                                    : <button type="button" className="continue-btn" onClick={(e) => {
+                                                        sentOtp(e)
+                                                    }}>SIGN IN</button>
+                                                }
+                                                <p className="tp-text">New to DMJ ? <NavLink to="/defaultLogin" className="tp-color"><span className="text-danger"><b>Sign Up</b></span></NavLink></p>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-
+                    : <Loader />
+            }
         </>
     )
 }
