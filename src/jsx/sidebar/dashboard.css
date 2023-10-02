@@ -1,13 +1,11 @@
 /* ----------------------------Sidebar-------------------------------- */
-body{
-    font-family: 'Montserrat', sans-serif;
-}
 .sidenav {
-    width: 250px;
-    /* height: 100%; */
+    width: 100%;
+    max-width:250px;
+    height:100%;
     
     background-color: rgb(243, 243, 243);
-    position: relative
+    position:fixed;
 }
 .sidenav:hover{
     overflow-y: scroll;

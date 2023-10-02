@@ -174,21 +174,21 @@ const PromoCode = () => {
     <>
       <div className="del-ct-bg mt-2">
         <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography className="hd-tag-font">PROMO / CODE OR VOUCHERS</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              <form action="" className='d-flex'>
-                <input type="text" className='input-box-bdr' placeholder="Enter your promo code" />
-                <button className='check-verify-btn'>Verify</button>
+          <Accordion.Item eventKey="1">
+            <Accordion.Header className="hd-tag-font">
+              PROMO / CODE OR VOUCHERS
+            </Accordion.Header>
+            <Accordion.Body>
+              <form action="" className="d-flex">
+                <input
+                  type="text"
+                  className="input-box-bdr"
+                  placeholder="Enter your promo code"
+                />
+                <button className="check-verify-btn">Verify</button>
               </form>
-            </Typography>
-          </AccordionDetails>
+            </Accordion.Body>
+          </Accordion.Item>
         </Accordion>
       </div>
     </>
@@ -198,7 +198,10 @@ const PromoCode = () => {
 const EmailAddress = () => {
   return (
     <>
-
+      <div className="del-ct-bg mt-2">
+        <h3 className="hd-tag-font">EMAIL ADDRESS</h3>
+        <p className="em-add-font">himanshi.sharma.ahit@gmail.com</p>
+      </div>
     </>
   );
 };
