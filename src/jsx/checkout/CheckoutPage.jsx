@@ -74,7 +74,9 @@ const CheckoutPage = () => {
                   <DlryAddress delivery={delivery} setDelivery={setDelivery} />
                 </Accordion.Body>
               </Accordion.Item>
-              <Accordion.Item eventKey="1">
+            </Accordion>
+            <Accordion className="mt-2">
+            <Accordion.Item eventKey="1">
                 <Accordion.Header className="hd-tag-font">
                   Shipping Address
                 </Accordion.Header>
@@ -83,6 +85,7 @@ const CheckoutPage = () => {
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
+
 
             <DlryOptions delivery={delivery} />
 
@@ -409,11 +412,30 @@ const PaymentType = () => {
                 <Accordion.Header className="hd-tag-font">
                 <div className="d-flex">
                 <img src={upilogo} alt="credit" className="cr-cd-img" />
-                <h6 className="opt-dlry-fnt mt-1">UPI NUMBER</h6>
+                <h6 className="opt-dlry-fnt mt-1">UPI ID</h6>
                 </div>
                 </Accordion.Header>
                 <Accordion.Body>
-                <input type="text" className="input-box-bdr mt-2 w-100" placeholder="Enter UPI Number" />
+                <div className="d-flex">
+                <input type="text" className="input-box-bdr" placeholder="Enter UPI ID" />
+                <button className="check-verify-btn">Verify</button>
+                </div>
+               
+                </Accordion.Body>
+              </Accordion.Item>
+              <Accordion.Item eventKey="2">
+                <Accordion.Header className="hd-tag-font">
+                <div className="d-flex">
+                <img src={paypal} alt="credit" className="cr-cd-img" />
+                <h6 className="opt-dlry-fnt mt-1">Paypal ID</h6>
+                </div>
+                </Accordion.Header>
+                <Accordion.Body>
+                <div className="d-flex">
+                <input type="text" className="input-box-bdr" placeholder="Enter Paypal ID" />
+                <button className="check-verify-btn">Verify</button>
+                </div>
+                
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
