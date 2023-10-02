@@ -581,6 +581,7 @@ function MobileMenuBar({ cateData, ...props }) {
 
   const handleClose = () => setMenuShow(false);
   const handleShow = () => setMenuShow(true);
+  
 
   return (
     <>

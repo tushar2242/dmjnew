@@ -8,7 +8,7 @@ import axios from 'axios';
 import Otp from '../otp-page/Otp';
 import Loader from '../loader/Loader';
 import loginImg1 from '../../assets/images/banner/login1.png';
-
+import dmjicon from '../../assets/images/dmj.png'
 // import { TextField } from '@mui/material';
 // import { withRouter } from 'react-router-dom';
 
@@ -153,7 +153,8 @@ const LoginWithMobileNo = () => {
                 <div className="login-bg">
                     <div className="">
                         <div className="">
-                            <img src={img1} className="coupon-img" alt="Coupon" />
+                        <div className='text-center'><img src={dmjicon} className="coupon-img" alt="Coupon" /></div>
+                                        <hr />
                             <div className="user-login">
                                 <h6><b>Login or Signup</b></h6>
                                 <form style={{ position: 'relative' }} onSubmit={(e) => { e.preventDefault() }} >
