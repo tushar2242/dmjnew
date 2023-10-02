@@ -13,11 +13,15 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import AddCardIcon from '@mui/icons-material/AddCard';
 import PhonelinkLockIcon from '@mui/icons-material/PhonelinkLock';
+import Navbar from '../header/Navbar';
+import HeaderCon from '../header/HeaderCon';
 
 export default class Dashboard extends React.Component {
     render() {
         return (
             <>
+                <HeaderCon />
+                <Navbar />
                 <Sidenavbar />
             </>
         )
@@ -46,32 +50,32 @@ class Sidenavbar extends React.Component {
         const { displayElement } = this.state;
         return (
             <>
-            <div className="desktop-vw-box">
-                <div className="d-flex flex-column flex-shrink-0 p-3 sidenav">
-                    <ul className="nav nav-pills flex-column mb-auto">
-                        {/* <li className="nav-item">
+                <div className="desktop-vw-box">
+                    <div className="d-flex flex-column flex-shrink-0 p-3 sidenav">
+                        <ul className="nav nav-pills flex-column mb-auto">
+                            {/* <li className="nav-item">
                             <h6 className="side-tab" onClick={() => this.setDisplay('overview')} aria-current="page">
                                 <DashboardCustomizeIcon className="fs-5"></DashboardCustomizeIcon> OVERVIEW
                             </h6>
                         </li>
                         <hr></hr> */}
-                        {/* <li className="nav-item">
+                            {/* <li className="nav-item">
                             <h6 className="side-tab" aria-current="page" onClick={() => this.setDisplay('order')}>
                               <LocalShippingIcon className="fs-5"></LocalShippingIcon> ORDERS & RETURNS
                             </h6>
                         </li>
                         <hr></hr> */}
-                        <li className="nav-item">
-                        {/* <p className='account-fnt-sz1'> ACCOUNT</p> */}
-                            <h6 className="side-tab" onClick={() => this.setDisplay('Profile')}><ManageAccountsIcon className="fs-5"></ManageAccountsIcon> Profile</h6>
-                            {/* <h6 className="side-tab" onClick={() => this.setDisplay('savedcard')}>Saved Cards</h6>
+                            <li className="nav-item">
+                                {/* <p className='account-fnt-sz1'> ACCOUNT</p> */}
+                                <h6 className="side-tab" onClick={() => this.setDisplay('Profile')}><ManageAccountsIcon className="fs-5"></ManageAccountsIcon> Profile</h6>
+                                {/* <h6 className="side-tab" onClick={() => this.setDisplay('savedcard')}>Saved Cards</h6>
                             <h6 className="side-tab" onClick={() => this.setDisplay('Vpasaved')}>Saved VPA</h6>
                             <h6 className="side-tab" onClick={() => this.setDisplay('Address')}>Addresses</h6> */}
-                        
-                        </li>
-                        <hr></hr>
-    
-                        {/* <li className="nav-item">
+
+                            </li>
+                            <hr></hr>
+
+                            {/* <li className="nav-item">
                         <p className='account-fnt-sz1'><AddCardIcon className="fs-5"></AddCardIcon> CREDITS</p>
                             <h6 className="side-tab" onClick={() => this.setDisplay('coupon')}>My Coupons</h6>
                             <h6 className="side-tab"> DMJ Credit</h6>
@@ -79,52 +83,52 @@ class Sidenavbar extends React.Component {
                            
                         
                         </li> */}
-                        {/* <hr></hr>
+                            {/* <hr></hr>
                         <li className="nav-item">
                             <h6 className="side-tab" aria-current="page" onClick={() => this.setDisplay('Terms')}>
                              <PhonelinkLockIcon className="fs-5"></PhonelinkLockIcon> TERMS & PRIVACY POLICY
                             </h6>
                         </li> */}
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
-                </div>
-              <div className='mobile-view-tabs'>
-                 <div className='mob-box-view-sz'>
-                    <ul className='mob-box-view-sz'>
-                    {/* <li className="list-box-view">
+                <div className='mobile-view-tabs'>
+                    <div className='mob-box-view-sz'>
+                        <ul className='mob-box-view-sz'>
+                            {/* <li className="list-box-view">
                             <h6 className="side-tab" onClick={() => this.setDisplay('overview')} aria-current="page">
                                 <DashboardCustomizeIcon className="fs-5"></DashboardCustomizeIcon> OVERVIEW
                             </h6>
                         </li> */}
-                        {/* <li className="list-box-view">
+                            {/* <li className="list-box-view">
                         <h6 className="side-tab" aria-current="page" onClick={() => this.setDisplay('order')}>
                               <LocalShippingIcon className="fs-5"></LocalShippingIcon> ORDERS & RETURNS
                             </h6>
                         </li> */}
-                        <li className="list-box-view">
-                        <h6 className="side-tab" aria-current="page" onClick={() => this.setDisplay('Profile')}>
-                              <ManageAccountsIcon className="fs-5"></ManageAccountsIcon> Profile
-                            </h6>
-                        </li>
-                       
-                    </ul>
-                 </div>
-              </div>
-               
+                            <li className="list-box-view">
+                                <h6 className="side-tab" aria-current="page" onClick={() => this.setDisplay('Profile')}>
+                                    <ManageAccountsIcon className="fs-5"></ManageAccountsIcon> Profile
+                                </h6>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
 
                 {
-                    
-                            (displayElement === 'Profile') ? <Profileinfo /> :null
-                              
-      }
 
-      {/* (displayElement === 'overview') ? <Overviewpage /> :
+                    (displayElement === 'Profile') ? <Profileinfo /> : null
+
+                }
+
+                {/* (displayElement === 'overview') ? <Overviewpage /> :
                         (displayElement === 'order') ? <Orderpage /> :
                         (displayElement === 'coupon') ? <Couponpage /> :
                         (displayElement === 'Address') ? <Saveaddress /> :
                         (displayElement === 'Vpasaved') ? <UPI /> :
                         (displayElement === 'Terms') ? <Policy /> : */}
-                           {/* <SavedCardPage />  */}
+                {/* <SavedCardPage />  */}
             </>
         )
     }
