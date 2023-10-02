@@ -60,11 +60,9 @@ export default class HeaderCon extends React.Component {
         {/* -----------------------------Mobile View---------------------------- */}
         <div className="header-cont-mbvw">
           <div className="header-bg">
-            <div>
-              <Marquee>
+              <Marquee style={{overflowX:'hidden !important'}}>
                 Up to 50% off Deal of the day
               </Marquee>
-            </div>
             <div className="header-cont-box mt-1">
               <div className="header-icon header-box-1 header-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
 

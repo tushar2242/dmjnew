@@ -162,7 +162,7 @@ class Products extends React.Component {
         this.setState({
             itemQuan: 2,
             productName: product.seo_title,
-            price: 3,
+            price: product.images.length > 0 && product.images[0].productVariantEntities.length > 0 && product.images[0].productVariantEntities[0].price,
             totalPrice: product.images.length > 0 && product.images[0].productVariantEntities.length > 0 && product.images[0].productVariantEntities[0].price,
             thumb_img: imgUrl + product.images[0].thumbImage,
             itemId: product.id

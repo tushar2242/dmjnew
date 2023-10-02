@@ -16,6 +16,7 @@
 .css-ahj2mt-MuiTypography-root h5{
   font-size: 15px !important;
   font-weight:600 !important;
+  font-family: 'AcariSansNeueRegular' !important;
 }
 .topPart {
   display: flex;
@@ -251,7 +252,11 @@
   .upperButton button {
     width: 150px;
   }
-
+  .css-ahj2mt-MuiTypography-root h5{
+    font-size: 14px !important;
+    font-weight:600 !important;
+    font-family: 'AcariSansNeueRegular' !important;
+  }
 }
 
 @media screen and (max-width: 450px) {
@@ -273,7 +278,13 @@
   }
 }
 
-@media screen and (max-width: 800px) {}
+@media screen and (max-width: 800px) {
+  .detl-page-mobvw{
+    margin-right:0px !important;
+  
+  }
+
+}
 
 @media screen and (max-width: 600px) {
   .topPart {
@@ -846,7 +857,7 @@
 
   .pro-color-img,.pro-color-img-active {
     width: 60px;
-    height: 70px;
+    height: 60px;
     margin: 5px;
     background-size: cover !important;
   }

@@ -233,9 +233,9 @@ function Product() {
           </Helmet>
           <div className="container-fluid" >
 
-            <div className="row">
-              <div className="col-md-6 top-space-dt">
-                <div className="hid-mob-view stk-box-item">
+            <div className="row detl-page-mobvw no gutters">
+              <div className="col-md-6">
+                <div className="hid-mob-view stk-box-item top-space-dt">
                   <div className="product-display">
                     <div className="carouselmini">
                       <div className="upperSmallCarousel mobile-view-dply">
@@ -270,9 +270,6 @@ function Product() {
                         </Swiper>
                       </div>
                     </div>
-
-
-
                     <GlassMagnifier
                       imageSrc={imgUrl + selectedImage}
                       imageAlt="Product"
@@ -283,10 +280,9 @@ function Product() {
                     />
                   </div>
                 </div>
+                
 
-                <div className="desktop-dis-view">
-
-
+                <div className="desktop-dis-view mobview-contdtl">
                   <div id="carouselExampleIndicators" className="carousel slide">
                     <div className="carousel-indicators">
                       <button
@@ -346,9 +342,6 @@ function Product() {
                           </div>
                         );
                       })}
-
-
-
                   </div>
                 </div>
               </div>
