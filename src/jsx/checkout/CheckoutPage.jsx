@@ -170,8 +170,8 @@ const PromoCode = () => {
   return (
     <>
       <div className="del-ct-bg mt-2">
-        <Accordion defaultActiveKey="3">
-          <Accordion.Item eventKey="3">
+        <Accordion>
+          <Accordion.Item eventKey="1">
             <Accordion.Header className="hd-tag-font">
               PROMO / CODE OR VOUCHERS
             </Accordion.Header>
