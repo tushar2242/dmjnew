@@ -23,10 +23,15 @@ const AddToCart = () => {
     const [proDetails, setProDetails] = useState([]);
     const [adtCart, setAdtCart] = useState([]);
     const [isUpdate, setIsUpdate] = useState(false);
+    const [price, setPrice] = useState('')
+    const [dis, setDis] = useState('')
+    const [totalPrice, setTotalPrice] = useState('')
+
+    const [proQuantity, setQuantity] = useState([])
 
     // Fetch product data by ID
     async function fetchProductData(id) {
-        console.log(id)
+        // console.log(id)
         try {
             const res = await axios.get(url + productEndPoint + id);
             const product = res.data.data;
@@ -50,16 +55,25 @@ const AddToCart = () => {
         setAdtCart(updatedCart);
         localStorage.setItem("cart", JSON.stringify(updatedCart));
         setIsUpdate(!isUpdate);
+
     };
 
     // Load cart data from localStorage on initial render
     useEffect(() => {
+        window.scrollTo(0, 0)
+        // var cart=[]
+        setProDetails([])
         cart = JSON.parse(localStorage.getItem("cart")) || [];
         setAdtCart(cart);
+        const quant = []
         cart.forEach(({ productId, quantity }) => {
             fetchProductData(productId);
+            quant.push(quantity)
         });
+        setQuantity(quant)
     }, []);
+
+
 
     return (
         <>
@@ -88,9 +102,16 @@ const AddToCart = () => {
 
                                 return (
                                     <ProductDetails
+                                        setPrice={setPrice}
+                                        price={price}
+                                        dis={dis}
+                                        setDis={setDis}
+                                        totalAmount={totalPrice}
+                                        setTotalPrice={setTotalPrice}
                                         product={item}
                                         removeCart={updateCart}
                                         key={index}
+                                        quantity={proQuantity[index]}
                                         totalPrice={item.images.length > 0 && item.images[0].productVariantEntities.length > 0 && item.images[0].productVariantEntities[0].price}
                                     />
                                 )
@@ -104,6 +125,12 @@ const AddToCart = () => {
                     <div className="col-md-4">
                         <OrderDetails
                             item={proDetails}
+                            setPrice={setPrice}
+                            price={price}
+                            dis={dis}
+                            setDis={setDis}
+                            totalPrice={totalPrice}
+                            setTotalPrice={setTotalPrice}
                         />
 
                     </div>
@@ -126,13 +153,21 @@ class ProductDetails extends React.Component {
 
     render() {
 
-        const { product, removeCart } = this.props
+        const { product, removeCart, quantity, setTotalPrice, totalAmount, setDis, dis, price, setPrice } = this.props
+
         return (
             <>
 
                 <Products
                     product={product}
                     removeItem={removeCart}
+                    quantity={quantity}
+                    setPrice={setPrice}
+                    price={price}
+                    dis={dis}
+                    setDis={setDis}
+                    totalAmount={totalAmount}
+                    setTotalPrice={setTotalPrice}
                 />
 
             </>
@@ -154,13 +189,14 @@ class Products extends React.Component {
 
         this.addQuan = this.addQuan.bind(this);
         this.minQuan = this.minQuan.bind(this);
+        this.removeItem = this.removeItem.bind(this)
     }
 
     componentDidMount() {
-        const { product } = this.props;
+        const { product, quantity, setTotalPrice, totalAmount, setDis, dis, price, setPrice } = this.props;
         // console.log(product)
         this.setState({
-            itemQuan: 2,
+            itemQuan: quantity + 1,
             productName: product.seo_title,
             price: product.images.length > 0 && product.images[0].productVariantEntities.length > 0 && product.images[0].productVariantEntities[0].price,
             totalPrice: product.images.length > 0 && product.images[0].productVariantEntities.length > 0 && product.images[0].productVariantEntities[0].price,
@@ -169,15 +205,15 @@ class Products extends React.Component {
         })
     }
 
-    minQuan() {
-
+    async minQuan() {
+        const { setTotalPrice, totalAmount, setDis, dis, price, setPrice } = this.props;
         let itemQuan = this.state.itemQuan;
         let totalPrice = this.state.totalPrice;
-        let price = this.state.price;
+        let tempPrice = this.state.price;
         if (itemQuan > 2) {
             this.setState({
                 itemQuan: itemQuan - 1,
-                totalPrice: totalPrice - price
+                totalPrice: totalPrice - tempPrice
             })
         }
 
@@ -195,17 +231,23 @@ class Products extends React.Component {
 
     }
 
+    removeItem(itemId) {
+        // Retrieve the cart from localStorage
+        // Retrieve the cart from localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    // removeItem() {
-    //     console.log('fired')
-    // }
+        // Use the filter method to create a new cart without the item with the specified ID
+        const updatedCart = cart.filter(item => item.productId !== itemId);
 
-    setValue() {
-        console.log('working')
+        // Update the cart in localStorage with the updated array
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
+        window.location.reload()
     }
+
+
     render() {
         const { itemQuan, productName, totalPrice, thumb_img, itemId } = this.state;
-        const { removeItem } = this.props
+        // const { removeItem } = this.props
         return (
 
             <>
@@ -232,7 +274,7 @@ class Products extends React.Component {
                             </div>
                         </div>
                         <h6 className="pro-font mt-3 cart-qty"><i className="bi bi-currency-rupee"></i>{totalPrice}</h6>
-                        <h6 className="pro-font mt-3 cart-qty" onClick={() => removeItem(itemId)}><i className="bi bi-trash-fill fs-5 text-danger"></i></h6>
+                        <h6 className="pro-font mt-3 cart-qty" onClick={() => this.removeItem(itemId)}><i className="bi bi-trash-fill fs-5 text-danger"></i></h6>
                     </div>
                 </div>
 
@@ -243,7 +285,9 @@ class Products extends React.Component {
 }
 
 
-const OrderDetails = ({ item }) => {
+
+
+const OrderDetails = ({ item, price }) => {
 
     const [totalPrice, setTotal] = useState(0)
     const [disTotal, setDisTotal] = useState(0)
@@ -287,7 +331,7 @@ const OrderDetails = ({ item }) => {
                     <hr />
                     <div className="d-flex justify-content-between mt-3">
                         <p className="sub-ttl">Subtotal</p>
-                        <p className="sub-ttl"><i className="bi bi-currency-rupee"></i>{totalPrice > 0 && totalPrice}</p>
+                        <p className="sub-ttl"><i className="bi bi-currency-rupee"></i>{totalPrice > 0 && price}</p>
                     </div>
 
                     <div className="d-flex justify-content-between mt-3">

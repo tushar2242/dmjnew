@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Otp from '../otp-page/Otp';
 import Loader from '../loader/Loader';
+import loginImg1 from '../../assets/images/banner/login1.png';
 
 // import { TextField } from '@mui/material';
 // import { withRouter } from 'react-router-dom';
@@ -147,7 +148,7 @@ const LoginWithMobileNo = () => {
     isLoading && <Loader/>
 }
 
-            <div className="fullpage-bg">
+            <div className="fullpage-bg" style={{backgroundImage:`url(${loginImg1})`}}>
 
                 <div className="login-bg">
                     <div className="">

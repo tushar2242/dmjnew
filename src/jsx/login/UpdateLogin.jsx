@@ -14,13 +14,15 @@ import FormLabel from '@mui/material/FormLabel';
 // import { useNavigate } from 'react-router-dom';
 import { NavLink } from "react-router-dom";
 import Loader from "../loader/Loader";
+import loginImg1 from '../../assets/images/banner/login1.png';
 // import { withRouter } from 'react-router-dom';
 
 // import {withRouter} from 'react-router-dom';
 
 
-const url = 'https://api.diwamjewels.com/DMJ/'
+const url = 'https://api.diwamjewels.com/DMJ/';
 const endPoint = 'api/v1/user/signup';
+
 
 var userAuth = localStorage.getItem('mailOrNo')
 var auth = localStorage.getItem('auth')
@@ -43,6 +45,7 @@ class UpdateLogin extends React.Component {
             isPhoneEmail: false,
             isVerfy: false,
 
+            
             isLoading: false
         };
 
@@ -133,7 +136,7 @@ class UpdateLogin extends React.Component {
         return (
             <>
                 {isLoading && <Loader />}
-                <div className="outer-login">
+                <div className="outer-login" style={{ backgroundImage: `url(${loginImg1})` }}>
                     {isVerfy ?
                         <div className="inner-login">
 

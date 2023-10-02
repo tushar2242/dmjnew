@@ -378,6 +378,7 @@ function Product() {
                         onClick={async () => {
                           await wishList(itemInfo.id);
                           navigate("/wishlist");
+                          window.location.reload()
                         }}
                       >
                         <FavoriteBorderIcon /> WISHLIST
@@ -426,7 +427,10 @@ function Product() {
                     <OfferDetails />
                     <p className="tagline-line"></p>
                     <div>
-                      <button className="add-to-cart-btn-sz w-100">
+                      <button className="add-to-cart-btn-sz w-100" onClick={async()=>{
+                        await addToCart(itemInfo.id);
+                        navigate("/checkout");
+                      }}>
                         Buy Now
                       </button>
                     </div>

@@ -5,6 +5,7 @@ import img1 from '../../assets/images/carpet.jpg';
 import '../../assets/css/login.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import loginImg1 from '../../assets/images/banner/login1.png';
 
 // import { TextField } from '@mui/material';
 // import { withRouter } from 'react-router-dom';
@@ -119,7 +120,7 @@ const LoginWithMobileNo = () => {
     return (
         <>
 
-            <div className="fullpage-bg">
+            <div className="fullpage-bg" style={{backgroundImage:`url(${loginImg1})`}}>
                 <div className="container">
                     <div className="login-bg shadow-sm">
                         <div className="row">
