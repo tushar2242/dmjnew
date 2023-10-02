@@ -51,6 +51,10 @@ select.sel-box:focus{
     height:40px;
     padding:10px !important;
     border-radius:10px;
+    font-size:15px;
+    font-weight: 600;
+    letter-spacing: 0.75px;
+    color:rgb(63, 63, 63);
 }
 .fm-lbl-heading{
     font-size:15px !important;
@@ -59,7 +63,11 @@ select.sel-box:focus{
     margin-top:20px;
 }
 .input-box-bdr::placeholder{
-    padding:10px !important
+    padding:10px !important;
+    font-size:15px;
+    font-weight:600;
+    letter-spacing: 0.75px;
+    color:rgb(63, 63, 63);
 }
 
 .css-q0jhri-MuiInputBase-root-MuiInput-root:before {
@@ -172,6 +180,17 @@ select.sel-box:focus{
     padding-right:10px !important; 
 }
 @media only screen and (max-width:767.98px){
+    .cr-cd-img{
+        width:25px;
+        height:25px;
+    }
+    .opt-dlry-fnt{
+        font-size:13.4px;
+        font-weight:600;
+        letter-spacing:1.5px;
+        color:rgb(87, 85, 85);
+        margin-left:10px
+    }
 
     .accordion-button{
         font-size:13.5px !important;
