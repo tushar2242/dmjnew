@@ -1,7 +1,7 @@
 import React from 'react';
 import HeaderCon from '../header/HeaderCon';
 import cardImg from '../../assets/images/carpet3.jpg';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -28,7 +28,7 @@ export default class WishList extends React.Component {
 
 
         this.clearItem = this.clearItem.bind(this);
-        this.deleteItem = this.deleteItem.bind(this);
+        // this.deleteItem = this.deleteItem.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
         this.handleWishListItems = this.handleWishListItems.bind(this)
     }
@@ -50,6 +50,7 @@ export default class WishList extends React.Component {
     }
 
     componentDidMount() {
+
         wishList = JSON.parse(localStorage.getItem('wishList')) || [];
         window.scrollTo(0, 0);
         // setProDetails([])
@@ -61,12 +62,13 @@ export default class WishList extends React.Component {
     }
 
     clearItem() {
-        console.log('clearItems')
+        localStorage.removeItem('wishList');
+
+        // Optionally, you can reset the 'prodetails' state to an empty array:
+        this.setState({ prodetails: [] });
     }
 
-    deleteItem() {
-        console.log('single id deleted')
-    }
+
     render() {
 
         const { prodetails } = this.state
@@ -111,6 +113,37 @@ export default class WishList extends React.Component {
 
 const WhiteItemCard = ({ item }) => {
 
+
+    function deleteItem(id) {
+        // Retrieve the current wishlist from localStorage
+        const wishList = JSON.parse(localStorage.getItem('wishList')) || [];
+
+        // Find the index of the item with the specified ID in the wishlist
+        const index = wishList.indexOf(id);
+
+        if (index !== -1) {
+            // If the item exists in the wishlist, remove it
+            wishList.splice(index, 1);
+
+            // Update the wishlist in localStorage
+            localStorage.setItem('wishList', JSON.stringify(wishList));
+
+            // Optionally, update the 'prodetails' state if needed
+            // this.setState({ prodetails: wishList });
+            window.location.reload()
+        }
+    }
+
+
+    const navigate = useNavigate()
+
+    // console.log(img)
+    async function handleNavigate(sku, slug) {
+        // await dispatch(addSearch(val));
+        navigate(`/productDetails/` + slug + '/' + sku)
+    }
+
+
     const addToCart = (id) => {
         const existingCart = JSON.parse(localStorage.getItem("pdIds")) || [];
         existingCart.push(id);
@@ -121,9 +154,11 @@ const WhiteItemCard = ({ item }) => {
 
     return (
         <>
-            <div className="col-md-3 mt-3">
+            <div className="col-md-3 mt-3" onClick={() => {
+                handleNavigate(item.sku, item.slug)
+            }} style={{ cursor: 'pointer' }}>
                 <h2>{userToken}</h2>
-                <div className="card border-0 shadow-sm">
+                <div className="card border-0 shadow-sm" >
                     <img src={imgUrl + item.images[0].thumbImage} className="card-img-top img-fluid" alt="wishlist" />
                     <div className="card-body wish-body">
                         <h6 className="card-title"><b>{item.seo_title.replace(/"/g, '').slice(0, 25)}</b></h6>
@@ -150,7 +185,7 @@ const WhiteItemCard = ({ item }) => {
                                 await addToCart(item.id);
                                 navigate("/checkout");
                             }}>Buy Now</button></NavLink>
-                            <i className="bi bi-trash-fill fs-5 text-danger" onClick={() => deleteItem()}></i>
+                            <i className="bi bi-trash-fill fs-5 text-danger" onClick={() => deleteItem(item.id)}></i>
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     search: 'd',
+    totalPrice: '',
+    totalDis: '',
+    totalAmount: ''
 }
 
 const productSlice = createSlice({
@@ -12,6 +15,15 @@ const productSlice = createSlice({
     reducers: {
         addSearch: (state, payload) => {
             state.search = payload
+        },
+        addPrice: (state, payload) => {
+            state.totalPrice = payload
+        },
+        addDiscount: (state, payload) => {
+            state.totalDis = payload
+        },
+        addTotalAmount: (state, payload) => {
+            state.totalAmount = payload
         }
     }
 
