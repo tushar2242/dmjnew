@@ -37,7 +37,12 @@ const url = "https://api.diwamjewels.com/DMJ/";
 const imgUrl = "https://squid-app-2-7wbvi.ondigitalocean.app/";
 // const endPoint = 'api/v1/products/';
 const productEndPoint = "api/v1/products";
-var cart = JSON.parse(localStorage.getItem("pdIds")) || [];
+const endPoint = 'api/v1/user/';
+
+const userId = localStorage.getItem('userId')
+
+
+var cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const CheckoutPage = () => {
   const [delivery, setDelivery] = useState([
@@ -53,57 +58,77 @@ const CheckoutPage = () => {
     },
   ]);
 
+
+
+  const [userInfo, setUserInfo] = useState(false)
+
+  async function fetchUserData() {
+    try {
+      const res = await axios.get(url + endPoint + userId)
+      // console.log(res.data.data)
+      setUserInfo(res.data.data)
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
+
+
+  useEffect(() => {
+    fetchUserData()
+  }, [])
+
   return (
     <>
       <HeaderCon />
       <Navbar />
       <div className="checkout-bg">
-      <div className="container-fluid">
-      
-        <div className="row fl-dirt-col">
-          <div className="col-md-7 mt-3">
-            <DeliveryCountry />
-            <PromoCode />
-            <EmailAddress />
-            <Accordion defaultActiveKey="0" className="mt-2">
-              <Accordion.Item eventKey="0">
-                <Accordion.Header className="hd-tag-font">
-                  Billing Address
-                </Accordion.Header>
-                <Accordion.Body>
-                  <DlryAddress delivery={delivery} setDelivery={setDelivery} />
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-            <Accordion className="mt-2">
-            <Accordion.Item eventKey="1">
-                <Accordion.Header className="hd-tag-font">
-                  Shipping Address
-                </Accordion.Header>
-                <Accordion.Body>
-                  <DlryAddress delivery={delivery} setDelivery={setDelivery} />
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
+        <div className="container-fluid">
+
+          <div className="row fl-dirt-col">
+            <div className="col-md-7 mt-3">
+              <DeliveryCountry />
+              <PromoCode />
+              <EmailAddress email={userInfo ? userInfo.email : 'Login For Buy Now'} />
+              <Accordion defaultActiveKey="0" className="mt-2">
+                <Accordion.Item eventKey="0">
+                  <Accordion.Header className="hd-tag-font">
+                    Billing Address
+                  </Accordion.Header>
+                  <Accordion.Body>
+                    <DlryAddress delivery={delivery} setDelivery={setDelivery} />
+                  </Accordion.Body>
+                </Accordion.Item>
+              </Accordion>
+              <Accordion className="mt-2">
+                <Accordion.Item eventKey="1">
+                  <Accordion.Header className="hd-tag-font">
+                    Shipping Address
+                  </Accordion.Header>
+                  <Accordion.Body>
+                    <DlryAddress delivery={delivery} setDelivery={setDelivery} />
+                  </Accordion.Body>
+                </Accordion.Item>
+              </Accordion>
 
 
-            <DlryOptions delivery={delivery} />
+              <DlryOptions delivery={delivery} />
 
-            <PaymentType />
+              <PaymentType />
 
-            <Button className="ck-buy-btn">BUY NOW</Button>
-            <p className="cond-font">
-              By placing your order you agree to our Terms & Conditions, privacy
-              and returns policies . You also consent to some of your data being
-              stored by , which may be used to make future shopping experiences
-              better for you.
-            </p>
+              <Button className="ck-buy-btn">BUY NOW</Button>
+              <p className="cond-font">
+                By placing your order you agree to our Terms & Conditions, privacy
+                and returns policies . You also consent to some of your data being
+                stored by , which may be used to make future shopping experiences
+                better for you.
+              </p>
+            </div>
+
+            <div className="col-md-5 mt-3">
+              <CheckoutItem />
+            </div>
           </div>
-
-          <div className="col-md-5 mt-3">
-            <CheckoutItem />
-          </div>
-        </div>
         </div>
       </div>
       <Footer />
@@ -195,12 +220,12 @@ const PromoCode = () => {
   );
 };
 
-const EmailAddress = () => {
+const EmailAddress = ({ email }) => {
   return (
     <>
       <div className="del-ct-bg mt-2">
         <h3 className="hd-tag-font">EMAIL ADDRESS</h3>
-        <p className="em-add-font">himanshi.sharma.ahit@gmail.com</p>
+        <p className="em-add-font">{email}</p>
       </div>
     </>
   );
@@ -381,65 +406,65 @@ const PaymentType = () => {
       </div> */}
 
       <form action="">
-      <Accordion className="mt-2">
-              <Accordion.Item eventKey="0">
-                <Accordion.Header>
-                <div className="d-flex">
+        <Accordion className="mt-2">
+          <Accordion.Item eventKey="0">
+            <Accordion.Header>
+              <div className="d-flex">
                 <img src={creditcard} alt="credit" className="cr-cd-img" />
                 <h6 className="opt-dlry-fnt mt-1">ADD CREDIT / DEBIT CARD</h6>
-                </div>
-                </Accordion.Header>
-                <Accordion.Body>
-                
+              </div>
+            </Accordion.Header>
+            <Accordion.Body>
 
-                 <div className="row">
-                  <div className="col-md-6">
+
+              <div className="row">
+                <div className="col-md-6">
                   <input type="text" className="input-box-bdr mt-2 w-100" placeholder="Card Holder Name" />
-                  </div>
-                  <div className="col-md-6">
+                </div>
+                <div className="col-md-6">
                   <input type="number" className="input-box-bdr mt-2 w-100" placeholder="Card Number" />
-                  </div>
-                  <div className="col-md-6">
+                </div>
+                <div className="col-md-6">
                   <input type="date" className="input-box-bdr mt-2 w-100" placeholder="Expiration Date" />
-                  </div>
-                  <div className="col-md-6">
+                </div>
+                <div className="col-md-6">
                   <input type="text" className="input-box-bdr mt-2 w-100" placeholder="CVV" />
-                  </div>
-                 </div>
-                </Accordion.Body>
-              </Accordion.Item>
-              <Accordion.Item eventKey="1">
-                <Accordion.Header className="hd-tag-font">
-                <div className="d-flex">
+                </div>
+              </div>
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="1">
+            <Accordion.Header className="hd-tag-font">
+              <div className="d-flex">
                 <img src={upilogo} alt="credit" className="cr-cd-img" />
                 <h6 className="opt-dlry-fnt mt-1">UPI ID</h6>
-                </div>
-                </Accordion.Header>
-                <Accordion.Body>
-                <div className="d-flex">
+              </div>
+            </Accordion.Header>
+            <Accordion.Body>
+              <div className="d-flex">
                 <input type="text" className="input-box-bdr" placeholder="Enter UPI ID" />
                 <button className="check-verify-btn">Verify</button>
-                </div>
-               
-                </Accordion.Body>
-              </Accordion.Item>
-              <Accordion.Item eventKey="2">
-                <Accordion.Header className="hd-tag-font">
-                <div className="d-flex">
+              </div>
+
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="2">
+            <Accordion.Header className="hd-tag-font">
+              <div className="d-flex">
                 <img src={paypal} alt="credit" className="cr-cd-img" />
                 <h6 className="opt-dlry-fnt mt-1">Paypal ID</h6>
-                </div>
-                </Accordion.Header>
-                <Accordion.Body>
-                <div className="d-flex">
+              </div>
+            </Accordion.Header>
+            <Accordion.Body>
+              <div className="d-flex">
                 <input type="text" className="input-box-bdr" placeholder="Enter Paypal ID" />
                 <button className="check-verify-btn">Verify</button>
-                </div>
-                
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-            </form>
+              </div>
+
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
+      </form>
     </>
   );
 };
@@ -502,11 +527,11 @@ const CheckoutItem = () => {
   }
 
   useEffect(() => {
-    cart = JSON.parse(localStorage.getItem("pdIds")) || [];
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
     window.scrollTo(0, 0);
     setProDetails([]);
     // setAdtCart(cart)
-    cart.map((id) => fethcProductData(id));
+    cart.map((id) => fethcProductData(id.productId));
     handleAllPrice(proDetails);
   }, [isUpdate]);
 

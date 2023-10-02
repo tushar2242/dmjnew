@@ -170,6 +170,160 @@ const ProductDetails = ({
     );
 };
 
+
+const Products = ({ product, quantity }) => {
+    const [itemQuan, setItemQuan] = useState(2);
+    const [productName, setProductName] = useState('Sample');
+    const [price, setPrice] = useState(3);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [thumb_img, setThumbImg] = useState(productImg);
+    const [itemId, setItemId] = useState(0);
+
+    useEffect(() => {
+        setItemQuan(quantity);
+        setProductName(product.seo_title);
+        setPrice(
+            product.images.length > 0 &&
+            product.images[0].productVariantEntities.length > 0 &&
+            product.images[0].productVariantEntities[0].price
+        );
+        setTotalPrice(
+            product.images.length > 0 &&
+            product.images[0].productVariantEntities.length > 0 &&
+            product.images[0].productVariantEntities[0].price * (quantity - 1)
+        );
+        setThumbImg(imgUrl + product.images[0].thumbImage);
+        setItemId(product.id);
+    }, [product, quantity]);
+
+
+    async function minQuan() {
+
+        // let itemQuan = this.state.itemQuan;
+
+        // Retrieve the current cart data from localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Find the index of the product in the cart
+        const index = cart.findIndex((cartItem) => cartItem.productId === product.id);
+
+        if (index !== -1) {
+            // Update the quantity of the product in the cart
+            cart[index].quantity = itemQuan - 1;
+
+            // Save the updated cart back to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        // let totalPrice = totalPrice;
+        let tempPrice = price;
+        if (itemQuan > 2) {
+            setItemQuan(itemQuan - 1);
+            setTotalPrice(totalPrice - tempPrice);
+        }
+
+
+    }
+
+    function addQuan() {
+
+        // console.log(product)
+        let itemQuant = itemQuan;
+        const index = cart.findIndex((cartItem) => cartItem.productId === product.id);
+
+        if (index !== -1) {
+            // Update the quantity of the product in the cart
+            cart[index].quantity = itemQuant + 1;
+
+            // Save the updated cart back to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+
+        // let totalPrice = totalPrice;
+        let tempPrice = parseInt(price);
+        if (itemQuan < 6) {
+            setTotalPrice(totalPrice + tempPrice);
+            setItemQuan(itemQuan + 1);
+
+        }
+        // Find the index of the product in the cart
+
+
+
+
+
+
+
+        // let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    }
+
+
+
+    const removeItem = (itemId) => {
+        // Retrieve the cart from localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Use the filter method to create a new cart without the item with the specified ID
+        const updatedCart = cart.filter((item) => item.productId !== itemId);
+
+        // Update the cart in localStorage with the updated array
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
+        window.location.reload();
+    };
+
+    return (
+        <>
+            <div className="cart-display mt-3">
+                <div className="d-flex">
+                    <img src={thumb_img} alt="Cart" className="img-fluid cart-img" />
+                    <div>
+                        <p className="ms-2 cart-font">
+                            {productName.length < 25
+                                ? productName
+                                : productName.slice(0, 25) + '...'}
+                        </p>
+                        <p className="ms-2 cart-font">
+                            Availablity : <span className="text-primary">In Stock</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div className="d-flex">
+                    <div className="num-block skin-1 mt-2">
+                        <div className="num-in">
+                            <span className="minus dis" onClick={minQuan}></span>
+                            <input
+                                type="text"
+                                className="in-num"
+                                value={itemQuan - 1}
+                                readOnly=""
+                            // onChange={setValue}
+                            />
+                            <span className="plus" onClick={addQuan}></span>
+                        </div>
+                    </div>
+                    <h6 className="pro-font mt-3 cart-qty">
+                        <i className="bi bi-currency-rupee"></i>
+                        {totalPrice}
+                    </h6>
+                    <h6
+                        className="pro-font mt-3 cart-qty"
+                        onClick={() => removeItem(itemId)}
+                    >
+                        <i className="bi bi-trash-fill fs-5 text-danger"></i>
+                    </h6>
+                </div>
+            </div>
+            <hr />
+        </>
+    );
+};
+
+
+
+
 // class Products extends React.Component {
 //     constructor(props) {
 //         super(props);
@@ -313,123 +467,7 @@ const ProductDetails = ({
 //         )
 //     }
 // }
-function Products(props) {
-    const {
-        product,
-        quantity,
-        setTotalPrice,
-        totalAmount,
-        setDis,
-        dis,
-        price,
-        setPrice
-    } = props;
 
-
-    const [itemQuan, setItemQuan] = useState(1);
-    const [productName, setProductName] = useState('Sample');
-    const [productPrice, setProductPrice] = useState(3);
-    const [totalPrice, setTotalPriceLocal] = useState(0);
-    const [thumbImg, setThumbImg] = useState(productImg); // You should replace productImg with the actual image URL.
-    const [itemId, setItemId] = useState(0);
-
-
-    useEffect(() => {
-        // ComponentDidMount logic
-        setItemQuan(quantity + 1);
-        setProductName(product.seo_title);
-        setProductPrice(
-            product.images.length > 0 &&
-            product.images[0].productVariantEntities.length > 0 &&
-            product.images[0].productVariantEntities[0].price
-        );
-        setTotalPriceLocal(
-            product.images.length > 0 &&
-            product.images[0].productVariantEntities.length > 0 &&
-            product.images[0].productVariantEntities[0].price
-        );
-        setThumbImg(imgUrl + product.images[0].thumbImage);
-        setItemId(product.id);
-    }, [product, quantity]);
-
-
-
-    const minQuan = () => {
-        let tempPrice = productPrice;
-        if (itemQuan > 2) {
-            setItemQuan(itemQuan - 1);
-            setTotalPriceLocal(totalPrice - tempPrice);
-        }
-    };
-
-
-    const addQuan = () => {
-        if (itemQuan < 6) {
-            setItemQuan(itemQuan + 1);
-            setTotalPriceLocal(productPrice * (itemQuan + 1));
-        }
-    };
-
-
-
-    const removeItem = (itemId) => {
-        // Retrieve the cart from localStorage
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        // Use the filter method to create a new cart without the item with the specified ID
-        const updatedCart = cart.filter((item) => item.productId !== itemId);
-        // Update the cart in localStorage with the updated array
-        localStorage.setItem('cart', JSON.stringify(updatedCart));
-        window.location.reload();
-    };
-
-
-
-    return (
-        <>
-            <div className="cart-display mt-3">
-                <div className="d-flex">
-                    <img src={thumbImg} alt="Cart" className="img-fluid cart-img" />
-                    <div>
-                        <p className="ms-2 cart-font">
-                            {productName.length < 25
-                                ? productName
-                                : productName.slice(0, 25) + '...'}
-                        </p>
-                        <p className="ms-2 cart-font">
-                            Availablity : <span className="text-primary">In Stock</span>
-                        </p>
-                    </div>
-                </div>
-                <div className="d-flex">
-                    <div className="num-block skin-1 mt-2">
-                        <div className="num-in">
-                            <span className="minus dis" onClick={minQuan}></span>
-                            <input
-                                type="text"
-                                className="in-num"
-                                value={itemQuan - 1}
-                                readOnly=""
-                                onChange={(e) => setItemQuan(e.target.value)}
-                            />
-                            <span className="plus" onClick={addQuan}></span>
-                        </div>
-                    </div>
-                    <h6 className="pro-font mt-3 cart-qty">
-                        <i className="bi bi-currency-rupee"></i>
-                        {totalPrice}
-                    </h6>
-                    <h6
-                        className="pro-font mt-3 cart-qty"
-                        onClick={() => removeItem(itemId)}
-                    >
-                        <i className="bi bi-trash-fill fs-5 text-danger"></i>
-                    </h6>
-                </div>
-            </div>
-            <hr />
-        </>
-    );
-}
 
 
 

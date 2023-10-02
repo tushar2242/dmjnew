@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import loginImg1 from '../../assets/images/banner/login1.png';
 import Loader from '../loader/Loader';
-
+import dmjicon from '../../assets/images/dmj.png'
 // import { TextField } from '@mui/material';
 // import { withRouter } from 'react-router-dom';
 
@@ -131,9 +131,9 @@ const LoginWithMobileNo = () => {
                     <div className="fullpage-bg" style={{ backgroundImage: `url(${loginImg1})` }}>
                         <div className="container">
                             <div className="login-bg shadow-sm">
-                                <div className="row">
-                                    <div className="col-md-12">
-                                        <img src={img1} className="coupon-img" alt="Coupon" />
+                                
+                                        <div className='text-center'><img src={dmjicon} className="coupon-img" alt="Coupon" /></div>
+                                        <hr />
                                         <div className="user-login">
                                             <h6><b>Login</b></h6>
                                             <form onSubmit={(e) => { e.preventDefault() }}>
@@ -169,11 +169,10 @@ const LoginWithMobileNo = () => {
                                                         sentOtp(e)
                                                     }}>SIGN IN</button>
                                                 }
-                                                <p className="tp-text">New to DMJ ? <NavLink to="/defaultLogin" className="tp-color"><span className="text-danger"><b>Sign Up</b></span></NavLink></p>
+                                                <p className="tp-text mb-2">New to DMJ ? <NavLink to="/defaultLogin" className="tp-color"><span className="text-danger"><b>Sign Up</b></span></NavLink></p>
                                             </form>
                                         </div>
-                                    </div>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
