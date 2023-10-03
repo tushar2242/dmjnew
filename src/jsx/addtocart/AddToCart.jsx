@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer } from "react";
 import Banner from "../Banner/Banner";
 import HeaderCon from "../header/HeaderCon";
 import Navbar from "../header/Navbar";
@@ -10,7 +10,7 @@ import { useState } from "react";
 import axios from "axios";
 import { LocalConvenienceStoreOutlined } from "@mui/icons-material";
 import { updateAmount } from "../redux/dmjSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 
 const url = 'https://api.diwamjewels.com/DMJ/'
@@ -64,6 +64,7 @@ const AddToCart = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
         // var cart=[]
+        setQuantity('')
         setProDetails([])
         cart = JSON.parse(localStorage.getItem("cart")) || [];
         setAdtCart(cart);
@@ -232,9 +233,10 @@ const Products = ({ product, quantity }) => {
     }
 
     function addQuan() {
-
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
         // console.log(product)
         let itemQuant = itemQuan;
+        // console.log(itemQuant)
         const index = cart.findIndex((cartItem) => cartItem.productId === product.id);
 
         if (index !== -1) {
@@ -255,11 +257,6 @@ const Products = ({ product, quantity }) => {
 
         }
         // Find the index of the product in the cart
-
-
-
-
-
 
 
         // let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -484,12 +481,29 @@ const OrderDetails = ({ item, price }) => {
     const [disTotal, setDisTotal] = useState(0)
     const [deliveryCharges, setDeliveryCharges] = useState(150)
 
+    const dispatch = useDispatch()
+    const cartRe = useSelector((state) => state.product.amount.payload)
+
+
+
     var cart = JSON.parse(localStorage.getItem('cart')) || [];
+
     useEffect(() => {
-        handleAllPrice(item)
-        cart = JSON.parse(localStorage.getItem('cart')) || [];
         // handleAllPrice(item)
-    }, [item, cart])
+        cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // console.log(cartRe)
+        if (cartRe === undefined) {
+            dispatch(updateAmount(cart))
+        }
+        else {
+
+        }
+
+
+
+        handleAllPrice(item)
+    }, [item, cart, cartRe])
 
 
     async function handleAllPrice(item1) {

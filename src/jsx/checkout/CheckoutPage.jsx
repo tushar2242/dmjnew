@@ -486,6 +486,7 @@ const CheckoutItem = () => {
   const [deliveryCharges, setDeliveryCharges] = useState(150);
   const [proDetails, setProDetails] = useState([]);
   const [isUpdate, setIsUpdate] = useState(false);
+  const [quantity, setQuantity] = useState('')
 
   const { name, price } = useParams();
   const navigate = useNavigate();
@@ -505,26 +506,36 @@ const CheckoutItem = () => {
   }
 
   async function handleAllPrice(item1) {
-    // console.log(item1)/
-    var total = 0;
-    // let discount = 0;
-    var discountTotal = 0;
-    // let deliveryCharges = 150
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let total = 0;
+    let discountTotal = 0;
+    let quanti =[]
+    setTotal(0)
+    setDisTotal(0)
+    setQuantity('')
+    cart.forEach((cartItem) => {
+      // Find the corresponding item in item1 array based on the cart item productId
+      const matchingItem = item1.find((item) => item.id === cartItem.productId);
 
-    item1.length > 0 &&
-      item1.map((item) => {
-        total =
-          parseInt(item.images[0].productVariantEntities[0].price) + total;
-        discountTotal =
-          parseInt(item.images[0].productVariantEntities[0].manualPrice) +
-          discountTotal;
-      });
+      if (matchingItem && matchingItem.images.length > 0 && matchingItem.images[0].productVariantEntities.length > 0) {
+        const productPrice = parseInt(matchingItem.images[0].productVariantEntities[0].price);
+        const productManualPrice = parseInt(matchingItem.images[0].productVariantEntities[0].manualPrice);
+
+        // Calculate the total and discount total based on the cart item's quantity
+        total += productPrice * (cartItem.quantity-1);
+        discountTotal += productManualPrice * (cartItem.quantity-1);
+        quanti.push(cartItem.quantity)
+      }
+    });
 
     await setTotal(total);
     await setDisTotal(discountTotal);
-    // setIsUpdate(false)
-    // console.log(total)
+    setQuantity(quanti)
   }
+
+  // Example usage:
+  // handleAllPrice(item1); // Call this function to update the total and discount total based on the cart
+
 
   useEffect(() => {
     cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -550,7 +561,7 @@ const CheckoutItem = () => {
         </div>
         <hr />
         {proDetails.length > 0 &&
-          proDetails.map((item) => {
+          proDetails.map((item,index) => {
             // console.log(item)
             return (
               <div className="ct-box mt-4" key={item.id}>
@@ -573,7 +584,7 @@ const CheckoutItem = () => {
                       item.images[0].productVariantEntities.length > 0 &&
                       item.images[0].productVariantEntities[0].size}
                   </h2>
-                  <h2 className="opt-dlry-fnt">Qty : 1</h2>
+                  <h2 className="opt-dlry-fnt">Qty : {quantity[index]-1}</h2>
                 </div>
               </div>
             );

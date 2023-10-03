@@ -38,10 +38,13 @@ export default class WishList extends React.Component {
         try {
             const res = await axios.get(url + productEndPoint + '/' + id)
             // console.log(res.data.data)
-            const updatedProDetails = [...this.state.prodetails, res.data.data];
-            this.setState({ prodetails: updatedProDetails });
+            this.setState((prevState) => {
+                const updatedProDetails = [...prevState.prodetails, res.data.data];
+                return { prodetails: updatedProDetails };
+              });
 
-            // console.log(proDetails)
+            // let pro = this.state.prodetails
+            // console.log(updatedProDetails)
         }
         catch (err) {
             console.log(err)
@@ -56,8 +59,10 @@ export default class WishList extends React.Component {
         // setProDetails([])
         this.setState({ prodetails: [] });
         // setAdtCart(cart)
+
         wishList.map((id) => this.handleWishListItems(id))
         // addProductData() 
+        // console.log(this.state.prodetails)
 
     }
 
@@ -75,8 +80,8 @@ export default class WishList extends React.Component {
 
         return (
             <>
-                <HeaderCon />
 
+                <HeaderCon />
                 <div className="container mt-4">
                     <NavLink to="/search" className="text-decoration-none" style={{ width: 'fit-content', display: 'inline-block' }}>
                         <h6 className="mt-4 cont-shp mb-3"><i className="bi bi-chevron-left"></i>
