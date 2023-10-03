@@ -643,8 +643,8 @@ const ProductPrice = ({ title, des, rating, variant, prodes }) => {
         }}
       >
         <div className="d-flex">
-          <h5 className="mt-2"><b>Quantity :</b></h5>
-          <ButtonGroup variant="outlined" aria-label="outlined button group" style={{ marginLeft: '30px' }}>
+          <h5 className="mt-2 qnty-fnt-size"><b>Quantity :</b></h5>
+          <ButtonGroup variant="outlined" aria-label="outlined button group" style={{ marginLeft: '20px' }}>
             <Button onClick={decrement}><RemoveIcon /></Button>
             <Button>{quantity}</Button>
             <Button onClick={increment}><AddIcon /></Button>
