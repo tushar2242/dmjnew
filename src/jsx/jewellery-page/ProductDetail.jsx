@@ -120,7 +120,7 @@ function Product() {
 
   const [itemInfo, setItemInfo] = useState([]);
   const [isLoad, setIsLoad] = useState(true);
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(2);
   const [rating, setRating] = useState("");
 
   const navigate = useNavigate();
@@ -184,7 +184,7 @@ function Product() {
   }, [skuid]);
 
 
-  
+
   const handleImageClick = (image) => {
     setSelectedImage(image);
   };
@@ -200,7 +200,7 @@ function Product() {
 
   const addToCart = (productId) => {
     // Get the existing cart from localStorage or initialize an empty array if it doesn't exist
-    let quantity = 2;
+   
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
 
     // Check if the product with the same ID already exists in the cart
@@ -229,11 +229,12 @@ function Product() {
 
 
   const increment = () => {
-    setQuantity(quantity + 1);
+    if (quantity < 6)
+      setQuantity(quantity + 1);
   };
 
   const decrement = () => {
-    if (quantity > 1) {
+    if (quantity > 2) {
       setQuantity(quantity - 1);
     }
   };
@@ -653,9 +654,9 @@ const ProductPrice = ({ title, des, rating, variant, prodes, quantity, increment
         <div className="d-flex">
           <h5 className="mt-2 qnty-fnt-size"><b>Quantity :</b></h5>
           <ButtonGroup variant="outlined" aria-label="outlined button group" style={{ marginLeft: '20px', }}>
-            <Button onClick={decrement} style={{ border:'solid 1px #b79d33',color:'black',borderRadius:'5px',marginLeft:'5px',fontSize:'16px',padding:'0px',boxShadow:'0' }}><RemoveIcon /></Button>
-            <Button style={{ border:'solid 1px #b79d33',color:'black',borderRadius:'5px',marginLeft:'5px',fontSize:'16px',padding:'0px',boxShadow:'0' }}>{quantity}</Button>
-            <Button onClick={increment} style={{ border:'solid 1px #b79d33',color:'black',borderRadius:'5px',marginLeft:'5px',fontSize:'16px',padding:'0px',boxShadow:'0' }}><AddIcon /></Button>
+            <Button onClick={decrement} style={{ border: 'solid 1px #b79d33', color: 'black', borderRadius: '5px', marginLeft: '5px', fontSize: '16px', padding: '0px', boxShadow: '0' }}><RemoveIcon /></Button>
+            <Button style={{ border: 'solid 1px #b79d33', color: 'black', borderRadius: '5px', marginLeft: '5px', fontSize: '16px', padding: '0px', boxShadow: '0' }}>{quantity-1}</Button>
+            <Button onClick={increment} style={{ border: 'solid 1px #b79d33', color: 'black', borderRadius: '5px', marginLeft: '5px', fontSize: '16px', padding: '0px', boxShadow: '0' }}><AddIcon /></Button>
           </ButtonGroup>
         </div>
       </Box>
@@ -904,7 +905,7 @@ const OfferDetails = () => {
             id="panel1a-header"
           >
             <Typography>
-             <h5 style={{fontSize:'16px',fontWeight:'600',letterSpacing:'0.75px',fontFamily:'AcariSansNeueRegular'}}><b>BEST OFFERS</b></h5> 
+              <h5 style={{ fontSize: '16px', fontWeight: '600', letterSpacing: '0.75px', fontFamily: 'AcariSansNeueRegular' }}><b>BEST OFFERS</b></h5>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -1133,7 +1134,7 @@ const AccordionTxt = ({ title, des }) => {
             id="panel1a-header"
           >
             <Typography>
-              <h5 style={{fontSize:'16px',fontWeight:'600',letterSpacing:'0.75px',fontFamily:'AcariSansNeueRegular'}}>{title}</h5>
+              <h5 style={{ fontSize: '16px', fontWeight: '600', letterSpacing: '0.75px', fontFamily: 'AcariSansNeueRegular' }}>{title}</h5>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>

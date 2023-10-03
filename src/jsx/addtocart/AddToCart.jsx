@@ -11,6 +11,7 @@ import axios from "axios";
 import { LocalConvenienceStoreOutlined } from "@mui/icons-material";
 import { updateAmount } from "../redux/dmjSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { Helmet } from "react-helmet";
 
 
 const url = 'https://api.diwamjewels.com/DMJ/'
@@ -84,7 +85,13 @@ const AddToCart = () => {
             <HeaderCon />
             <Navbar />
 
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Add To Cart</title>
+                <meta name="description" content='DmJ Add to cart' />
+                <meta name="keywords" content='DmJ Add to cart' />
 
+            </Helmet>
             <div className="container-fluid">
                 <NavLink to="/search" className="text-decoration-none">
                     <h6 className="mt-4 cont-shp"><i className="bi bi-chevron-left"></i>
@@ -173,6 +180,8 @@ const ProductDetails = ({
         </>
     );
 };
+
+
 
 
 const Products = ({ product, quantity }) => {

@@ -231,7 +231,7 @@ function Navbar() {
             </div>
             {profile && (
               <div className="more-profile">
-                {!userId ? (
+                {(!userId) ? (
                   <li
                     onClick={async () => {
                       navigate("/defaultlogin");
@@ -382,7 +382,7 @@ function Navbar() {
                 </div>
                 {profile && (
                   <div className="more-profile">
-                    {userId ? (
+                    {(!userId) ? (
                       <li
                         onClick={async () => {
                           navigate("/login");
@@ -471,7 +471,7 @@ function Navbar() {
             </NavLink>
             {profile && (
               <div className="more-profile">
-                {userId ? (
+                {(!userId) ? (
                   <li
                     onClick={async () => {
                       navigate("/login");
@@ -502,7 +502,7 @@ function Navbar() {
             {/* <div className='ms-3'><img src={menubar} alt="icon" className="menubar-icon-nav" /></div> */}
           </div>
         </div>
-        {isBoxVisible && <SearchInputContent toggleBoxVisibility={toggleBoxVisibility}/>}
+        {isBoxVisible && <SearchInputContent toggleBoxVisibility={toggleBoxVisibility} />}
       </div>
     </>
   );
@@ -645,6 +645,7 @@ function AccordianSubMenu({ title, id, handleClose }) {
   const [subCate, setSubCate] = useState([]);
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   async function getSubSubCate(value) {
     // console.log(value)
@@ -682,7 +683,7 @@ function AccordianSubMenu({ title, id, handleClose }) {
                   <>
                     <p className="list-ptag-font" key={index} onClick={() => {
                       handleClose()
-                      dispatch(addSearch(val));
+                      dispatch(addSearch(item.name));
                       navigate('/search')
                     }}>
                       {item.name}

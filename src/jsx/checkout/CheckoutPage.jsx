@@ -32,6 +32,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Accordion from "react-bootstrap/Accordion";
 import AddIcon from '@mui/icons-material/Add';
+import PopUp from "../popup/PopUp";
 
 const url = "https://api.diwamjewels.com/DMJ/";
 const imgUrl = "https://squid-app-2-7wbvi.ondigitalocean.app/";
@@ -82,7 +83,7 @@ const CheckoutPage = () => {
     <>
       <HeaderCon />
       <Navbar />
-      <div className="checkout-bg">
+      {userId ? <div className="checkout-bg">
         <div className="container-fluid">
 
           <div className="row fl-dirt-col">
@@ -116,7 +117,12 @@ const CheckoutPage = () => {
 
               <PaymentType />
 
-              <Button className="ck-buy-btn">BUY NOW</Button>
+              <Button className="ck-buy-btn"
+                type="button"
+                disabled={cart.length > 0 ? false : true}
+                style={cart.length > 0 ? { cursor: 'pointer' } : { cursor: 'not-allowed' }}
+              >BUY NOW</Button>
+
               <p className="cond-font">
                 By placing your order you agree to our Terms & Conditions, privacy
                 and returns policies . You also consent to some of your data being
@@ -130,7 +136,9 @@ const CheckoutPage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> : <PopUp />
+      }
+
       <Footer />
     </>
   );
@@ -237,9 +245,9 @@ const DlryAddress = (props) => {
   return (
     <>
       <div className="del-ct-bg mt-2">
-      <h3 className="hd-tag-font text-end" style={{color:'#b79d33',cursor:'pointer'}}><AddIcon /> ADD NEW ADDRESS</h3>
+        <h3 className="hd-tag-font text-end" style={{ color: '#b79d33', cursor: 'pointer' }}><AddIcon /> ADD NEW ADDRESS</h3>
         <h3 className="hd-tag-font">DELIVERY ADDRESS</h3>
-      
+
 
         <FormLabel className="fm-lbl-heading">Full NAME </FormLabel>
         <br />
@@ -250,7 +258,7 @@ const DlryAddress = (props) => {
           value={delivery.fName}
           onChange={(e) => {
             setDelivery((prev) => ({ ...prev, fName: e.target.value }));
-            
+
           }}
         ></Input>
         <br />
@@ -264,7 +272,7 @@ const DlryAddress = (props) => {
           value={delivery.mobileNo}
           onChange={(e) => {
             setDelivery((prev) => ({ ...prev, mobileNo: e.target.value }));
-          
+
           }}
         ></Input>
         <br />
@@ -288,7 +296,7 @@ const DlryAddress = (props) => {
           value={delivery.address}
           onChange={(e) => {
             setDelivery((prev) => ({ ...prev, address: e.target.value }));
-        
+
           }}
         ></Input>
         <br />
@@ -299,7 +307,7 @@ const DlryAddress = (props) => {
           value={delivery.address2}
           onChange={(e) => {
             setDelivery((prev) => ({ ...prev, address2: e.target.value }));
-        
+
           }}
         ></Input>
         <br />
@@ -313,7 +321,7 @@ const DlryAddress = (props) => {
           value={delivery.city}
           onChange={(e) => {
             setDelivery((prev) => ({ ...prev, city: e.target.value }));
-      
+
           }}
         ></Input>
         <br />
@@ -335,16 +343,16 @@ const DlryAddress = (props) => {
           value={delivery.country}
           onChange={(e) => {
             setDelivery((prev) => ({ ...prev, country: e.target.value }));
-            
+
           }}
         ></Input>
         <br />
-          
-          <div className="d-flex">
+
+        <div className="d-flex">
           <button className="dlry-work-btn">Home</button>
           <button className="dlry-work-btn">Office</button>
-          </div>
-    
+        </div>
+
 
         <Button className="dlry-btn">DELIVER TO THIS ADDRESS</Button>
       </div>
@@ -523,7 +531,7 @@ const CheckoutItem = () => {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     let total = 0;
     let discountTotal = 0;
-    let quanti =[]
+    let quanti = []
     setTotal(0)
     setDisTotal(0)
     setQuantity('')
@@ -536,8 +544,8 @@ const CheckoutItem = () => {
         const productManualPrice = parseInt(matchingItem.images[0].productVariantEntities[0].manualPrice);
 
         // Calculate the total and discount total based on the cart item's quantity
-        total += productPrice * (cartItem.quantity-1);
-        discountTotal += productManualPrice * (cartItem.quantity-1);
+        total += productPrice * (cartItem.quantity - 1);
+        discountTotal += productManualPrice * (cartItem.quantity - 1);
         quanti.push(cartItem.quantity)
       }
     });
@@ -575,7 +583,7 @@ const CheckoutItem = () => {
         </div>
         <hr />
         {proDetails.length > 0 &&
-          proDetails.map((item,index) => {
+          proDetails.map((item, index) => {
             // console.log(item)
             return (
               <div className="ct-box mt-4" key={item.id}>
@@ -598,7 +606,7 @@ const CheckoutItem = () => {
                       item.images[0].productVariantEntities.length > 0 &&
                       item.images[0].productVariantEntities[0].size}
                   </h2>
-                  <h2 className="opt-dlry-fnt">Qty : {quantity[index]-1}</h2>
+                  <h2 className="opt-dlry-fnt">Qty : {quantity[index] - 1}</h2>
                 </div>
               </div>
             );
