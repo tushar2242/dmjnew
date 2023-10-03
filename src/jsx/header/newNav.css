@@ -59,9 +59,16 @@
 .nav-search-icon {
   width: 20px;
   height: 20px;
-  margin-right: 10px;
   position: absolute;
-  right: 0px;
+  right: 10px;
+  cursor: pointer;
+}
+.nav-search-icon1 {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 40px;
+  margin-top:5px;
   cursor: pointer;
 }
 

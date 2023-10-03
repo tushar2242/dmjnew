@@ -652,10 +652,10 @@ const ProductPrice = ({ title, des, rating, variant, prodes, quantity, increment
       >
         <div className="d-flex">
           <h5 className="mt-2 qnty-fnt-size"><b>Quantity :</b></h5>
-          <ButtonGroup variant="outlined" aria-label="outlined button group" style={{ marginLeft: '20px' }}>
-            <Button onClick={decrement}><RemoveIcon /></Button>
-            <Button>{quantity}</Button>
-            <Button onClick={increment}><AddIcon /></Button>
+          <ButtonGroup variant="outlined" aria-label="outlined button group" style={{ marginLeft: '20px', }}>
+            <Button onClick={decrement} style={{ border:'solid 1px #b79d33',color:'black',borderRadius:'5px',marginLeft:'5px',fontSize:'16px',padding:'0px',boxShadow:'0' }}><RemoveIcon /></Button>
+            <Button style={{ border:'solid 1px #b79d33',color:'black',borderRadius:'5px',marginLeft:'5px',fontSize:'16px',padding:'0px',boxShadow:'0' }}>{quantity}</Button>
+            <Button onClick={increment} style={{ border:'solid 1px #b79d33',color:'black',borderRadius:'5px',marginLeft:'5px',fontSize:'16px',padding:'0px',boxShadow:'0' }}><AddIcon /></Button>
           </ButtonGroup>
         </div>
       </Box>
@@ -903,8 +903,8 @@ const OfferDetails = () => {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography className="offer-heading-txt">
-              <b>BEST OFFERS</b>
+            <Typography>
+             <h5 style={{fontSize:'16px',fontWeight:'600',letterSpacing:'0.75px',fontFamily:'AcariSansNeueRegular'}}><b>BEST OFFERS</b></h5> 
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -1132,8 +1132,8 @@ const AccordionTxt = ({ title, des }) => {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography className="offer-heading-txt">
-              <h5>{title}</h5>
+            <Typography>
+              <h5 style={{fontSize:'16px',fontWeight:'600',letterSpacing:'0.75px',fontFamily:'AcariSansNeueRegular'}}>{title}</h5>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>

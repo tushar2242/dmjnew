@@ -445,10 +445,10 @@ function Navbar() {
           </NavLink>
 
           <div className="d-flex mt-2">
-            <div to="/">
+            <div className="ms-3">
               {" "}
               <i
-                className="bi bi-search nav-icon-item ms-3"
+                className="bi bi-search nav-icon-item"
                 onClick={toggleBoxVisibility}
               ></i>
             </div>
@@ -735,8 +735,6 @@ const SearchInputContent = () => {
       <div className="srch-ipt-cntet-bx">
         <div className="nav-box-search mt-2 mb-3">
           <form onSubmit={handleProSearch}>
-
-
             <input
               type="text"
               className="nav-search"
@@ -745,7 +743,7 @@ const SearchInputContent = () => {
             />
             <img
               src={searchIcon}
-              className="nav-search-icon"
+              className="nav-search-icon1"
               onClick={handleProSearch}
             />
             <button type="submit" style={{ display: 'none' }}></button>

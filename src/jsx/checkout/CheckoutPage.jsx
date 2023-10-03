@@ -31,7 +31,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Accordion from "react-bootstrap/Accordion";
-
+import AddIcon from '@mui/icons-material/Add';
 
 const url = "https://api.diwamjewels.com/DMJ/";
 const imgUrl = "https://squid-app-2-7wbvi.ondigitalocean.app/";
@@ -237,28 +237,20 @@ const DlryAddress = (props) => {
   return (
     <>
       <div className="del-ct-bg mt-2">
+      <h3 className="hd-tag-font text-end" style={{color:'#b79d33',cursor:'pointer'}}><AddIcon /> ADD NEW ADDRESS</h3>
         <h3 className="hd-tag-font">DELIVERY ADDRESS</h3>
+      
 
-        <FormLabel className="fm-lbl-heading">FIRST NAME </FormLabel>
+        <FormLabel className="fm-lbl-heading">Full NAME </FormLabel>
         <br />
         <Input
           type="text"
           className="input-box-bdr mt-1"
+          required
           value={delivery.fName}
           onChange={(e) => {
             setDelivery((prev) => ({ ...prev, fName: e.target.value }));
-          }}
-        ></Input>
-        <br />
-
-        <FormLabel className="fm-lbl-heading">LAST NAME </FormLabel>
-        <br />
-        <Input
-          type="text"
-          className="input-box-bdr mt-1"
-          value={delivery.lName}
-          onChange={(e) => {
-            setDelivery((prev) => ({ ...prev, lName: e.target.value }));
+            
           }}
         ></Input>
         <br />
@@ -268,58 +260,14 @@ const DlryAddress = (props) => {
         <Input
           type="number"
           className="input-box-bdr mt-1"
+          required
           value={delivery.mobileNo}
           onChange={(e) => {
             setDelivery((prev) => ({ ...prev, mobileNo: e.target.value }));
+          
           }}
         ></Input>
         <br />
-
-        <FormLabel className="fm-lbl-heading">ADDRESS </FormLabel>
-        <br />
-        <Input
-          type="text"
-          className="input-box-bdr mt-1"
-          value={delivery.address}
-          onChange={(e) => {
-            setDelivery((prev) => ({ ...prev, address: e.target.value }));
-          }}
-        ></Input>
-        <br />
-        <Input
-          type="text"
-          className="input-box-bdr mt-1"
-          value={delivery.address2}
-          onChange={(e) => {
-            setDelivery((prev) => ({ ...prev, address2: e.target.value }));
-          }}
-        ></Input>
-        <br />
-
-        <FormLabel className="fm-lbl-heading">CITY </FormLabel>
-        <br />
-        <Input
-          type="text"
-          className="input-box-bdr mt-1"
-          value={delivery.city}
-          onChange={(e) => {
-            setDelivery((prev) => ({ ...prev, city: e.target.value }));
-          }}
-        ></Input>
-        <br />
-
-        <FormLabel className="fm-lbl-heading">COUNTRY</FormLabel>
-        <br />
-        <Input
-          type="text"
-          className="input-box-bdr mt-1"
-          value={delivery.country}
-          onChange={(e) => {
-            setDelivery((prev) => ({ ...prev, country: e.target.value }));
-          }}
-        ></Input>
-        <br />
-
         <FormLabel className="fm-lbl-heading">POSTAL CODE </FormLabel>
         <br />
         <Input
@@ -331,6 +279,72 @@ const DlryAddress = (props) => {
           }}
         ></Input>
         <br />
+        <FormLabel className="fm-lbl-heading">ADDRESS </FormLabel>
+        <br />
+        <Input
+          type="text"
+          className="input-box-bdr mt-1"
+          required
+          value={delivery.address}
+          onChange={(e) => {
+            setDelivery((prev) => ({ ...prev, address: e.target.value }));
+        
+          }}
+        ></Input>
+        <br />
+        <Input
+          type="text"
+          className="input-box-bdr mt-1"
+          required
+          value={delivery.address2}
+          onChange={(e) => {
+            setDelivery((prev) => ({ ...prev, address2: e.target.value }));
+        
+          }}
+        ></Input>
+        <br />
+
+        <FormLabel className="fm-lbl-heading">CITY </FormLabel>
+        <br />
+        <Input
+          type="text"
+          className="input-box-bdr mt-1"
+          required
+          value={delivery.city}
+          onChange={(e) => {
+            setDelivery((prev) => ({ ...prev, city: e.target.value }));
+      
+          }}
+        ></Input>
+        <br />
+        <FormLabel className="fm-lbl-heading">STATE </FormLabel>
+        <br />
+        <Input
+          type="text"
+          className="input-box-bdr mt-1"
+          required
+        ></Input>
+        <br />
+
+        <FormLabel className="fm-lbl-heading">COUNTRY</FormLabel>
+        <br />
+        <Input
+          type="text"
+          className="input-box-bdr mt-1"
+          required
+          value={delivery.country}
+          onChange={(e) => {
+            setDelivery((prev) => ({ ...prev, country: e.target.value }));
+            
+          }}
+        ></Input>
+        <br />
+          
+          <div className="d-flex">
+          <button className="dlry-work-btn">Home</button>
+          <button className="dlry-work-btn">Office</button>
+          </div>
+    
 
         <Button className="dlry-btn">DELIVER TO THIS ADDRESS</Button>
       </div>
