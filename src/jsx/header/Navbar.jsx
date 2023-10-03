@@ -241,7 +241,7 @@ function Navbar() {
                   </li>
                 ) : (
                   <>
-                    <li onClick={()=> navigate('/sidebar')}>Profile</li>
+                    <li onClick={() => navigate('/sidebar')}>Profile</li>
                     <li
                       className="mt-2"
                       onClick={() => {
@@ -445,13 +445,13 @@ function Navbar() {
           </NavLink>
 
           <div className="d-flex mt-2">
-            <NavLink to="/">
+            <div to="/">
               {" "}
               <i
                 className="bi bi-search nav-icon-item ms-3"
                 onClick={toggleBoxVisibility}
               ></i>
-            </NavLink>
+            </div>
             <NavLink to="/wishlist">
               {" "}
               <i className="bi bi-suit-heart-fill nav-icon-item ms-3"></i>
@@ -462,32 +462,32 @@ function Navbar() {
             </NavLink>
 
             <NavLink
-                  className=""
-                  onClick={() => {
-                    setProfile(!profile);
-                  }}
-                >
-                  <i className="bi bi-person-circle nav-icon-item ms-3"></i>
-                </NavLink>
-                {profile && (
-                  <div className="more-profile">
-                    {userId ? (
-                      <li
-                        onClick={async () => {
-                          navigate("/login");
-                        }}
-                      >
-                        Login / Sign Up
-                      </li>
-                    ) : (
-                      <>
-                        <li>Profile</li>
-                        <li className="mt-2">Sign Out</li>
-                      </>
-                    )}
-                  </div>
+              className=""
+              onClick={() => {
+                setProfile(!profile);
+              }}
+            >
+              <i className="bi bi-person-circle nav-icon-item ms-3"></i>
+            </NavLink>
+            {profile && (
+              <div className="more-profile">
+                {userId ? (
+                  <li
+                    onClick={async () => {
+                      navigate("/login");
+                    }}
+                  >
+                    Login / Sign Up
+                  </li>
+                ) : (
+                  <>
+                    <li>Profile</li>
+                    <li className="mt-2">Sign Out</li>
+                  </>
                 )}
-            
+              </div>
+            )}
+
             {/* <MenuBarList  /> */}
             <div className="mobile-navbarview">
               {["start"].map((placement, idx) => (
@@ -502,7 +502,7 @@ function Navbar() {
             {/* <div className='ms-3'><img src={menubar} alt="icon" className="menubar-icon-nav" /></div> */}
           </div>
         </div>
-        {isBoxVisible && <SearchInputContent />}
+        {isBoxVisible && <SearchInputContent toggleBoxVisibility={toggleBoxVisibility}/>}
       </div>
     </>
   );
@@ -576,12 +576,15 @@ export const ArrivalWrap = memo(ArrivalItem);
 
 export const SellerWrap = memo(SellerItem);
 
+
+
+
 function MobileMenuBar({ cateData, ...props }) {
   const [show, setMenuShow] = useState(false);
 
   const handleClose = () => setMenuShow(false);
   const handleShow = () => setMenuShow(true);
-  
+
 
   return (
     <>
@@ -605,6 +608,7 @@ function MobileMenuBar({ cateData, ...props }) {
                 <AccordianMenuList
                   title={cate[0].type}
                   subCateDate={cate.length > 0 ? cate[0].subCategory : []}
+                  handleClose={handleClose}
                 />
               );
             })}
@@ -615,7 +619,7 @@ function MobileMenuBar({ cateData, ...props }) {
 }
 
 
-function AccordianMenuList({ title, subCateDate }) {
+function AccordianMenuList({ title, subCateDate, handleClose }) {
   // console.log(subCateDate)
   return (
     <>
@@ -627,8 +631,9 @@ function AccordianMenuList({ title, subCateDate }) {
           <Accordion.Body>
             {subCateDate.map((item) => {
               // console.log(item)
-              return <AccordianSubMenu title={item.name} id={item.id} />;
+              return <AccordianSubMenu title={item.name} id={item.id} handleClose={handleClose} />;
             })}
+
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
@@ -636,8 +641,10 @@ function AccordianMenuList({ title, subCateDate }) {
   );
 }
 
-function AccordianSubMenu({ title, id }) {
+function AccordianSubMenu({ title, id, handleClose }) {
   const [subCate, setSubCate] = useState([]);
+
+  const dispatch = useDispatch()
 
   async function getSubSubCate(value) {
     // console.log(value)
@@ -662,7 +669,7 @@ function AccordianSubMenu({ title, id }) {
   // console.log(id)/
   return (
     <>
-      <Accordion>
+      <Accordion >
         <Accordion.Item eventKey="0" className="accord-item-list-box">
           <Accordion.Header className="menucate-title-fnt">
             {title}
@@ -673,7 +680,11 @@ function AccordianSubMenu({ title, id }) {
               subCate.map((item, index) => {
                 return (
                   <>
-                    <p className="list-ptag-font" key={index}>
+                    <p className="list-ptag-font" key={index} onClick={() => {
+                      handleClose()
+                      dispatch(addSearch(val));
+                      navigate('/search')
+                    }}>
                       {item.name}
                     </p>
                   </>
@@ -714,24 +725,31 @@ const SearchInputContent = () => {
     // navigate('/search')
   }
 
-  async function handleProSearch() {
+  async function handleProSearch(e) {
+    e.preventDefault()
     navigate("/search");
+    toggleBoxVisibility()
   }
   return (
     <>
       <div className="srch-ipt-cntet-bx">
         <div className="nav-box-search mt-2 mb-3">
-          <input
-            type="text"
-            className="nav-search"
-            value={search}
-            onChange={handleSearch}
-          />
-          <img
-            src={searchIcon}
-            className="nav-search-icon"
-            onClick={handleProSearch}
-          />
+          <form onSubmit={handleProSearch}>
+
+
+            <input
+              type="text"
+              className="nav-search"
+              value={search}
+              onChange={handleSearch}
+            />
+            <img
+              src={searchIcon}
+              className="nav-search-icon"
+              onClick={handleProSearch}
+            />
+            <button type="submit" style={{ display: 'none' }}></button>
+          </form>
         </div>
         {/* <SearchDetails title="Jewellery"/>
                 <SearchDetails title="Handi Craft"/>
@@ -739,9 +757,9 @@ const SearchInputContent = () => {
         {/* <h6 className="mt-2">
           <b>Discover More</b>
         </h6> */}
-        <ImageWithSearch detail="Rings" image={image1} />
+        {/* <ImageWithSearch detail="Rings" image={image1} />
         <ImageWithSearch detail="Necklace" image={image1} />
-        <ImageWithSearch detail="Bangles" image={image1} />
+        <ImageWithSearch detail="Bangles" image={image1} /> */}
       </div>
     </>
   );

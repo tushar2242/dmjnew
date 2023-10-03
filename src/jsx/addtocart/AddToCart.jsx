@@ -185,6 +185,9 @@ const Products = ({ product, quantity }) => {
     const dispatch = useDispatch()
 
     useEffect(() => {
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        
         setItemQuan(quantity);
         setProductName(product.seo_title);
         setPrice(
@@ -199,6 +202,9 @@ const Products = ({ product, quantity }) => {
         );
         setThumbImg(imgUrl + product.images[0].thumbImage);
         setItemId(product.id);
+
+
+
     }, [product, quantity]);
 
 
@@ -496,9 +502,7 @@ const OrderDetails = ({ item, price }) => {
         if (cartRe === undefined) {
             dispatch(updateAmount(cart))
         }
-        else {
-
-        }
+        
 
 
 

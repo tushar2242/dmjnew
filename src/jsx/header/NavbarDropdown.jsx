@@ -94,12 +94,12 @@ const DropDownMenu = ({ title, id }) => {
   // const [showMessage, setShowMessage] = useState(false);
 
   // useEffect(() => {
-   
+
   //   const timeoutId = setTimeout(() => {
   //     setShowMessage(true);
   //   }, 4000);
 
-   
+
   //   return () => clearTimeout(timeoutId);
   // }, []); 
 
@@ -139,25 +139,25 @@ const DropDownMenu = ({ title, id }) => {
       setIsMouseOverMain(true);
       getSubSubCate(id);
     }}
-      // onMouseLeave={() => setIsMouseOverMain(false)}
-      >
+    // onMouseLeave={() => setIsMouseOverMain(false)}
+    >
       <nav role="navigation">
         <ul id="nav1">
 
           <li><a onClick={() => handleNavigate(title)}>{title}</a>
-          <ul className="cate-menu-listvw">
+            <ul className="cate-menu-listvw">
 
-              {subCate.length > 0 && 
-              <div>
-                <CategoryDetailsListVw title="SHOP BY TYPE" subCate={subCate} />
-                {/* <CategoryDetailsListVw title="New Arrivals"/>
+              {subCate.length > 0 &&
+                <div>
+                  <CategoryDetailsListVw title="SHOP BY TYPE" subCate={subCate} />
+                  {/* <CategoryDetailsListVw title="New Arrivals"/>
                               */}
 
-              </div>
+                </div>
 
               }
             </ul>
-          
+
           </li>
 
         </ul>
@@ -167,6 +167,3 @@ const DropDownMenu = ({ title, id }) => {
 }
 
 
-const NewDropDownMenu = () => {
-
-}
