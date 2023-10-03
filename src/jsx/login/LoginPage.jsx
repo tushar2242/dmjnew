@@ -69,7 +69,7 @@ const LoginWithMobileNo = () => {
 
                 try {
                     const loginRes = await axios.post(url + signIn, formdata)
-                    console.log(loginRes.data.data)
+                    // console.log(loginRes.data.data)
                     localStorage.setItem('userId', loginRes.data.data.id)
                     if (loginRes.data.data.id) {
                         navigate('/')
@@ -110,7 +110,7 @@ const LoginWithMobileNo = () => {
             if (otpRes.data.message === 'OTP send successfully') {
                 setOtp(true)
             }
-            console.log(otpRes)
+            // console.log(otpRes)/
         }
         catch (err) {
             console.log(err)

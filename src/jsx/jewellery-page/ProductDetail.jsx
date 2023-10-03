@@ -120,7 +120,7 @@ function Product() {
 
   const [itemInfo, setItemInfo] = useState([]);
   const [isLoad, setIsLoad] = useState(true);
-
+  const [quantity, setQuantity] = useState(1);
   const [rating, setRating] = useState("");
 
   const navigate = useNavigate();
@@ -183,6 +183,8 @@ function Product() {
     fetchData();
   }, [skuid]);
 
+
+  
   const handleImageClick = (image) => {
     setSelectedImage(image);
   };
@@ -224,6 +226,17 @@ function Product() {
 
   // console.log(productId)
   // console.log(id)
+
+
+  const increment = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const decrement = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
 
 
 
@@ -366,6 +379,10 @@ function Product() {
                     rating={rating}
                     variant={itemInfo.images}
                     prodes={itemInfo.description}
+                    quantity={quantity}
+                    // setQuantity={quantity}
+                    increment={increment}
+                    decrement={decrement}
                   />
 
                   <div className="mt-2" style={{ display: "flex" }}>
@@ -442,7 +459,7 @@ function Product() {
                         Buy Now
                       </button>
                     </div>
-                   
+
                     <RatingBox />
 
                     <p className="tagline-line"></p>
@@ -486,7 +503,7 @@ function Product() {
 
 export default ProductDetails;
 
-const ProductPrice = ({ title, des, rating, variant, prodes }) => {
+const ProductPrice = ({ title, des, rating, variant, prodes, quantity, increment, decrement }) => {
   // const [variant, setVariant] = useState([])
 
   const [price, setPrice] = useState({});
@@ -494,7 +511,7 @@ const ProductPrice = ({ title, des, rating, variant, prodes }) => {
   const [selectedSize, setSelectedSize] = useState("");
   const [currencyRate, setRate] = useState("");
   const [currencyValue, setCurrencyValue] = useState("Rupee");
-  const [quantity, setQuantity] = useState(1);
+
   async function fetchPrice() {
     if (variant[0].productVariantEntities.length > 0) {
 
@@ -574,15 +591,6 @@ const ProductPrice = ({ title, des, rating, variant, prodes }) => {
     setSelectedSize(color);
   }
 
-  const increment = () => {
-    setQuantity(quantity + 1);
-  };
-
-  const decrement = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
 
   return (
     <>
@@ -818,19 +826,19 @@ function RatingBox() {
         <div>
           <div>
             <p className="pro-dtl-ft-sz">
-              50<span style={{marginLeft:'8px',color:'#b79d33'}}><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarRateIcon /></span>
+              50<span style={{ marginLeft: '8px', color: '#b79d33' }}><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarRateIcon /></span>
             </p>
             <p className="pro-dtl-ft-sz">
-              40<span style={{marginLeft:'8px',color:'#b79d33'}}><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarHalfIcon /></span>
+              40<span style={{ marginLeft: '8px', color: '#b79d33' }}><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarHalfIcon /></span>
             </p>
             <p className="pro-dtl-ft-sz">
-              35<span style={{marginLeft:'8px',color:'#b79d33'}}><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarHalfIcon /><StarOutlineIcon /></span>
+              35<span style={{ marginLeft: '8px', color: '#b79d33' }}><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarHalfIcon /><StarOutlineIcon /></span>
             </p>
             <p className="pro-dtl-ft-sz">
-              14<span style={{marginLeft:'8px',color:'#b79d33'}}><StarRateIcon /><StarRateIcon /><StarHalfIcon /><StarOutlineIcon /><StarOutlineIcon /></span>
+              14<span style={{ marginLeft: '8px', color: '#b79d33' }}><StarRateIcon /><StarRateIcon /><StarHalfIcon /><StarOutlineIcon /><StarOutlineIcon /></span>
             </p>
             <p className="pro-dtl-ft-sz">
-              05<span style={{marginLeft:'8px',color:'#b79d33'}}><StarRateIcon /><StarHalfIcon /><StarOutlineIcon /><StarOutlineIcon /><StarOutlineIcon /></span>
+              05<span style={{ marginLeft: '8px', color: '#b79d33' }}><StarRateIcon /><StarHalfIcon /><StarOutlineIcon /><StarOutlineIcon /><StarOutlineIcon /></span>
             </p>
           </div>
         </div>

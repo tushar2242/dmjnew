@@ -18,6 +18,7 @@ const endPoint = 'api/v1/products/';
 const productEndPoint = 'api/v1/products/';
 const imgUrl = 'https://squid-app-2-7wbvi.ondigitalocean.app/';
 
+
 var cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 
@@ -187,7 +188,7 @@ const Products = ({ product, quantity }) => {
     useEffect(() => {
 
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
-        
+
         setItemQuan(quantity);
         setProductName(product.seo_title);
         setPrice(
@@ -497,17 +498,27 @@ const OrderDetails = ({ item, price }) => {
     useEffect(() => {
         // handleAllPrice(item)
         cart = JSON.parse(localStorage.getItem('cart')) || [];
-
+        const userId = localStorage.getItem('userId');
         // console.log(cartRe)
         if (cartRe === undefined) {
             dispatch(updateAmount(cart))
         }
-        
 
+        if (userId !== undefined && userId) {
+            updateAddToCart()
+        }
 
 
         handleAllPrice(item)
     }, [item, cart, cartRe])
+
+
+    async function updateAddToCart() {
+        console.log('fired')
+        // try{
+        //     const res = axios.post(url)
+        // }
+    }
 
 
     async function handleAllPrice(item1) {

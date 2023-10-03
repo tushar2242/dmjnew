@@ -162,7 +162,7 @@ const ProductItemCard = ({ img, item, price }) => {
                     <CurrencyRupeeIcon className="rup-icon-sz ms-1" />
 
 
-                    {(item.images.length > 0 && item.images[0].productVariantEntities.length > 0) && item.images[0].productVariantEntities[0].price}
+                    {(item.images.length > 0 && item.images[0].productVariantEntities.length > 0) && item.images[0].productVariantEntities[0].manualPrice}
                     <span
                       style={{
                         textDecoration: "line-through",
@@ -172,7 +172,7 @@ const ProductItemCard = ({ img, item, price }) => {
                       }}
                     >
                       <CurrencyRupeeIcon className="rup-icon-sz ms-1" />
-                      {(item.images.length > 0 && item.images[0].productVariantEntities.length > 0) && item.images[0].productVariantEntities[0].manualPrice}
+                      {(item.images.length > 0 && item.images[0].productVariantEntities.length > 0) && item.images[0].productVariantEntities[0].price}
 
                     </span>
                     {' '}

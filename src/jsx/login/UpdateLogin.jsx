@@ -106,12 +106,12 @@ class UpdateLogin extends React.Component {
             })
             .then(response => {
                 localStorage.removeItem('userId')
-                console.log(response.data);
+                // console.log(response.data);
                 localStorage.setItem('userId', response.data.data.id)
                 this.setState({
                     isLoading: false
                 })
-                
+
                 if (response.data.message === 'Phone Number Already Registered') {
                     alert("User Registered Please Go To Login Page")
                     window.location.href = '/'
