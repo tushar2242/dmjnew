@@ -187,10 +187,10 @@ const WhiteItemCard = ({ item }) => {
                     <div className="card-body wish-body">
                         <h6 className="card-title"><b>{item.seo_title.replace(/"/g, '').slice(0, 25)}</b></h6>
                         <p className="pro-font"><i className="bi bi-currency-rupee"></i>
-                            {item.images.length > 0 && item.images[0].productVariantEntities.length > 0 && item.images[0].productVariantEntities[0].price}
+                            {item.images.length > 0 && item.images[0].productVariantEntities.length > 0 && item.images[0].productVariantEntities[0].manualPrice}
                         </p>
                         <p className="off-text">
-                            MRP: <del><i className="bi bi-currency-rupee"></i> {item.images.length > 0 && item.images[0].productVariantEntities.length > 0 && item.images[0].productVariantEntities[0].manualPrice}</del><span> (Incl all taxes)</span>
+                            MRP: <del><i className="bi bi-currency-rupee"></i> {item.images.length > 0 && item.images[0].productVariantEntities.length > 0 && item.images[0].productVariantEntities[0].price}</del><span> (Incl all taxes)</span>
                         </p>
                         <div className="wish-star">
                             <i className="bi bi-star-fill" style={{ color: '#0227bd' }}></i>
