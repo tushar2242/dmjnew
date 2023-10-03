@@ -13,7 +13,7 @@
   overflow: auto;
 } */
 
-.css-ahj2mt-MuiTypography-root h5{
+/* .css-ahj2mt-MuiTypography-root h5{
   font-size: 15px !important;
   font-weight:600 !important;
   font-family: 'AcariSansNeueRegular' !important;
@@ -24,7 +24,7 @@
   font-weight:600 !important;
   font-family: 'AcariSansNeueRegular' !important;
   letter-spacing: 0.75px !important;
-}
+} */
 .topPart {
   display: flex;
   column-gap: 5rem;
@@ -1079,18 +1079,17 @@
   }
 
 }
-.css-1rwt2y5-MuiButtonBase-root-MuiButton-root{
+/* .css-1rwt2y5-MuiButtonBase-root-MuiButton-root{
   border:solid 1px #b79d33 !important;
   color:black !important;
   border-radius:5px !important;
   font-size:16px !important;
   padding: 0px !important;
-  /* border-left:none !important;
-  border-right:none !important; */
+
 }
 .css-iajp3t-MuiButtonGroup-root .MuiButtonGroup-grouped:not(:first-of-type){
   margin-left:5px !important
-}
+} */
 .qnty-fnt-size{
   font-size:16px;
   font-weight:600;
