@@ -14,6 +14,7 @@
     font-weight:600;
     letter-spacing: 2px;
     margin-top:15px;
+    
 }
 .ct-box{
     display: flex;
@@ -184,8 +185,8 @@ select.sel-box:focus{
     font-size:15px;
     font-weight: 600;
     letter-spacing: 0.75px;
-    padding-left:30px;
-    padding-right:30px;
+    padding-left:20px;
+    padding-right:20px;
     padding-top:7px;
     padding-bottom:7px;
     background-color: white;
