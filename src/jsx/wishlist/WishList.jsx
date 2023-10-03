@@ -3,7 +3,9 @@ import HeaderCon from '../header/HeaderCon';
 import cardImg from '../../assets/images/carpet3.jpg';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import StarRateIcon from '@mui/icons-material/StarRate';
+import StarHalfIcon from '@mui/icons-material/StarHalf';
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
 
 
 
@@ -104,7 +106,7 @@ export default class WishList extends React.Component {
                                     )
                                 })
                                     :
-                                    <h4 className="mt-4 text-center">Please Add Some Products</h4>
+                                    <h4 className="mt-4 text-center"><b>Please Add Some Products</b></h4>
                             }
 
                         </div>
@@ -193,23 +195,18 @@ const WhiteItemCard = ({ item }) => {
                             MRP: <del><i className="bi bi-currency-rupee"></i> {item.images.length > 0 && item.images[0].productVariantEntities.length > 0 && item.images[0].productVariantEntities[0].price}</del><span> (Incl all taxes)</span>
                         </p>
                         <div className="wish-star">
-                            <i className="bi bi-star-fill" style={{ color: '#0227bd' }}></i>
-                            <i className="bi bi-star-fill" style={{ color: '#0227bd' }}></i>
-                            <i className="bi bi-star-fill" style={{ color: '#0227bd' }}></i>
-                            <i className="bi bi-star-fill" style={{ color: '#0227bd' }}></i>
-                            <i className="bi bi-star-half" style={{ color: '#0227bd' }}></i>
-                            <span className="review-text"> 50 Reviews</span>
+                        <span style={{color:'#b79d33'}}><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarHalfIcon /><StarOutlineIcon /></span> 50 Reviews
                         </div>
                         <div className="d-flex justify-content-between mt-4">
-                            <NavLink to="/addToCart"><button className="text-white border-0 px-3 py-1 add-cart-btn" onClick={async () => {
+                            <NavLink to="/addToCart"><button className="add-cart-btn" onClick={async () => {
                                 await addToCart(item.id);
                                 navigate("/addtocart");
                             }}>Add to cart</button></NavLink>
-                            <NavLink to="/checkout"><button className="text-white border-0 px-3 py-1 buy-now-btn" onClick={async () => {
+                            <NavLink to="/checkout"><button className="buy-now-btn" onClick={async () => {
                                 await addToCart(item.id);
                                 navigate("/checkout");
                             }}>Buy Now</button></NavLink>
-                            <i className="bi bi-trash-fill fs-5 text-danger" onClick={() => deleteItem(item.id)}></i>
+                            <i className="bi bi-trash-fill fs-4 text-dark" onClick={() => deleteItem(item.id)}></i>
                         </div>
                     </div>
                 </div>
