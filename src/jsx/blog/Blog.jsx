@@ -2,8 +2,8 @@ import React from 'react';
 import Navbar from '../header/Navbar';
 import HeaderCon from '../header/HeaderCon';
 import Footer from '../footer/Footer';
-import blogImg from '../../assets/images/craft6.jpg';
-import recentImg from '../../assets/images/earring1.jpg';
+import blogImg from '../../assets/images/art1.jpg';
+import recentImg from '../../assets/images/earring.jpg';
 import { NavLink } from 'react-router-dom';
 import Banner from '../Banner/Banner';
 

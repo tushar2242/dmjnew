@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
-import sliderImg1 from '../../assets/images/jewel_img/earring2.jpg';
+import sliderImg1 from '../../assets/images/art1.jpg';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 export default class CarouselBlog extends React.Component {

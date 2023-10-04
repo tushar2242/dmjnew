@@ -6,11 +6,11 @@ import HeaderCon from '../header/HeaderCon';
 import Navbar from '../header/Navbar';
 import Carousel from 'react-bootstrap/Carousel';
 
-import CarouselForHome from '../carousel/CarouselForHome';
+import '../../assets/css/trending.css'
 // import { NavLink } from 'react-router-dom';
 import ProductWrapper from '../productWrapper/ProductWrapper';
 import Loader from '../loader/Loader';
-import TrendingProducts from '../carousel/TrendingProducts';
+
 import { RelatedProduct } from '../jewellery-page/ProductDetail';
 import { Helmet } from 'react-helmet';
 

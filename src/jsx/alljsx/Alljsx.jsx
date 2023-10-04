@@ -15,8 +15,6 @@ import '../../assets/css/blog.css';
 import '../../assets/css/reactEdit.css';
 import '../../assets/css/owl.carousel.min.css';
 import Footer from '../footer/Footer';
-import Carpet from '../carpet/Carpet';
-import JwelleryDetails from '../jewellery-page/JwelleryDetails';
 
 
 

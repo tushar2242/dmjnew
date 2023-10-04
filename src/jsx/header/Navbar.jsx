@@ -4,7 +4,7 @@ import "./newNav.css";
 import logo from "../../assets/images/dmjicon.png";
 import searchIcon from "./icons/search.png";
 import { NavLink, useNavigate } from "react-router-dom";
-import earring from "../../assets/images/earring1.jpg";
+// import earring from "../../assets/images/earring1.jpg";
 import NavbarDropdown from "./NavbarDropdown";
 import { useDispatch, useSelector } from "react-redux";
 import { addSearch } from "../redux/dmjSlice";
@@ -15,9 +15,7 @@ import menubar from "../../assets/images/menuicon.png";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Accordion from "react-bootstrap/Accordion";
 import "../search-contentbox/search-input-box.css";
-import timer from "../../assets/images/timer.png";
-import image1 from "../../assets/images/ring1.jpg";
-import search from "../../assets/images/search.png";
+
 import axios from "axios";
 
 const url = "https://api.diwamjewels.com/DMJ/";
@@ -550,71 +548,71 @@ function Navbar() {
 
 export default Navbar;
 
-function TrendingItem() {
-  return (
-    <>
-      {/* <NavLink to="/" className="sp-list-type"> */}
-      <div className="d-flex">
-        <NavLink to="/search" className="text-decoration-none">
-          <div>
-            <img src={earring} alt="product" className="dropdown-pro-img" />
-            <p className="sp-list-type mt-1">Earring</p>
-          </div>
-        </NavLink>
-        <NavLink to="/search" className="text-decoration-none">
-          <div className="ms-3">
-            <img src={earring} alt="product" className="dropdown-pro-img" />
-            <p className="sp-list-type mt-1">Earring</p>
-          </div>
-        </NavLink>
-      </div>
-      {/* </NavLink> */}
-    </>
-  );
-}
+// function TrendingItem() {
+//   return (
+//     <>
+//       {/* <NavLink to="/" className="sp-list-type"> */}
+//       <div className="d-flex">
+//         <NavLink to="/search" className="text-decoration-none">
+//           <div>
+//             <img src={earring} alt="product" className="dropdown-pro-img" />
+//             <p className="sp-list-type mt-1">Earring</p>
+//           </div>
+//         </NavLink>
+//         <NavLink to="/search" className="text-decoration-none">
+//           <div className="ms-3">
+//             <img src={earring} alt="product" className="dropdown-pro-img" />
+//             <p className="sp-list-type mt-1">Earring</p>
+//           </div>
+//         </NavLink>
+//       </div>
+//       {/* </NavLink> */}
+//     </>
+//   );
+// }
 
-function ArrivalItem() {
-  return (
-    <>
-      <div className="d-flex">
-        <NavLink to="/search" className="text-decoration-none">
-          {" "}
-          <div>
-            <img src={earring} alt="product" className="ar-pro-img" />
-            <p className="sp-list-type mt-2 text-center">Earring</p>
-          </div>
-        </NavLink>
-        <NavLink to="/search" className="text-decoration-none">
-          <div className="ms-3">
-            <img src={earring} alt="product" className="ar-pro-img" />
-            <p className="sp-list-type mt-2 text-center">Earring</p>
-          </div>
-        </NavLink>
-      </div>
-    </>
-  );
-}
+// function ArrivalItem() {
+//   return (
+//     <>
+//       <div className="d-flex">
+//         <NavLink to="/search" className="text-decoration-none">
+//           {" "}
+//           <div>
+//             <img src={earring} alt="product" className="ar-pro-img" />
+//             <p className="sp-list-type mt-2 text-center">Earring</p>
+//           </div>
+//         </NavLink>
+//         <NavLink to="/search" className="text-decoration-none">
+//           <div className="ms-3">
+//             <img src={earring} alt="product" className="ar-pro-img" />
+//             <p className="sp-list-type mt-2 text-center">Earring</p>
+//           </div>
+//         </NavLink>
+//       </div>
+//     </>
+//   );
+// }
 
-function SellerItem() {
-  return (
-    <>
-      <div>
-        <img src={earring} alt="product" className="sel-item-img" />
-        <p className="sp-list-type mt-2">UPTO 50% OFF</p>
+// function SellerItem() {
+//   return (
+//     <>
+//       <div>
+//         <img src={earring} alt="product" className="sel-item-img" />
+//         <p className="sp-list-type mt-2">UPTO 50% OFF</p>
 
-        <NavLink to="/search" className="sp-list-type">
-          View all designs <i className="bi bi-arrow-right"></i>
-        </NavLink>
-      </div>
-    </>
-  );
-}
+//         <NavLink to="/search" className="sp-list-type">
+//           View all designs <i className="bi bi-arrow-right"></i>
+//         </NavLink>
+//       </div>
+//     </>
+//   );
+// }
 
-export const TrendingWrap = memo(TrendingItem);
+// export const TrendingWrap = memo(TrendingItem);
 
-export const ArrivalWrap = memo(ArrivalItem);
+// export const ArrivalWrap = memo(ArrivalItem);
 
-export const SellerWrap = memo(SellerItem);
+// export const SellerWrap = memo(SellerItem);
 
 
 

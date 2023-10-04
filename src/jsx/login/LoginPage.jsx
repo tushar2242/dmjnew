@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import img1 from '../../assets/images/carpet.jpg';
+
 import '../../assets/css/login.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
 import './reviewpage.css'
-import img1 from "../../assets/images/earring.jpg";
+// import img1 from "../../assets/images/earring.jpg";
 import StarIcon from '@mui/icons-material/Star';
 import HeaderCon from "../header/HeaderCon";
 import Navbar from "../header/Navbar";
@@ -96,7 +96,7 @@ const RateProduct = () => {
               <h6 className="revw-hd-fnt-bx"><b>{product.seo_title}</b></h6>
               <p className="rt-user-fnt-sz"><span className="rt-bg-view">4.5<StarIcon className="str-rate-icon" /></span> 700 users</p>
             </div>
-            <img src={url + 'images/' + product.thum_image} alt="image" className="rate-prod-img-1 ms-3" />
+            <img src={url} alt="image" className="rate-prod-img-1 ms-3" />
           </div>
         </div>
       </div>

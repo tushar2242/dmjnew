@@ -22,11 +22,9 @@ import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 // import './App.css'
 import { Keyboard, Scrollbar, Navigation, Pagination } from "swiper/modules";
-import ReactImageMagnify from "react-image-magnify";
+
 // import ShareIcon from "@mui/icons-material/Share";
 import img1 from "../../assets/images/earring.jpg";
-import img2 from "../../assets/images/ring1.jpg";
-import img3 from "../../assets/images/ring2.jpg";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import StarsIcon from "@mui/icons-material/Stars";
 import StarRateIcon from '@mui/icons-material/StarRate';
@@ -34,13 +32,9 @@ import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
-import Switch from "@mui/material/Switch";
 import deliveryicon from "../../assets/images/delivery.png";
 import payicon from "../../assets/images/payicon.png";
 import exchange from "../../assets/images/exchange.png";
-import { styled } from "@mui/material/styles";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -110,13 +104,10 @@ const responsive1 = {
 // export {fetchData}
 
 function Product() {
-  // const [decryptedProductId, setDecryptedProductId] = useState("");
-  // const [quantity, setQuantity] = useState(1);
-  // const [showDescription, setShowDescription] = useState(true);
-  // const [showReview, setShowReview] = useState(false);
+
   const [images, setImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState("");
-  const [apiCheck, setApiCheck] = useState(true);
+  // const [apiCheck, setApiCheck] = useState(true);
 
   const [itemInfo, setItemInfo] = useState([]);
   const [isLoad, setIsLoad] = useState(true);
@@ -200,7 +191,7 @@ function Product() {
 
   const addToCart = (productId) => {
     // Get the existing cart from localStorage or initialize an empty array if it doesn't exist
-   
+
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
 
     // Check if the product with the same ID already exists in the cart
@@ -256,7 +247,7 @@ function Product() {
           <div className="container-fluid" >
 
             <div className="row detl-page-mobvw">
-              <div className="col-md-6 no-gutters" style={{paddingRight:'0px'}}>
+              <div className="col-md-6 no-gutters" style={{ paddingRight: '0px' }}>
                 <div className="hid-mob-view stk-box-item top-space-dt">
                   <div className="product-display">
                     <div className="carouselmini">
@@ -266,7 +257,7 @@ function Product() {
                           slidesPerView={5}
                           pagination={{
                             clickable: true,
-                          }}    
+                          }}
                           Navigation={true}
                           modules={[Navigation, Pagination]}
                           className="mySwiper"
@@ -305,20 +296,20 @@ function Product() {
 
 
                 <div className="desktop-dis-view mobview-contdtl">
-                            <div
-                              className="obtft-img-vw">
-                              <img
-                                src={imgUrl + selectedImage}
-                                className=""
-                              />
-                               
-                            </div>
-                            <div className="share-wlst-icon">
-                            <FavoriteBorderIcon className="sh-wlst-icsz"/><br />
-                            <ShareIcon className="sh-wlst-icsz mt-1"/>
-                            </div>
-                   
-                        
+                  <div
+                    className="obtft-img-vw">
+                    <img
+                      src={imgUrl + selectedImage}
+                      className=""
+                    />
+
+                  </div>
+                  <div className="share-wlst-icon">
+                    <FavoriteBorderIcon className="sh-wlst-icsz" /><br />
+                    <ShareIcon className="sh-wlst-icsz mt-1" />
+                  </div>
+
+
 
                   <div className="varient-img-box">
 
@@ -627,7 +618,7 @@ const ProductPrice = ({ title, des, rating, variant, prodes, quantity, increment
           <h5 className="mt-2 qnty-fnt-size"><b>Quantity :</b></h5>
           <ButtonGroup variant="outlined" aria-label="outlined button group" style={{ marginLeft: '20px', }}>
             <Button onClick={decrement} style={{ border: 'solid 1px #b79d33', color: 'black', borderRadius: '5px', marginLeft: '5px', fontSize: '16px', padding: '0px', boxShadow: '0' }}><RemoveIcon /></Button>
-            <Button style={{ border: 'solid 1px #b79d33', color: 'black', borderRadius: '5px', marginLeft: '5px', fontSize: '16px', padding: '0px', boxShadow: '0' }}>{quantity-1}</Button>
+            <Button style={{ border: 'solid 1px #b79d33', color: 'black', borderRadius: '5px', marginLeft: '5px', fontSize: '16px', padding: '0px', boxShadow: '0' }}>{quantity - 1}</Button>
             <Button onClick={increment} style={{ border: 'solid 1px #b79d33', color: 'black', borderRadius: '5px', marginLeft: '5px', fontSize: '16px', padding: '0px', boxShadow: '0' }}><AddIcon /></Button>
           </ButtonGroup>
         </div>

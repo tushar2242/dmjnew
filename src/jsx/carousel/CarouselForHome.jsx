@@ -1,7 +1,4 @@
-// import cardimg1 from '../../assets/images/banner1.jpg';
-// import cardimg2 from '../../assets/images/carpet.jpg';
-// import cardimg3 from '../../assets/images/banner2.jpg';
-// import cardimg4 from '../../assets/images/jewel_img/bangels.jpg';
+
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import React, { useState, useEffect } from 'react';
@@ -10,7 +7,7 @@ import "react-multi-carousel/lib/styles.css";
 // import '../../assets/css/App.css';
 import '../../assets/css/carouselHome.css';
 import { NavLink, useNavigate } from 'react-router-dom';
-import cardUpdateImg from '../../assets/images/DMJImage.jpg';
+
 import axios from 'axios';
 
 const proto = 'https://api.diwamjewels.com/DMJ/'

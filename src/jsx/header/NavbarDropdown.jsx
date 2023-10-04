@@ -1,4 +1,4 @@
-import { TrendingWrap, SellerWrap } from "./Navbar";
+// import { TrendingWrap, SellerWrap } from "./Navbar";
 import { NavLink, useNavigate } from "react-router-dom";
 import { memo, useEffect, useState } from "react";
 import "react-tabs/style/react-tabs.css";
