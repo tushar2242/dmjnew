@@ -138,9 +138,6 @@ const LoginWithMobileNo = () => {
             setIsLoading(false)
         }
     }
-
-
-
     return (
         <>
 
@@ -148,12 +145,12 @@ const LoginWithMobileNo = () => {
     isLoading && <Loader/>
 }
 
-            <div className="fullpage-bg" style={{backgroundImage:`url(${loginImg1})`}}>
+            <div className="fullpage-bg p-2" style={{backgroundImage:`url(${loginImg1})`}}>
+            <div className="container">
 
-                <div className="login-bg">
-                    <div className="">
-                        <div className="">
-                        <div className='text-center'><img src={dmjicon} className="coupon-img" alt="Coupon" /></div>
+                <div className="login-bg shadow-sm">
+               
+                        <div className='text-center cp-img-boxvw'><img src={dmjicon} className="coupon-img" alt="Coupon" /></div>
                                         <hr />
                             <div className="user-login">
                                 <h6><b>Login or Signup</b></h6>
@@ -197,8 +194,7 @@ const LoginWithMobileNo = () => {
                                     <p className="tp-text">Already Have an account ? <NavLink to="/login" className="tp-color"><span className="text-danger"><b>Login</b></span></NavLink></p>
                                 </form>
                             </div>
-                        </div>
-                    </div>
+                            </div>
 
                 </div>
             </div>

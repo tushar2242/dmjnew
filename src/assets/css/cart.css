@@ -10,7 +10,8 @@ letter-spacing: 0.75px;
     margin-top:30px;
 	box-shadow:2px 2px 3px 3px  rgb(245, 245, 245);
 	border-radius:5px;
-
+     display: flex;
+	 justify-content: space-between;
 }
 .add-cart-btn{
 	background-color:#b79d33;
@@ -36,9 +37,9 @@ letter-spacing: 0.75px;
 	font-size:16px;
 	font-weight:500;
 }
-@media only screen and (max-width:767px){
+@media only screen and (max-width:767.98px){
     .cart-bg{
-      visibility: hidden;
+     display: none;
       margin-top:0px
     } 
 }
@@ -50,10 +51,16 @@ letter-spacing: 0.75px;
 
 .cart-display{
     display:flex;
-    justify-content:space-between
+    justify-content:space-between;
+	padding-left:14px;
+	padding-right: 14px;
+	
 }
 
-@media only screen and (min-width:320px) and (max-width:767px){
+@media only screen and (max-width:767.98px){
+	.cart-row-dply{
+		margin-right:-5px;
+	}
     .cart-display{
         display:block;
         justify-content:space-between

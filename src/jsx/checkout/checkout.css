@@ -1,7 +1,7 @@
 .checkout-bg{
     background-color: rgb(233, 233, 233);
     padding:50px;
- 
+    
 }
 .del-ct-bg{
     background-color: white;
@@ -238,7 +238,8 @@ color:#b79d33
     }
     .checkout-bg{
         background-color: rgb(224, 224, 224);
-        padding:5px
+        padding:0px;
+        overflow-x: hidden;
     }  
     .hd-tag-font{
         font-size:13px;

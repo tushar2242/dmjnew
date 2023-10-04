@@ -432,3 +432,17 @@ display:flex;
   }
 }
 
+.show-numbericn{
+  position:relative;
+}
+.number-icon-sz{
+  position: absolute;
+  font-size: 16px;
+  font-weight: 700;
+  top:-9px;
+  right:-4px;
+  color:#b79d33;
+ 
+  
+ /* box-shadow: 2px 2px 4px 4px rgb(247, 247, 247); */
+}
