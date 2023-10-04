@@ -73,7 +73,10 @@ const Home = () => {
                         productData={productInfo}
                     /> */}
                     {/* <TrendingProducts /> */}
+                    <div className=''>
+                    <h4 className='text-center mt-4'><b>Trending Categories</b></h4>
                     <RelatedProduct />
+                    </div>
                     <ProductWrapper />
                     <Footer />
 
@@ -108,7 +111,7 @@ const MainCarousel = ({ bannerData }) => {
                     return (
                         <Carousel.Item key={banner.id}>
                             <img
-                                className="banner-size"
+                                className=""
                                 src={imgUrl + banner.image}
                                 alt="slide"
                             // style={{ height: '70vh' }}
