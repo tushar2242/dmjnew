@@ -6,20 +6,20 @@ import Blog from '../blog/Blog';
 import Contact from '../contact/Contact';
 // import SignUp from '../login/SignUp';
 import BlogDetails from '../blog/BlogDetails';
-import Carpet from '../carpet/Carpet';
+
 import Faq from '../faq/Faq';
 import TrackOrder from '../track-order/TrackOrder';
 import Home from '../home/Home';
 // import Login from '../login/Login';
 import WishList from '../wishlist/WishList';
 import AddToCart from '../addtocart/AddToCart';
-import BookNow from '../booking-page/BookNow';
+
 import Billing from '../paymentMode/Billing';
 import '../../assets/css/update.css';
 import UpdateLogin from '../login/UpdateLogin';
 import CarouselBlog from '../carousel/CarouselBlog';
 import Animate from '../animation/Animate';
-import Otp from '../otp-page/Otp';
+
 import Login2 from '../login/Login2';
 import GetIp from '../getip/GetIp';
 import Loginpage from '../login/LoginPage';
@@ -34,23 +34,22 @@ import ProductDetails from '../jewellery-page/ProductDetail';
 import Privacy from '../privacypolicy/Privacy'
 import Terms from '../terms/Terms'
 import Refund from '../refundpolicy/Refund'
-import TrendingProducts from '../carousel/TrendingProducts'
 import PaymentGateway from '../payment-gateway/PaymentGateway'
 import ReviewPage from '../reviewpage/ReviewPage';
 // import Sidebar from '../profile/Sidebar'
 
 
 import Sidebar from '../sidebar/Sidebar';
-import Overview from '../sidebar/Overview';
-import Order from '../sidebar/Order';
-import Coupon from '../sidebar/Coupon';
-import Savedcard from '../sidebar/Savedcard';
-import Vpasaved from '../sidebar/Vpasaved';
-import Address from '../sidebar/Address';
-import Profile from '../sidebar/Profile';
+// import Overview from '../sidebar/Overview';
+// import Order from '../sidebar/Order';
+// import Coupon from '../sidebar/Coupon';
+// import Savedcard from '../sidebar/Savedcard';
+// import Vpasaved from '../sidebar/Vpasaved';
+// import Address from '../sidebar/Address';
+// import Profile from '../sidebar/Profile';
 // import Terms from './sidebar/Terms';
 import Orderdetails from '../sidebar/Orderdetails';
-import Editprofile from '../sidebar/Editprofile';
+// import Editprofile from '../sidebar/Editprofile';
 
 export default class SetRoutes extends React.Component {
     render() {
@@ -63,19 +62,19 @@ export default class SetRoutes extends React.Component {
                     <Route path='/contactUs' element={<Contact />} />
                     <Route path='/blog' element={<Blog />} />
                     <Route path='/blog/blogDetails' element={<BlogDetails />} />
-                    <Route path='/carpet' element={<Carpet />} />
+                    {/*  */}
                     <Route path='/faq' element={<Faq />} />
                     <Route path='/trackOrder' element={<TrackOrder />} />
                     <Route path='/' element={<Home />} />
 
                     <Route path='/wishlist' element={<WishList />} />
                     <Route path='/addToCart' element={<AddToCart />} />
-                    <Route path='/booknow' element={<BookNow />} />
+
                     <Route path='/billing' element={<Billing />} />
-                    <Route path='/carousel' element={<CarouselBlog />} />
+                    {/* <Route path='/carousel' element={<CarouselBlog />} /> */}
                     <Route path='/signUp' element={<UpdateLogin />} />
-                    <Route path='/animate' element={<Animate />} />
-                    {/* <Route path='/otp' element={<Otp />} /> */}
+                    {/* <Route path='/animate' element={<Animate />} /> */}
+                
                     <Route path='/defaultlogin' element={<Login2 />} />
 
                     <Route path='/login' element={<Loginpage />} />
@@ -91,7 +90,7 @@ export default class SetRoutes extends React.Component {
                     <Route path='/privacypolicy' element={<Privacy />} />
                     <Route path='/termscondition' element={<Terms />} />
                     <Route path='/refundpolicy' element={<Refund />} />
-                    <Route path='/trendingproducts' element={<TrendingProducts />} />
+                    {/* <Route path='/trendingproducts' element={<TrendingProducts />} /> */}
 
                     <Route path='/paymentgateway' element={<PaymentGateway />} />
 

@@ -1,8 +1,7 @@
 import React, { useReducer } from "react";
-import Banner from "../Banner/Banner";
 import HeaderCon from "../header/HeaderCon";
 import Navbar from "../header/Navbar";
-import productImg from '../../assets/images/brace.jpg';
+
 import Footer from '../footer/Footer';
 import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
@@ -189,7 +188,7 @@ const Products = ({ product, quantity }) => {
     const [productName, setProductName] = useState('Sample');
     const [price, setPrice] = useState(3);
     const [totalPrice, setTotalPrice] = useState(0);
-    const [thumb_img, setThumbImg] = useState(productImg);
+    const [thumb_img, setThumbImg] = useState();
     const [itemId, setItemId] = useState(0);
 
     const dispatch = useDispatch()

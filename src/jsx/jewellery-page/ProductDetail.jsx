@@ -22,11 +22,9 @@ import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 // import './App.css'
 import { Keyboard, Scrollbar, Navigation, Pagination } from "swiper/modules";
-import ReactImageMagnify from "react-image-magnify";
+
 // import ShareIcon from "@mui/icons-material/Share";
 import img1 from "../../assets/images/earring.jpg";
-import img2 from "../../assets/images/ring1.jpg";
-import img3 from "../../assets/images/ring2.jpg";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import StarsIcon from "@mui/icons-material/Stars";
 import StarRateIcon from "@mui/icons-material/StarRate";
@@ -34,13 +32,9 @@ import StarHalfIcon from "@mui/icons-material/StarHalf";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
-import Switch from "@mui/material/Switch";
 import deliveryicon from "../../assets/images/delivery.png";
 import payicon from "../../assets/images/payicon.png";
 import exchange from "../../assets/images/exchange.png";
-import { styled } from "@mui/material/styles";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -110,13 +104,10 @@ const responsive1 = {
 // export {fetchData}
 
 function Product() {
-  // const [decryptedProductId, setDecryptedProductId] = useState("");
-  // const [quantity, setQuantity] = useState(1);
-  // const [showDescription, setShowDescription] = useState(true);
-  // const [showReview, setShowReview] = useState(false);
+
   const [images, setImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState("");
-  const [apiCheck, setApiCheck] = useState(true);
+  // const [apiCheck, setApiCheck] = useState(true);
 
   const [itemInfo, setItemInfo] = useState([]);
   const [isLoad, setIsLoad] = useState(true);

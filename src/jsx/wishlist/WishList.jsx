@@ -1,6 +1,6 @@
 import React from 'react';
 import HeaderCon from '../header/HeaderCon';
-import cardImg from '../../assets/images/carpet3.jpg';
+
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import StarRateIcon from '@mui/icons-material/StarRate';

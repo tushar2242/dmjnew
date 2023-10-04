@@ -2,9 +2,9 @@ import React from 'react';
 import Footer from '../footer/Footer';
 import HeaderCon from '../header/HeaderCon';
 import Navbar from '../header/Navbar';
-import blogImg from '../../assets/images/blog_img/neckpiece.jpg';
+import blogImg from '../../assets/images/art1.jpg';
 import { CategoryList, RecentBox } from '../blog/Blog';
-import recentImg from '../../assets/images/earring1.jpg';
+import recentImg from '../../assets/images/earring.jpg';
 // import CarouselBlog from '../carousel/CarouselBlog';
 
 export default class BlogDetails extends React.Component {

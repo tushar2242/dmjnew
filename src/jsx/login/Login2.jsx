@@ -1,11 +1,11 @@
 /* eslint-disable no-undef */
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import img1 from '../../assets/images/carpet.jpg';
+
 import '../../assets/css/login.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Otp from '../otp-page/Otp';
+
 import Loader from '../loader/Loader';
 import loginImg1 from '../../assets/images/banner/login1.png';
 import dmjicon from '../../assets/images/dmj.png'
@@ -57,7 +57,7 @@ const LoginWithMobileNo = () => {
                 // console.log('firedagain')
                 setIsLoading(false)
                 navigate('/login')
-               
+
             }
             // else {
             //     alert(res.data.message)
@@ -78,12 +78,12 @@ const LoginWithMobileNo = () => {
 
         if (mobilePattern.test(txt)) {
             // console.log('mobile number:', txt);
-            localStorage.setItem('auth','mobile')
+            localStorage.setItem('auth', 'mobile')
             return true
             // You can perform additional actions for a valid mobile number here.
         } else if (emailPattern.test(txt)) {
             // console.log('email address:', txt);
-            localStorage.setItem('auth','email')
+            localStorage.setItem('auth', 'email')
             return true
             // You can perform additional actions for a valid email address here.
         } else {
@@ -127,8 +127,8 @@ const LoginWithMobileNo = () => {
                 localStorage.setItem("mailOrNo", mobileNo)
                 navigate('/signUp')
             }
-            else{
-                alert("Incorrect OTP")  
+            else {
+                alert("Incorrect OTP")
                 setOtpValue('')
                 setIsLoading(false)
             }
@@ -141,60 +141,60 @@ const LoginWithMobileNo = () => {
     return (
         <>
 
-{
-    isLoading && <Loader/>
-}
+            {
+                isLoading && <Loader />
+            }
 
-            <div className="fullpage-bg p-2" style={{backgroundImage:`url(${loginImg1})`}}>
-            <div className="container">
+            <div className="fullpage-bg p-2" style={{ backgroundImage: `url(${loginImg1})` }}>
+                <div className="container">
 
-                <div className="login-bg shadow-sm">
-               
+                    <div className="login-bg shadow-sm">
+
                         <div className='text-center cp-img-boxvw'><img src={dmjicon} className="coupon-img" alt="Coupon" /></div>
-                                        <hr />
-                            <div className="user-login">
-                                <h6><b>Login or Signup</b></h6>
-                                <form style={{ position: 'relative' }} onSubmit={(e) => { e.preventDefault() }} >
-                                    {/* <p className='tele-code'>+91</p> */}
+                        <hr />
+                        <div className="user-login">
+                            <h6><b>Login or Signup</b></h6>
+                            <form style={{ position: 'relative' }} onSubmit={(e) => { e.preventDefault() }} >
+                                {/* <p className='tele-code'>+91</p> */}
 
-                                    {
-                                        !isOtp ?
-                                            <>
-                                                <input type="tel" className="login-input" id="login-number" placeholder="Mobile Number / Email-id *" value={mobileNo} onChange={(e) => {
-                                                    setMobileNo(e.target.value)
-                                                }} required />
-                                                {/* <label className="error" style={{ display: showError }}>Enter a Correct Email-Id / Phone No.</label> */}
-                                                <br />
-                                            </>
+                                {
+                                    !isOtp ?
+                                        <>
+                                            <input type="tel" className="login-input" id="login-number" placeholder="Mobile Number / Email-id *" value={mobileNo} onChange={(e) => {
+                                                setMobileNo(e.target.value)
+                                            }} required />
+                                            {/* <label className="error" style={{ display: showError }}>Enter a Correct Email-Id / Phone No.</label> */}
+                                            <br />
+                                        </>
 
-                                            :
-                                            <div className="otp-container">
-                                                <input type="tel" className="login-input" value={mobileNo} disabled />
-                                                <b style={{ color: 'green', letterSpacing: '0.3px', padding: '4px' }}>Otp Sent Successfully</b>
-                                                <input type="number" className="login-input" placeholder="Enter Otp" value={otp} onChange={(e) => {
-                                                    setOtpValue(e.target.value)
-                                                }} maxLength={6} required />
-                                                {/* <label className="error" style={{ display: showError }}>Enter a Correct Email-Id / Phone No.</label> */}
-                                                <br />
-                                            </div>
-
-                                    }
-
-                                    <p className="tp-text">By Continuing, I agree to the <span className="tp-color"><b>Terms of Use & Privacy Policy</b></span></p>
-                                    {!isOtp ?
-                                        <button type="button" className="continue-btn" onClick={(e) => {
-                                            handleSubmit(e)
-                                        }}>CONTINUE</button>
                                         :
-                                        <button type="button" className="continue-btn" onClick={(e) => {
-                                            handleVerfyOtp(e)
-                                        }}>Verify OTP</button>
+                                        <div className="otp-container">
+                                            <input type="tel" className="login-input" value={mobileNo} disabled />
+                                            <b style={{ color: 'green', letterSpacing: '0.3px', padding: '4px' }}>Otp Sent Successfully</b>
+                                            <input type="number" className="login-input" placeholder="Enter Otp" value={otp} onChange={(e) => {
+                                                setOtpValue(e.target.value)
+                                            }} maxLength={6} required />
+                                            {/* <label className="error" style={{ display: showError }}>Enter a Correct Email-Id / Phone No.</label> */}
+                                            <br />
+                                        </div>
 
-                                    }
-                                    <p className="tp-text">Already Have an account ? <NavLink to="/login" className="tp-color"><span className="text-danger"><b>Login</b></span></NavLink></p>
-                                </form>
-                            </div>
-                            </div>
+                                }
+
+                                <p className="tp-text">By Continuing, I agree to the <span className="tp-color"><b>Terms of Use & Privacy Policy</b></span></p>
+                                {!isOtp ?
+                                    <button type="button" className="continue-btn" onClick={(e) => {
+                                        handleSubmit(e)
+                                    }}>CONTINUE</button>
+                                    :
+                                    <button type="button" className="continue-btn" onClick={(e) => {
+                                        handleVerfyOtp(e)
+                                    }}>Verify OTP</button>
+
+                                }
+                                <p className="tp-text">Already Have an account ? <NavLink to="/login" className="tp-color"><span className="text-danger"><b>Login</b></span></NavLink></p>
+                            </form>
+                        </div>
+                    </div>
 
                 </div>
             </div>

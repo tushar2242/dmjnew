@@ -5,7 +5,7 @@ import Footer from '../footer/Footer';
 import visionImg1 from '../../assets/images/icons8-ophthalmology-64.png';
 import visionImg2 from '../../assets/images/icons8-rocket-50.png';
 import SubscribenMail from '../subscribe/SubscribenMail';
-import managerImg from '../../assets/images/Rectangle 119.png';
+// import managerImg from '../../assets/images/Rectangle 119.png';
 import Banner from '../Banner/Banner';
 import ashuimage from '../../assets/images/ashu.png'
 import profileimg from '../../assets/images/827.jpg'
