@@ -241,7 +241,7 @@ function Navbar() {
                   </li>
                 ) : (
                   <>
-                    <li onClick={() => navigate('/sidebar')}>Profile</li>
+                    <li onClick={() => navigate('/profile')}>Profile</li>
                     <li
                       className="mt-2"
                       onClick={() => {
