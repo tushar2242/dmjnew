@@ -258,13 +258,28 @@ function Navbar() {
             <div className="nav-box">
               <NavLink to="/wishlist">
                 {" "}
+<<<<<<< HEAD
                 <i className="bi bi-suit-heart-fill nav-icon-item ms-4"></i>2
+=======
+                <div className="show-numbericn">
+                <i className="bi bi-suit-heart-fill nav-icon-item ms-4"></i>
+                <div className="number-icon-sz">5</div>
+                </div>
+>>>>>>> 39bfb6be961b0e036ff1f91336551a15e571cef0
               </NavLink>
             </div>
             <div className="nav-box">
               <NavLink to="/addToCart">
                 {" "}
+<<<<<<< HEAD
                 <i className="bi bi-cart4 nav-icon-item ms-4"></i>2
+=======
+                
+                <div className="show-numbericn">
+                <i className="bi bi-cart4 nav-icon-item ms-4"></i>
+                <div className="number-icon-sz">10</div>
+                </div>
+>>>>>>> 39bfb6be961b0e036ff1f91336551a15e571cef0
               </NavLink>
             </div>
           </div>
@@ -462,11 +477,18 @@ function Navbar() {
             </div>
             <NavLink to="/wishlist">
               {" "}
-              <i className="bi bi-suit-heart-fill nav-icon-item ms-3"></i>
+              <div className="show-numbericn">
+                <i className="bi bi-suit-heart-fill nav-icon-item ms-3"></i>
+                <div className="number-icon-sz">5</div>
+                </div>
             </NavLink>
             <NavLink to="/addToCart">
               {" "}
+              {/* <i className="bi bi-cart4 nav-icon-item ms-3"></i> */}
+              <div className="show-numbericn">
               <i className="bi bi-cart4 nav-icon-item ms-3"></i>
+                <div className="number-icon-sz">5</div>
+                </div>
             </NavLink>
 
             <NavLink
@@ -741,7 +763,6 @@ const SearchInputContent = () => {
     dispatch(addSearch(e.target.value));
     // navigate('/search')
   }
-
   async function handleProSearch(e) {
     e.preventDefault()
     navigate("/search");

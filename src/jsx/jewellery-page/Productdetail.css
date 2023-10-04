@@ -283,7 +283,8 @@
 
 @media screen and (max-width: 800px) {
   .detl-page-mobvw{
-    margin-right:0px !important;
+    margin-right:-5px !important;
+ padding-right: none !important;
   
   }
 
@@ -718,8 +719,15 @@
   border: solid 1px #b79d33;
   border-radius: 7px;
 }
-.obtft-img-vw{
-  object-fit: fill !important;
+/* .obtft-img-vw{
+width:100%;
+height:350px;
+} */
+.obtft-img-vw img{
+  width:100%;
+  height:350px;
+  position:relative;
+ 
 }
 .product-mobvw-slidersz{
   width:100%;
@@ -837,7 +845,7 @@
 
   .price {
     margin-bottom: 10px;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
   }
 
@@ -1095,3 +1103,10 @@
   font-weight:600;
   letter-spacing: 0.75px;
 }
+
+/* .share-wlst-icon{
+  position:absolute;
+right:0;
+top:100px;
+ 
+} */

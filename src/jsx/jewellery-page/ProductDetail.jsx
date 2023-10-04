@@ -255,7 +255,7 @@ function Product() {
           </Helmet>
           <div className="container-fluid" >
 
-            <div className="row detl-page-mobvw no gutters">
+            <div className="row">
               <div className="col-md-6">
                 <div className="hid-mob-view stk-box-item top-space-dt">
                   <div className="product-display">
@@ -266,7 +266,7 @@ function Product() {
                           slidesPerView={5}
                           pagination={{
                             clickable: true,
-                          }}
+                          }}    
                           Navigation={true}
                           modules={[Navigation, Pagination]}
                           className="mySwiper"
@@ -305,46 +305,17 @@ function Product() {
 
 
                 <div className="desktop-dis-view mobview-contdtl">
-                  <div id="carouselExampleIndicators" className="carousel slide">
-                    <div className="carousel-indicators">
-                      <button
-                        type="button"
-                        data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide-to="0"
-                        className="active"
-                        aria-current="true"
-                        aria-label="Slide 1"
-                      ></button>
-                      <button
-                        type="button"
-                        data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide-to="1"
-                        aria-label="Slide 2"
-                      ></button>
-                      <button
-                        type="button"
-                        data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide-to="2"
-                        aria-label="Slide 3"
-                      ></button>
-                    </div>
-                    <div className="carousel-inner">
-                      {images.length > 0 &&
-                        images.map((image, index) => {
-                          return (
                             <div
-                              className="carousel-item active obtft-img-vw"
-                              key={index}
-                            >
+                              className="obtft-img-vw">
                               <img
-                                src={imgUrl + image}
-                                className="product-mobvw-slidersz"
+                                src={imgUrl + selectedImage}
+                                className=""
                               />
+                               
                             </div>
-                          );
-                        })}
-                    </div>
-                  </div>
+                            <div className="share-wlst-icon"><FavoriteBorderIcon /></div>
+                   
+                        
 
                   <div className="varient-img-box">
 
@@ -601,8 +572,6 @@ const ProductPrice = ({ title, des, rating, variant, prodes, quantity, increment
           className=""
           dangerouslySetInnerHTML={{ __html: des }}
         ></p> */}
-
-
 
         <div className="rate-icon-box">
           <p>

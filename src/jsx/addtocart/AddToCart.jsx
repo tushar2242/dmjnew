@@ -96,9 +96,9 @@ const AddToCart = () => {
                 <NavLink to="/search" className="text-decoration-none">
                     <h6 className="mt-4 cont-shp"><i className="bi bi-chevron-left"></i>
                         Continue shopping</h6></NavLink>
-                <div className="row">
+                <div className="row cart-row-dply">
                     <div className="col-md-8">
-                        <div className="cart-bg d-flex justify-content-between" style={{ overflowX: 'hidden' }}>
+                        <div className="cart-bg">
                             <h6 className="pro-font">PRODUCT</h6>
                             <div className="d-flex">
                                 <h6 className="pro-font">QUANTITY</h6>
@@ -342,155 +342,6 @@ const Products = ({ product, quantity }) => {
 };
 
 
-
-
-// class Products extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             itemQuan: 2,
-//             productName: 'Sample',
-//             price: 3,
-//             totalPrice: 0,
-//             thumb_img: productImg,
-//             itemId: 0
-//         }
-
-//         this.addQuan = this.addQuan.bind(this);
-//         this.minQuan = this.minQuan.bind(this);
-//         this.removeItem = this.removeItem.bind(this)
-//     }
-
-//     componentDidMount() {
-//         const { product, quantity } = this.props;
-//         // console.log(product)
-//         this.setState({
-//             itemQuan: quantity,
-//             productName: product.seo_title,
-//             price: (product.images.length > 0 && product.images[0].productVariantEntities.length > 0 && product.images[0].productVariantEntities[0].price),
-//             totalPrice: product.images.length > 0 && product.images[0].productVariantEntities.length > 0 && product.images[0].productVariantEntities[0].price * (quantity - 1),
-//             thumb_img: imgUrl + product.images[0].thumbImage,
-//             itemId: product.id
-//         })
-//     }
-
-//     async minQuan() {
-//         const { product } = this.props;
-//         let itemQuan = this.state.itemQuan;
-
-//         // Retrieve the current cart data from localStorage
-//         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-//         // Find the index of the product in the cart
-//         const index = cart.findIndex((cartItem) => cartItem.productId === product.id);
-
-//         if (index !== -1) {
-//             // Update the quantity of the product in the cart
-//             cart[index].quantity = itemQuan - 1;
-
-//             // Save the updated cart back to localStorage
-//             localStorage.setItem('cart', JSON.stringify(cart));
-//         }
-
-//         let totalPrice = this.state.totalPrice;
-//         let tempPrice = this.state.price;
-//         if (itemQuan > 2) {
-//             this.setState({
-//                 totalPrice: totalPrice - tempPrice,
-//                 itemQuan: itemQuan - 1,
-
-//             })
-//         }
-
-
-//     }
-
-//     addQuan() {
-//         const { product } = this.props
-//         let itemQuant = this.state.itemQuan;
-//         let price = this.state.price;
-//         if (itemQuant < 6) {
-//             this.setState({
-//                 totalPrice: price * itemQuant,
-//                 itemQuan: itemQuant + 1,
-//             });
-//         }
-//         // Find the index of the product in the cart
-//         const index = cart.findIndex((cartItem) => cartItem.productId === product.id);
-
-//         if (index !== -1) {
-//             // Update the quantity of the product in the cart
-//             cart[index].quantity = itemQuant + 1;
-
-//             // Save the updated cart back to localStorage
-//             localStorage.setItem('cart', JSON.stringify(cart));
-//         }
-
-
-
-
-
-
-//         // let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-//     }
-
-
-//     removeItem(itemId) {
-//         // Retrieve the cart from localStorage
-//         // Retrieve the cart from localStorage
-//         const cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-//         // Use the filter method to create a new cart without the item with the specified ID
-//         const updatedCart = cart.filter(item => item.productId !== itemId);
-
-//         // Update the cart in localStorage with the updated array
-//         localStorage.setItem('cart', JSON.stringify(updatedCart));
-//         window.location.reload()
-//     }
-
-
-//     render() {
-//         const { itemQuan, productName, totalPrice, thumb_img, itemId } = this.state;
-//         // const { removeItem } = this.props
-//         return (
-
-//             <>
-
-//                 <div className="cart-display mt-3">
-//                     <div className="d-flex">
-//                         <img src={thumb_img} alt="Cart" className="img-fluid cart-img" />
-//                         <div>
-//                             <p className="ms-2 cart-font">
-//                                 {productName.length < 25 ? productName : productName.slice(0, 25) + '...'}
-//                             </p>
-//                             <p className="ms-2 cart-font">Availablity : <span className="text-primary">In Stock</span></p>
-
-//                         </div>
-//                     </div>
-
-//                     <div className="d-flex">
-//                         <div className="num-block skin-1 mt-2">
-//                             <div className="num-in">
-//                                 <span className="minus dis" onClick={this.minQuan}></span>
-//                                 <input type="text" className="in-num" value={itemQuan - 1} readOnly="" onChange={this.setValue} />
-//                                 <span className="plus" onClick={this.addQuan}></span>
-//                             </div>
-//                         </div>
-//                         <h6 className="pro-font mt-3 cart-qty"><i className="bi bi-currency-rupee"></i>{totalPrice}</h6>
-//                         <h6 className="pro-font mt-3 cart-qty" onClick={() => this.removeItem(itemId)}><i className="bi bi-trash-fill fs-5 text-danger"></i></h6>
-//                     </div>
-//                 </div>
-
-//                 <hr />
-//             </>
-//         )
-//     }
-// }
-
-
-
-
 const OrderDetails = ({ item, price }) => {
 
     const [totalPrice, setTotal] = useState(0)
@@ -564,11 +415,6 @@ const OrderDetails = ({ item, price }) => {
         setTotal(total);
         setDisTotal(discountTotal);
     }
-
-
-
-
-
 
     return (
         <>

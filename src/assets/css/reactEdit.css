@@ -219,8 +219,9 @@ abbr[title] {
 
 .coupon-img {
   width: 100%;
-  max-width: 150px;
-  height: 150px
+  max-width: 130px;
+  height: 130px;
+ 
 }
 
 .tp-color {
@@ -352,6 +353,7 @@ abbr[title] {
 
 
 .login-bg {
+ 
   background-color: white;
   max-width: 350px;
   width: 100%;
@@ -374,9 +376,6 @@ abbr[title] {
 
 
 @media only screen and (min-width:20px) and (max-width:767px) {
-  .login-bg {
-    height: 100vh
-  }
 
   .fullpage-bg {
     background-color: rgb(213, 217, 230);
@@ -504,16 +503,23 @@ abbr[title] {
 
 
 
+.cp-img-boxvw{
+  margin-top:45px;
+}
 
 
 
-
-@media only screen and (max-width:767px) {
+@media only screen and (max-width:767.98px) {
+  .cp-img-boxvw{
+    margin-top:5px;
+  }
+  
   .login-bg {
+
     background-color: white;
     width: 98%;
     margin: auto;
-    height: 100vh
+    height: 96vh
   }
 
   .fullpage-bg .fullpage-bg {

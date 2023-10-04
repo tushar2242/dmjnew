@@ -128,11 +128,11 @@ const LoginWithMobileNo = () => {
         <>
             {
                 !isLoading ?
-                    <div className="fullpage-bg" style={{ backgroundImage: `url(${loginImg1})` }}>
+                    <div className="fullpage-bg p-2" style={{ backgroundImage: `url(${loginImg1})` }}>
                         <div className="container">
                             <div className="login-bg shadow-sm">
                                 
-                                        <div className='text-center'><img src={dmjicon} className="coupon-img" alt="Coupon" /></div>
+                                        <div className='text-center cp-img-boxvw'><img src={dmjicon} className="coupon-img" alt="Coupon" /></div>
                                         <hr />
                                         <div className="user-login">
                                             <h6><b>Login</b></h6>

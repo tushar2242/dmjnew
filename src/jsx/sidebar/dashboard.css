@@ -67,7 +67,6 @@
     border-radius: 7px
 }
 
-
 /* ---------------------------Dashboard Component------------------------------ */
 .view-box {
 
@@ -352,10 +351,8 @@
 
 .profile-info-text {
     font-size: 16px;
-    font-weight: 400;
-
+    font-weight: 600;
     color: rgb(97, 97, 97);
-
     margin-top: 25px;
 
 
@@ -555,6 +552,14 @@
 }
 
 @media only screen and (max-width:767.98px) {
+    .profile-info-text {
+        font-size: 13.5px;
+        font-weight: 600;
+        color: rgb(97, 97, 97);
+        margin-top: 25px;
+    
+    
+    }
     .usermail {
         margin-top: 30px;
         margin-left: 0px;
