@@ -4,7 +4,7 @@ import Navbar from "../header/Navbar";
 // import RemoveIcon from "@mui/icons-material/Remove";
 // import AddIcon from "@mui/icons-material/Add";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ShareIcon from '@mui/icons-material/Share';
+import ShareIcon from "@mui/icons-material/Share";
 import "./Productdetail.css";
 // import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 // import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
@@ -27,9 +27,9 @@ import { Keyboard, Scrollbar, Navigation, Pagination } from "swiper/modules";
 import img1 from "../../assets/images/earring.jpg";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import StarsIcon from "@mui/icons-material/Stars";
-import StarRateIcon from '@mui/icons-material/StarRate';
-import StarHalfIcon from '@mui/icons-material/StarHalf';
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
+import StarRateIcon from "@mui/icons-material/StarRate";
+import StarHalfIcon from "@mui/icons-material/StarHalf";
+import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import deliveryicon from "../../assets/images/delivery.png";
@@ -43,11 +43,11 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.min.css";
 import { GlassMagnifier } from "react-image-magnifiers";
 import { Helmet } from "react-helmet";
-import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Box from '@mui/material/Box';
-import RemoveIcon from '@mui/icons-material/Remove';
-import AddIcon from '@mui/icons-material/Add';
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import Box from "@mui/material/Box";
+import RemoveIcon from "@mui/icons-material/Remove";
+import AddIcon from "@mui/icons-material/Add";
 
 // import Switch from '@mui/material/Switch';
 // import Stack from '@mui/material/Stack';
@@ -59,8 +59,8 @@ const endPoint = "api/v1/products";
 const ratingEnd = "api/v1/Rating/count";
 
 const getProductEnd = "api/v1/products/sku/";
-const imgUrl = 'https://squid-app-2-7wbvi.ondigitalocean.app/';
-const typeEnd = 'api/v1/products/type?type=';
+const imgUrl = "https://squid-app-2-7wbvi.ondigitalocean.app/";
+const typeEnd = "api/v1/products/type?type=";
 
 // const slug = 'this is slug'
 // const skuid = 'dmj@123'
@@ -117,7 +117,6 @@ function Product() {
   const navigate = useNavigate();
   const { skuid, slug } = useParams();
 
-
   async function getProductId(skuNo) {
     try {
       const proRes = await axios.get(url + getProductEnd + skuNo);
@@ -138,7 +137,7 @@ function Product() {
   }
 
   const fetchData = async () => {
-    setIsLoad(true)
+    setIsLoad(true);
     if (slug && skuid) {
       // const id = await decryptProductId(pId)
 
@@ -174,8 +173,6 @@ function Product() {
     fetchData();
   }, [skuid]);
 
-
-
   const handleImageClick = (image) => {
     setSelectedImage(image);
   };
@@ -187,15 +184,15 @@ function Product() {
     localStorage.setItem("wishList", JSON.stringify(existingCart));
   };
 
-
-
   const addToCart = (productId) => {
     // Get the existing cart from localStorage or initialize an empty array if it doesn't exist
 
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
 
     // Check if the product with the same ID already exists in the cart
-    const existingProduct = existingCart.find(item => item.productId === productId);
+    const existingProduct = existingCart.find(
+      (item) => item.productId === productId
+    );
 
     if (existingProduct) {
       // If the product exists, update its quantity
@@ -204,7 +201,7 @@ function Product() {
       // If the product doesn't exist, add it to the cart as a new item
       const newItem = {
         productId: productId,
-        quantity: quantity
+        quantity: quantity,
       };
       existingCart.push(newItem);
     }
@@ -218,10 +215,8 @@ function Product() {
   // console.log(productId)
   // console.log(id)
 
-
   const increment = () => {
-    if (quantity < 6)
-      setQuantity(quantity + 1);
+    if (quantity < 6) setQuantity(quantity + 1);
   };
 
   const decrement = () => {
@@ -230,24 +225,30 @@ function Product() {
     }
   };
 
-
-
   return (
     <>
-
       {!isLoad ? (
         <>
           <Helmet>
             <meta charSet="utf-8" />
-            <title>{itemInfo && itemInfo.seo_title.replace(/"/g, '')}</title>
-            <meta name="description" content={itemInfo && itemInfo.seo_description.replace(/<[^>]*>/g, '')} />
-            <meta name="keywords" content={itemInfo && itemInfo.search_keywords} />
-
+            <title>{itemInfo && itemInfo.seo_title.replace(/"/g, "")}</title>
+            <meta
+              name="description"
+              content={
+                itemInfo && itemInfo.seo_description.replace(/<[^>]*>/g, "")
+              }
+            />
+            <meta
+              name="keywords"
+              content={itemInfo && itemInfo.search_keywords}
+            />
           </Helmet>
-          <div className="container-fluid" >
-
+          <div className="container-fluid">
             <div className="row detl-page-mobvw">
-              <div className="col-md-6 no-gutters" style={{ paddingRight: '0px' }}>
+              <div
+                className="col-md-6 no-gutters"
+                style={{ paddingRight: "0px" }}
+              >
                 <div className="hid-mob-view stk-box-item top-space-dt">
                   <div className="product-display">
                     <div className="carouselmini">
@@ -271,7 +272,6 @@ function Product() {
                                     className="smalCarouselimg"
                                     onClick={() => handleImageClick(image)}
                                   >
-
                                     <img
                                       src={imgUrl + image}
                                       alt={`Image ${index + 1}`}
@@ -288,31 +288,23 @@ function Product() {
                       imageAlt="Product"
                       largeImageSrc={imgUrl + selectedImage} // Optional
                       className="glass-magnify-sz"
-                      magnifierSize={'80%'}
+                      magnifierSize={"80%"}
                       square
                     />
                   </div>
                 </div>
 
-
                 <div className="desktop-dis-view mobview-contdtl">
-                  <div
-                    className="obtft-img-vw">
-                    <img
-                      src={imgUrl + selectedImage}
-                      className=""
-                    />
-
+                  <div className="obtft-img-vw">
+                    <img src={imgUrl + selectedImage} className="" />
                   </div>
                   <div className="share-wlst-icon">
-                    <FavoriteBorderIcon className="sh-wlst-icsz" /><br />
+                    <FavoriteBorderIcon className="sh-wlst-icsz" />
+                    <br />
                     <ShareIcon className="sh-wlst-icsz mt-1" />
                   </div>
 
-
-
                   <div className="varient-img-box">
-
                     {images.length > 0 &&
                       images.map((image, index) => {
                         return (
@@ -324,7 +316,6 @@ function Product() {
                               src={imgUrl + image}
                               alt="varient product"
                               className="varient-imgsz"
-
                             />
                           </div>
                         );
@@ -335,7 +326,6 @@ function Product() {
 
               <div className="col-md-6 mt-5">
                 <div className="pt-mob-view">
-
                   <ProductPrice
                     title={itemInfo.name}
                     des={itemInfo.seo_description}
@@ -369,7 +359,7 @@ function Product() {
                         onClick={async () => {
                           await wishList(itemInfo.id);
                           navigate("/wishlist");
-                          window.location.reload()
+                          window.location.reload();
                         }}
                       >
                         <FavoriteBorderIcon /> WISHLIST
@@ -411,17 +401,16 @@ function Product() {
 
                   <p className="tagline-line"></p>
                   <div className="">
-
-
-
-
                     <OfferDetails />
                     <p className="tagline-line"></p>
                     <div>
-                      <button className="add-to-cart-btn-sz w-100" onClick={async () => {
-                        await addToCart(itemInfo.id);
-                        navigate("/checkout");
-                      }}>
+                      <button
+                        className="add-to-cart-btn-sz w-100"
+                        onClick={async () => {
+                          await addToCart(itemInfo.id);
+                          navigate("/checkout");
+                        }}
+                      >
                         Buy Now
                       </button>
                     </div>
@@ -448,20 +437,15 @@ function Product() {
                 </p>
               </div>
 
-              <RelatedProduct
-                search={itemInfo.parentType}
-              />
+              <RelatedProduct search={itemInfo.parentType} />
             </div>
           </div>
         </>
       ) : (
         <>
-
-          <div style={{ height: '120vh' }}></div>
+          <div style={{ height: "120vh" }}></div>
           <Loader />
-
         </>
-
       )}
     </>
   );
@@ -469,7 +453,16 @@ function Product() {
 
 export default ProductDetails;
 
-const ProductPrice = ({ title, des, rating, variant, prodes, quantity, increment, decrement }) => {
+const ProductPrice = ({
+  title,
+  des,
+  rating,
+  variant,
+  prodes,
+  quantity,
+  increment,
+  decrement,
+}) => {
   // const [variant, setVariant] = useState([])
 
   const [price, setPrice] = useState({});
@@ -480,8 +473,6 @@ const ProductPrice = ({ title, des, rating, variant, prodes, quantity, increment
 
   async function fetchPrice() {
     if (variant[0].productVariantEntities.length > 0) {
-
-
       // await fetchCurrancy()
       if (currencyValue === "Rupee") {
         await setPrice({
@@ -502,8 +493,7 @@ const ProductPrice = ({ title, des, rating, variant, prodes, quantity, increment
       }
       setSelectedColor(variant[0].productVariantEntities[0].color);
       setSelectedSize(variant[0].productVariantEntities[0].size);
-    }
-    else {
+    } else {
       // console.log('fired')
       await setPrice({
         manualPrice: 0,
@@ -513,9 +503,6 @@ const ProductPrice = ({ title, des, rating, variant, prodes, quantity, increment
       setSelectedColor("No color Added");
       setSelectedSize("No Size");
     }
-
-
-
   }
 
   async function fetchCurrancy() {
@@ -557,11 +544,10 @@ const ProductPrice = ({ title, des, rating, variant, prodes, quantity, increment
     setSelectedSize(color);
   }
 
-
   return (
     <>
       <div>
-        <h2 className="pro-detail-heading">{title.replace(/"/g, '')}</h2>
+        <h2 className="pro-detail-heading">{title.replace(/"/g, "")}</h2>
         {/* <p
           className=""
           dangerouslySetInnerHTML={{ __html: des }}
@@ -605,50 +591,87 @@ const ProductPrice = ({ title, des, rating, variant, prodes, quantity, increment
       {/* -----------------------Quantity------------------------------ */}
       <Box
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          marginBottom: '15px',
-          alignItems: 'start',
-          '& > *': {
+          display: "flex",
+          flexDirection: "column",
+          marginBottom: "15px",
+          alignItems: "start",
+          "& > *": {
             m: 1,
           },
         }}
       >
         <div className="d-flex">
-          <h5 className="mt-2 qnty-fnt-size"><b>Quantity :</b></h5>
-          <ButtonGroup variant="outlined" aria-label="outlined button group" style={{ marginLeft: '20px', }}>
-            <Button onClick={decrement} style={{ border: 'solid 1px #b79d33', color: 'black', borderRadius: '5px', marginLeft: '5px', fontSize: '16px', padding: '0px', boxShadow: '0' }}><RemoveIcon /></Button>
-            <Button style={{ border: 'solid 1px #b79d33', color: 'black', borderRadius: '5px', marginLeft: '5px', fontSize: '16px', padding: '0px', boxShadow: '0' }}>{quantity - 1}</Button>
-            <Button onClick={increment} style={{ border: 'solid 1px #b79d33', color: 'black', borderRadius: '5px', marginLeft: '5px', fontSize: '16px', padding: '0px', boxShadow: '0' }}><AddIcon /></Button>
+          <h5 className="mt-2 qnty-fnt-size">
+            <b>Quantity :</b>
+          </h5>
+          <ButtonGroup
+            variant="outlined"
+            aria-label="outlined button group"
+            style={{ marginLeft: "20px" }}
+          >
+            <Button
+              onClick={decrement}
+              style={{
+                border: "solid 1px #b79d33",
+                color: "black",
+                borderRadius: "5px",
+                marginLeft: "5px",
+                fontSize: "16px",
+                padding: "0px",
+                boxShadow: "0",
+              }}
+            >
+              <RemoveIcon />
+            </Button>
+            <Button
+              style={{
+                border: "solid 1px #b79d33",
+                color: "black",
+                borderRadius: "5px",
+                marginLeft: "5px",
+                fontSize: "16px",
+                padding: "0px",
+                boxShadow: "0",
+              }}
+            >
+              {quantity - 1}
+            </Button>
+            <Button
+              onClick={increment}
+              style={{
+                border: "solid 1px #b79d33",
+                color: "black",
+                borderRadius: "5px",
+                marginLeft: "5px",
+                fontSize: "16px",
+                padding: "0px",
+                boxShadow: "0",
+              }}
+            >
+              <AddIcon />
+            </Button>
           </ButtonGroup>
         </div>
       </Box>
       {/*---------------------------------------------------------------- */}
+      <div className="row">
+      <div className="col-md-6">
       <p className="col-fnt-sz offer-heading-txt">MORE COLORS</p>
       <div className="color-container">
-        {/* <div
-         style={{ background:` url(${imgUrl}${img.thumbImage})`,backgroundSize:'100% 100%' }}
-          alt="Product"
-          className="pro-color-img-active"
-        ></div> */}
-
         {variant.length > 0 &&
           variant.map((img) => {
-
-            // if (color.color != selectedColor) {
-            //   {
-            //     /* console.log(color.color) */
-            //   }
             return (
               <div
-                style={img.thumbImage && { background: ` url(${imgUrl}${img.thumbImage})` }}
+                style={
+                  img.thumbImage && {
+                    background: ` url(${imgUrl}${img.thumbImage})`,
+                  }
+                }
                 alt="Product"
                 className="pro-color-img"
-              // onClick={() => handleVariantColor(img.thumbImage)}
               ></div>
             );
-          }
-          )}
+          })}
       </div>
 
       <p className="col-fnt-sz mt-4 offer-heading-txt">SELECT SIZE</p>
@@ -666,52 +689,82 @@ const ProductPrice = ({ title, des, rating, variant, prodes, quantity, increment
               );
             }
           })}
-        {/* <NotAvailable /> */}
-
-
-
+      </div>
       </div>
 
-      {/*  */}
+<div className="col-md-6 mt-2 mb-2">
+      <div className="coupon-bxbdr">
+       <div className="border-coupon">
+       <h5 className="coupon-off-fnt">20% flat off on all products using HDFC Credit Card</h5>
+       <div className="coupon-copy-button mt-4 mb-2">
+          <input id="copyvalue" type="text" readonly value="GOFREE" />
+          <button className="copybtn">COPY</button>
+        </div>
+       </div>
+      </div>
+</div>
+
+
+     </div>
+
+
       <p className="tagline-line"></p>
       <AccordionTxt
-        title='Product Details'
+        title="Product Details"
         des={<DetailsBox des={prodes} />}
         className="AccordionTxt"
       />
       <p className="tagline-line"></p>
       <AccordionTxt
-        title='Dimension'
+        title="Dimension"
         des={
-          variant[0].productVariantEntities.length > 0 &&
-          <>
-
-            {variant[0].productVariantEntities[0].product_width != 0 && <p>Width : {variant[0].productVariantEntities[0].product_width} {' '}{variant[0].productVariantEntities[0].size}</p>}
-            {variant[0].productVariantEntities[0].product_heigth != 0 && <p>Height : {variant[0].productVariantEntities[0].product_heigth} {' '}{variant[0].productVariantEntities[0].size}</p>}
-            {variant[0].productVariantEntities[0].product_weight != 0 && <p>Weight : {variant[0].productVariantEntities[0].product_weight}</p>}
-            {variant[0].productVariantEntities[0].product_depth != 0 && <p>Depth : {variant[0].productVariantEntities[0].product_depth} {' '}{variant[0].productVariantEntities[0].size}</p>}
-          </>
-
+          variant[0].productVariantEntities.length > 0 && (
+            <>
+              {variant[0].productVariantEntities[0].product_width != 0 && (
+                <p>
+                  Width : {variant[0].productVariantEntities[0].product_width}{" "}
+                  {variant[0].productVariantEntities[0].size}
+                </p>
+              )}
+              {variant[0].productVariantEntities[0].product_heigth != 0 && (
+                <p>
+                  Height : {variant[0].productVariantEntities[0].product_heigth}{" "}
+                  {variant[0].productVariantEntities[0].size}
+                </p>
+              )}
+              {variant[0].productVariantEntities[0].product_weight != 0 && (
+                <p>
+                  Weight : {variant[0].productVariantEntities[0].product_weight}
+                </p>
+              )}
+              {variant[0].productVariantEntities[0].product_depth != 0 && (
+                <p>
+                  Depth : {variant[0].productVariantEntities[0].product_depth}{" "}
+                  {variant[0].productVariantEntities[0].size}
+                </p>
+              )}
+            </>
+          )
         }
       />
 
-      <>
-      </>
+      <></>
       <p className="tagline-line"></p>
 
       <AccordionTxt
-        title='Material'
+        title="Material"
         des={
           <>
-
             <h5 className="offer-heading-txt d-flex">
               <b className="mx-2">Material:</b>
-              <p>{variant[0].productVariantEntities.length > 0 && variant[0].productVariantEntities[0].material}</p>
+              <p>
+                {variant[0].productVariantEntities.length > 0 &&
+                  variant[0].productVariantEntities[0].material}
+              </p>
             </h5>
           </>
         }
       />
-
     </>
   );
 };
@@ -726,28 +779,23 @@ const NotAvailable = () => {
   );
 };
 
-
-
 const DetailsBox = ({ des }) => {
-
-  const [filterDes, setFilterDes] = useState('')
+  const [filterDes, setFilterDes] = useState("");
 
   function removeEmptyTags(html) {
-    const tempDiv = document.createElement('div');
+    const tempDiv = document.createElement("div");
     tempDiv.innerHTML = html;
 
-    const emptyTags = tempDiv.querySelectorAll(':empty');
-    emptyTags.forEach(tag => tag.remove());
+    const emptyTags = tempDiv.querySelectorAll(":empty");
+    emptyTags.forEach((tag) => tag.remove());
 
-    setFilterDes(tempDiv.innerHTML)
+    setFilterDes(tempDiv.innerHTML);
     // return tempDiv.innerHTML;
   }
 
   useEffect(() => {
-    removeEmptyTags(des)
-  }, [])
-
-
+    removeEmptyTags(des);
+  }, []);
 
   return (
     <>
@@ -790,19 +838,54 @@ function RatingBox() {
         <div>
           <div>
             <p className="pro-dtl-ft-sz">
-              50<span style={{ marginLeft: '8px', color: '#b79d33' }}><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarRateIcon /></span>
+              50
+              <span style={{ marginLeft: "8px", color: "#b79d33" }}>
+                <StarRateIcon />
+                <StarRateIcon />
+                <StarRateIcon />
+                <StarRateIcon />
+                <StarRateIcon />
+              </span>
             </p>
             <p className="pro-dtl-ft-sz">
-              40<span style={{ marginLeft: '8px', color: '#b79d33' }}><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarHalfIcon /></span>
+              40
+              <span style={{ marginLeft: "8px", color: "#b79d33" }}>
+                <StarRateIcon />
+                <StarRateIcon />
+                <StarRateIcon />
+                <StarRateIcon />
+                <StarHalfIcon />
+              </span>
             </p>
             <p className="pro-dtl-ft-sz">
-              35<span style={{ marginLeft: '8px', color: '#b79d33' }}><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarHalfIcon /><StarOutlineIcon /></span>
+              35
+              <span style={{ marginLeft: "8px", color: "#b79d33" }}>
+                <StarRateIcon />
+                <StarRateIcon />
+                <StarRateIcon />
+                <StarHalfIcon />
+                <StarOutlineIcon />
+              </span>
             </p>
             <p className="pro-dtl-ft-sz">
-              14<span style={{ marginLeft: '8px', color: '#b79d33' }}><StarRateIcon /><StarRateIcon /><StarHalfIcon /><StarOutlineIcon /><StarOutlineIcon /></span>
+              14
+              <span style={{ marginLeft: "8px", color: "#b79d33" }}>
+                <StarRateIcon />
+                <StarRateIcon />
+                <StarHalfIcon />
+                <StarOutlineIcon />
+                <StarOutlineIcon />
+              </span>
             </p>
             <p className="pro-dtl-ft-sz">
-              05<span style={{ marginLeft: '8px', color: '#b79d33' }}><StarRateIcon /><StarHalfIcon /><StarOutlineIcon /><StarOutlineIcon /><StarOutlineIcon /></span>
+              05
+              <span style={{ marginLeft: "8px", color: "#b79d33" }}>
+                <StarRateIcon />
+                <StarHalfIcon />
+                <StarOutlineIcon />
+                <StarOutlineIcon />
+                <StarOutlineIcon />
+              </span>
             </p>
           </div>
         </div>
@@ -868,7 +951,16 @@ const OfferDetails = () => {
             id="panel1a-header"
           >
             <Typography>
-              <h5 style={{ fontSize: '16px', fontWeight: '600', letterSpacing: '0.75px', fontFamily: 'AcariSansNeueRegular' }}><b>BEST OFFERS</b></h5>
+              <h5
+                style={{
+                  fontSize: "16px",
+                  fontWeight: "600",
+                  letterSpacing: "0.75px",
+                  fontFamily: "AcariSansNeueRegular",
+                }}
+              >
+                <b>BEST OFFERS</b>
+              </h5>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -933,24 +1025,20 @@ const RelatedProduct = ({ search }) => {
         if (res.data.data) {
           setReletedProduct(res.data.data);
         }
-
       } catch (err) {
         console.log(err);
       }
-    }
-    else {
+    } else {
       try {
         const res = await axios.get(url + typeEnd);
         // console.log(res.data.data);
         if (res.data.data) {
           setReletedProduct(res.data.data);
         }
-
       } catch (err) {
         console.log(err);
       }
     }
-
   }
 
   useEffect(() => {
@@ -985,8 +1073,10 @@ const RelatedProduct = ({ search }) => {
             return (
               <ProductCard
                 key={item.id}
-                img={item.images.length > 0 && imgUrl + item.images[0].thumbImage}
-                name={item.seo_title.replace(/"/g, '')}
+                img={
+                  item.images.length > 0 && imgUrl + item.images[0].thumbImage
+                }
+                name={item.seo_title.replace(/"/g, "")}
                 category={item.name}
                 id={item.id}
                 price={
@@ -1084,8 +1174,6 @@ const SwitchCurrency = ({ setCurrencyValue }) => {
   );
 };
 
-
-
 const AccordionTxt = ({ title, des }) => {
   return (
     <>
@@ -1097,16 +1185,23 @@ const AccordionTxt = ({ title, des }) => {
             id="panel1a-header"
           >
             <Typography>
-              <h5 style={{ fontSize: '16px', fontWeight: '600', letterSpacing: '0.75px', fontFamily: 'AcariSansNeueRegular' }}>{title}</h5>
+              <h5
+                style={{
+                  fontSize: "16px",
+                  fontWeight: "600",
+                  letterSpacing: "0.75px",
+                  fontFamily: "AcariSansNeueRegular",
+                }}
+              >
+                {title}
+              </h5>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography style={{ marginLeft: "30px" }}>
-              {des}
-            </Typography>
+            <Typography style={{ marginLeft: "30px" }}>{des}</Typography>
           </AccordionDetails>
         </Accordion>
       </div>
     </>
-  )
-}
+  );
+};
