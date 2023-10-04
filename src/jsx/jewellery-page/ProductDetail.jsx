@@ -54,10 +54,10 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import Box from '@mui/material/Box';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
+
 // import Switch from '@mui/material/Switch';
 // import Stack from '@mui/material/Stack';
 // import Typography from '@mui/material/Typography';
-
 // import InnerImageZoom from "https://cdn.skypack.dev/react-inner-image-zoom@3.0.0";
 
 const url = "https://api.diwamjewels.com/DMJ/";
@@ -255,8 +255,8 @@ function Product() {
           </Helmet>
           <div className="container-fluid" >
 
-            <div className="row">
-              <div className="col-md-6">
+            <div className="row detl-page-mobvw">
+              <div className="col-md-6 no-gutters">
                 <div className="hid-mob-view stk-box-item top-space-dt">
                   <div className="product-display">
                     <div className="carouselmini">
@@ -313,7 +313,10 @@ function Product() {
                               />
                                
                             </div>
-                            <div className="share-wlst-icon"><FavoriteBorderIcon /></div>
+                            <div className="share-wlst-icon">
+                            <FavoriteBorderIcon className="sh-wlst-icsz"/><br />
+                            <ShareIcon className="sh-wlst-icsz mt-1"/>
+                            </div>
                    
                         
 
