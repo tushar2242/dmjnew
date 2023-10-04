@@ -57,6 +57,9 @@ function Navbar() {
 
   const navigate = useNavigate();
 
+  const [wishLength, setWishLength] = useState(0)
+  const [cartLength, setCartLength] = useState(0)
+
 
   async function handleSearch(e) {
     e.preventDefault();
@@ -129,6 +132,13 @@ function Navbar() {
 
   useEffect(() => {
     // console.log(searchTxt)
+
+    let wishList = JSON.parse(localStorage.getItem('wishList')) || [];
+    const uniqueWishList = [...new Set(wishList)];
+    setWishLength(uniqueWishList.length)
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCartLength(cart.length)
+
     setSearch(searchTxt);
     fetchMenu();
     // Attach the event listener when the component mounts
@@ -259,18 +269,18 @@ function Navbar() {
               <NavLink to="/wishlist">
                 {" "}
                 <div className="show-numbericn">
-                <i className="bi bi-suit-heart-fill nav-icon-item ms-4"></i>
-                <div className="number-icon-sz">5</div>
+                  <i className="bi bi-suit-heart-fill nav-icon-item ms-4"></i>
+                  <div className="number-icon-sz">{wishLength}</div>
                 </div>
               </NavLink>
             </div>
             <div className="nav-box">
               <NavLink to="/addToCart">
                 {" "}
-                
+
                 <div className="show-numbericn">
-                <i className="bi bi-cart4 nav-icon-item ms-4"></i>
-                <div className="number-icon-sz">10</div>
+                  <i className="bi bi-cart4 nav-icon-item ms-4"></i>
+                  <div className="number-icon-sz">{cartLength}</div>
                 </div>
               </NavLink>
             </div>
@@ -472,15 +482,15 @@ function Navbar() {
               <div className="show-numbericn">
                 <i className="bi bi-suit-heart-fill nav-icon-item ms-3"></i>
                 <div className="number-icon-sz">5</div>
-                </div>
+              </div>
             </NavLink>
             <NavLink to="/addToCart">
               {" "}
               {/* <i className="bi bi-cart4 nav-icon-item ms-3"></i> */}
               <div className="show-numbericn">
-              <i className="bi bi-cart4 nav-icon-item ms-3"></i>
+                <i className="bi bi-cart4 nav-icon-item ms-3"></i>
                 <div className="number-icon-sz">5</div>
-                </div>
+              </div>
             </NavLink>
 
             <NavLink
