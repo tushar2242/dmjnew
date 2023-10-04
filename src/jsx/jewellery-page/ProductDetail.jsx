@@ -588,7 +588,7 @@ const ProductPrice = ({
       </div>
       <p className="tax-font">Inclusive of all taxes</p>
 
-      {/* -----------------------Quantity------------------------------ */}
+      
       <Box
         sx={{
           display: "flex",
@@ -655,57 +655,57 @@ const ProductPrice = ({
       </Box>
       {/*---------------------------------------------------------------- */}
       <div className="row">
-      <div className="col-md-6">
-      <p className="col-fnt-sz offer-heading-txt">MORE COLORS</p>
-      <div className="color-container">
-        {variant.length > 0 &&
-          variant.map((img) => {
-            return (
-              <div
-                style={
-                  img.thumbImage && {
-                    background: ` url(${imgUrl}${img.thumbImage})`,
-                  }
+        <div className="col-md-6">
+          <p className="col-fnt-sz offer-heading-txt">MORE COLORS</p>
+          <div className="color-container">
+            {variant.length > 0 &&
+              variant.map((img) => {
+                return (
+                  <div
+                    style={
+                      img.thumbImage && {
+                        background: ` url(${imgUrl}${img.thumbImage})`,
+                      }
+                    }
+                    alt="Product"
+                    className="pro-color-img"
+                  ></div>
+                );
+              })}
+          </div>
+
+          <p className="col-fnt-sz mt-4 offer-heading-txt">SELECT SIZE</p>
+          <div style={{ display: "flex" }}>
+            <p className="sel-size-active" style={{ marginLeft: "8px" }}>
+              {selectedSize}
+            </p>
+            {variant[0].productVariantEntities.length > 0 &&
+              variant[0].productVariantEntities.map((varSize) => {
+                if (varSize.size !== selectedSize) {
+                  return (
+                    <p className="sel-size" style={{ marginLeft: "8px" }}>
+                      {varSize.size}
+                    </p>
+                  );
                 }
-                alt="Product"
-                className="pro-color-img"
-              ></div>
-            );
-          })}
-      </div>
-
-      <p className="col-fnt-sz mt-4 offer-heading-txt">SELECT SIZE</p>
-      <div style={{ display: "flex" }}>
-        <p className="sel-size-active" style={{ marginLeft: "8px" }}>
-          {selectedSize}
-        </p>
-        {variant[0].productVariantEntities.length > 0 &&
-          variant[0].productVariantEntities.map((varSize) => {
-            if (varSize.size !== selectedSize) {
-              return (
-                <p className="sel-size" style={{ marginLeft: "8px" }}>
-                  {varSize.size}
-                </p>
-              );
-            }
-          })}
-      </div>
-      </div>
-
-<div className="col-md-6 mt-2 mb-2">
-      <div className="coupon-bxbdr">
-       <div className="border-coupon">
-       <h5 className="coupon-off-fnt">20% flat off on all products using HDFC Credit Card</h5>
-       <div className="coupon-copy-button mt-4 mb-2">
-          <input id="copyvalue" type="text" readonly value="GOFREE" />
-          <button className="copybtn">COPY</button>
+              })}
+          </div>
         </div>
-       </div>
+
+        <div className="col-md-6 mt-2 mb-2">
+          <div className="coupon-bxbdr">
+            <div className="border-coupon">
+              <h5 className="coupon-off-fnt">20% flat off on all products using HDFC Credit Card</h5>
+              <div className="coupon-copy-button mt-4 mb-2">
+                <input id="copyvalue" type="text" readonly value="GOFREE" />
+                <button className="copybtn">COPY</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       </div>
-</div>
-
-
-     </div>
 
 
       <p className="tagline-line"></p>
