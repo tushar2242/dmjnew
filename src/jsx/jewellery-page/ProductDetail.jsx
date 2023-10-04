@@ -256,7 +256,7 @@ function Product() {
           <div className="container-fluid" >
 
             <div className="row detl-page-mobvw">
-              <div className="col-md-6 no-gutters">
+              <div className="col-md-6 no-gutters" style={{paddingRight:'0px'}}>
                 <div className="hid-mob-view stk-box-item top-space-dt">
                   <div className="product-display">
                     <div className="carouselmini">
