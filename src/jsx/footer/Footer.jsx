@@ -20,14 +20,7 @@ const useFullLink = [
     title: 'Handi crafts',
     link: false
   },
-  {
-    title: 'Heritage',
-    link: false
-  },
-  {
-    title: 'Apparels',
-    link: false
-  },
+ 
   {
     title: 'Blue Pottery',
     link: false

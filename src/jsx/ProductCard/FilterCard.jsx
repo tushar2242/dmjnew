@@ -138,17 +138,19 @@ const ProductItemCard = ({ img, item, price }) => {
                 <div
                   onClick={() => RedirectDetailsPage(item.id, "/wishlist")}
                   className="text-decoration-none"
-                ><div className="card__top__section__icons">
-                    <FavoriteBorderIcon className="card-pro-icon" />
-                  </div>
+                >
+                {/* <div className="card__top__section__icons">
+                   
+                  </div> */}
                 </div>
               </div>
 
               <div
                 onClick={() => RedirectDetailsPage(item.id, "/productDetails")}
-                className="text-decoration-none">
+                className="text-decoration-none d-flex justify-content-between">
 
                 <p className="trend-cont-fnt ms-2">{item.name.length < 20 ? item.name : item.name.replace(/"/g, '').slice(0, 20) + '...'}</p>
+                <FavoriteBorderIcon className="card-pro-icon" />
               </div>
               <div className="d-flex">
                 <p className="strike-text1">

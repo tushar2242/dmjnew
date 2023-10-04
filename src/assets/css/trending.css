@@ -269,6 +269,20 @@
     margin-left:7px;
     color:rgb(97, 97, 97)
 }
+
+.trend-cart-btn{
+    font-size:15px;
+    font-weight:500;
+    border-radius:10px;
+    background-color:rgb(235, 235, 235);
+    border:none;
+    padding-left:30px;
+    padding-right:30px;
+    padding-top:5px;
+    padding-bottom:5px;
+    color:#b79d33;
+    width:100%
+}
 }
 .tab:active{
     color:blue;

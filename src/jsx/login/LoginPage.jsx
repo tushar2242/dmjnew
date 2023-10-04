@@ -8,6 +8,7 @@ import axios from 'axios';
 import loginImg1 from '../../assets/images/banner/login1.png';
 import Loader from '../loader/Loader';
 import dmjicon from '../../assets/images/dmj.png'
+import VisibilityIcon from '@mui/icons-material/Visibility';
 // import { TextField } from '@mui/material';
 // import { withRouter } from 'react-router-dom';
 
@@ -142,9 +143,12 @@ const LoginWithMobileNo = () => {
                                                     setMobileNo(e.target.value)
                                                 }} required />
 
+                                                <div className='pas-eicon-box'>
                                                 <input type="password" className="login-input" id="login-number1" placeholder="Enter the Password*" value={password} onChange={(e) => {
                                                     setPassword(e.target.value)
                                                 }} required />
+                                                  <VisibilityIcon className="password-icon" />
+                                                </div> 
 
                                                 {
                                                     isOtp &&

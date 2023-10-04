@@ -1183,7 +1183,14 @@ top:140px;
   color: #fff;
   border: 1px solid transparent;
 }
-
+.pas-eicon-box{
+  position:relative;
+}
+.password-icon{
+  position:absolute;
+  right:18px;
+  top:17px;
+}
 @media only screen and (max-width:1023.98px){
   .cpn-wt-box{
     display:block;
