@@ -231,7 +231,7 @@ function Navbar() {
             </div>
             {profile && (
               <div className="more-profile">
-                {(!userId) ? (
+                {(!userId && userId == undefined) ? (
                   <li
                     onClick={async () => {
                       navigate("/defaultlogin");
@@ -382,7 +382,7 @@ function Navbar() {
                 </div>
                 {profile && (
                   <div className="more-profile">
-                    {(!userId) ? (
+                    {(!userId && userId == undefined) ? (
                       <li
                         onClick={async () => {
                           navigate("/login");
@@ -392,8 +392,16 @@ function Navbar() {
                       </li>
                     ) : (
                       <>
-                        <li>Profile</li>
-                        <li className="mt-2">Sign Out</li>
+                        <li onClick={() => { navigate('/profile') }}>Profile</li>
+                        <li
+                          className="mt-2"
+                          onClick={() => {
+                            handleSignOut();
+                            window.location.reload();
+                          }}
+                        >
+                          Sign Out
+                        </li>
                       </>
                     )}
                   </div>
@@ -471,7 +479,7 @@ function Navbar() {
             </NavLink>
             {profile && (
               <div className="more-profile">
-                {(!userId) ? (
+                {(!userId && userId == undefined) ? (
                   <li
                     onClick={async () => {
                       navigate("/login");
@@ -481,8 +489,16 @@ function Navbar() {
                   </li>
                 ) : (
                   <>
-                    <li>Profile</li>
-                    <li className="mt-2">Sign Out</li>
+                    <li onClick={() => { navigate('/profile') }}>Profile</li>
+                    <li
+                      className="mt-2"
+                      onClick={() => {
+                        handleSignOut();
+                        window.location.reload();
+                      }}
+                    >
+                      Sign Out
+                    </li>
                   </>
                 )}
               </div>

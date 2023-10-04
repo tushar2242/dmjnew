@@ -33,6 +33,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Accordion from "react-bootstrap/Accordion";
 import AddIcon from "@mui/icons-material/Add";
 import { Select } from "@mui/material";
+import PopUp from "../popup/PopUp";
 
 
 const url = "https://api.diwamjewels.com/DMJ/";
@@ -67,8 +68,8 @@ const CheckoutPage = () => {
     <>
       <HeaderCon />
       <Navbar />
-    
-      {userId ?<div className="checkout-bg">
+
+      {userId ? <div className="checkout-bg">
         <div className="container-fluid">
           <div className="row fl-dirt-col">
             <div className="col-md-7 mt-3">
@@ -94,7 +95,7 @@ const CheckoutPage = () => {
                     Shipping Address
                   </Accordion.Header>
                   <Accordion.Body>
-                    <DlryAddress 
+                    <DlryAddress
                     />
                   </Accordion.Body>
                 </Accordion.Item>
@@ -237,7 +238,7 @@ const DlryAddress = (props) => {
       address: "",
       address2: "",
       city: "",
-      state:"",
+      state: "",
       postalCode: "",
     },
   ]);
@@ -326,9 +327,9 @@ const DlryAddress = (props) => {
         <br />
         <FormLabel className="fm-lbl-heading">STATE </FormLabel>
         <br />
-        <Input type="text" className="input-box-bdr mt-1" required 
-        value={delivery.state} 
-        onChange={(e) => setDelivery({ ...delivery, state: e.target.value })}>
+        <Input type="text" className="input-box-bdr mt-1" required
+          value={delivery.state}
+          onChange={(e) => setDelivery({ ...delivery, state: e.target.value })}>
 
         </Input>
         <br />
@@ -336,22 +337,22 @@ const DlryAddress = (props) => {
         <FormLabel className="fm-lbl-heading">COUNTRY</FormLabel>
         <br />
         <select className="input-box-bdr mt-1" required
-         value={selectedCountry}
-         onChange={e => setSelectedCountry(e.target.value)}
-         >
-        <option value="India">India</option>
-        <option value="USA">USA</option>
+          value={selectedCountry}
+          onChange={e => setSelectedCountry(e.target.value)}
+        >
+          <option value="India">India</option>
+          <option value="USA">USA</option>
         </select>
         <br />
 
         <div className="d-flex">
-        <label className="dlry-work-btn">
+          <label className="dlry-work-btn">
             <input
               type="checkbox"
               name="home"
               checked={isHomeChecked}
               onChange={handleCheckboxChange}
-             
+
             />
             Home
           </label>
@@ -361,7 +362,7 @@ const DlryAddress = (props) => {
               name="office"
               checked={isOfficeChecked}
               onChange={handleCheckboxChange}
-             
+
             />
             Office
           </label>
