@@ -43,7 +43,7 @@ export default class WishList extends React.Component {
             this.setState((prevState) => {
                 const updatedProDetails = [...prevState.prodetails, res.data.data];
                 return { prodetails: updatedProDetails };
-              });
+            });
 
             // let pro = this.state.prodetails
             // console.log(updatedProDetails)
@@ -59,10 +59,11 @@ export default class WishList extends React.Component {
         wishList = JSON.parse(localStorage.getItem('wishList')) || [];
         window.scrollTo(0, 0);
         // setProDetails([])
+        const uniqueWishList = [...new Set(wishList)];
         this.setState({ prodetails: [] });
         // setAdtCart(cart)
 
-        wishList.map((id) => this.handleWishListItems(id))
+        uniqueWishList.map((id) => this.handleWishListItems(id))
         // addProductData() 
         // console.log(this.state.prodetails)
 
@@ -195,7 +196,7 @@ const WhiteItemCard = ({ item }) => {
                             MRP: <del><i className="bi bi-currency-rupee"></i> {item.images.length > 0 && item.images[0].productVariantEntities.length > 0 && item.images[0].productVariantEntities[0].price}</del><span> (Incl all taxes)</span>
                         </p>
                         <div className="wish-star">
-                        <span style={{color:'#b79d33'}}><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarHalfIcon /><StarOutlineIcon /></span> 50 Reviews
+                            <span style={{ color: '#b79d33' }}><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarHalfIcon /><StarOutlineIcon /></span> 50 Reviews
                         </div>
                         <div className="d-flex justify-content-between mt-4">
                             <NavLink to="/addToCart"><button className="add-cart-btn" onClick={async () => {

@@ -241,7 +241,7 @@ function Navbar() {
                   </li>
                 ) : (
                   <>
-                    <li onClick={() => navigate('/sidebar')}>Profile</li>
+                    <li onClick={() => navigate('/profile')}>Profile</li>
                     <li
                       className="mt-2"
                       onClick={() => {
@@ -258,13 +258,13 @@ function Navbar() {
             <div className="nav-box">
               <NavLink to="/wishlist">
                 {" "}
-                <i className="bi bi-suit-heart-fill nav-icon-item ms-4"></i>
+                <i className="bi bi-suit-heart-fill nav-icon-item ms-4"></i>2
               </NavLink>
             </div>
             <div className="nav-box">
               <NavLink to="/addToCart">
                 {" "}
-                <i className="bi bi-cart4 nav-icon-item ms-4"></i>
+                <i className="bi bi-cart4 nav-icon-item ms-4"></i>2
               </NavLink>
             </div>
           </div>
