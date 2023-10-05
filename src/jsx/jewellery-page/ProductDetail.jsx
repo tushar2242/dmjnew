@@ -250,6 +250,9 @@ function Product() {
             />
           </Helmet>
           <div className="container-fluid">
+           <div>
+           <p className="breadcrumb-fnt-sz"> Home / Products / Product details</p>
+          </div>
             <div className="row detl-page-mobvw">
               <div
                 className="col-md-6 no-gutters"
@@ -347,7 +350,7 @@ function Product() {
                     decrement={decrement}
                   />
 
-                  <div className="mt-2" style={{ display: "flex" }}>
+                  <div className="mt-2 add-wishlist-btnbtm" style={{ display: "flex" }}>
                     <div>
                       <button
                         className="add-to-cart-btn-sz"
@@ -550,6 +553,8 @@ const ProductPrice = ({
   async function handleVariantColor(color) {
     setSelectedSize(color);
   }
+
+
 
   return (
     <>

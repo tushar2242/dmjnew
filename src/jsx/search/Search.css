@@ -1,8 +1,39 @@
 .filter-view{
     display:flex
 }
+.filter-ftr-content{
+    background-color:#faf7ec;
+    padding:15px;
+    margin-top:10px;
+}
+.fltr-ftr-headingtag{
+    font-size:18px;
+    font-weight:600;
+    letter-spacing: 0.75px;
+    color:rgb(17, 17, 17);
+}
+.fltr-para-textfnt{
+    font-size:15px;
+    font-weight:600;
+    letter-spacing: 0.75px;
+    color:rgb(97, 97, 97);
+    text-align: justify;
+}
 @media only screen and (max-width:767.98px){
     .filter-view{
         display:block
     }  
+    .filter-ftr-content{
+        background-color:#faf7ec;
+        padding:7px;
+        margin-top:10px;
+    }
+    .fltr-ftr-headingtag{
+        font-size:16px;
+      
+    }
+    .fltr-para-textfnt{
+        font-size:13px;
+      
+    }
 }

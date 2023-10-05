@@ -1088,7 +1088,14 @@ height:350px;
     border-radius: 3rem;
 
   }
-
+.add-wishlist-btnbtm{
+  position: sticky;
+  bottom:0%;
+  background-color: rgb(255, 255, 255);
+  padding:0px;
+  width:100%;
+  z-index:100;
+}
 }
 /* .css-1rwt2y5-MuiButtonBase-root-MuiButton-root{
   border:solid 1px #b79d33 !important;
@@ -1191,10 +1198,21 @@ top:140px;
   right:18px;
   top:17px;
 }
+.breadcrumb-fnt-sz{
+  font-size:15px;
+  font-weight:600;
+  letter-spacing: 0.75px;
+  margin-top:20px;
+  cursor: pointer;
+}
 @media only screen and (max-width:1023.98px){
   .cpn-wt-box{
     display:block;
     justify-content: space-between;
   }
   
+}
+
+.blur-background {
+  backdrop-filter: blur(5px); 
 }
