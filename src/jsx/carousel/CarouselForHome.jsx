@@ -145,7 +145,7 @@ const ProductCard = ({ img, name, category, id, price, sku, slug }) => {
     // console.log(sku,slug)
 
     function RedirectDetailsPage(id, sku, slug) {
-        navigate(`/productDetails/` + slug + '/' + sku, { state: { id: id } })
+        navigate(`/p/` + slug + '/' + sku, { state: { id: id } })
         localStorage.setItem('productId', id)
     };
 

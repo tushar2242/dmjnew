@@ -86,7 +86,7 @@ export default class SetRoutes extends React.Component {
                     <Route path='/checkout' element={<CheckoutPage />} />
                     <Route path='/card' element={<FilterCard />} />
                     <Route path='/search' element={<Search />} />
-                    <Route path='/productDetails/:slug/:skuid' element={<ProductDetails />} />
+                    <Route path='/p/:slug/:skuid' element={<ProductDetails />} />
                     <Route path='/privacypolicy' element={<Privacy />} />
                     <Route path='/termscondition' element={<Terms />} />
                     <Route path='/refundpolicy' element={<Refund />} />
@@ -97,6 +97,7 @@ export default class SetRoutes extends React.Component {
                     <Route path='/rating' element={<ReviewPage />} />
                     {/* <Route path='/sidebar' element={<Sidebar/>} /> */}
 
+                    <Route path='/prodetails' element={<Home />} />
 
                     <Route path="/profile" element={<Sidebar />} />
                     {/* <Route path="/overview" element={<Overview />} />
