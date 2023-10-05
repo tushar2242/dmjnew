@@ -1216,9 +1216,51 @@ body {
    border-radius: 3px;
   }
   .whatsapp-icon {
-  
-    bottom: 20px;
+    bottom: 5px;
     left: 5px;
 
+  }
+}
+.pop-srch-fnt-sz{
+  font-size:13px;
+  font-weight:600;
+  letter-spacing: 0.75px;
+  color:white;
+}
+.footer-topline{
+  border-top:solid 1px rgb(228, 228, 228);
+}
+.ppl-srch-hdfnt{
+  font-size:15px;
+  font-weight: 600;
+  letter-spacing: 0.75px;
+  color:#ABDBD3;
+  margin-top:10px;
+  
+}
+.ftr-leftline{
+  border-left:solid 2px white;
+  height:20px;
+  margin-left:5px;
+  margin-right:5px;
+  
+}
+.pplr-srch-inblk{
+  display:flex;
+}
+@media only screen and (max-width:767.98px){
+  .pplr-srch-inblk{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .footer-desktopvw{
+    display: none !important;
+  }
+
+}
+
+@media only screen and (min-width:768px){
+  .footer-mobvwsh{
+    display:none;
   }
 }

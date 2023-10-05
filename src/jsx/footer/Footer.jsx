@@ -81,7 +81,6 @@ export default class Footer extends React.Component {
     return (
       <>
         <ShareIcon />
-
         <div className="footer-bg mt-1">
           <div className="container">
             <footer className="">
@@ -203,8 +202,18 @@ export default class Footer extends React.Component {
                 <FooterItem head=" Main Pages" items={section} navi={true} />
                 <FooterItem head=" Important" items={info} navi={true} />
               </div>
-
-              <div className="d-flex justify-content-between py-4 my-4 border-top footerText">
+                 <div className="footer-topline"></div>
+                 <div>
+                 <h3 className="ppl-srch-hdfnt">Popular Searches</h3>
+                 <div className="pplr-srch-inblk">
+                 <PopularSearches />
+                 <PopularSearches />
+                 <PopularSearches />
+                 <PopularSearches />
+                 </div>
+                 </div>
+                 
+              <div className="d-flex justify-content-between py-4 my-4 border-top ">
                 <p className="footer-para">
                   &copy; 2021-2023 Diwamjewels, All rights reserved.
                 </p>
@@ -295,16 +304,18 @@ const ShareIcon = () => {
                 <i className="bi bi-facebook fs-5 footer-icbx"></i>
               </NavLink></div>
              
-              <div className="mt-3"> <NavLink className="link-dark stky-scl-icngap" to="/">
+              <div className="mt-3"> 
+              <NavLink className="link-dark stky-scl-icngap" to="/">
                 <i className="bi bi-whatsapp fs-5 footer-icbx"></i>
-              </NavLink></div>
+              </NavLink>
+              </div>
             </div>
 
             <div className="sticky-icons1">
               <NavLink
                 className="link-dark"
 
-                to="https://www.facebook.com/diwamjewels"
+                to="/"
               >
                 <i className="bi bi-instagram fs-5 footer-icbx"></i>
               </NavLink>
@@ -319,3 +330,18 @@ const ShareIcon = () => {
     </>
   );
 };
+
+
+
+const PopularSearches = () => {
+  return (
+    <>
+   
+      <div className="d-flex ms-1">
+        <p className="pop-srch-fnt-sz">Rings</p> 
+        <div className="ftr-leftline"></div>
+        <p className="pop-srch-fnt-sz">Rings</p>
+      </div>
+    </>
+  )
+}

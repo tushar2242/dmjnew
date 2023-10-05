@@ -186,7 +186,7 @@ const ProductItemCard = ({ img, item, price }) => {
                 <p className="off-font">( {(item.images.length > 0 && item.images[0].productVariantEntities.length > 0)? item.images[0].productVariantEntities[0].discount :0 }% OFF )</p>
                </div>
               </div>
-              <div className="d-flex ms-2">
+              <div className="d-flex ms-2" style={{marginTop:'-10px'}}>
                 <p className="trend-rt-box1">
                   <b>
                     4.5 <i className="bi bi-star-fill trend-rt-icon"></i>
