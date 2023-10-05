@@ -11,7 +11,7 @@ import './ddmenu.css'
 
 const url = "https://api.diwamjewels.com/DMJ/";
 const endPoint = "api/v1/category/maincategoryName/";
-const subSubEndPoint = 'api/v1/category/subcategory/'
+const subSubEndPoint = 'api/v1/category/subcategory/';
 
 const NavbarDropdown = ({ title, cateData, marginLeft }) => {
 

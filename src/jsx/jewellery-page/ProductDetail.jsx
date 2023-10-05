@@ -48,6 +48,8 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import Box from "@mui/material/Box";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
+import { useDispatch } from "react-redux";
+import { updateProduct } from "../redux/dmjSlice";
 
 // import Switch from '@mui/material/Switch';
 // import Stack from '@mui/material/Stack';
@@ -115,6 +117,7 @@ function Product() {
   const [rating, setRating] = useState("");
 
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const { skuid, slug } = useParams();
 
   async function getProductId(skuNo) {
@@ -152,6 +155,7 @@ function Product() {
         // console.log(variantRes.data.data)
         // setVariant(variantRes.data.data)
 
+        dispatch(updateProduct(res.data.data.images[0]))
         const commaSeparatedString = await res.data.data.images[0].pictures;
         const imgArray = commaSeparatedString.split(",");
         setSelectedImage(imgArray[0]);
@@ -468,8 +472,9 @@ const ProductPrice = ({
   const [price, setPrice] = useState({});
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
-  const [currencyRate, setRate] = useState("");
+  const [currencyRate, setRate] = useState("80");
   const [currencyValue, setCurrencyValue] = useState("Rupee");
+
 
   async function fetchPrice() {
     if (variant[0].productVariantEntities.length > 0) {
@@ -588,7 +593,7 @@ const ProductPrice = ({
       </div>
       <p className="tax-font">Inclusive of all taxes</p>
 
-      
+
       <Box
         sx={{
           display: "flex",
@@ -669,6 +674,9 @@ const ProductPrice = ({
                     }
                     alt="Product"
                     className="pro-color-img"
+                    onClick={() => {
+
+                    }}
                   ></div>
                 );
               })}

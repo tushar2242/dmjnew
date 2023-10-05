@@ -8,6 +8,7 @@ const initialState = {
     totalDis: '',
     totalAmount: '',
     amount: [],
+    product: []
 }
 
 const productSlice = createSlice({
@@ -28,12 +29,15 @@ const productSlice = createSlice({
         },
         updateAmount: (state, payload) => {
             state.amount = payload
+        },
+        updateProduct: (state, payload) => {
+            state.product = payload
         }
     }
 
 });
 
 
-export const { addSearch, updateAmount } = productSlice.actions
+export const { addSearch, updateAmount,updateProduct } = productSlice.actions
 
 export default productSlice.reducer;

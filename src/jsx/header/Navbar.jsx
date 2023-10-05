@@ -19,6 +19,7 @@ import "../search-contentbox/search-input-box.css";
 import axios from "axios";
 
 const url = "https://api.diwamjewels.com/DMJ/";
+const endPoint2 = "api/v1/user/";
 // const url = 'http://137.184.3.191:8080/DMJ/';
 // const endPoint = 'api/v1/category/maincategory';
 const endPoint = "api/v1/category";
@@ -58,6 +59,7 @@ function Navbar() {
   const [wishLength, setWishLength] = useState(0)
   const [cartLength, setCartLength] = useState(0)
 
+  const [userName, setUserName] = useState('There')
 
   async function handleSearch(e) {
     e.preventDefault();
@@ -104,6 +106,18 @@ function Navbar() {
   }
 
 
+  async function fetchUserData() {
+    try {
+      const res = await axios.get(url + endPoint2 + userId);
+      // console.log(res.data.data)
+      setUserName(res.data.data);
+    } catch (err) {
+      console.log(err);
+      setUserName('There')
+    }
+  }
+
+
   function handleArtEnter() {
     setIsArtOpen(!isArtOpen);
     setIsJwelOpen(false);
@@ -137,6 +151,9 @@ function Navbar() {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     setCartLength(cart.length)
 
+    if (userId) {
+      fetchUserData()
+    }
     setSearch(searchTxt);
     fetchMenu();
     // Attach the event listener when the component mounts
@@ -236,6 +253,7 @@ function Navbar() {
               }}
             >
               <i className="bi bi-person-circle nav-icon-item ms-5"></i>
+
             </div>
             {profile && (
               <div className="more-profile">
@@ -287,6 +305,7 @@ function Navbar() {
 
         <div className="navbar-mobile">
           <div className="nav-mob-icon">
+
             <img src={logo} alt="logo" className="nav-logo" />
             {isMobNav ? (
               <ThreeLine
@@ -393,7 +412,8 @@ function Navbar() {
                     setProfile(!profile);
                   }}
                 >
-                  <i className="bi bi-person-circle nav-icon-item ms-5"></i>
+                  <i className="bi bi-person-circle nav-icon-item ms-5"></i> <br />
+                  <li>Hi , There </li>
                 </div>
                 {profile && (
                   <div className="more-profile">
@@ -457,7 +477,7 @@ function Navbar() {
             handleNavMouseEnter={handleCraft}
           />
         ) : null}
-      </div>
+      </div >
 
       <div className="nav-outer-dropdown nav-drop-shadow shadow mobile-navbarview p-2">
         <div className="d-flex justify-content-between">
@@ -497,7 +517,8 @@ function Navbar() {
                 setProfile(!profile);
               }}
             >
-              <i className="bi bi-person-circle nav-icon-item ms-3"></i>
+              <i className="bi bi-person-circle nav-icon-item ms-3"></i> <br />
+              <li>Hi , There </li>
             </NavLink>
             {profile && (
               <div className="more-profile">
