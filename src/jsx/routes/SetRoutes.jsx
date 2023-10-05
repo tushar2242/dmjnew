@@ -74,7 +74,7 @@ export default class SetRoutes extends React.Component {
                     {/* <Route path='/carousel' element={<CarouselBlog />} /> */}
                     <Route path='/signUp' element={<UpdateLogin />} />
                     {/* <Route path='/animate' element={<Animate />} /> */}
-                
+
                     <Route path='/defaultlogin' element={<Login2 />} />
 
                     <Route path='/login' element={<Loginpage />} />
