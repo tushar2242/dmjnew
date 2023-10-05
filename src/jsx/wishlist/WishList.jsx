@@ -6,8 +6,7 @@ import axios from 'axios';
 import StarRateIcon from '@mui/icons-material/StarRate';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
-
-
+import wishlistimg from '../../assets/images/wishlistimg.png';
 
 const url = 'https://api.diwamjewels.com/DMJ/'
 const endPoint = 'api/v1/products/';
@@ -107,7 +106,12 @@ export default class WishList extends React.Component {
                                     )
                                 })
                                     :
-                                    <h4 className="mt-4 text-center"><b>Please Add Some Products</b></h4>
+                                    <div>
+                                    <div className='text-center mt-5'><img src={wishlistimg} alt="icon" /></div>
+
+                                    <h4 className="mt-3 text-center"><b>Nothing here...yet</b></h4>
+                                    <p className='text-center'><b>Please Add Some Products</b></p>
+                                    </div>
                             }
 
                         </div>
@@ -186,7 +190,7 @@ const WhiteItemCard = ({ item }) => {
             }} style={{ cursor: 'pointer' }}>
                 <h2>{userToken}</h2>
                 <div className="card border-0 shadow-sm" >
-                    <img src={imgUrl + item.images[0].thumbImage} className="card-img-top img-fluid" alt="wishlist" />
+                    <img src={imgUrl + item.images[0].thumbImage} className="card-img-top img-fluid wishlist-img" alt="wishlist" />
                     <div className="card-body wish-body">
                         <h6 className="card-title"><b>{item.seo_title.replace(/"/g, '').slice(0, 25)}</b></h6>
                         <p className="pro-font"><i className="bi bi-currency-rupee"></i>
@@ -195,10 +199,10 @@ const WhiteItemCard = ({ item }) => {
                         <p className="off-text">
                             MRP: <del><i className="bi bi-currency-rupee"></i> {item.images.length > 0 && item.images[0].productVariantEntities.length > 0 && item.images[0].productVariantEntities[0].price}</del><span> (Incl all taxes)</span>
                         </p>
-                        <div className="wish-star">
+                        {/* <div className="wish-star">
                             <span style={{ color: '#b79d33' }}><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarHalfIcon /><StarOutlineIcon /></span> 50 Reviews
-                        </div>
-                        <div className="d-flex justify-content-between mt-4">
+                        </div> */}
+                        {/* <div className="d-flex justify-content-between mt-4">
                             <NavLink to="/addToCart"><button className="add-cart-btn" onClick={async () => {
                                 await addToCart(item.id);
                                 navigate("/addtocart");
@@ -208,7 +212,7 @@ const WhiteItemCard = ({ item }) => {
                                 navigate("/checkout");
                             }}>Buy Now</button></NavLink>
                             <i className="bi bi-trash-fill fs-4 text-dark" onClick={() => deleteItem(item.id)}></i>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

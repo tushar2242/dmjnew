@@ -74,7 +74,7 @@ const Home = () => {
                     /> */}
                     {/* <TrendingProducts /> */}
                     <div className=''>
-                    <h4 className='text-center mt-4'><b>Trending Categories</b></h4>
+                    <h3 className='text-center mt-4'><b>Trending Products</b></h3>
                     <RelatedProduct />
                     </div>
                     <ProductWrapper />

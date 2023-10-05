@@ -229,6 +229,8 @@ function Product() {
     }
   };
 
+
+
   return (
     <>
       {!isLoad ? (

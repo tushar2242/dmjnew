@@ -252,8 +252,10 @@ function Navbar() {
                 setProfile(!profile);
               }}
             >
-              <i className="bi bi-person-circle nav-icon-item ms-5"></i>
-
+            <div style={{marginTop:'27px'}}>
+              <i className="bi bi-person-circle nav-icon-item ms-5"></i><br />
+              <p className="user-name-fntsz">hi,there</p>
+              </div>
             </div>
             {profile && (
               <div className="more-profile">
@@ -412,8 +414,10 @@ function Navbar() {
                     setProfile(!profile);
                   }}
                 >
-                  <i className="bi bi-person-circle nav-icon-item ms-5"></i> <br />
-                  <li>Hi , There </li>
+                  <div style={{marginTop:'27px'}}>
+              <i className="bi bi-person-circle nav-icon-item ms-5"></i><br />
+              <p className="user-name-fntsz">hi,there</p>
+              </div>
                 </div>
                 {profile && (
                   <div className="more-profile">
@@ -517,8 +521,10 @@ function Navbar() {
                 setProfile(!profile);
               }}
             >
-              <i className="bi bi-person-circle nav-icon-item ms-3"></i> <br />
-              <li>Hi , There </li>
+              <div style={{marginTop:'-5px'}}>
+              <i className="bi bi-person-circle nav-icon-item ms-4"></i><br />
+              <p className="user-name-fntsz1">hi,there</p>
+              </div>
             </NavLink>
             {profile && (
               <div className="more-profile">

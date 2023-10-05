@@ -68,7 +68,7 @@
   width: 20px;
   height: 20px;
   position: absolute;
-  right: 40px;
+  right: 50px;
   margin-top: 5px;
   cursor: pointer;
 }
@@ -483,4 +483,19 @@
   text-align: center;
   color: white;
 
+}
+.user-name-fntsz{
+  font-size:12px;
+  text-align: center;
+  font-weight:600;
+  margin-top:-10px;
+  margin-left:40px;
+}
+.user-name-fntsz1{
+  font-size:12px;
+  text-align: center;
+  font-weight:600;
+  margin-top:-10px;
+  margin-left:13px;
+  color:black;
 }
