@@ -1137,19 +1137,12 @@ body {
   }
 }
 
-.whatsapp-icon {
-  position: fixed;
-  font-size: 30px;
-  background: #25d366;
-  width: 45px;
-  height: 45px;
-  text-align: center;
-  border-radius: 25px;
-  bottom: 20px;
-  left: 10px;
-  z-index: 10;
-}
 
+.shareicon-sz{
+  width:40px;
+  height:40px;
+  margin-top:5px
+}
 .wp-icon-color {
   color: white;
 }
@@ -1160,4 +1153,72 @@ body {
   background-color: black;
   padding: 5px;
   border-radius: 10px;
+}
+
+.scl-icnftr-vw{
+  background-color: transparent;
+  box-shadow:2px 3px 4px 5px rgb(223, 223, 223);
+  bottom:0 !important;
+  left:15px;
+  position:absolute;
+
+}
+.share-icon-box1{
+  position:relative;
+  width:200px;
+}
+
+.whatsapp-icon {
+  position: fixed;
+  background: #ffffff;
+  width: 51px;
+  height: 50px;
+  text-align: center;
+  border-radius: 4px;
+  bottom: 20px;
+  left: 10px;
+  z-index: 10;
+}
+
+.sticky-icons {
+  position: fixed;
+  bottom: 24px;
+  left: 10px;
+  transform: translateY(-50%);
+  z-index: 1000;
+  background-color: white;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+.sticky-icons1 {
+  position: fixed;
+  bottom:20px;
+  left: -33px;
+  transform: translateX(100%);
+  z-index: 1000;
+  background-color: white;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+@media only screen and (max-width:767.98px){
+  .sticky-icons1 {
+    bottom: 20px;
+   left: -38px;
+   border-radius: 3px;
+  }
+  .sticky-icons {
+    bottom: 24px;
+   left: 5px;
+   border-radius: 3px;
+  }
+  .whatsapp-icon {
+  
+    bottom: 20px;
+    left: 5px;
+
+  }
 }

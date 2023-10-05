@@ -50,7 +50,7 @@ const FilterCard = () => {
 
   return (
     <>
-      <div className="container contain-grid">
+      <div className="container contain-grid" style={{paddingLeft:'0',paddingRight:'0'}}>
         <div className="grid-view">
           {!isLoad ? searchData.length > 0 &&
             searchData.map((sItem) => {
@@ -186,7 +186,7 @@ const ProductItemCard = ({ img, item, price }) => {
                 <p className="off-font">( {(item.images.length > 0 && item.images[0].productVariantEntities.length > 0)? item.images[0].productVariantEntities[0].discount :0 }% OFF )</p>
                </div>
               </div>
-              <div className="d-flex p-2">
+              <div className="d-flex ms-2">
                 <p className="trend-rt-box1">
                   <b>
                     4.5 <i className="bi bi-star-fill trend-rt-icon"></i>
@@ -195,14 +195,14 @@ const ProductItemCard = ({ img, item, price }) => {
                 <p className="trend-span-fnt1">15 reviews</p>
               </div>
             </div>
-            <div onClick={async () => {
+            {/* <div onClick={async () => {
               await addToCart(item.id)
              
             }} >
               <button className="trend-cart-btn">
                 <b>Add To Cart</b>
               </button>
-            </div>
+            </div> */}
           </div>
 
 

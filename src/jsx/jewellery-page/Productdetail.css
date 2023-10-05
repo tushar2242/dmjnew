@@ -723,7 +723,7 @@ height:350px;
 } */
 .obtft-img-vw img{
   width:100%;
-  height:350px;
+  height:auto;
   position:relative;
  
 }
