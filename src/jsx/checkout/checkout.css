@@ -178,8 +178,8 @@ select.sel-box:focus{
         padding-right:10px !important;
 }
 .accordion-body{
-    padding-left:10px !important;
-    padding-right:10px !important; 
+    padding:0px !important;
+     
 }
 .dlry-work-btn{
     font-size:15px;

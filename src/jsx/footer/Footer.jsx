@@ -13,6 +13,7 @@ import shareicon from "../../assets/images/shareicon.png";
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import Accordion from "react-bootstrap/Accordion";
 
 const useFullLink = [
   {
@@ -47,17 +48,11 @@ const section = [
     title: " Track Your Order",
     link: "/trackOrder",
   },
-  // {
-  //   title: 'Help',
-  //   link: '/faq'
-  // }
+
 ];
 
 const info = [
-  {
-    // title: 'Payment Option',
-    // link: false
-  },
+
   {
     title: "  Returns & Refund",
     link: "/refundpolicy",
@@ -81,11 +76,35 @@ export default class Footer extends React.Component {
     return (
       <>
         <ShareIcon />
-        <div className="footer-bg mt-1">
-          <div className="container">
-            <footer className="">
+        <div className="footer-desktopvw">
+        <ContentOfFooter />
+          </div>
+      
+          
+          <div className="footer-mobvwsh mt-1">
+            <Accordion>
+              <Accordion.Item eventKey="0">
+                <Accordion.Header>More about online shopping at DMJ</Accordion.Header>
+                <Accordion.Body>
+                <ContentOfFooter />
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
+          </div>
+      </>
+    );
+  }
+}
+
+
+
+const ContentOfFooter = () =>{
+  return (
+    <>
+  <footer className="footer-bg mt-1">
+            <div className="container-fluid">
               <div className="row">
-                <div className="col-md-3 mt-3">
+                <div className="col mt-3">
                   <img
                     src={logo}
                     alt="Logo"
@@ -220,17 +239,28 @@ export default class Footer extends React.Component {
                 </p>
               </div>
               <div className="footer-topline"></div>
-              <div className="copy-cnt-shw">
-                <div>
-                  <h6>Registered Office Address</h6>
+              <div className="copy-cnt-shw mt-3 mb-3">
+                <div className="">
+                  <h6 className="text-white mb-4"><b>Registered Office Address</b></h6>
+                  <AddressTag />
+                  <AddressTag />
+                  <AddressTag />
+                </div>
+                <div className="mt-3">
+                  <p className="address-ftrfnt">CIN: U7980456790</p>
+                  <p className="address-ftrfnt">Telephone: <NavLink style={{color:'#ABDBD3'}}>+91-9876543210</NavLink></p>
                 </div>
               </div>
+
+              <div className="footer-topline"></div>
+              <div className="mt-3">
+                 <FooterContentDetails />
+              </div>
+              </div>
             </footer>
-          </div>
-        </div>
-      </>
-    );
-  }
+          
+    </>
+  );
 }
 
 const FooterItem = ({ head, items, navi }) => {
@@ -244,27 +274,27 @@ const FooterItem = ({ head, items, navi }) => {
 
   return (
     <>
-      <div className="col-md-3 mt-3">
-        <h5 className="text-white">
-          <b>{head}</b>
+      <div className="col mt-5">
+        <h5 className="footer-main-heading">
+          {head}
         </h5>
 
         <p className="headline"></p>
 
-        <ul className="nav flex-column mt-4">
+        <ul className="nav flex-column mt-2">
           {items.map((itemVal, index) => {
             return (
-              <li className="nav-item mb-2" key={index}>
+              <li className=" mb-2 ftr-list-tag-fnt" key={index}>
                 {navi ? (
                   <NavLink
-                    className="nav-link p-0 footer-text"
+                    className="nav-link p-0 ftr-list-tag-fnt"
                     to={itemVal.link}
                   >
                     {itemVal.title}
                   </NavLink>
                 ) : (
                   <li
-                    className="nav-link p-0 footer-text"
+                    className="nav-link p-0 ftr-list-tag-fnt"
                     onClick={() => {
                       handleNavigate(itemVal.title);
                     }}
@@ -348,6 +378,38 @@ const PopularSearches = () => {
         <p className="pop-srch-fnt-sz">Rings</p> 
         <div className="ftr-leftline"></div>
         <p className="pop-srch-fnt-sz">Rings</p>
+      </div>
+    </>
+  )
+}
+
+const AddressTag = () => {
+  return (
+    <>
+<p className="address-ftrfnt">Lorem, ipsum.</p>
+    </>
+  )
+}
+
+const FooterContentDetails = () => {
+  return (
+    <>
+      <div>
+        <h6 className="heading-tag-h6ftr">ONLINE SHOPPING MADE EASY AT DMJ</h6>
+        <p className="para-cnt-ftrfnt">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias enim qui et libero doloremque maxime in, inventore corporis iure quisquam voluptatibus voluptate consectetur. Commodi velit architecto alias ducimus, esse totam.</p>
+        <h6 className="heading-tag-h6ftr">BEST ONLINE SHOPPING SITE IN INDIA FOR Jewellery</h6>
+        <p className="para-cnt-ftrfnt">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias enim qui et libero doloremque maxime in, inventore corporis iure quisquam voluptatibus voluptate consectetur. Commodi velit architecto alias ducimus, esse totam.</p>
+        <ol className="para-cnt-ftrfnt">
+          <li className="mt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet blanditiis officia tempora ad impedit dignissimos accusamus harum iure magni id.</li>
+          <li className="mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas expedita accusamus dolores unde iure, architecto voluptate cum magnam autem sed.</li>
+        </ol>
+        <p className="para-cnt-ftrfnt">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis nam beatae excepturi eaque qui laborum accusamus maxime atque repellendus sint.</p>
+        <ul className="">
+          <li className="mt-2 para-cnt-ftrfnt">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis inventore illo minima quae quisquam ipsam numquam iusto repellat harum ratione!
+          </li>
+          <li className="mt-2 para-cnt-ftrfnt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque harum saepe totam officia enim ducimus doloribus dignissimos eius nobis voluptas.</li>
+        </ul>
       </div>
     </>
   )
