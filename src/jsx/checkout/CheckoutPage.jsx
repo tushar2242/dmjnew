@@ -195,7 +195,7 @@ const PromoCode = () => {
               PROMO / CODE OR VOUCHERS
             </Accordion.Header>
             <Accordion.Body>
-              <form action="" className="d-flex">
+              <form action="" className="d-flex p-2">
                 <input
                   type="text"
                   className="input-box-bdr"
@@ -493,7 +493,7 @@ const PaymentType = () => {
               </div>
             </Accordion.Header>
             <Accordion.Body>
-              <div className="d-flex">
+              <div className="d-flex p-2">
                 <input
                   type="text"
                   className="input-box-bdr"
@@ -511,7 +511,7 @@ const PaymentType = () => {
               </div>
             </Accordion.Header>
             <Accordion.Body>
-              <div className="d-flex">
+              <div className="d-flex p-2">
                 <input
                   type="text"
                   className="input-box-bdr"

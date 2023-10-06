@@ -5,7 +5,7 @@ import Footer from "../footer/Footer";
 import HeaderCon from "../header/HeaderCon";
 import Navbar from "../header/Navbar";
 import Carousel from "react-bootstrap/Carousel";
-import Accordion from "react-bootstrap/Accordion";
+
 import "../../assets/css/trending.css";
 // import { NavLink } from 'react-router-dom';
 import ProductWrapper from "../productWrapper/ProductWrapper";
@@ -70,20 +70,9 @@ const Home = () => {
           </div>
           <ProductWrapper />
 
-          <div className="footer-desktopvw">
-            <Footer />
-          </div>
+          <Footer />
+        
 
-          <div className="footer-mobvwsh mt-1">
-            <Accordion>
-              <Accordion.Item eventKey="0">
-                <Accordion.Header>More about online shopping at DMJ</Accordion.Header>
-                <Accordion.Body>
-                  <Footer />
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-          </div>
         </>
       )}
     </>

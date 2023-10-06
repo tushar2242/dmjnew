@@ -297,7 +297,7 @@ body {
 }
 
 .footer-bg {
-  background-color: rgba(131, 115, 49, 0.918);
+  background-color: #7a7a7a;
   padding: 15px;
 }
 
@@ -317,7 +317,7 @@ body {
 }
 @media only screen and (max-width: 767.98px) {
   .footer-bg {
-    padding: 0px;
+    padding: 7px;
   }
   
   .footer-logo {
@@ -1210,12 +1210,12 @@ body {
 
 @media only screen and (max-width:767.98px){
   .sticky-icons1 {
-    bottom: 20px;
+    bottom: 8px;
    left: -38px;
    border-radius: 3px;
   }
   .sticky-icons {
-    bottom: 24px;
+    bottom: 9px;
    left: 5px;
    border-radius: 3px;
   }
@@ -1256,6 +1256,34 @@ body {
   display:flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+.heading-tag-h6ftr{
+  font-size:15px;
+  font-weight:600;
+  color:#ABDBD3;
+  letter-spacing: 0.75px;
+}
+.para-cnt-ftrfnt{
+  font-size:15px;
+  font-weight: 500;
+  letter-spacing: 0.75px;
+  color:white;
+  text-align: justify;
+}
+.footer-main-heading{
+  font-size:18px;
+  font-weight:600;
+  letter-spacing: 0.75px;
+  color:#ABDBD3
+}
+.ftr-list-tag-fnt{
+  font-size:14px;
+  font-weight:600;
+  letter-spacing: 0.75px;
+  color:white;
+}
+.ftr-list-tag-fnt:hover{
+  color:#ABDBD3
 }
 @media only screen and (max-width:767.98px){
   .pplr-srch-inblk{
