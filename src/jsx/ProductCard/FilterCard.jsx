@@ -145,7 +145,7 @@ const ProductItemCard = ({ img, item, price }) => {
                 onClick={() => RedirectDetailsPage(item.id, "/productDetails")}
                 className="text-decoration-none d-flex justify-content-between">
 
-                <p className="trend-cont-fnt ms-2">{item.name.length < 20 ? item.name : item.name.replace(/"/g, '').slice(0, 20) + '...'}</p>
+                <p className="trend-cont-fnt ms-2">{item.name.length < 15 ? item.name : item.name.replace(/"/g, '').slice(0, 15) + '...'}</p>
                 <FavoriteBorderIcon className="card-pro-icon" />
               </div>
               <div className="d-flex">

@@ -265,7 +265,7 @@ function Product() {
             />
           </Helmet>
           <div className="container-fluid">
-           <div>
+           <div className="mob-vw-brdcrum">
            <p className="breadcrumb-fnt-sz"> Home / Products / Product details</p>
           </div>
             <div className="row detl-page-mobvw">
