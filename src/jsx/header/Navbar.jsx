@@ -85,16 +85,16 @@ function Navbar() {
   //   setIsBoxVisible(!isBoxVisible);
   // };
 
-  function handleLeaveMouse() {
-    // Delay for 500 milliseconds (adjust as needed)
-    const timeoutId = setTimeout(() => {
-      setIsJwelOpen(false);
-      setIsArtOpen(false);
-      setIsCarpet(false);
-    }, 5000);
-    // Store the timeout ID to clear it if necessary
-    setHoverTimeout(timeoutId);
-  }
+  // function handleLeaveMouse() {
+  //   // Delay for 500 milliseconds (adjust as needed)
+  //   const timeoutId = setTimeout(() => {
+  //     setIsJwelOpen(false);
+  //     setIsArtOpen(false);
+  //     setIsCarpet(false);
+  //   }, 5000);
+  //   // Store the timeout ID to clear it if necessary
+  //   setHoverTimeout(timeoutId);
+  // }
 
   function handleJewelEnter() {
     setIsJwelOpen(!isJwelOpen);
@@ -414,10 +414,10 @@ function Navbar() {
                     setProfile(!profile);
                   }}
                 >
-                  <div style={{marginTop:'27px'}}>
-              <i className="bi bi-person-circle nav-icon-item ms-5"></i><br />
-              <p className="user-name-fntsz">hi,there</p>
-              </div>
+                  <div style={{ marginTop: '27px' }}>
+                    <i className="bi bi-person-circle nav-icon-item ms-5"></i><br />
+                    <p className="user-name-fntsz">hi,there</p>
+                  </div>
                 </div>
                 {profile && (
                   <div className="more-profile">

@@ -432,7 +432,7 @@ const CarouselCard = ({ img, title, category, discount, sku, slug }) => {
     // console.log(img)
     async function handleNavigate(val) {
         await dispatch(addSearch(val));
-        navigate(`/productDetails/` + slug + '/' + sku)
+        navigate(`/p/` + slug + '/' + sku)
     }
 
     return (

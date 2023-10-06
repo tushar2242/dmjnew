@@ -48,7 +48,7 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import Box from "@mui/material/Box";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateProduct } from "../redux/dmjSlice";
 
 // import Switch from '@mui/material/Switch';
@@ -110,6 +110,7 @@ function Product() {
   const [images, setImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState("");
   // const [apiCheck, setApiCheck] = useState(true);
+  const [itemId, setItemId] = useState('0')
 
   const [itemInfo, setItemInfo] = useState([]);
   const [isLoad, setIsLoad] = useState(true);
@@ -117,13 +118,20 @@ function Product() {
   const [rating, setRating] = useState("");
 
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  function handleItemId(val) {
+    // console.log(val)
+    setItemId(val)
+  }
+
+
   const { skuid, slug } = useParams();
 
   async function getProductId(skuNo) {
     try {
       const proRes = await axios.get(url + getProductEnd + skuNo);
-      console.log(proRes.data);
+      // console.log(proRes.data);
       return proRes.data.data.id;
     } catch (err) {
       console.log(err);
@@ -151,12 +159,13 @@ function Product() {
         const res = await axios.get(url + endPoint + "/" + id);
 
         // console.log(res.data.data)
-        setSelectedImage(res.data.data.images[0]);
+        // setSelectedImage(res.data.data.images[0]);
         // console.log(variantRes.data.data)
         // setVariant(variantRes.data.data)
 
-        dispatch(updateProduct(res.data.data.images[0]))
-        const commaSeparatedString = await res.data.data.images[0].pictures;
+
+        dispatch(updateProduct(res.data.data.images[itemId]))
+        const commaSeparatedString = await res.data.data.images[itemId].pictures;
         const imgArray = commaSeparatedString.split(",");
         setSelectedImage(imgArray[0]);
         setImages(imgArray);
@@ -175,7 +184,13 @@ function Product() {
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchData();
-  }, [skuid]);
+
+
+  }, [skuid, itemId]);
+
+
+  const selectPictures = useSelector((state) => state.product.product.payload)
+  // console.log(selectPictures)
 
   const handleImageClick = (image) => {
     setSelectedImage(image);
@@ -348,6 +363,7 @@ function Product() {
                     // setQuantity={quantity}
                     increment={increment}
                     decrement={decrement}
+                    handleItemId={handleItemId}
                   />
 
                   <div className="mt-2 add-wishlist-btnbtm" style={{ display: "flex" }}>
@@ -471,6 +487,7 @@ const ProductPrice = ({
   quantity,
   increment,
   decrement,
+  handleItemId
 }) => {
   // const [variant, setVariant] = useState([])
 
@@ -534,6 +551,19 @@ const ProductPrice = ({
       console.log(err);
     }
   }
+
+
+  async function fetchUpdateVariantId(id) {
+    try {
+      const res = await axios.get(url + id)
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
+
+
+
 
   useEffect(() => {
     // console.log(variant)
@@ -671,7 +701,7 @@ const ProductPrice = ({
           <p className="col-fnt-sz offer-heading-txt">MORE COLORS</p>
           <div className="color-container">
             {variant.length > 0 &&
-              variant.map((img) => {
+              variant.map((img, index) => {
                 return (
                   <div
                     style={
@@ -682,7 +712,7 @@ const ProductPrice = ({
                     alt="Product"
                     className="pro-color-img"
                     onClick={() => {
-
+                      handleItemId(index)
                     }}
                   ></div>
                 );
