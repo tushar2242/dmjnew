@@ -339,7 +339,7 @@ function Product() {
                     <img src={imgUrl + selectedImage} className="" />
                   </div>
                   <div className="share-wlst-icon">
-                    <FavoriteBorderIcon className="sh-wlst-icsz" />
+                   <NavLink to='/wishlist'><FavoriteBorderIcon className="sh-wlst-icsz" /></NavLink>
                     <br />
                     <ShareIcon className="sh-wlst-icsz mt-1" onClick={() => handleShare()
                     } />
@@ -602,6 +602,7 @@ const ProductPrice = ({
   }
 
 
+  
 
   return (
     <>

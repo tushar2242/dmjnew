@@ -120,7 +120,6 @@ const ProductItemCard = ({ img, item, price }) => {
     <>
       <div className="grid-column">
         <div className="text-decoration-none pro-cd-flt-box">
-
           <div
             className="card__container shadow-sm"
           >
