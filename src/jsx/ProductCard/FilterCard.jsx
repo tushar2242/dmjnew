@@ -124,7 +124,7 @@ const ProductItemCard = ({ img, item, price }) => {
             className="card__container shadow-sm"
           >
             <div className=""
-              onClick={() => RedirectDetailsPage(item.id, `/productDetails/` + item.slug + '/' + item.sku)} style={{ cursor: 'pointer' }}>
+              onClick={() => RedirectDetailsPage(item.id, `/p/` + item.slug + '/' + item.sku)} style={{ cursor: 'pointer' }}>
               <div className="bg-box"></div>
               <div className="card__top__section">
                 <div className="pro-img-box">
@@ -141,7 +141,7 @@ const ProductItemCard = ({ img, item, price }) => {
               </div>
 
               <div
-                onClick={() => RedirectDetailsPage(item.id, "/productDetails")}
+                onClick={() => RedirectDetailsPage(item.id, "/p")}
                 className="text-decoration-none d-flex justify-content-between">
 
                 <p className="trend-cont-fnt ms-2">{item.name.length < 15 ? item.name : item.name.replace(/"/g, '').slice(0, 15) + '...'}</p>
