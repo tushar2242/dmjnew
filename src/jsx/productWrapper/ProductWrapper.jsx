@@ -7,8 +7,9 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addSearch } from '../redux/dmjSlice';
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import './ProductWrapper'
-import ImageLoader, { ImageLoader1 } from '../loader/ImageLoader';
+import './ProductWrapper';
+import Footer from "../footer/Footer";
+import ImageLoader from '../loader/ImageLoader';
 import { LoadImg } from '../../customhooks/LoadImg';
 
 const url = 'https://api.diwamjewels.com/DMJ/'
@@ -16,8 +17,6 @@ const sEnd = "api/v1/products/search?query=";
 const searchEnd = 'api/v1/products/type?type='
 
 const imgUrl = 'https://squid-app-2-7wbvi.ondigitalocean.app/';
-// import FavoriteIcon from '@mui/icons-material/Favorite';
-// import LocalMallIcon from '@mui/icons-material/LocalMall';
 
 const proto = 'https://api.diwamjewels.com/DMJ'
 const endPoint = '/api/v1/category';
@@ -26,7 +25,6 @@ import img1 from '../../assets/images/banner/img2.png'
 import img2 from '../../assets/images/banner/img3.png'
 import img3 from '../../assets/images/banner/img1.png'
 
-const image = [img1, img2, img3]
 
 
 const ProductWrapper = () => {
@@ -69,6 +67,8 @@ const ProductWrapper = () => {
                     )
 
                 })
+            }{
+                cateData.length > 0 && <Footer />
             }
 
         </>
@@ -195,7 +195,7 @@ const ItemImageRowCard = ({ subCategory, category }) => {
                 {
 
                     subCategory.length > 0 && subCategory.map((item, index) => {
-                        if (index < 9) {
+                        if (index < 6) {
                             return (
                                 <SmallImageCard
                                     key={item.id}
