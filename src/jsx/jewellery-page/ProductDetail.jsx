@@ -323,7 +323,7 @@ function Product() {
                     <img src={imgUrl + selectedImage} className="" />
                   </div>
                   <div className="share-wlst-icon">
-                    <FavoriteBorderIcon className="sh-wlst-icsz" />
+                  <FavoriteBorderIcon className="sh-wlst-icsz" />
                     <br />
                     <ShareIcon className="sh-wlst-icsz mt-1" />
                   </div>

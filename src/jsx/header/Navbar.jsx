@@ -697,10 +697,9 @@ function MobileMenuBar({ cateData, ...props }) {
           <Offcanvas.Title></Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-
          
-          <form action="" className="d-flex mb-3" onSubmit={handleProSearch}>
-            <input type="text" className="srch-input-box" placeholder="Search here..."  value={search}
+          <form action="" className="d-flex mb-3 justify-content-center" onSubmit={handleProSearch}>
+            <input type="text" className="srch-input-box w-100" placeholder="Search here..."  value={search}
               onChange={handleSearch}/>
             <button type="submit" className="search-offbtn" onClick={(e) =>{
               handleProSearch(e)

@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import '../../assets/css/login.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import loginImg1 from '../../assets/images/banner/login1.png';
@@ -129,7 +128,7 @@ const LoginWithMobileNo = () => {
         <>
             {
                 !isLoading ?
-                    <div className="fullpage-bg p-2" style={{ backgroundImage: `url(${loginImg1})` }}>
+                    <div className="fullpage-bg pt-1" style={{ backgroundImage: `url(${loginImg1})` }}>
                         <div className="container">
                             <div className="login-bg shadow-sm">
                                 

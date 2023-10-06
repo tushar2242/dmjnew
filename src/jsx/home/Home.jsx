@@ -62,7 +62,7 @@ const Home = () => {
                         productData={productInfo}
                     /> */}
           {/* <TrendingProducts /> */}
-          <div className="">
+          <div className="" style={{overflowX:'hidden !hidden'}}>
             <h3 className="text-center mt-4">
               <b>Trending Products</b>
             </h3>
