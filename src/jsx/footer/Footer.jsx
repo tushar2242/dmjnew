@@ -213,10 +213,17 @@ export default class Footer extends React.Component {
                  </div>
                  </div>
                  
-              <div className="d-flex justify-content-between py-4 my-4 border-top ">
-                <p className="footer-para">
+              <div className="copy-cnt-shw footer-topline">
+              <p className="text-white mt-4 mb-4">In case of any concern, <NavLink to="/contactus" style={{color:'#ABDBD3'}}><b>Contact Us</b></NavLink></p>
+                <p className="footer-para mt-4 mb-4">
                   &copy; 2021-2023 Diwamjewels, All rights reserved.
                 </p>
+              </div>
+              <div className="footer-topline"></div>
+              <div className="copy-cnt-shw">
+                <div>
+                  <h6>Registered Office Address</h6>
+                </div>
               </div>
             </footer>
           </div>

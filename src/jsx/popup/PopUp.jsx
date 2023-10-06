@@ -14,7 +14,7 @@ const PopUp = () => {
             <p className='popup-para-fnt'>Please login here for better experience !</p>
             <div className='popupNavlink'>
               <NavLink className='popup-btn' to='/login'>Login</NavLink>
-              <NavLink className='popup-btn' to='/defaultLogin'>Signup</NavLink>
+              <NavLink className='popup-btn ms-2' to='/defaultLogin'>Signup</NavLink>
             </div>
           </div>
         </div>

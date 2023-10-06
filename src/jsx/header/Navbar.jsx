@@ -80,10 +80,10 @@ function Navbar() {
     localStorage.removeItem("userId");
   }
 
-  const [isBoxVisible, setIsBoxVisible] = useState(false);
-  const toggleBoxVisibility = () => {
-    setIsBoxVisible(!isBoxVisible);
-  };
+  // const [isBoxVisible, setIsBoxVisible] = useState(false);
+  // const toggleBoxVisibility = () => {
+  //   setIsBoxVisible(!isBoxVisible);
+  // };
 
   function handleLeaveMouse() {
     // Delay for 500 milliseconds (adjust as needed)
@@ -252,7 +252,7 @@ function Navbar() {
                 setProfile(!profile);
               }}
             >
-            <div style={{marginTop:'27px'}}>
+            <div style={{marginTop:'19px'}}>
               <i className="bi bi-person-circle nav-icon-item ms-5"></i><br />
               <p className="user-name-fntsz">hi,there</p>
               </div>
@@ -481,7 +481,7 @@ function Navbar() {
             handleNavMouseEnter={handleCraft}
           />
         ) : null}
-      </div >
+      </div>
 
       <div className="nav-outer-dropdown nav-drop-shadow shadow mobile-navbarview p-2">
         <div className="d-flex justify-content-between">
@@ -492,13 +492,13 @@ function Navbar() {
           </NavLink>
 
           <div className="d-flex mt-2">
-            <div className="ms-3">
+            {/* <div className="ms-3">
               {" "}
               <i
                 className="bi bi-search nav-icon-item"
                 onClick={toggleBoxVisibility}
               ></i>
-            </div>
+            </div> */}
             <NavLink to="/wishlist">
               {" "}
               <div className="show-numbericn">
@@ -521,7 +521,7 @@ function Navbar() {
                 setProfile(!profile);
               }}
             >
-              <div style={{marginTop:'-5px'}}>
+              <div style={{marginTop:'-6px'}}>
               <i className="bi bi-person-circle nav-icon-item ms-4"></i><br />
               <p className="user-name-fntsz1">hi,there</p>
               </div>
@@ -567,7 +567,7 @@ function Navbar() {
             {/* <div className='ms-3'><img src={menubar} alt="icon" className="menubar-icon-nav" /></div> */}
           </div>
         </div>
-        {isBoxVisible && <SearchInputContent toggleBoxVisibility={toggleBoxVisibility} />}
+        {/* {isBoxVisible && <SearchInputContent toggleBoxVisibility={toggleBoxVisibility} />} */}
       </div>
     </>
   );
@@ -650,6 +650,37 @@ function MobileMenuBar({ cateData, ...props }) {
   const handleClose = () => setMenuShow(false);
   const handleShow = () => setMenuShow(true);
 
+  async function fetchMenu() {
+    try {
+      const res = await axios.get(url + endPoint);
+      // console.log(res.data.data)
+      // setCate(res.data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const [search, setSearch] = useState("");
+  const searchTxt = useSelector((state) => state.product.search.payload);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  useEffect(() => {
+    // console.log(searchTxt)
+    setSearch(searchTxt);
+    fetchMenu();
+  }, [searchTxt]);
+
+  async function handleSearch(e) {
+    e.preventDefault();
+    setSearch(e.target.value);
+    dispatch(addSearch(e.target.value));
+    // navigate('/search')
+  }
+  async function handleProSearch(e) {
+    e.preventDefault()
+    navigate("/search");
+    // toggleBoxVisibility()
+  }
 
   return (
     <>
@@ -666,6 +697,21 @@ function MobileMenuBar({ cateData, ...props }) {
           <Offcanvas.Title></Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
+
+         
+          <form action="" className="d-flex mb-3" onSubmit={handleProSearch}>
+            <input type="text" className="srch-input-box" placeholder="Search here..."  value={search}
+              onChange={handleSearch}/>
+            <button type="submit" className="search-offbtn" onClick={(e) =>{
+              handleProSearch(e)
+               handleClose()
+               }}>Search</button>
+          </form>
+       
+
+
+
+
           {cateData.length > 0 &&
             cateData.map((cate) => {
               // console.log(cate)
@@ -763,70 +809,62 @@ function AccordianSubMenu({ title, id, handleClose }) {
   );
 }
 
-const SearchInputContent = () => {
-  async function fetchMenu() {
-    try {
-      const res = await axios.get(url + endPoint);
-      // console.log(res.data.data)
-      setCate(res.data.data);
-    } catch (err) {
-      console.log(err);
-    }
-  }
+// const SearchInputContent = () => {
+//   async function fetchMenu() {
+//     try {
+//       const res = await axios.get(url + endPoint);
+//       // console.log(res.data.data)
+//       setCate(res.data.data);
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   }
 
-  const [search, setSearch] = useState("");
-  const searchTxt = useSelector((state) => state.product.search.payload);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  useEffect(() => {
-    // console.log(searchTxt)
-    setSearch(searchTxt);
-    fetchMenu();
-  }, [searchTxt]);
+//   const [search, setSearch] = useState("");
+//   const searchTxt = useSelector((state) => state.product.search.payload);
+//   const dispatch = useDispatch();
+//   const navigate = useNavigate();
+//   useEffect(() => {
+//     // console.log(searchTxt)
+//     setSearch(searchTxt);
+//     fetchMenu();
+//   }, [searchTxt]);
 
-  async function handleSearch(e) {
-    e.preventDefault();
-    setSearch(e.target.value);
-    dispatch(addSearch(e.target.value));
-    // navigate('/search')
-  }
-  async function handleProSearch(e) {
-    e.preventDefault()
-    navigate("/search");
-    toggleBoxVisibility()
-  }
-  return (
-    <>
-      <div className="srch-ipt-cntet-bx">
-        <div className="nav-box-search mt-2 mb-3">
-          <form onSubmit={handleProSearch}>
-            <input
-              type="text"
-              className="nav-search"
-              value={search}
-              onChange={handleSearch}
-            />
-            <img
-              src={searchIcon}
-              className="nav-search-icon1"
-              onClick={handleProSearch}
-            />
-            <button type="submit" style={{ display: 'none' }}></button>
-          </form>
-        </div>
-        {/* <SearchDetails title="Jewellery"/>
-                <SearchDetails title="Handi Craft"/>
-                <SearchDetails title="Blue Pottery"/> */}
-        {/* <h6 className="mt-2">
-          <b>Discover More</b>
-        </h6> */}
-        {/* <ImageWithSearch detail="Rings" image={image1} />
-        <ImageWithSearch detail="Necklace" image={image1} />
-        <ImageWithSearch detail="Bangles" image={image1} /> */}
-      </div>
-    </>
-  );
-};
+//   async function handleSearch(e) {
+//     e.preventDefault();
+//     setSearch(e.target.value);
+//     dispatch(addSearch(e.target.value));
+//     // navigate('/search')
+//   }
+//   async function handleProSearch(e) {
+//     e.preventDefault()
+//     navigate("/search");
+//     toggleBoxVisibility()
+//   }
+//   return (
+//     <>
+//       <div className="srch-ipt-cntet-bx">
+//         <div className="nav-box-search mt-2 mb-3">
+//           <form onSubmit={handleProSearch}>
+//             <input
+//               type="text"
+//               className="nav-search"
+//               value={search}
+//               onChange={handleSearch}
+//             />
+//             <img
+//               src={searchIcon}
+//               className="nav-search-icon1"
+//               onClick={handleProSearch}
+//             />
+//             <button type="submit" style={{ display: 'none' }}></button>
+//           </form>
+//         </div>
+       
+//       </div>
+//     </>
+//   );
+// };
 
 const ImageWithSearch = (props) => {
   return (
