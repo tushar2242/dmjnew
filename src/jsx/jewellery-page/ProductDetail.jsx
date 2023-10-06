@@ -245,6 +245,22 @@ function Product() {
   };
 
 
+  async function handleShare() {
+    const currentUrl = window.location.href;
+    if(navigator.share){
+      navigator.share({
+        text:"Checkout This Awesome Website",
+        title: itemInfo.seo_title,
+        url: currentUrl,
+      })
+    }
+    else{
+      navigator.clipboard.writeText(currentUrl)
+    }
+    
+
+  }
+
 
   return (
     <>
@@ -265,9 +281,9 @@ function Product() {
             />
           </Helmet>
           <div className="container-fluid">
-           <div className="mob-vw-brdcrum">
-           <p className="breadcrumb-fnt-sz"> Home / Products / Product details</p>
-          </div>
+            <div className="mob-vw-brdcrum">
+              <p className="breadcrumb-fnt-sz"> Home / Products / Product details</p>
+            </div>
             <div className="row detl-page-mobvw">
               <div
                 className="col-md-6 no-gutters"
@@ -325,7 +341,8 @@ function Product() {
                   <div className="share-wlst-icon">
                     <FavoriteBorderIcon className="sh-wlst-icsz" />
                     <br />
-                    <ShareIcon className="sh-wlst-icsz mt-1" />
+                    <ShareIcon className="sh-wlst-icsz mt-1" onClick={() => handleShare()
+                    } />
                   </div>
 
                   <div className="varient-img-box">
@@ -367,29 +384,29 @@ function Product() {
                   />
 
                   <div className="mt-2 add-wishlist-btnbtm" style={{ display: "flex" }}>
-                    <div>
-                      <button
-                        className="add-to-cart-btn-sz"
-                        onClick={async () => {
-                          await addToCart(itemInfo.id);
-                          navigate("/addtocart");
-                        }}
-                      >
-                        <LocalMallIcon /> ADD To CART
-                      </button>
-                    </div>
-                    <div>
-                      <button
-                        className="wishlist-btn-sz"
-                        onClick={async () => {
-                          await wishList(itemInfo.id);
-                          navigate("/wishlist");
-                          window.location.reload();
-                        }}
-                      >
-                        <FavoriteBorderIcon /> WISHLIST
-                      </button>
-                    </div>
+
+                    <button
+                      className="add-to-cart-btn-sz"
+                      onClick={async () => {
+                        await addToCart(itemInfo.id);
+                        navigate("/addtocart");
+                      }}
+                    >
+                      <LocalMallIcon /> ADD To CART
+                    </button>
+
+
+                    <button
+                      className="wishlist-btn-sz"
+                      onClick={async () => {
+                        await wishList(itemInfo.id);
+                        navigate("/wishlist");
+                        window.location.reload();
+                      }}
+                    >
+                      <FavoriteBorderIcon /> WISHLIST
+                    </button>
+
                   </div>
 
                   <div className="mt-4">
@@ -569,7 +586,7 @@ const ProductPrice = ({
     // console.log(variant)
     fetchCurrancy();
     window;
-    scrollTo(0, 0);
+   
     // console.log(variant[0].productVariantEntities)
     fetchPrice();
 
