@@ -118,6 +118,14 @@ class ItemCard extends React.Component {
                                 </div>
                             </div>
 
+                            <div className="showCardCarousel">
+                                <CarouselForProduct
+                                    category={category[0].type}
+                                    item="Card"
+                                    productData={category[0].subCategory === null ? [] : category[0].subCategory}
+                                />
+                            </div>
+
                             {
                                 <CarouselForProduct
                                     category={category[0].type}
@@ -126,13 +134,7 @@ class ItemCard extends React.Component {
                                 />
                             }
 
-                            <div className="showCardCarousel">
-                                <CarouselForProduct
-                                    category={category[0].type}
-                                    item="Card"
-                                    productData={category[0].subCategory === null ? [] : category[0].subCategory}
-                                />
-                            </div>
+
 
 
                             {/* <div className="pb-5"></div> */}
@@ -468,18 +470,7 @@ const ProductCard = ({ img, name, cate, category }) => {
 
     return (
         <>
-            {/* <div>
-                    <div className="text-decoration-none text-dark" style={{ cursor: 'pointer', userSelect: 'none' }}>
-                        <div className="card slide-card">
-                            <img src={img} className="card-img-top slider-card-img " alt="slider" />
-                            <div className="card-body">
-                                <p className="jewel-text mt-2"><b>{cate}</b></p>
-                                <p className="jewel-text1">{name}</p>
-                                <p className="jewel-text1">5000$</p>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
+
 
             <div onClick={() => handleNavigate(category)} className="text-decoration-none"><div className="product-card-box">
                 <div className='sliderCard'>
