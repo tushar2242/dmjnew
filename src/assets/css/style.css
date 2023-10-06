@@ -308,7 +308,13 @@ body {
 
   border-radius: 100%;
 }
-
+.address-ftrfnt{
+  font-size:15px;
+  font-weight:500;
+  color:white;
+  letter-spacing: 0.75px;
+  margin-top:-10px;
+}
 @media only screen and (max-width: 767.98px) {
   .footer-bg {
     padding: 0px;

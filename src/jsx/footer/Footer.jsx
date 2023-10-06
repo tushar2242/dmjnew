@@ -220,9 +220,16 @@ export default class Footer extends React.Component {
                 </p>
               </div>
               <div className="footer-topline"></div>
-              <div className="copy-cnt-shw">
-                <div>
-                  <h6>Registered Office Address</h6>
+              <div className="copy-cnt-shw mt-3 mb-3">
+                <div className="">
+                  <h6 className="text-white mb-4"><b>Registered Office Address</b></h6>
+                  <AddressTag />
+                  <AddressTag />
+                  <AddressTag />
+                </div>
+                <div className="mt-3">
+                  <p className="address-ftrfnt">CIN: U7980456790</p>
+                  <p className="address-ftrfnt">Telephone: +91-9876543210</p>
                 </div>
               </div>
             </footer>
@@ -349,6 +356,14 @@ const PopularSearches = () => {
         <div className="ftr-leftline"></div>
         <p className="pop-srch-fnt-sz">Rings</p>
       </div>
+    </>
+  )
+}
+
+const AddressTag = () => {
+  return (
+    <>
+<p className="address-ftrfnt">Lorem, ipsum.</p>
     </>
   )
 }
