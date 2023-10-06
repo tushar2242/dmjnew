@@ -1,8 +1,4 @@
 import "./filtercard.css";
-// import ringimg from '../../assets/images/ring2.jpg'
-// import tika from '../../assets/images/tika.jpg'
-// import necklace from '../../assets/images/necklace3.jpg'
-// import neckpiece from '../../assets/images/neckpiece.jpg'
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import { NavLink } from "react-router-dom";
@@ -50,7 +46,7 @@ const FilterCard = () => {
 
   return (
     <>
-      <div className="container contain-grid" style={{paddingLeft:'0',paddingRight:'0'}}>
+      <div className="container contain-grid" style={{ paddingLeft: '0', paddingRight: '0' }}>
         <div className="grid-view">
           {!isLoad ? searchData.length > 0 &&
             searchData.map((sItem) => {
@@ -139,7 +135,7 @@ const ProductItemCard = ({ img, item, price }) => {
                   onClick={() => RedirectDetailsPage(item.id, "/wishlist")}
                   className="text-decoration-none"
                 >
-                {/* <div className="card__top__section__icons">
+                  {/* <div className="card__top__section__icons">
                    
                   </div> */}
                 </div>
@@ -159,34 +155,34 @@ const ProductItemCard = ({ img, item, price }) => {
                   </b>
                 </p>
                 <div className="pro-price-fx">
-                <p className="trend-price1 ml-2">
-                  <b>
-                    <CurrencyRupeeIcon className="rup-icon-sz ms-1" />
-
-
-                    {(item.images.length > 0 && item.images[0].productVariantEntities.length > 0) && item.images[0].productVariantEntities[0].manualPrice}
-                    <span
-                      style={{
-                        textDecoration: "line-through",
-                        marginLeft: "8px",
-                        fontSize: "14px",
-                        color: "#7a7a7a",
-                      }}
-                    >
+                  <p className="trend-price1 ml-2">
+                    <b>
                       <CurrencyRupeeIcon className="rup-icon-sz ms-1" />
-                      {(item.images.length > 0 && item.images[0].productVariantEntities.length > 0) && item.images[0].productVariantEntities[0].price}
 
-                    </span>
-                    {' '}
-                   
-                  </b>
-                 
-                  {/* <span className="span-pr-fnt">on wards</span> */}
-                </p>
-                <p className="off-font">( {(item.images.length > 0 && item.images[0].productVariantEntities.length > 0)? item.images[0].productVariantEntities[0].discount :0 }% OFF )</p>
-               </div>
+
+                      {(item.images.length > 0 && item.images[0].productVariantEntities.length > 0) && item.images[0].productVariantEntities[0].manualPrice}
+                      <span
+                        style={{
+                          textDecoration: "line-through",
+                          marginLeft: "8px",
+                          fontSize: "14px",
+                          color: "#7a7a7a",
+                        }}
+                      >
+                        <CurrencyRupeeIcon className="rup-icon-sz ms-1" />
+                        {(item.images.length > 0 && item.images[0].productVariantEntities.length > 0) && item.images[0].productVariantEntities[0].price}
+
+                      </span>
+                      {' '}
+
+                    </b>
+
+                    {/* <span className="span-pr-fnt">on wards</span> */}
+                  </p>
+                  <p className="off-font">( {(item.images.length > 0 && item.images[0].productVariantEntities.length > 0) ? item.images[0].productVariantEntities[0].discount : 0}% OFF )</p>
+                </div>
               </div>
-              <div className="d-flex ms-2" style={{marginTop:'-10px'}}>
+              <div className="d-flex ms-2" style={{ marginTop: '-10px' }}>
                 <p className="trend-rt-box1">
                   <b>
                     4.5 <i className="bi bi-star-fill trend-rt-icon"></i>

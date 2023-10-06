@@ -503,7 +503,7 @@ function Navbar() {
               {" "}
               <div className="show-numbericn">
                 <i className="bi bi-suit-heart-fill nav-icon-item ms-3"></i>
-                <div className="number-icon-sz">5</div>
+                <div className="number-icon-sz">{wishLength}</div>
               </div>
             </NavLink>
             <NavLink to="/addToCart">
@@ -511,7 +511,7 @@ function Navbar() {
               {/* <i className="bi bi-cart4 nav-icon-item ms-3"></i> */}
               <div className="show-numbericn">
                 <i className="bi bi-cart4 nav-icon-item ms-3"></i>
-                <div className="number-icon-sz">5</div>
+                <div className="number-icon-sz">{cartLength}</div>
               </div>
             </NavLink>
 
