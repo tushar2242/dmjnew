@@ -14,6 +14,11 @@ import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Accordion from "react-bootstrap/Accordion";
+import { Chat } from "@mui/icons-material";
+import facebook from '../../assets/images/facebook.png'
+import instagram from '../../assets/images/instagram.png'
+import whatsapp from '../../assets/images/whatsapp.png'
+import telegram from '../../assets/images/telegram.png'
 
 const useFullLink = [
   {
@@ -325,9 +330,9 @@ const ShareIcon = () => {
       <div className="share-icon-box1">
         <div className="whatsapp-icon" onClick={toggleBox}>
           {isBoxOpen ? (
-            <img src={shareicon} alt="icon" className="shareicon-sz" />
+            <p className="chat-optiontab"><b>Chat</b></p>
           ) : (
-            <img src={shareicon} alt="icon" className="shareicon-sz" />
+            <p className="chat-optiontab"><b>Chat</b></p>
           )}
         </div>
         {isBoxOpen && (
@@ -338,12 +343,14 @@ const ShareIcon = () => {
 
                 to="https://www.facebook.com/diwamjewels"
               >
-                <i className="bi bi-facebook fs-5 footer-icbx"></i>
+                {/* <i className="bi bi-facebook fs-5 footer-icbx"></i> */}
+                <img src={facebook} alt="icon" className="chat-icon-szbox" />
               </NavLink></div>
              
-              <div className="mt-3"> 
+              <div className=""> 
               <NavLink className="link-dark stky-scl-icngap" to="/">
-                <i className="bi bi-whatsapp fs-5 footer-icbx"></i>
+                {/* <i className="bi bi-whatsapp fs-5 footer-icbx"></i> */}
+                <img src={whatsapp} alt="icon" className="chat-icon-szbox"/>
               </NavLink>
               </div>
             </div>
@@ -354,11 +361,13 @@ const ShareIcon = () => {
 
                 to="/"
               >
-                <i className="bi bi-instagram fs-5 footer-icbx"></i>
+                {/* <i className="bi bi-instagram fs-5 footer-icbx"></i> */}
+                <img src={instagram} alt="icon" className="chat-icon-szbox" />
               </NavLink>
               
               <NavLink className="link-dark" to="/">
-                <i className="bi bi-telegram fs-5 footer-icbx ms-2"></i>
+                {/* <i className="bi bi-telegram fs-5 footer-icbx ms-2"></i> */}
+                <img src={telegram} alt="icon" className="chat-icon-szbox" />
               </NavLink>
             </div>
           </div>

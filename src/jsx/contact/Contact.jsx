@@ -110,11 +110,11 @@ export default class Contact extends React.Component {
               img={socialImg}
             >
               <div>
-                <NavLink to="https://www.facebook.com/diwamjewels"><i className="bi bi-facebook fs-4 text-primary"></i></NavLink>
-                <NavLink to="https://www.instagram.com/diwamjewels/"> <i className="bi bi-instagram fs-4 text-danger ms-2"></i></NavLink>
-                <NavLink to="https://twitter.com/DiwamJewels"> <i className="bi bi-twitter fs-4 text-primary ms-2"></i></NavLink>
-                <NavLink to="https://api.whatsapp.com/send?phone=919664073873"><i className="bi bi-whatsapp fs-4 text-success ms-2"></i></NavLink>
-                <NavLink to="https://www.pinterest.ca/diwamjewels/"><i className="bi bi-pinterest fs-4 text-danger ms-2"></i></NavLink>
+                <NavLink to="https://www.facebook.com/diwamjewels"><i className="bi bi-facebook text-primary cont-zoom-icon"></i></NavLink>
+                <NavLink to="https://www.instagram.com/diwamjewels/"> <i className="bi bi-instagram text-danger ms-2 cont-zoom-icon"></i></NavLink>
+                <NavLink to="https://twitter.com/DiwamJewels"> <i className="bi bi-twitter text-primary ms-2 cont-zoom-icon"></i></NavLink>
+                <NavLink to="https://api.whatsapp.com/send?phone=919664073873"><i className="bi bi-whatsapp text-success ms-2 cont-zoom-icon"></i></NavLink>
+                <NavLink to="https://www.pinterest.ca/diwamjewels/"><i className="bi bi-pinterest text-danger ms-2 cont-zoom-icon"></i></NavLink>
               </div>
             </ConBox>
           </div>

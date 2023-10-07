@@ -64,7 +64,7 @@ const CarouselForHome = (props) => {
                     removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
                     dotListClass="custom-dot-list-style"
                     itemClass="productcard-home-sldr"
-                    arrows={false}
+                    arrows={true}
                 >
 
 
@@ -91,7 +91,7 @@ const CarouselForHome = (props) => {
                     removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
                     dotListClass="custom-dot-list-style"
                     itemClass="carousel-item-padding-40-px"
-                    arrows={false}
+                    arrows={true}
                 >
                     {productData && productData.map((item) => {
                         console.log(item)
@@ -156,13 +156,19 @@ const ProductCard = ({ img, name, category, id, price, sku, slug }) => {
                 <div className="home-card-icnpost">
                     <img src={img} alt="product" className="home-card-img" />
                 </div>
-                <div className='hm-crd-posticon'><FavoriteBorderIcon /></div>
+                
                 <div className="card-body">
                     <h5 className='home-card-heading'>{category}</h5>
                     <p className='home-card-bx-cont'>{name}</p>
+                    <div className="d-flex justify-content-between">
                     <p className="home-card-price"><CurrencyRupeeIcon className='home-card-iconsz' /> {price} <span className='hm-span-fnsz'></span></p>
-
-                    <div><button className='trend-cart-btn' onClick={() => RedirectDetailsPage(id,sku,slug)}>Show Details</button></div>
+                    <FavoriteBorderIcon className='hm-crd-posticon' />
+                    </div>
+                
+                    <div>
+                    <button className='trend-cart-btn' onClick={() => RedirectDetailsPage(id,sku,slug)}>Show Details</button>
+                   
+                    </div>
                 </div>
             </div>
 

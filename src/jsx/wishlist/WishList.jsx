@@ -196,9 +196,13 @@ const WhiteItemCard = ({ item }) => {
                         <p className="pro-font"><i className="bi bi-currency-rupee"></i>
                             {item.images.length > 0 && item.images[0].productVariantEntities.length > 0 && item.images[0].productVariantEntities[0].manualPrice}
                         </p>
+                        <div className='d-flex justify-content-between'>
                         <p className="off-text">
                             MRP: <del><i className="bi bi-currency-rupee"></i> {item.images.length > 0 && item.images[0].productVariantEntities.length > 0 && item.images[0].productVariantEntities[0].price}</del><span> (Incl all taxes)</span>
                         </p>
+                        <i className="bi bi-trash-fill text-dark" onClick={() => deleteItem(item.id)}></i>
+                        </div>
+                        
                         {/* <div className="wish-star">
                             <span style={{ color: '#b79d33' }}><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarHalfIcon /><StarOutlineIcon /></span> 50 Reviews
                         </div> */}
@@ -211,7 +215,7 @@ const WhiteItemCard = ({ item }) => {
                                 await addToCart(item.id);
                                 navigate("/checkout");
                             }}>Buy Now</button></NavLink>
-                            <i className="bi bi-trash-fill fs-4 text-dark" onClick={() => deleteItem(item.id)}></i>
+                           
                         </div> */}
                     </div>
                 </div>

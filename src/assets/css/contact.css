@@ -8,13 +8,19 @@
 
     padding:15px;
     border: solid 1px #b79d33;
-
-   
-
 }
 
-
-
+.box-bg:hover{
+    transform: scale(1.01);
+   border:solid 1px #a7a7a7
+}
+.cont-zoom-icon{
+    font-size:23px;
+}
+.cont-zoom-icon:hover{
+    transform: scale(1.05);
+    font-size:20px;
+}
 .contact-box{
 
     background:#ffffff;
