@@ -465,7 +465,7 @@ body {
   .header-bg {
     background: black;
 
-    background: linear-gradient(90deg, rgb(0, 0, 0) 47%, rgb(67, 67, 68) 100%);
+    background: linear-gradient(90deg, rgb(0, 0, 0) 1%, rgb(114, 114, 114) 100%);
 
     padding-left: 10px;
 
@@ -1177,7 +1177,7 @@ body {
 
 .whatsapp-icon {
   position: fixed;
-  background: #000000a6;
+  background: #ffffff;
   width: 51px;
   height: 50px;
   text-align: center;
@@ -1185,7 +1185,7 @@ body {
   bottom: 20px;
   left: 10px;
   z-index: 10;
-  color:white;
+  color:black;
 }
 
 .sticky-icons {

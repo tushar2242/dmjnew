@@ -265,7 +265,7 @@ function Navbar() {
                       navigate("/defaultlogin");
                     }}
                   >
-                    Login / Sign Up
+                    Log In / Sign Up
                   </li>
                 ) : (
                   <>
@@ -427,7 +427,7 @@ function Navbar() {
                           navigate("/login");
                         }}
                       >
-                        Login / Sign Up
+                        Log In / Sign Up
                       </li>
                     ) : (
                       <>
@@ -534,7 +534,7 @@ function Navbar() {
                       navigate("/login");
                     }}
                   >
-                    Login / Sign Up
+                    Log In / Sign Up
                   </li>
                 ) : (
                   <>
