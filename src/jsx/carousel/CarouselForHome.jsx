@@ -108,9 +108,6 @@ const CarouselForHome = (props) => {
                             />
                         )
                     })}
-
-
-
                 </Carousel>
             }
 
