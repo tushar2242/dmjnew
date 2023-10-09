@@ -355,7 +355,7 @@ const CarouselForProduct = ({ productData, category, item }) => {
                     ssr={true} // means to render carousel on server-side.
                     infinite={true}
                     autoPlay={true}
-                    autoPlaySpeed={2000}
+                    autoPlaySpeed={4000}
                     keyBoardControl={true}
 
                     customTransition="all .5s"

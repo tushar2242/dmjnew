@@ -37,7 +37,14 @@ letter-spacing: 0.75px;
 	font-size:16px;
 	font-weight:500;
 }
+.add-product-namebx{
+	width:450px
+}
 @media only screen and (max-width:767.98px){
+	.add-product-namebx{
+		width:100%;
+		text-align: justify;
+	}
     .cart-bg{
      display: none;
       margin-top:0px

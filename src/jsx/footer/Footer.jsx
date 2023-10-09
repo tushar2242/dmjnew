@@ -20,6 +20,7 @@ import instagram from '../../assets/images/instagram.png'
 import whatsapp from '../../assets/images/whatsapp.png'
 import telegram from '../../assets/images/telegram.png'
 
+
 const useFullLink = [
   {
     title: "Jewellery",
@@ -325,6 +326,8 @@ const ShareIcon = () => {
     console.log(isBoxOpen);
   };
 
+  
+
   return (
     <>
       <div className="share-icon-box1">
@@ -337,7 +340,9 @@ const ShareIcon = () => {
         </div>
         {isBoxOpen && (
           <div className="scl-icnftr-vw">
-            <div className="sticky-icons">
+    
+        
+           <div className="sticky-icons flip-up">
               <div><NavLink
                 className="link-dark"
 
@@ -354,7 +359,7 @@ const ShareIcon = () => {
               </NavLink>
               </div>
             </div>
-
+         
             <div className="sticky-icons1">
               <NavLink
                 className="link-dark"
@@ -370,6 +375,8 @@ const ShareIcon = () => {
                 <img src={telegram} alt="icon" className="chat-icon-szbox" />
               </NavLink>
             </div>
+            
+       
           </div>
         )}
       </div>
