@@ -29,7 +29,7 @@ import Accordion from "react-bootstrap/Accordion";
 import AddIcon from "@mui/icons-material/Add";
 import { Select } from "@mui/material";
 import PopUp from "../popup/PopUp";
-
+import { NavLink } from 'react-router-dom';
 
 const url = "https://api.diwamjewels.com/DMJ/";
 const imgUrl = "https://squid-app-2-7wbvi.ondigitalocean.app/";
@@ -107,8 +107,8 @@ const CheckoutPage = () => {
               >BUY NOW</Button>
 
               <p className="cond-font">
-                By placing your order you agree to our Terms & Conditions,
-                privacy and returns policies . You also consent to some of your
+                By placing your order you agree to our <NavLink to="/terms">Terms & Conditions</NavLink>,
+                <NavLink to="/privacypolicy">privacy and returns policies</NavLink> . You also consent to some of your
                 data being stored by , which may be used to make future shopping
                 experiences better for you.
               </p>
@@ -441,6 +441,7 @@ const PaymentType = () => {
               </div>
             </Accordion.Header>
             <Accordion.Body>
+            <div className="p-2">
               <div className="row">
                 <div className="col-md-6">
                   <input
@@ -482,6 +483,7 @@ const PaymentType = () => {
                     onChange={handleInputChange}
                   />
                 </div>
+              </div>
               </div>
             </Accordion.Body>
           </Accordion.Item>

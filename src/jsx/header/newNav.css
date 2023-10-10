@@ -355,7 +355,7 @@
   padding: 20px;
   /* overflow-y: scroll; */
   display: block !important;
-
+  box-shadow :1px 1px 2px 1px rgb(206, 205, 216);
 
 }
 

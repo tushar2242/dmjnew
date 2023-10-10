@@ -86,7 +86,7 @@ const AddToCart = () => {
         <meta name="keywords" content="DmJ Add to cart" />
       </Helmet>
       <div className="container-fluid">
-        <NavLink to="/search" className="text-decoration-none">
+        <NavLink to="/" className="text-decoration-none">
           <h6 className="mt-4 cont-shp">
             <i className="bi bi-chevron-left"></i>
             Continue shopping
@@ -312,11 +312,13 @@ const Products = ({ product, quantity }) => {
       <div className="cart-display mt-3">
         <div className="d-flex">
           <img src={thumb_img} alt="Cart" className="img-fluid cart-img" />
-          <div>
+          <div className="add-product-namebx">
             <p className="ms-2 cart-font">
-              {productName.length < 25
+              {/* {productName.length < 25
                 ? productName
-                : productName.slice(0, 25) + "..."}
+                : productName.slice(0, 25) + "..."} */}
+
+                {productName}
             </p>
             <p className="ms-2 cart-font">
               Availablity : <span className="text-primary">In Stock</span>

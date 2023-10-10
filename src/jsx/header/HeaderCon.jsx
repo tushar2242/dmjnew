@@ -24,9 +24,7 @@ export default class HeaderCon extends React.Component {
 
 
   render() {
-
     const { isShow } = this.state;
-
     return (
       <>
         <div className="header-deskvw">
@@ -42,7 +40,7 @@ export default class HeaderCon extends React.Component {
               </div>
               <div>
                 <Marquee>
-                  Up to 50% off Deal of the day
+                 <p>Up to 50% off Deal of the day</p> 
                 </Marquee>
               </div>
               <div className="header-icon">

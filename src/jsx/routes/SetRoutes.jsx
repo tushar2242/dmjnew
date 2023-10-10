@@ -38,7 +38,7 @@ import PaymentGateway from '../payment-gateway/PaymentGateway'
 import ReviewPage from '../reviewpage/ReviewPage';
 // import Sidebar from '../profile/Sidebar'
 
-
+import ForgetPassword from '../forget-password/ForgetPassword';
 import Sidebar from '../sidebar/Sidebar';
 // import Overview from '../sidebar/Overview';
 // import Order from '../sidebar/Order';
@@ -110,6 +110,7 @@ export default class SetRoutes extends React.Component {
                     <Route path="/Terms" element={<Terms />} />
                     <Route path="/Orderdetails" element={<Orderdetails />} />
                     {/* <Route path="/Editprofile" element={<Editprofile />} /> */}
+                    <Route path="/forgetpassword" element={<ForgetPassword />} />
                 </Routes>
 
             </>

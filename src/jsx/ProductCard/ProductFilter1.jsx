@@ -17,6 +17,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addSearch } from "../redux/dmjSlice";
+import filter from '../../assets/images/filter.png';
 
 const url = "https://api.diwamjewels.com/DMJ/";
 const endPoint = "api/v1/category/maincategory";
@@ -24,7 +25,7 @@ const endPoint = "api/v1/category/maincategory";
 
 
 
-function ProductFilter1() {
+function ProductFilter1({ name, ...props }) {
   const [category, setCategory] = useState([]);
 
   async function fetchMainCategory() {
@@ -50,9 +51,13 @@ function ProductFilter1() {
     fetchMainCategory();
   }, []);
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <>
-    <div className="accor-width">
+    {/* <div className="accor-width">
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -73,11 +78,11 @@ function ProductFilter1() {
                       id={item.id}
                       onChange={() => {
                         handleNavigate(item.type);
-                        // console.log('Checkbox changed:', item.type);
+                       
                       }}
                     />
                     <label htmlFor={item.id}>{item.type}</label>
-                    {/* <span className="count">123K</span> */}
+                   
                   </li>
                 );
               })}
@@ -85,7 +90,48 @@ function ProductFilter1() {
           </Typography>
         </AccordionDetails>
       </Accordion>
-    </div>
+    </div> */}
+
+<div className="desktop-fltr-box">
+<div className="" style={{width:'85px',marginLeft:'40px'}}>
+<h6 onClick={handleShow} className="sort-fltr-mb">
+<img src={filter} alt="filter" className="filter-iconsz" />
+      Filters
+      </h6>
+      </div>
+      <Offcanvas show={show} onHide={handleClose} {...props} className="offcanvas-endvw-shw">
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title className="sort-fltr-mb">FILTERS BY</Offcanvas.Title>
+        </Offcanvas.Header>
+        <div className="sorting-bottomline"></div>
+        <Offcanvas.Body>
+        <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography className="pro-hd-font">Jewellery</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+          <div className="accord-details-vw">
+            {/* <p>Jewellery</p>
+            <p>Handi Craft</p>
+            <p>Blue Pottery</p> */}
+   
+                <MultilevelFilter
+                 
+                />
+         
+           </div>
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+        </Offcanvas.Body>
+      </Offcanvas>
+</div>
+
 
     <div className="mobview-filter-box">
       <SortingFilters />
@@ -197,6 +243,29 @@ const FilterContentInfo = (props) => {
           id="panel1a-header"
         >
           <Typography className="pro-hd-font">{props.title}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+          <div className="accord-details-vw">
+           <MultilevelFilter />
+           </div>
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+    </>
+  )
+}
+
+const MultilevelFilter = () => {
+  return (
+    <>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography className="pro-hd-font">Shop by category</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>

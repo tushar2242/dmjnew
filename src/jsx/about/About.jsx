@@ -90,13 +90,13 @@ export default class About extends React.Component {
                             about=' A successful senior corporate executive, MBA from IIM Ahmedabad, with over 35 years of experience and expertise in Marketing, Operations and Strategy. She has worked with some of the best brands like GSK, Lakme, India Today,
                                 Fabindia and many more and continues to work in areas relating to craft, livelihoods and heritage & culture.'
                         />
-                        <ManagementCard
+                        {/* <ManagementCard
                             name='.......'
                             img={profileimg}
                             position='...'
                             about=' A successful senior corporate executive, MBA from IIM Ahmedabad, with over 35 years of experience and expertise in Marketing, Operations and Strategy. She has worked with some of the best brands like GSK, Lakme, India Today,
                                 Fabindia and many more and continues to work in areas relating to craft, livelihoods and heritage & culture.'
-                        />
+                        /> */}
                     </div>
                 </div>
                 <SubscribenMail />

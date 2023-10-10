@@ -1,8 +1,9 @@
 
-.pro-img-card {
+.pro-img-card img{
   width: 100%;
   max-width: 400px !important;
-  height: 260px !important;
+  /* height: 260px !important; */
+  border-radius: 5px;
 
   object-fit: fill !important;
 }
@@ -156,7 +157,7 @@
   display: -ms-flexbox;
   flex-wrap: wrap;
   width:100%;
- 
+
 }
 .rating-sec{
   display:flex;
@@ -165,6 +166,8 @@
 }
 .grid-column{
   width:25%;
+  padding-left:5px;
+  padding-right: 5px;
 }
 .home-card-box{
   
@@ -225,17 +228,23 @@
   position: relative;
 }
 .hm-crd-posticon{
-  position: absolute;
-  background-color: rgb(255, 255, 255);
-  width:30px;
-  height: 30px;
+  /* position: absolute; */
+  background-color: rgb(0, 0, 0);
+  font-size:25px !important;
+  width:40px;
+  height: 40px;
   padding:3px;
   border-radius: 50px;
-  color:#b49102;
+  color:#fdfdfd;
 right:2px;
 margin-top:2px;
 box-shadow: 2px 3px 6px 7px rgba(250, 249, 249, 0.205);
+cursor: pointer;
 }
+.hm-crd-posticon:hover{
+  background-color: rgb(255, 0, 0);
+}
+
 /* .home-slider-boxvw{
   width:85%;
   
@@ -250,7 +259,28 @@ box-shadow: 2px 3px 6px 7px rgba(250, 249, 249, 0.205);
 .pro-price-fx{
   display:flex;
 }
+
+.filtr-new-box-1{
+  background-color:white;
+  border-radius: 5px;
+  padding:10px;
+  border:solid 1px white;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+}
+.filtr-new-box-1:hover{
+  border:solid 1px #b79d33;
+  transform: scale(1.01);
+}
+
 @media screen and (max-width: 767.98px) {
+  .filtr-new-box-1:hover{
+    border:none;
+    transform:none;
+  }
+  .filtr-new-box-1{
+    box-shadow:none;
+    padding:0px;
+  }
   .pro-price-fx{
     display:block;
   }
@@ -316,6 +346,8 @@ display:none;
   }
   .grid-column{
     width:50%;
+    padding-left:2px;
+    padding-right:2px;
   }
   .rating-sec{
     display:block;
@@ -361,9 +393,9 @@ display:none;
     display: -ms-flexbox;
     /* display: flex; */
   }
-  .pro-img-card {
+  .pro-img-card img{
     width: 100%;
-    max-width: auto !important;
+    max-width:auto !important;
     height: auto !important;
     object-fit: fill !important;
   }
@@ -447,7 +479,7 @@ display:none;
     width: 100%;
   }
 
-  .pro-img-card {
+  .pro-img-card img{
     width: 100%;
     max-width: 400px !important;
     height: auto !important;
@@ -484,8 +516,8 @@ display:none;
   letter-spacing: 0.75px;
   margin-top: 10px;
 }
-.contain-grid{
+/* .contain-grid{
   padding-left:0px !important;
   padding-right:0px !important;
- }
+ } */
 }

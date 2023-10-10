@@ -152,7 +152,7 @@ select.sel-box:focus{
 }
 .stk-box-item{
     position:sticky !important;
-    top:10px !important;
+    top:0px !important;
 }
 .check-verify-btn{
     font-size:15px;

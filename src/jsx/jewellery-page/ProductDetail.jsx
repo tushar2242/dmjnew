@@ -382,7 +382,8 @@ function Product() {
                     decrement={decrement}
                     handleItemId={handleItemId}
                   />
-
+                   <p className="tagline-line"></p>
+                  
                   <div className="mt-2 add-wishlist-btnbtm" style={{ display: "flex" }}>
 
                     <button
@@ -1127,7 +1128,7 @@ const RelatedProduct = ({ search }) => {
           // removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
           dotListClass="custom-dot-list-style"
           itemClass="carousel-item-padding-40-px productcard-home-sldr"
-          arrows={false}
+          arrows={true}
         >
           {relatedProduct.map((item) => {
             {

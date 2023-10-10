@@ -85,7 +85,7 @@ export default class WishList extends React.Component {
 
                 <HeaderCon />
                 <div className="container mt-4">
-                    <NavLink to="/search" className="text-decoration-none" style={{ width: 'fit-content', display: 'inline-block' }}>
+                    <NavLink to="/" className="text-decoration-none" style={{ width: 'fit-content', display: 'inline-block' }}>
                         <h6 className="mt-4 cont-shp mb-3"><i className="bi bi-chevron-left"></i>
                             Continue shopping</h6></NavLink>
                     <div className="wish-bg">
@@ -198,10 +198,27 @@ const WhiteItemCard = ({ item }) => {
                         <p className="pro-font"><i className="bi bi-currency-rupee"></i>
                             {item.images.length > 0 && item.images[0].productVariantEntities.length > 0 && item.images[0].productVariantEntities[0].manualPrice}
                         </p>
+                        <div className='d-flex justify-content-between'>
                         <p className="off-text">
                             MRP: <del><i className="bi bi-currency-rupee"></i> {item.images.length > 0 && item.images[0].productVariantEntities.length > 0 && item.images[0].productVariantEntities[0].price}</del><span> (Incl all taxes)</span>
                         </p>
-
+                        <i className="bi bi-trash-fill text-dark" onClick={() => deleteItem(item.id)}></i>
+                        </div>
+                        
+                        {/* <div className="wish-star">
+                            <span style={{ color: '#b79d33' }}><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarHalfIcon /><StarOutlineIcon /></span> 50 Reviews
+                        </div> */}
+                        {/* <div className="d-flex justify-content-between mt-4">
+                            <NavLink to="/addToCart"><button className="add-cart-btn" onClick={async () => {
+                                await addToCart(item.id);
+                                navigate("/addtocart");
+                            }}>Add to cart</button></NavLink>
+                            <NavLink to="/checkout"><button className="buy-now-btn" onClick={async () => {
+                                await addToCart(item.id);
+                                navigate("/checkout");
+                            }}>Buy Now</button></NavLink>
+                           
+                        </div> */}
                     </div>
                 </div>
             </div>
