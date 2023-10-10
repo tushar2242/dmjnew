@@ -706,11 +706,7 @@ function MobileMenuBar({ cateData, ...props }) {
                handleClose()
                }}>Search</button>
           </form>
-       
-
-
-
-
+      
           {cateData.length > 0 &&
             cateData.map((cate) => {
               // console.log(cate)
@@ -750,6 +746,8 @@ function AccordianMenuList({ title, subCateDate, handleClose }) {
     </>
   );
 }
+
+export {AccordianMenuList};
 
 function AccordianSubMenu({ title, id, handleClose }) {
   const [subCate, setSubCate] = useState([]);

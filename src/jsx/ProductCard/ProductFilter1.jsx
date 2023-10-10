@@ -116,7 +116,14 @@ function ProductFilter1({ name, ...props }) {
         <AccordionDetails>
           <Typography>
           <div className="accord-details-vw">
-            <MultilevelFilter />
+            {/* <p>Jewellery</p>
+            <p>Handi Craft</p>
+            <p>Blue Pottery</p> */}
+   
+                <MultilevelFilter
+                 
+                />
+         
            </div>
           </Typography>
         </AccordionDetails>
@@ -124,8 +131,6 @@ function ProductFilter1({ name, ...props }) {
         </Offcanvas.Body>
       </Offcanvas>
 </div>
-
-
 
 
     <div className="mobview-filter-box">
@@ -242,9 +247,7 @@ const FilterContentInfo = (props) => {
         <AccordionDetails>
           <Typography>
           <div className="accord-details-vw">
-            <p>Gold Ring</p>
-            <p>Silver Ring</p>
-            <p>Metal Ring</p>
+           <MultilevelFilter />
            </div>
           </Typography>
         </AccordionDetails>
@@ -256,7 +259,7 @@ const FilterContentInfo = (props) => {
 const MultilevelFilter = () => {
   return (
     <>
-         <Accordion>
+      <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"

@@ -357,7 +357,7 @@ const CarouselForProduct = ({ productData, category, item }) => {
                     autoPlay={true}
                     autoPlaySpeed={4000}
                     keyBoardControl={true}
-
+                    arrows={true}
                     customTransition="all .5s"
                     transitionDuration={500}
                     containerClass="carousel-container"
@@ -389,6 +389,7 @@ const CarouselForProduct = ({ productData, category, item }) => {
                     responsive={responsive}
                     ssr={true}
                     infinite={true}
+                    arrows={true}
                     autoPlay={true}
                     autoPlaySpeed={2000}
                     keyBoardControl={true}

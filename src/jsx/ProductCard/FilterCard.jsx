@@ -8,6 +8,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Loader from "../loader/Loader";
 
+
 const proto = "https://api.diwamjewels.com/DMJ/";
 const imgUrl = "https://squid-app-2-7wbvi.ondigitalocean.app/";
 const endPoint = "api/v1/products/search?query=";
@@ -192,8 +193,6 @@ const ProductItemCard = ({ img, item, price }) => {
             </div>
        
           </div>
-
-
         </div>
       </div> */}
 

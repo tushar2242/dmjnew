@@ -85,7 +85,7 @@ export default class WishList extends React.Component {
 
                 <HeaderCon />
                 <div className="container mt-4">
-                    <NavLink to="/search" className="text-decoration-none" style={{ width: 'fit-content', display: 'inline-block' }}>
+                    <NavLink to="/" className="text-decoration-none" style={{ width: 'fit-content', display: 'inline-block' }}>
                         <h6 className="mt-4 cont-shp mb-3"><i className="bi bi-chevron-left"></i>
                             Continue shopping</h6></NavLink>
                     <div className="wish-bg">

@@ -273,6 +273,10 @@ cursor: pointer;
 }
 
 @media screen and (max-width: 767.98px) {
+  .filtr-new-box-1:hover{
+    border:none;
+    transform:none;
+  }
   .filtr-new-box-1{
     box-shadow:none;
     padding:0px;

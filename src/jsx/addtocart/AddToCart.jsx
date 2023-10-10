@@ -86,7 +86,7 @@ const AddToCart = () => {
         <meta name="keywords" content="DmJ Add to cart" />
       </Helmet>
       <div className="container-fluid">
-        <NavLink to="/search" className="text-decoration-none">
+        <NavLink to="/" className="text-decoration-none">
           <h6 className="mt-4 cont-shp">
             <i className="bi bi-chevron-left"></i>
             Continue shopping
