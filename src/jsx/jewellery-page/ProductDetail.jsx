@@ -247,17 +247,17 @@ function Product() {
 
   async function handleShare() {
     const currentUrl = window.location.href;
-    if(navigator.share){
+    if (navigator.share) {
       navigator.share({
-        text:"Checkout This Awesome Website",
+        text: "Checkout This Awesome Website",
         title: itemInfo.seo_title,
         url: currentUrl,
       })
     }
-    else{
+    else {
       navigator.clipboard.writeText(currentUrl)
     }
-    
+
 
   }
 
@@ -339,7 +339,7 @@ function Product() {
                     <img src={imgUrl + selectedImage} className="" />
                   </div>
                   <div className="share-wlst-icon">
-                   <NavLink to='/wishlist'><FavoriteBorderIcon className="sh-wlst-icsz" /></NavLink>
+                    <NavLink to='/wishlist'><FavoriteBorderIcon className="sh-wlst-icsz" /></NavLink>
                     <br />
                     <ShareIcon className="sh-wlst-icsz mt-1" onClick={() => handleShare()
                     } />
@@ -382,8 +382,8 @@ function Product() {
                     decrement={decrement}
                     handleItemId={handleItemId}
                   />
-                   <p className="tagline-line"></p>
-                  
+                  <p className="tagline-line"></p>
+
                   <div className="mt-2 add-wishlist-btnbtm" style={{ display: "flex" }}>
 
                     <button
@@ -587,7 +587,7 @@ const ProductPrice = ({
     // console.log(variant)
     fetchCurrancy();
     window;
-   
+
     // console.log(variant[0].productVariantEntities)
     fetchPrice();
 
@@ -603,7 +603,7 @@ const ProductPrice = ({
   }
 
 
-  
+
 
   return (
     <>
@@ -1146,7 +1146,7 @@ const RelatedProduct = ({ search }) => {
                 price={
                   item.images.length > 0 &&
                   item.images[0].productVariantEntities.length > 0 &&
-                  item.images[0].productVariantEntities[0].price
+                  item.images[0].productVariantEntities[0].manualPrice
                 }
                 sku={item.sku}
                 slug={item.slug}
