@@ -12,8 +12,8 @@ const PopUp = () => {
                 <h3 className='popup-heading'>Please Login here</h3>
                 <p className='popup-para-fnt'>Please login here for better experience !</p>
                 <div>
-                    <button className='popup-btn'>Login</button>
-                    <button className='popup-btn'>Signup</button>
+                    <button className='popup-btn'>Log In</button>
+                    <button className='popup-btn'>Sign Up</button>
                 </div>
              </div>
             </div>

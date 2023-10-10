@@ -514,7 +514,7 @@ function Navbar() {
             >
               <div style={{ marginTop: '-6px' }}>
                 <i className="bi bi-person-circle nav-icon-item ms-4"></i><br />
-                <p className="user-name-fntsz">Hi,{userId ? userName : "Guest"}</p>
+                <p className="user-name-fntsz1">Hi,{userId ? userName : "Guest"}</p>
               </div>
             </NavLink>
             {profile && (
