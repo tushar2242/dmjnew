@@ -1,61 +1,63 @@
-import React from 'react';
-import Navbar from '../header/Navbar';
-import Banner from '../Banner/Banner';
-import Footer from '../footer/Footer';
-import HeaderCon from '../header/HeaderCon';
-import phoneImg from '../../assets/images/phoneImg.png';
-import mailImg from '../../assets/images/mailImg.png';
-import socialImg from '../../assets/images/socialImg.png';
-import axios from 'axios';
-import { NavLink } from 'react-router-dom';
-
+import React, { Component } from "react";
+import Navbar from "../header/Navbar";
+import Banner from "../Banner/Banner";
+import Footer from "../footer/Footer";
+import HeaderCon from "../header/HeaderCon";
+import phoneImg from "../../assets/images/phoneImg.png";
+import mailImg from "../../assets/images/mailImg.png";
+import socialImg from "../../assets/images/socialImg.png";
+import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 export default class Contact extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      email: '',
-      message: '',
+      name: "",
+      email: "",
+      message: "",
+      phoneNumber: "",
+      errors: {},
       successMessageVisible: false,
     };
 
-    this.componentDidMount = this.componentDidMount.bind(this)
-
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
 
     const { name, email, message } = this.state;
     const formData = { name, email, message };
 
-    axios.post('http://localhost:8080/api/v1/contact', formData)
-      .then(response => {
+    axios
+      .post("http://localhost:8080/api/v1/contact", formData)
+      .then((response) => {
         console.log(response.data);
         this.setState({
-          name: '',
-          email: '',
-          message: '',
+          name: "",
+          email: "",
+          message: "",
+          phoneNumber: "",
+          errors: {},
           successMessageVisible: true,
           errorMessageVisible: false,
         });
-
 
         setTimeout(() => {
           this.setState({ successMessageVisible: false });
         }, 3000);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
         this.setState({
           successMessageVisible: false,
@@ -65,19 +67,73 @@ export default class Contact extends React.Component {
         setTimeout(() => {
           this.setState({ errorMessageVisible: false });
         }, 3000);
-
       });
   };
 
+  // Validation function for the form fields
+  validateForm = () => {
+    const { name, email, phoneNumber, message } = this.state;
+    const errors = {};
+
+    // Name validation - at least 2 characters
+    if (name.trim().length < 2) {
+      errors.name = "Name must be at least 2 characters long";
+    }
+
+    // Email validation using a basic pattern
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(email)) {
+      errors.email = "Enter a valid email address";
+    }
+
+    // Phone number validation - 10 digits
+    const phonePattern = /^\d{10}$/;
+    if (!phonePattern.test(phoneNumber)) {
+      errors.phoneNumber = "Enter a valid 10-digit phone number";
+    }
+
+    // Message validation - at least 10 characters
+    if (message.trim().length < 10) {
+      errors.message = "Message must be at least 10 characters long";
+    }
+
+    return errors;
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const errors = this.validateForm();
+    if (Object.keys(errors).length === 0) {
+      // Form is valid, you can submit it here
+      console.log("Form submitted:", this.state);
+    } else {
+      // Update the component state with errors
+      this.setState({ errors });
+    }
+  };
+
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
+
   render() {
-    const { name, email, message, successMessageVisible, errorMessageVisible } = this.state;
+    const {
+      name,
+      email,
+      message,
+      phoneNumber,
+      errors,
+      successMessageVisible,
+      errorMessageVisible,
+    } = this.state;
 
     return (
       <>
         <HeaderCon />
         <Navbar />
 
-        {successMessageVisible && (
+        {/* {successMessageVisible && (
           <div className="successfullmsg">
             <p className='succesmsg'>Data added successfully</p>
           </div>
@@ -86,35 +142,36 @@ export default class Contact extends React.Component {
           <div className="successfullmsg">
             <p className='errmsg'>Data not added. Please try again.</p>
           </div>
-        )}
-        <Banner
-          title='Contact Us'
-          fullTitle='Home / contact us'
-        />
+        )} */}
+        <Banner title="Contact Us" fullTitle="Home / contact us" />
 
         <div className="container">
           <div className="row">
+            <ConBox title="Phone" contact="+91-9664073873" img={phoneImg} />
             <ConBox
-              title='Phone'
-              contact='+91-9664073873'
-              img={phoneImg}
-            />
-            <ConBox
-              title='Email'
-              contact='info@diwamjewels.com'
+              title="Email"
+              contact="info@diwamjewels.com"
               img={mailImg}
             />
-            <ConBox
-              title='Follow us'
-              contact=''
-              img={socialImg}
-            >
+            <ConBox title="Follow us" contact="" img={socialImg}>
               <div>
-                <NavLink to="https://www.facebook.com/diwamjewels"><i className="bi bi-facebook text-primary cont-zoom-icon"></i></NavLink>
-                <NavLink to="https://www.instagram.com/diwamjewels/"> <i className="bi bi-instagram text-danger ms-2 cont-zoom-icon"></i></NavLink>
-                <NavLink to="https://twitter.com/DiwamJewels"> <i className="bi bi-twitter text-primary ms-2 cont-zoom-icon"></i></NavLink>
-                <NavLink to="https://api.whatsapp.com/send?phone=919664073873"><i className="bi bi-whatsapp text-success ms-2 cont-zoom-icon"></i></NavLink>
-                <NavLink to="https://www.pinterest.ca/diwamjewels/"><i className="bi bi-pinterest text-danger ms-2 cont-zoom-icon"></i></NavLink>
+                <NavLink to="https://www.facebook.com/diwamjewels">
+                  <i className="bi bi-facebook text-primary cont-zoom-icon"></i>
+                </NavLink>
+                <NavLink to="https://www.instagram.com/diwamjewels/">
+                  {" "}
+                  <i className="bi bi-instagram text-danger ms-2 cont-zoom-icon"></i>
+                </NavLink>
+                <NavLink to="https://twitter.com/DiwamJewels">
+                  {" "}
+                  <i className="bi bi-twitter text-primary ms-2 cont-zoom-icon"></i>
+                </NavLink>
+                <NavLink to="https://api.whatsapp.com/send?phone=919664073873">
+                  <i className="bi bi-whatsapp text-success ms-2 cont-zoom-icon"></i>
+                </NavLink>
+                <NavLink to="https://www.pinterest.ca/diwamjewels/">
+                  <i className="bi bi-pinterest text-danger ms-2 cont-zoom-icon"></i>
+                </NavLink>
               </div>
             </ConBox>
           </div>
@@ -124,65 +181,82 @@ export default class Contact extends React.Component {
           <div className="row mb-3">
             <div className="col-md-6">
               <div className="contact-box mt-5">
-                <h6 className="text-center"><b>Have a question ?</b></h6>
-                <form>
+                <h6 className="text-center">
+                  <b>Have a question ?</b>
+                </h6>
+                <form onSubmit={this.handleSubmit}>
                   <div className="row">
                     <div className="col-md-6 mt-3">
-                      <label className="form-label"><b>Name</b></label>
+                      <label className="form-label">
+                        <b>Name</b>
+                      </label>
                       <input
                         type="text"
                         className="form-control input-box-contact"
+                        placeholder="Enter your name"
                         id="name"
                         name="name"
-                        placeholder="Enter your name"
                         value={name}
                         onChange={this.handleChange}
-                        required
                       />
+                      {errors.name && <p className="error">{errors.name}</p>}
                     </div>
                     <div className="col-md-6 mt-3">
-                      <label className="form-label"><b>Email address</b></label>
+                      <label className="form-label">
+                        <b>Email address</b>
+                      </label>
                       <input
                         type="email"
                         className="form-control input-box-contact"
+                        placeholder="Enter your email"
                         id="email"
                         name="email"
-                        placeholder="Enter your email"
                         value={email}
                         onChange={this.handleChange}
-                        required
                       />
+                      {errors.email && <p className="error">{errors.email}</p>}
                     </div>
                   </div>
                   <div className="row">
-                  <div className="col-md-12 mt-3">
-                  <label className="form-label"><b>Phone Number</b></label>
-                  <input
+                    <div className="col-md-12 mt-3">
+                      <label className="form-label">
+                        <b>Phone Number</b>
+                      </label>
+                      <input
                         type="number"
                         className="form-control input-box-contact"
                         id="phonenumber"
-                        name="phonenumber"
+                        name="phoneNumber"
+                        value={phoneNumber}
+                        onChange={this.handleChange}
                         placeholder="Enter your phone number"
-                        required
-                        
                       />
-                  </div>
+                      {errors.phoneNumber && (
+                        <p className="error">{errors.phoneNumber}</p>
+                      )}
+                    </div>
                     <div className="col-md-12 mt-3">
-                      <label className="form-label"><b>Message</b></label>
+                      <label className="form-label">
+                        <b>Message</b>
+                      </label>
                       <textarea
                         name="message"
+                        value={message}
+                        onChange={this.handleChange}
                         id="message"
                         cols="30"
                         rows="10"
                         className="form-control input-box-contact"
                         placeholder="Enter your message"
-                        value={message}
-                        onChange={this.handleChange}
-                        required
                       ></textarea>
+                      {errors.message && (
+                        <p className="error">{errors.message}</p>
+                      )}
                     </div>
                   </div>
-                  <button className="trend-cart-btn mt-4" onClick={this.handleSubmit}>Submit <i className="bi bi-send-fill"></i></button>
+                  <button type="submit" className="trend-cart-btn mt-4">
+                    Submit <i className="bi bi-send-fill"></i>
+                  </button>
                 </form>
               </div>
             </div>
@@ -190,14 +264,11 @@ export default class Contact extends React.Component {
           </div>
         </div>
 
-
-
         <Footer />
       </>
-    )
+    );
   }
 }
-
 
 class ConBox extends React.Component {
   render() {
@@ -206,21 +277,21 @@ class ConBox extends React.Component {
       <>
         <div className="col-md-4 mt-5">
           <div className="box-bg d-flex justify-content-center">
-          
             <img src={img} className="img-fluid cont-img" alt="phone" />
-           <div className="ms-2">
-            <h4 className="heading-text mt-2">{title}</h4>
+            <div className="ms-2">
+              <h4 className="heading-text mt-2">{title}</h4>
 
-            <p><b>{contact}</b></p>
-            {children}
+              <p>
+                <b>{contact}</b>
+              </p>
+              {children}
             </div>
           </div>
         </div>
       </>
-    )
+    );
   }
 }
-
 
 class Frame extends React.Component {
   render() {
@@ -238,17 +309,21 @@ class Frame extends React.Component {
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe> */}
 
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3556.7373398681866!2d75.83585837452185!3d26.94354015876671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db779978c364d%3A0xcb91f9a5495f3927!2sDiwam%20Jewels!5e0!3m2!1sen!2sin!4v1695298015218!5m2!1sen!2sin" width="100%" height="550" style={{ border: "solid 1px #b79d33" }}
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3556.7373398681866!2d75.83585837452185!3d26.94354015876671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db779978c364d%3A0xcb91f9a5495f3927!2sDiwam%20Jewels!5e0!3m2!1sen!2sin!4v1695298015218!5m2!1sen!2sin"
+            width="100%"
+            height="550"
+            style={{ border: "solid 1px #b79d33" }}
             className="rounded"
             allowFullScreen=""
             loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"></iframe>
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
       </>
-    )
+    );
   }
 }
-
 
 // class ContactForm extends React.Component{
 //     render(){
