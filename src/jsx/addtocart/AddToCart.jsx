@@ -94,19 +94,19 @@ const AddToCart = () => {
         </NavLink>
 
         {proDetails.length > 0 ? (
-          proDetails.map((item, index) => {
-            return (
-              <div className="row cart-row-dply">
-                <div className="col-md-8">
-                  <div className="cart-bg">
-                    <h6 className="pro-font">PRODUCT</h6>
-                    <div className="d-flex">
-                      <h6 className="pro-font">QUANTITY</h6>
-                      <h6 className="pro-font ms-5">PRICE</h6>
-                      <h6 className="pro-font ms-5">REMOVE</h6>
-                    </div>
-                  </div>
 
+          <div className="row cart-row-dply">
+            <div className="col-md-8">
+              <div className="cart-bg">
+                <h6 className="pro-font">PRODUCT</h6>
+                <div className="d-flex">
+                  <h6 className="pro-font">QUANTITY</h6>
+                  <h6 className="pro-font ms-5">PRICE</h6>
+                  <h6 className="pro-font ms-5">REMOVE</h6>
+                </div>
+              </div>
+              {proDetails.map((item, index) => {
+                return (
                   <ProductDetails
                     setPrice={setPrice}
                     price={price}
@@ -124,21 +124,24 @@ const AddToCart = () => {
                       item.images[0].productVariantEntities[0].price
                     }
                   />
-                </div>
-                <div className="col-md-4">
-                  <OrderDetails
-                    item={proDetails}
-                    setPrice={setPrice}
-                    price={price}
-                    dis={dis}
-                    setDis={setDis}
-                    totalPrice={totalPrice}
-                    setTotalPrice={setTotalPrice}
-                  />
-                </div>
-              </div>
-            );
-          })
+
+
+                );
+              })}
+            </div>
+            <div className="col-md-4">
+              <OrderDetails
+                item={proDetails}
+                setPrice={setPrice}
+                price={price}
+                dis={dis}
+                setDis={setDis}
+                totalPrice={totalPrice}
+                setTotalPrice={setTotalPrice}
+              />
+            </div>
+          </div>
+
         ) : (
           <div>
             <div className="text-center mt-5">
@@ -158,6 +161,15 @@ const AddToCart = () => {
     </>
   );
 };
+
+
+
+
+
+
+
+
+
 
 const ProductDetails = ({
   product,
@@ -187,6 +199,16 @@ const ProductDetails = ({
   );
 };
 
+
+
+
+
+
+
+
+
+
+
 const Products = ({ product, quantity }) => {
   const [itemQuan, setItemQuan] = useState(2);
   const [productName, setProductName] = useState("Sample");
@@ -204,13 +226,13 @@ const Products = ({ product, quantity }) => {
     setProductName(product.seo_title);
     setPrice(
       product.images.length > 0 &&
-        product.images[0].productVariantEntities.length > 0 &&
-        product.images[0].productVariantEntities[0].price
+      product.images[0].productVariantEntities.length > 0 &&
+      product.images[0].productVariantEntities[0].price
     );
     setTotalPrice(
       product.images.length > 0 &&
-        product.images[0].productVariantEntities.length > 0 &&
-        product.images[0].productVariantEntities[0].price * (quantity - 1)
+      product.images[0].productVariantEntities.length > 0 &&
+      product.images[0].productVariantEntities[0].price * (quantity - 1)
     );
     setThumbImg(imgUrl + product.images[0].thumbImage);
     setItemId(product.id);
@@ -311,7 +333,7 @@ const Products = ({ product, quantity }) => {
                 className="in-num"
                 value={itemQuan - 1}
                 readOnly=""
-                // onChange={setValue}
+              // onChange={setValue}
               />
               <span className="plus" onClick={addQuan}></span>
             </div>
@@ -332,6 +354,12 @@ const Products = ({ product, quantity }) => {
     </>
   );
 };
+
+
+
+
+
+
 
 const OrderDetails = ({ item, price }) => {
   const [totalPrice, setTotal] = useState(0);

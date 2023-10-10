@@ -3,9 +3,9 @@ import HeaderCon from '../header/HeaderCon';
 
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import StarRateIcon from '@mui/icons-material/StarRate';
-import StarHalfIcon from '@mui/icons-material/StarHalf';
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
+// import StarRateIcon from '@mui/icons-material/StarRate';
+// import StarHalfIcon from '@mui/icons-material/StarHalf';
+// import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import wishlistimg from '../../assets/images/wishlistimg.png';
 
 const url = 'https://api.diwamjewels.com/DMJ/'
@@ -107,10 +107,10 @@ export default class WishList extends React.Component {
                                 })
                                     :
                                     <div>
-                                    <div className='text-center mt-5'><img src={wishlistimg} alt="icon" /></div>
+                                        <div className='text-center mt-5'><img src={wishlistimg} alt="icon" /></div>
 
-                                    <h4 className="mt-3 text-center"><b>Nothing here...yet</b></h4>
-                                    <p className='text-center'><b>Please Add Some Products</b></p>
+                                        <h4 className="mt-3 text-center"><b>Nothing here...yet</b></h4>
+                                        <p className='text-center'><b>Please Add Some Products</b></p>
                                     </div>
                             }
 
@@ -152,7 +152,7 @@ const WhiteItemCard = ({ item }) => {
     // console.log(img)
     async function handleNavigate(sku, slug) {
         // await dispatch(addSearch(val));
-        navigate(`/productDetails/` + slug + '/' + sku)
+        navigate(`/p/` + slug + '/' + sku)
     }
 
 
@@ -183,6 +183,8 @@ const WhiteItemCard = ({ item }) => {
         navigate('/addToCart')
     };
 
+
+
     return (
         <>
             <div className="col-md-3 mt-3" onClick={() => {
@@ -199,20 +201,7 @@ const WhiteItemCard = ({ item }) => {
                         <p className="off-text">
                             MRP: <del><i className="bi bi-currency-rupee"></i> {item.images.length > 0 && item.images[0].productVariantEntities.length > 0 && item.images[0].productVariantEntities[0].price}</del><span> (Incl all taxes)</span>
                         </p>
-                        {/* <div className="wish-star">
-                            <span style={{ color: '#b79d33' }}><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarHalfIcon /><StarOutlineIcon /></span> 50 Reviews
-                        </div> */}
-                        {/* <div className="d-flex justify-content-between mt-4">
-                            <NavLink to="/addToCart"><button className="add-cart-btn" onClick={async () => {
-                                await addToCart(item.id);
-                                navigate("/addtocart");
-                            }}>Add to cart</button></NavLink>
-                            <NavLink to="/checkout"><button className="buy-now-btn" onClick={async () => {
-                                await addToCart(item.id);
-                                navigate("/checkout");
-                            }}>Buy Now</button></NavLink>
-                            <i className="bi bi-trash-fill fs-4 text-dark" onClick={() => deleteItem(item.id)}></i>
-                        </div> */}
+
                     </div>
                 </div>
             </div>

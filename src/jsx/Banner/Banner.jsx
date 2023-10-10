@@ -4,7 +4,7 @@ import dmjbanner from '../../assets/images/dmjbanner.png'
 
 export default class Banner extends React.Component {
     render() {
-        const { title, fullTitle, children } = this.props;
+        const { title, fullTitle, children, bannerImg } = this.props;
         return (
             <>
                 <div className="banner">

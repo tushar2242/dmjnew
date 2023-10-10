@@ -8,7 +8,8 @@ import SubscribenMail from '../subscribe/SubscribenMail';
 // import managerImg from '../../assets/images/Rectangle 119.png';
 import Banner from '../Banner/Banner';
 import ashuimage from '../../assets/images/ashu.png'
-import profileimg from '../../assets/images/827.jpg'
+import profileimg from '../../assets/images/827.jpg';
+import bannerImg from '../../assets/images/banner/dmj-banner.jpg'
 
 export default class About extends React.Component {
 
@@ -33,6 +34,7 @@ export default class About extends React.Component {
                 <Banner
                     title='About Us'
                     fullTitle='Home / about us'
+                    bannerImg ={bannerImg}
                 />
                 <div className="container">
                     <h3 className="mt-5 text-center about-heading"><b>About Us</b></h3>

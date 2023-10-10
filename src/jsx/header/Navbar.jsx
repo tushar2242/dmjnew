@@ -30,6 +30,9 @@ const userId = localStorage.getItem("userId");
 
 
 function Navbar() {
+
+
+
   async function fetchMenu() {
     try {
       const res = await axios.get(url + endPoint);
@@ -59,7 +62,7 @@ function Navbar() {
   const [wishLength, setWishLength] = useState(0)
   const [cartLength, setCartLength] = useState(0)
 
-  const [userName, setUserName] = useState('There')
+  const [userName, setUserName] = useState('')
 
   async function handleSearch(e) {
     e.preventDefault();
@@ -80,21 +83,6 @@ function Navbar() {
     localStorage.removeItem("userId");
   }
 
-  // const [isBoxVisible, setIsBoxVisible] = useState(false);
-  // const toggleBoxVisibility = () => {
-  //   setIsBoxVisible(!isBoxVisible);
-  // };
-
-  // function handleLeaveMouse() {
-  //   // Delay for 500 milliseconds (adjust as needed)
-  //   const timeoutId = setTimeout(() => {
-  //     setIsJwelOpen(false);
-  //     setIsArtOpen(false);
-  //     setIsCarpet(false);
-  //   }, 5000);
-  //   // Store the timeout ID to clear it if necessary
-  //   setHoverTimeout(timeoutId);
-  // }
 
   function handleJewelEnter() {
     setIsJwelOpen(!isJwelOpen);
@@ -109,11 +97,12 @@ function Navbar() {
   async function fetchUserData() {
     try {
       const res = await axios.get(url + endPoint2 + userId);
-      // console.log(res.data.data)
-      setUserName(res.data.data);
+      // console.log(res.data.data.userName)
+      const userName = res.data.data.userName;
+      const firstWord = userName.split(' ')[0];
+      setUserName(firstWord)
     } catch (err) {
       console.log(err);
-      setUserName('There')
     }
   }
 
@@ -144,7 +133,7 @@ function Navbar() {
 
   useEffect(() => {
     // console.log(searchTxt)
-
+    let userId = localStorage.getItem("userId");
     let wishList = JSON.parse(localStorage.getItem('wishList')) || [];
     const uniqueWishList = [...new Set(wishList)];
     setWishLength(uniqueWishList.length)
@@ -252,9 +241,9 @@ function Navbar() {
                 setProfile(!profile);
               }}
             >
-            <div style={{marginTop:'19px'}}>
-              <i className="bi bi-person-circle nav-icon-item ms-5"></i><br />
-              <p className="user-name-fntsz">hi,there</p>
+              <div style={{ marginTop: '19px' }}>
+                <i className="bi bi-person-circle nav-icon-item ms-5"></i><br />
+                {userId && <p className="user-name-fntsz">hi,{userName}</p>}
               </div>
             </div>
             {profile && (
@@ -416,7 +405,7 @@ function Navbar() {
                 >
                   <div style={{ marginTop: '27px' }}>
                     <i className="bi bi-person-circle nav-icon-item ms-5"></i><br />
-                    <p className="user-name-fntsz">hi,there</p>
+                    {userId && <p className="user-name-fntsz">hi,{userName}</p>}
                   </div>
                 </div>
                 {profile && (
@@ -521,9 +510,9 @@ function Navbar() {
                 setProfile(!profile);
               }}
             >
-              <div style={{marginTop:'-6px'}}>
-              <i className="bi bi-person-circle nav-icon-item ms-4"></i><br />
-              <p className="user-name-fntsz1">hi,there</p>
+              <div style={{ marginTop: '-6px' }}>
+                <i className="bi bi-person-circle nav-icon-item ms-4"></i><br />
+                {userId && <p className="user-name-fntsz">hi,{userName}</p>}
               </div>
             </NavLink>
             {profile && (
@@ -574,73 +563,6 @@ function Navbar() {
 }
 
 export default Navbar;
-
-// function TrendingItem() {
-//   return (
-//     <>
-//       {/* <NavLink to="/" className="sp-list-type"> */}
-//       <div className="d-flex">
-//         <NavLink to="/search" className="text-decoration-none">
-//           <div>
-//             <img src={earring} alt="product" className="dropdown-pro-img" />
-//             <p className="sp-list-type mt-1">Earring</p>
-//           </div>
-//         </NavLink>
-//         <NavLink to="/search" className="text-decoration-none">
-//           <div className="ms-3">
-//             <img src={earring} alt="product" className="dropdown-pro-img" />
-//             <p className="sp-list-type mt-1">Earring</p>
-//           </div>
-//         </NavLink>
-//       </div>
-//       {/* </NavLink> */}
-//     </>
-//   );
-// }
-
-// function ArrivalItem() {
-//   return (
-//     <>
-//       <div className="d-flex">
-//         <NavLink to="/search" className="text-decoration-none">
-//           {" "}
-//           <div>
-//             <img src={earring} alt="product" className="ar-pro-img" />
-//             <p className="sp-list-type mt-2 text-center">Earring</p>
-//           </div>
-//         </NavLink>
-//         <NavLink to="/search" className="text-decoration-none">
-//           <div className="ms-3">
-//             <img src={earring} alt="product" className="ar-pro-img" />
-//             <p className="sp-list-type mt-2 text-center">Earring</p>
-//           </div>
-//         </NavLink>
-//       </div>
-//     </>
-//   );
-// }
-
-// function SellerItem() {
-//   return (
-//     <>
-//       <div>
-//         <img src={earring} alt="product" className="sel-item-img" />
-//         <p className="sp-list-type mt-2">UPTO 50% OFF</p>
-
-//         <NavLink to="/search" className="sp-list-type">
-//           View all designs <i className="bi bi-arrow-right"></i>
-//         </NavLink>
-//       </div>
-//     </>
-//   );
-// }
-
-// export const TrendingWrap = memo(TrendingItem);
-
-// export const ArrivalWrap = memo(ArrivalItem);
-
-// export const SellerWrap = memo(SellerItem);
-
 
 
 
@@ -697,17 +619,15 @@ function MobileMenuBar({ cateData, ...props }) {
           <Offcanvas.Title></Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-         
-          <form action="" className="d-flex mb-3 justify-content-center" onSubmit={handleProSearch}>
-            <input type="text" className="srch-input-box w-100" placeholder="Search here..."  value={search}
-              onChange={handleSearch}/>
-            <button type="submit" className="search-offbtn" onClick={(e) =>{
-              handleProSearch(e)
-               handleClose()
-               }}>Search</button>
-          </form>
-       
 
+          <form action="" className="d-flex mb-3 justify-content-center" onSubmit={handleProSearch}>
+            <input type="text" className="srch-input-box w-100" placeholder="Search here..." value={search}
+              onChange={handleSearch} />
+            <button type="submit" className="search-offbtn" onClick={(e) => {
+              handleProSearch(e)
+              handleClose()
+            }}>Search</button>
+          </form>
 
 
 
@@ -807,71 +727,3 @@ function AccordianSubMenu({ title, id, handleClose }) {
     </>
   );
 }
-
-// const SearchInputContent = () => {
-//   async function fetchMenu() {
-//     try {
-//       const res = await axios.get(url + endPoint);
-//       // console.log(res.data.data)
-//       setCate(res.data.data);
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   }
-
-//   const [search, setSearch] = useState("");
-//   const searchTxt = useSelector((state) => state.product.search.payload);
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
-//   useEffect(() => {
-//     // console.log(searchTxt)
-//     setSearch(searchTxt);
-//     fetchMenu();
-//   }, [searchTxt]);
-
-//   async function handleSearch(e) {
-//     e.preventDefault();
-//     setSearch(e.target.value);
-//     dispatch(addSearch(e.target.value));
-//     // navigate('/search')
-//   }
-//   async function handleProSearch(e) {
-//     e.preventDefault()
-//     navigate("/search");
-//     toggleBoxVisibility()
-//   }
-//   return (
-//     <>
-//       <div className="srch-ipt-cntet-bx">
-//         <div className="nav-box-search mt-2 mb-3">
-//           <form onSubmit={handleProSearch}>
-//             <input
-//               type="text"
-//               className="nav-search"
-//               value={search}
-//               onChange={handleSearch}
-//             />
-//             <img
-//               src={searchIcon}
-//               className="nav-search-icon1"
-//               onClick={handleProSearch}
-//             />
-//             <button type="submit" style={{ display: 'none' }}></button>
-//           </form>
-//         </div>
-       
-//       </div>
-//     </>
-//   );
-// };
-
-const ImageWithSearch = (props) => {
-  return (
-    <>
-      {/* <div className="d-flex mt-2">
-        <img src={props.image} alt="icon" className="search-img-dtl1" />
-        <p className="srch-ipt-detail-ptag mt-2">{props.detail}</p>
-      </div> */}
-    </>
-  );
-};

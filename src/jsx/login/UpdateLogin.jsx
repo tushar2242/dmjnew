@@ -163,24 +163,9 @@ class UpdateLogin extends React.Component {
                                         onChange={(e) => this.setState({ password: e.target.value })} value={password}
                                     />
 
-                                    <div className="errorBox">
-                                        <ErrMessageBox
-                                            text='8 Characters'
-                                            color={password.length > 7 ? 'green' : 'rgba(128, 128, 128, 0.534)'}
-                                        />
-                                        <ErrMessageBox
-                                            text='1 Special'
-                                            color={specialMatch.test(password) ? 'green' : 'rgba(128, 128, 128, 0.534)'}
-                                        />
-                                        <ErrMessageBox
-                                            text='1 Uppercase'
-                                            color={upperCaseMatch.test(password) ? 'green' : 'rgba(128, 128, 128, 0.534)'}
-                                        />
-                                        <ErrMessageBox
-                                            text='1 Numeric'
-                                            color={numericMatch.test(password) ? 'green' : 'rgba(128, 128, 128, 0.534)'}
-                                        />
-                                    </div>
+                                    <span style={{fontSize:"12px",color:'#818181'}}>Password must contain(8 char, 1 special, 1 uppercase and 1 numeric)</span>
+
+
                                     <br />
                                     <div className="nameBox mt-2">
                                         <TextField label="First Name" variant="standard" required onChange={(e) => this.setState({ userName: e.target.value })} value={userName} />
