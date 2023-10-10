@@ -245,7 +245,7 @@ function Navbar() {
             >
               <div style={{ marginTop: '19px' }}>
                 <i className="bi bi-person-circle nav-icon-item ms-5"></i><br />
-                {userId && <p className="user-name-fntsz">hi,{userName}</p>}
+                {userId && <p className="user-name-fntsz">Hi,{userName}</p>}
               </div>
             </div>
             {profile && (
@@ -407,7 +407,7 @@ function Navbar() {
                 >
                   <div style={{ marginTop: '27px' }}>
                     <i className="bi bi-person-circle nav-icon-item ms-5"></i><br />
-                    {userId && <p className="user-name-fntsz">hi,{userName}</p>}
+                    {userId && <p className="user-name-fntsz">Hi,{userName}</p>}
                   </div>
                 </div>
                 {profile && (
@@ -514,7 +514,7 @@ function Navbar() {
             >
               <div style={{ marginTop: '-6px' }}>
                 <i className="bi bi-person-circle nav-icon-item ms-4"></i><br />
-                {userId && <p className="user-name-fntsz">hi,{userName}</p>}
+                {userId && <p className="user-name-fntsz">Hi,{userName}</p>}
               </div>
             </NavLink>
             {profile && (

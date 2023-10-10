@@ -347,6 +347,7 @@ const DlryAddress = (props) => {
               name="home"
               checked={isHomeChecked}
               onChange={handleCheckboxChange}
+              className="check-bx-vw-sz"
 
             />
             Home
@@ -357,7 +358,7 @@ const DlryAddress = (props) => {
               name="office"
               checked={isOfficeChecked}
               onChange={handleCheckboxChange}
-
+              className="check-bx-vw-sz"
             />
             Office
           </label>

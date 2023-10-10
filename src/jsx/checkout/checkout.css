@@ -199,6 +199,9 @@ select.sel-box:focus{
 border:solid 1px #b79d33;
 color:#b79d33
 }
+.check-bx-vw-sz{
+    display:none;
+}
 @media only screen and (max-width:767.98px){
     .cr-cd-img{
         width:25px;
