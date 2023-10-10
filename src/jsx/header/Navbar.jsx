@@ -15,6 +15,8 @@ import menubar from "../../assets/images/menuicon.png";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Accordion from "react-bootstrap/Accordion";
 import "../search-contentbox/search-input-box.css";
+import newlogoimg from '../../assets/images/newpnglogo.png';
+import newdmjlogo from '../../assets/images/newdmjlogo.gif';
 
 import axios from "axios";
 
@@ -162,7 +164,7 @@ function Navbar() {
         <div className="navOuter shadow-sm">
           <NavLink to="/">
             <div className="nav-logo">
-              <img src={logo} alt="logo" />
+              <img src={newdmjlogo} alt="logo" />
             </div>
           </NavLink>
           <ul>
@@ -298,7 +300,7 @@ function Navbar() {
         <div className="navbar-mobile">
           <div className="nav-mob-icon">
 
-            <img src={logo} alt="logo" className="nav-logo" />
+            <img src={newdmjlogo} alt="logo" className="nav-logo" />
             {isMobNav ? (
               <ThreeLine
                 onClick={() => {
@@ -478,7 +480,7 @@ function Navbar() {
         <div className="d-flex justify-content-between">
           <NavLink to="/">
             <div className="nav-logo">
-              <img src={logo} alt="logo" />
+              <img src={newdmjlogo} alt="logo" />
             </div>
           </NavLink>
 
