@@ -32,6 +32,7 @@ export default class WishList extends React.Component {
         // this.deleteItem = this.deleteItem.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
         this.handleWishListItems = this.handleWishListItems.bind(this)
+        this.deleteItem = this.deleteItem.bind(this)
     }
 
     async handleWishListItems(id) {
@@ -69,6 +70,23 @@ export default class WishList extends React.Component {
     }
 
 
+   deleteItem(id) {
+    // Retrieve the current wishlist from localStorage
+    let wishList = JSON.parse(localStorage.getItem('wishList')) || [];
+
+    // Remove the item with the specified ID from the wishlist
+    wishList = wishList.filter(itemId => itemId !== id);
+
+    // Update the wishlist in localStorage
+    localStorage.setItem('wishList', JSON.stringify(wishList));
+
+    // Update the 'prodetails' state to exclude the deleted item
+    this.setState((prevState) => {
+        const updatedProDetails = prevState.prodetails.filter(product => product.id !== id);
+        return { prodetails: updatedProDetails };
+    });
+}
+
     
 
     clearItem() {
@@ -94,7 +112,7 @@ export default class WishList extends React.Component {
                     <div className="wish-bg">
                         <div className="d-flex justify-content-between">
                             <h5><b>Wishlist</b></h5>
-                            <p className="clear-text" onClick={() => this.clearItem()}>Clear items <i className="bi bi-trash3-fill"></i></p>
+                          { prodetails.length>0&& <p className="clear-text" onClick={() => this.clearItem()}>Clear items <i className="bi bi-trash3-fill"></i></p>}
                         </div>
 
                         <div className="row">
@@ -105,6 +123,7 @@ export default class WishList extends React.Component {
                                         <WhiteItemCard
                                             item={item}
                                             key={index}
+                                            deleteItem={this.deleteItem}
                                         />
                                     )
                                 })
@@ -126,28 +145,9 @@ export default class WishList extends React.Component {
 }
 
 
-const WhiteItemCard = ({ item }) => {
+const WhiteItemCard = ({ item ,deleteItem}) => {
 
 
-    function deleteItem(id) {
-        // Retrieve the current wishlist from localStorage
-        const wishList = JSON.parse(localStorage.getItem('wishList')) || [];
-
-        // Find the index of the item with the specified ID in the wishlist
-        const index = wishList.indexOf(id);
-
-        if (index !== -1) {
-            // If the item exists in the wishlist, remove it
-            wishList.splice(index, 1);
-
-            // Update the wishlist in localStorage
-            localStorage.setItem('wishList', JSON.stringify(wishList));
-
-            // Optionally, update the 'prodetails' state if needed
-            // this.setState({ prodetails: wishList });
-            window.location.reload()
-        }
-    }
 
 
     const navigate = useNavigate()
@@ -192,19 +192,23 @@ const WhiteItemCard = ({ item }) => {
 
     return (
         <>
-            <div className="col-md-3 mt-3" onClick={() => {
-                handleNavigate(item.sku, item.slug)
-            }} style={{ cursor: 'pointer' }}>
-                <h2>{userToken}</h2>
+            <div className="col-md-3 mt-3" >
+                {/* <h2>{userToken}</h2> */}
                 <div className="card border-0 shadow-sm" >
-                    <img src={imgUrl + item.images[0].thumbImage} className="card-img-top img-fluid wishlist-img" alt="wishlist" />
+                    <img src={imgUrl + item.images[0].thumbImage} className="card-img-top img-fluid wishlist-img" alt="wishlist" onClick={() => {
+                handleNavigate(item.sku, item.slug)
+            }} style={{ cursor: 'pointer' }}/>
                     <div className="card-body wish-body">
-                        <h6 className="card-title"><b>{item.seo_title.replace(/"/g, '').slice(0, 25)}</b></h6>
+                        <h6 className="card-title" onClick={() => {
+                handleNavigate(item.sku, item.slug)
+            }} style={{ cursor: 'pointer' }}><b>{item.seo_title.replace(/"/g, '').slice(0, 25)}</b></h6>
                         <p className="pro-font"><i className="bi bi-currency-rupee"></i>
                             {item.images.length > 0 && item.images[0].productVariantEntities.length > 0 && item.images[0].productVariantEntities[0].manualPrice}
                         </p>
                         <div className='d-flex justify-content-between'>
-                            <p className="off-text">
+                            <p className="off-text" onClick={() => {
+                handleNavigate(item.sku, item.slug)
+            }} style={{ cursor: 'pointer' }}>
                                 MRP: <del><i className="bi bi-currency-rupee"></i> {item.images.length > 0 && item.images[0].productVariantEntities.length > 0 && item.images[0].productVariantEntities[0].price}</del><span> (Incl all taxes)</span>
                             </p>
                             <i className="bi bi-trash-fill text-dark" onClick={() => deleteItem(item.id)}></i>
