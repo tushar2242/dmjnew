@@ -247,7 +247,7 @@ const ContentOfFooter = () =>{
               <div className="footer-topline"></div>
               <div className="copy-cnt-shw mt-3 mb-3">
                 <div className="">
-                  <h6 className="text-white mb-4"><b>Registered Office Address</b></h6>
+                  <h6 className="heading-tag-h6ftr mb-4"><b>Registered Office Address</b></h6>
                   <AddressTag />
                   <AddressTag />
                   <AddressTag />

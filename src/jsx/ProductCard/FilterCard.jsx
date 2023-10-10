@@ -210,7 +210,7 @@ const ProductItemCard = ({ img, item, price }) => {
                 ? item.name
                 : item.name.replace(/"/g, "").slice(0, 15) + "..."}
             </p>
-            <FavoriteBorderIcon className="card-pro-icon" />
+            <FavoriteBorderIcon className="hm-crd-posticon" />
           </div>
 
           <div className="pro-price-fx">
