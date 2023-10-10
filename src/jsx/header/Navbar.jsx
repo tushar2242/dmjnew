@@ -621,16 +621,16 @@ function MobileMenuBar({ cateData, ...props }) {
           <Offcanvas.Title></Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-         
+
           <form action="" className="d-flex mb-3 justify-content-center" onSubmit={handleProSearch}>
-            <input type="text" className="srch-input-box w-100" placeholder="Search here..."  value={search}
-              onChange={handleSearch}/>
-            <button type="submit" className="search-offbtn" onClick={(e) =>{
+            <input type="text" className="srch-input-box w-100" placeholder="Search here..." value={search}
+              onChange={handleSearch} />
+            <button type="submit" className="search-offbtn" onClick={(e) => {
               handleProSearch(e)
-               handleClose()
-               }}>Search</button>
+              handleClose()
+            }}>Search</button>
           </form>
-      
+
           {cateData.length > 0 &&
             cateData.map((cate) => {
               // console.log(cate)
@@ -671,7 +671,7 @@ function AccordianMenuList({ title, subCateDate, handleClose }) {
   );
 }
 
-export {AccordianMenuList};
+export { AccordianMenuList };
 
 function AccordianSubMenu({ title, id, handleClose }) {
   const [subCate, setSubCate] = useState([]);
