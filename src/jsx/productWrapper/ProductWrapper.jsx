@@ -67,9 +67,9 @@ const ProductWrapper = () => {
                     )
 
                 })
-            }{
-                cateData.length > 0 && <Footer />
             }
+            {/* // }{ //     cateData.length > 0 && <Footer />
+            // } */}
 
         </>
     )
@@ -230,25 +230,26 @@ const SmallImageCard = ({ img, name, category }) => {
         navigate('/search')
     }
 
-    const [isImgLoad, setIsImageLoad] = useState(false)
+    // const [isImgLoad, setIsImageLoad] = useState(false)
 
-    const [subCategory1, setSubCategory] = useState([])
+    // const [subCategory1, setSubCategory] = useState([])
 
-    async function fetchProductDetails() {
-        try {
-            const res = await axios.get(`${url}${sEnd}${category}&pageSize=0`);
-            // console.log(res.data)
-            setSubCategory(res.data.data)
-        }
-        catch (err) {
-            console.log(err)
-        }
-    }
+    // async function fetchProductDetails() {
+    //     try {
+    //         const res = await axios.get(`${url}${sEnd}${category}&pageSize=0`);
+    //         // console.log(`${url}${sEnd}${category}&pageSize=0`)
+    //         console.log(res.data.fetchData)
+    //         setSubCategory(res.data.data)
+    //     }
+    //     catch (err) {
+    //         console.log(err)
+    //     }
+    // }
 
 
-    useEffect(() => {
-        fetchProductDetails()
-    }, [])
+    // useEffect(() => {
+    //     fetchProductDetails()
+    // }, [])
 
     return (
         <>
@@ -315,8 +316,8 @@ const CarouselForProduct = ({ productData, category, item }) => {
     async function fetchProductDetails() {
         try {
             const res = await axios.get(`${url}${searchEnd}${category}`);
-            // console.log(`${url}${searchEnd}${category}`)
-            // console.log(res.data.data)
+            console.log(`${url}${searchEnd}${category}`)
+            console.log(res.data.data)
             if (res.data.data.length > 0) {
                 setSubCategory(res.data.data)
             }
@@ -375,7 +376,7 @@ const CarouselForProduct = ({ productData, category, item }) => {
                             category={category}
                             sku={product.sku}
                             slug={product.slug}
-                            discount={product.images.length > 0 && product.images[0].productVariantEntities.length > 0 && product.images[0].productVariantEntities[0].price}
+                            discount={product.images.length > 0 && product.images[0].productVariantEntities.length > 0 && product.images[0].productVariantEntities[0].manualPrice}
                         />
                         )
                     })}
