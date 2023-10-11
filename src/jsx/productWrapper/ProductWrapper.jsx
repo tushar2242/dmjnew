@@ -113,8 +113,6 @@ class ItemCard extends React.Component {
                                         category={category[0].name}
                                         subCategory={category[0].subCategory === null ? [] : category[0].subCategory}
                                     />
-
-
                                 </div>
                             </div>
 
@@ -363,13 +361,14 @@ const CarouselForProduct = ({ productData, category, item }) => {
                     containerClass="carousel-container"
                     removeArrowOnDeviceType={["desktop", "tablet", "mobil1e"]}
                     dotListClass="custom-dot-list-style"
-                    itemClass="carousel-item-padding-40-px"
+                    itemClass="carousel-item-padding-10-px"
 
                 >
 
 
                     {subCategory1.length > 0 && subCategory1.map((product) => {
                         return (<CarouselCard
+                            arrows={true}
                             key={product.id}
                             img={product.images.length > 0 && product.images[0].thumbImage}
                             title={product.seo_title}
@@ -437,7 +436,6 @@ const CarouselCard = ({ img, title, category, discount, sku, slug }) => {
         await dispatch(addSearch(val));
         navigate(`/p/` + slug + '/' + sku)
     }
-
     return (
         <>
             <div onClick={() => handleNavigate(category)} style={{ cursor: "pointer" }} className="text-decoration-none"><div className="product-card-box">
@@ -445,7 +443,7 @@ const CarouselCard = ({ img, title, category, discount, sku, slug }) => {
                     <div className="sliderCardImg slider-fav-iconvw">
                         <img src={imgUrl + img} className="img-fluid sliderImg" alt="Image" />
                     </div>
-                    <div className='sldr-iconvw-fnt'><FavoriteBorderIcon /></div>
+                    <div><FavoriteBorderIcon className='sldr-iconvw-fnt'/></div>
                     <p className="mt-3 product-font">{title.length < 20 ? title : title.slice(0, 20) + '...'}</p>
                     <p className="sale-offer">Price :{'₹ '}{discount}</p>
                     <div><h6 className='addtocart-btn-sldr'>Add to cart <i className="bi bi-box-arrow-right"></i></h6></div>

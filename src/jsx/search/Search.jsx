@@ -3,6 +3,7 @@ import HeaderCon from "../header/HeaderCon";
 import Navbar from "../header/Navbar";
 import FilterCard from "../ProductCard/FilterCard";
 import ProductFilter from "../ProductCard/ProductFilter1";
+import Pagination from '@mui/material/Pagination';
 import Footer from "../footer/Footer";
 import "./search.css";
 import { useEffect } from "react";
@@ -28,15 +29,17 @@ const Search = () => {
       
                 <ProductFilter
                 
-                />
-
-         
+                /> 
       <div>
         <FilterCard />
+      </div>
+      <div className="mt-4 mb-3">
+      <PaginationBox />
       </div>
       <div className="filter-ftr-content">
         <ProductContentFilter />
       </div>
+    
       <Footer />
     </>
   );
@@ -78,3 +81,11 @@ const ProductContentFilter = () => {
     </>
   );
 };
+
+const PaginationBox = () => {
+  return (
+    <>
+       <Pagination count={50} color="primary" />
+    </>
+  )
+}

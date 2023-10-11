@@ -331,7 +331,7 @@ const ShareIcon = () => {
   return (
     <>
       <div className="share-icon-box1">
-        <div className="whatsapp-icon" onClick={toggleBox}>
+        <div className="chat-icon-boxft" onClick={toggleBox}>
           {isBoxOpen ? (
             <p className="chat-optiontab"><b>Chat</b></p>
           ) : (

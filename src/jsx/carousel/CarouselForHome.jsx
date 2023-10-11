@@ -164,7 +164,6 @@ const ProductCard = ({ img, name, category, id, price, sku, slug }) => {
                 
                     <div>
                     <button className='trend-cart-btn' onClick={() => RedirectDetailsPage(id,sku,slug)}>Show Details</button>
-                   
                     </div>
                 </div>
             </div>
