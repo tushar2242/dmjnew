@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -6,8 +8,6 @@
 body {
   font-family:'Inria Sans', sans-serif !important;
   overflow-x: hidden !important;
-  /* font-weight: normal;
-  font-style: normal; */
 }
 
 .new-img {
@@ -32,19 +32,14 @@ body {
 }
 
 .heading-text {
-  color: #7a7a7a;
-
-  font-family: "Alegreya SC", serif;
+  color: #000000;
+  font-size:25px;
 }
 
 @media only screen and (max-width: 767px) {
   .heading-text {
     color: #2e2e2e;
-
-    /* font-family: 'Corben', cursive; */
-
     font-size: 20px;
-
     font-weight: 600;
   }
 
@@ -120,9 +115,9 @@ body {
   height: 150px;
 }
 
-.new-img:hover {
+/* .new-img:hover {
   transform: scale(1.04);
-}
+} */
 
 @media only screen and (max-width: 767px) {
   .new-img {
@@ -391,7 +386,7 @@ body {
 
 .header-bg {
   background: rgb(0, 0, 0);
-
+  background: linear-gradient(90deg, rgb(0, 0, 0) 2%, rgb(114, 114, 114) 100%);
   /* background: linear-gradient(90deg, rgb(0, 0, 0) 47%, rgb(80, 80, 80) 100%); */
 
   padding-left: 50px;
@@ -429,7 +424,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.75px;
   color: #b79d33;
-  font-family: normal;
+
 }
 
 .reach-text {
@@ -801,7 +796,6 @@ body {
 .mdl-frm {
   font-size: 35px;
   font-weight: 500;
-  font-family: "Vollkorn SC", serif;
   color: #b300b3;
 }
 
@@ -883,12 +877,13 @@ body {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.774);
   border: solid 1px rgba(255, 255, 255, 0.753);
-  box-shadow:0px 1px 2px 2px #fdf2c9
+  box-shadow:0px 1px 2px 2px #fdf2c9;
+ 
 }
 
 .product-card-box:hover {
   border: solid 1px #b79d33;
-  transform: scale(1.01);
+  transform: scale(1.03);
 }
 
 .sale-offer {
@@ -1059,16 +1054,22 @@ body {
 
 .sldr-iconvw-fnt {
   position: absolute;
-  background-color: #b79d33;
+  background-color: #000000;
   width: 30px;
   height: 30px;
-  padding: 3px;
+  font-size:28px !important;
+  padding-top: 2px;
+  padding-bottom: 3px;
+  padding-left: 3px;
+  padding-right: 3px;
   color: white;
-  right: -5px;
-  top: -5px;
+  right: 0px;
+  top: 0px;
   border-radius: 50%;
 }
-
+.sldr-iconvw-fnt:hover{
+  background-color: #ff4343;
+}
 .addtocart-btn-sldr {
   font-size: 15px;
   font-weight: 600;
@@ -1175,7 +1176,7 @@ body {
   width:200px;
 }
 
-.whatsapp-icon {
+.chat-icon-boxft {
   position: fixed;
   background: #ffffff;
   width: 51px;
@@ -1185,7 +1186,8 @@ body {
   bottom: 20px;
   left: 10px;
   z-index: 10;
-  color:black;
+  color:#DC3545;
+  border:solid 1px black;
 }
 
 .sticky-icons {
@@ -1310,8 +1312,10 @@ body {
 .chat-optiontab{
   margin-top:11px;
   cursor: pointer;
-  font-size: 16.5px;
+  font-size: 23px;
   font-weight: 600;
+  font-family: 'Satisfy', cursive;
+  
 }
 .chat-icon-szbox{
   width:38px;

@@ -19,6 +19,9 @@
     color:rgb(97, 97, 97);
     text-align: justify;
 }
+.css-wjh20t-MuiPagination-ul {
+    justify-content: center !important;
+}
 @media only screen and (max-width:767.98px){
     .filter-view{
         display:block

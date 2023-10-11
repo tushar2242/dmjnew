@@ -1,5 +1,6 @@
 import React from 'react';
 import HeaderCon from '../header/HeaderCon';
+import Navbar from "../header/Navbar";
 
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -7,6 +8,7 @@ import axios from 'axios';
 // import StarHalfIcon from '@mui/icons-material/StarHalf';
 // import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import wishlistimg from '../../assets/images/wishlistimg.png';
+
 
 const url = 'https://api.diwamjewels.com/DMJ/'
 const endPoint = 'api/v1/products/';
@@ -105,6 +107,7 @@ export default class WishList extends React.Component {
             <>
 
                 <HeaderCon />
+                <Navbar />
                 <div className="container mt-4">
                     <NavLink to="/" className="text-decoration-none" style={{ width: 'fit-content', display: 'inline-block' }}>
                         <h6 className="mt-4 cont-shp mb-3"><i className="bi bi-chevron-left"></i>
@@ -139,6 +142,8 @@ export default class WishList extends React.Component {
                         </div>
                     </div>
                 </div>
+
+              
             </>
         )
     }

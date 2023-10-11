@@ -70,7 +70,7 @@ const Home = () => {
           </div>
           <ProductWrapper />
 
-          {/* <Footer /> */}
+          <Footer />
         
 
         </>

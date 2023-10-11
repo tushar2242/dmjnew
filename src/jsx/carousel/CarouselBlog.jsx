@@ -21,6 +21,7 @@ export default class CarouselBlog extends React.Component {
                         showArrows={false}
                         infiniteLoop={true}
                         showThumbs={false}
+                        arrows={true}
                     >
 
                         <CarouselCard

@@ -106,11 +106,10 @@ const responsive1 = {
 // export {fetchData}
 
 function Product() {
-
   const [images, setImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState("");
   // const [apiCheck, setApiCheck] = useState(true);
-  const [itemId, setItemId] = useState('0')
+  const [itemId, setItemId] = useState("0");
 
   const [itemInfo, setItemInfo] = useState([]);
   const [isLoad, setIsLoad] = useState(true);
@@ -122,9 +121,8 @@ function Product() {
 
   function handleItemId(val) {
     // console.log(val)
-    setItemId(val)
+    setItemId(val);
   }
-
 
   const { skuid, slug } = useParams();
 
@@ -163,9 +161,9 @@ function Product() {
         // console.log(variantRes.data.data)
         // setVariant(variantRes.data.data)
 
-
-        dispatch(updateProduct(res.data.data.images[itemId]))
-        const commaSeparatedString = await res.data.data.images[itemId].pictures;
+        dispatch(updateProduct(res.data.data.images[itemId]));
+        const commaSeparatedString = await res.data.data.images[itemId]
+          .pictures;
         const imgArray = commaSeparatedString.split(",");
         setSelectedImage(imgArray[0]);
         setImages(imgArray);
@@ -184,12 +182,9 @@ function Product() {
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchData();
-
-
   }, [skuid, itemId]);
 
-
-  const selectPictures = useSelector((state) => state.product.product.payload)
+  const selectPictures = useSelector((state) => state.product.product.payload);
   // console.log(selectPictures)
 
   const handleImageClick = (image) => {
@@ -244,7 +239,6 @@ function Product() {
     }
   };
 
-
   async function handleShare() {
     const currentUrl = window.location.href;
     if (navigator.share) {
@@ -252,15 +246,11 @@ function Product() {
         text: "Checkout This Awesome Website",
         title: itemInfo.seo_title,
         url: currentUrl,
-      })
+      });
+    } else {
+      navigator.clipboard.writeText(currentUrl);
     }
-    else {
-      navigator.clipboard.writeText(currentUrl)
-    }
-
-
   }
-
 
   return (
     <>
@@ -282,7 +272,10 @@ function Product() {
           </Helmet>
           <div className="container-fluid">
             <div className="mob-vw-brdcrum">
-              <p className="breadcrumb-fnt-sz"> Home / Products / Product details</p>
+              <p className="breadcrumb-fnt-sz">
+                {" "}
+                Home / Products / Product details
+              </p>
             </div>
             <div className="row detl-page-mobvw">
               <div
@@ -339,10 +332,14 @@ function Product() {
                     <img src={imgUrl + selectedImage} className="" />
                   </div>
                   <div className="share-wlst-icon">
-                    <NavLink to='/wishlist'><FavoriteBorderIcon className="sh-wlst-icsz" /></NavLink>
+                    <NavLink to="/wishlist">
+                      <FavoriteBorderIcon className="sh-wlst-icsz" />
+                    </NavLink>
                     <br />
-                    <ShareIcon className="sh-wlst-icsz mt-1" onClick={() => handleShare()
-                    } />
+                    <ShareIcon
+                      className="sh-wlst-icsz mt-1"
+                      onClick={() => handleShare()}
+                    />
                   </div>
 
                   <div className="varient-img-box">
@@ -384,8 +381,10 @@ function Product() {
                   />
                   <p className="tagline-line"></p>
 
-                  <div className="mt-2 add-wishlist-btnbtm" style={{ display: "flex" }}>
-
+                  <div
+                    className="mt-2 add-wishlist-btnbtm"
+                    style={{ display: "flex" }}
+                  >
                     <button
                       className="add-to-cart-btn-sz"
                       onClick={async () => {
@@ -393,9 +392,8 @@ function Product() {
                         navigate("/addtocart");
                       }}
                     >
-                      <LocalMallIcon /> ADD To CART
+                      <LocalMallIcon className="prodtl-icon-sz" /> ADD TO CART
                     </button>
-
 
                     <button
                       className="wishlist-btn-sz"
@@ -405,9 +403,8 @@ function Product() {
                         window.location.reload();
                       }}
                     >
-                      <FavoriteBorderIcon /> WISHLIST
+                      <FavoriteBorderIcon className="prodtl-icon-sz" /> WISHLIST
                     </button>
-
                   </div>
 
                   <div className="mt-4">
@@ -505,7 +502,7 @@ const ProductPrice = ({
   quantity,
   increment,
   decrement,
-  handleItemId
+  handleItemId,
 }) => {
   // const [variant, setVariant] = useState([])
 
@@ -514,7 +511,6 @@ const ProductPrice = ({
   const [selectedSize, setSelectedSize] = useState("");
   const [currencyRate, setRate] = useState("80");
   const [currencyValue, setCurrencyValue] = useState("Rupee");
-
 
   async function fetchPrice() {
     if (variant[0].productVariantEntities.length > 0) {
@@ -570,18 +566,13 @@ const ProductPrice = ({
     }
   }
 
-
   async function fetchUpdateVariantId(id) {
     try {
-      const res = await axios.get(url + id)
-    }
-    catch (err) {
-      console.log(err)
+      const res = await axios.get(url + id);
+    } catch (err) {
+      console.log(err);
     }
   }
-
-
-
 
   useEffect(() => {
     // console.log(variant)
@@ -601,9 +592,6 @@ const ProductPrice = ({
   async function handleVariantColor(color) {
     setSelectedSize(color);
   }
-
-
-
 
   return (
     <>
@@ -648,7 +636,6 @@ const ProductPrice = ({
         </div>
       </div>
       <p className="tax-font">Inclusive of all taxes</p>
-
 
       <Box
         sx={{
@@ -731,7 +718,7 @@ const ProductPrice = ({
                     alt="Product"
                     className="pro-color-img"
                     onClick={() => {
-                      handleItemId(index)
+                      handleItemId(index);
                     }}
                   ></div>
                 );
@@ -759,7 +746,9 @@ const ProductPrice = ({
         <div className="col-md-6 mt-2 mb-2">
           <div className="coupon-bxbdr">
             <div className="border-coupon">
-              <h5 className="coupon-off-fnt">20% flat off on all products using HDFC Credit Card</h5>
+              <h5 className="coupon-off-fnt">
+                20% flat off on all products using HDFC Credit Card
+              </h5>
               <div className="coupon-copy-button mt-4 mb-2">
                 <input id="copyvalue" type="text" readonly value="GOFREE" />
                 <button className="copybtn">COPY</button>
@@ -767,11 +756,7 @@ const ProductPrice = ({
             </div>
           </div>
         </div>
-
-
       </div>
-
-
       <p className="tagline-line"></p>
       <AccordionTxt
         title="Product Details"

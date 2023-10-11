@@ -248,13 +248,13 @@ const ContentOfFooter = () =>{
               <div className="copy-cnt-shw mt-3 mb-3">
                 <div className="">
                   <h6 className="heading-tag-h6ftr mb-4"><b>Registered Office Address</b></h6>
-                  <AddressTag />
-                  <AddressTag />
-                  <AddressTag />
+                  <AddressTag address="Diwamjewels,101 Ground Floor,"/>
+                  <AddressTag address="Gurukripa Enclave, Near Old Ramgarh Mod Bus Stand ,"/>
+                  <AddressTag address="IndusInd Bank, 302002, JAIPUR"/>
                 </div>
                 <div className="mt-3">
                   <p className="address-ftrfnt">CIN: U7980456790</p>
-                  <p className="address-ftrfnt">Telephone: <NavLink style={{color:'#ABDBD3'}}>+91-9876543210</NavLink></p>
+                  <p className="address-ftrfnt">Telephone: <NavLink style={{color:'#ABDBD3'}}>+91-9664073873</NavLink></p>
                 </div>
               </div>
 
@@ -331,7 +331,7 @@ const ShareIcon = () => {
   return (
     <>
       <div className="share-icon-box1">
-        <div className="whatsapp-icon" onClick={toggleBox}>
+        <div className="chat-icon-boxft" onClick={toggleBox}>
           {isBoxOpen ? (
             <p className="chat-optiontab"><b>Chat</b></p>
           ) : (
@@ -399,10 +399,10 @@ const PopularSearches = () => {
   )
 }
 
-const AddressTag = () => {
+const AddressTag = (props) => {
   return (
     <>
-<p className="address-ftrfnt">Lorem, ipsum.</p>
+<p className="address-ftrfnt">{props.address}</p>
     </>
   )
 }
@@ -411,21 +411,30 @@ const FooterContentDetails = () => {
   return (
     <>
       <div>
-        <h6 className="heading-tag-h6ftr">ONLINE SHOPPING MADE EASY AT DMJ</h6>
-        <p className="para-cnt-ftrfnt">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias enim qui et libero doloremque maxime in, inventore corporis iure quisquam voluptatibus voluptate consectetur. Commodi velit architecto alias ducimus, esse totam.</p>
-        <h6 className="heading-tag-h6ftr">BEST ONLINE SHOPPING SITE IN INDIA FOR Jewellery</h6>
-        <p className="para-cnt-ftrfnt">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias enim qui et libero doloremque maxime in, inventore corporis iure quisquam voluptatibus voluptate consectetur. Commodi velit architecto alias ducimus, esse totam.</p>
+        <h6 className="heading-tag-h6ftr">Shop Online at DMJ with Complete Convenience</h6>
+        <p className="para-cnt-ftrfnt">Welcome to DMJ, your one-stop destination for a seamless online shopping experience. We understand that convenience matters, and we've tailored our website to ensure your shopping journey is as effortless as possible.</p>
+        <h6 className="heading-tag-h6ftr">Why Choose DMJ?</h6>
+        {/* <p className="para-cnt-ftrfnt">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias enim qui et libero doloremque maxime in, inventore corporis iure quisquam voluptatibus voluptate consectetur. Commodi velit architecto alias ducimus, esse totam.</p>
         <ol className="para-cnt-ftrfnt">
           <li className="mt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet blanditiis officia tempora ad impedit dignissimos accusamus harum iure magni id.</li>
           <li className="mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas expedita accusamus dolores unde iure, architecto voluptate cum magnam autem sed.</li>
         </ol>
-        <p className="para-cnt-ftrfnt">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis nam beatae excepturi eaque qui laborum accusamus maxime atque repellendus sint.</p>
+        <p className="para-cnt-ftrfnt">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis nam beatae excepturi eaque qui laborum accusamus maxime atque repellendus sint.</p> */}
         <ul className="">
           <li className="mt-2 para-cnt-ftrfnt">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis inventore illo minima quae quisquam ipsam numquam iusto repellat harum ratione!
+          <b>Extensive Collection:</b> We sell a wide range of products, from jewelry and handicrafts to blue pottery. We curate the finest selection to cater to your unique tastes and preferences.
           </li>
-          <li className="mt-2 para-cnt-ftrfnt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque harum saepe totam officia enim ducimus doloribus dignissimos eius nobis voluptas.</li>
+          <li className="mt-2 para-cnt-ftrfnt"><b>User-Friendly Interface:</b> Our website was created with you in mind.Navigate easily, find products quickly, and enjoy a smooth browsing experience.</li>
+         <li className="mt-2 para-cnt-ftrfnt"><b>Secure Transactions:</b> Rest assured, your security is our priority. To protect your personal information and payment information, we employ the most recent encryption technology.</li>
+         <li className="mt-2 para-cnt-ftrfnt"><b>Flexible Payment Options:</b> Choose from various payment methods that suit you best. Shopping at DMJ is not just easy; it's also flexible.</li>
+         <li className="mt-2 para-cnt-ftrfnt"><b>Prompt Delivery:</b> We value your time. Expect timely and reliable delivery services right to your doorstep.</li>
+         <li className="mt-2 para-cnt-ftrfnt"><b>Dedicated Customer Support:</b> Have questions or need assistance? Our helpful customer service staff is available to assist you.. We're just a message away.</li>
         </ul>
+
+        <h6 className="heading-tag-h6ftr">Your Convenience Matters</h6>
+        <p className="para-cnt-ftrfnt">At DMJ, we believe that shopping should be a joy, not a hassle. We've taken every step to make sure you have a convenient, enjoyable experience every time you purchase from our website.
+Join our community of satisfied customers who trust DMJ for quality products, excellent service, and complete shopping convenience. Shop online at DMJ today and discover a world of elegance at your fingertips.
+</p>
       </div>
     </>
   )
