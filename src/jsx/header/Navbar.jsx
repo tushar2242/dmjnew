@@ -552,6 +552,7 @@ function Navbar() {
                   placement={placement}
                   name={placement}
                   cateData={cateData}
+                  sch={true}
                 />
               ))}
             </div>
@@ -568,7 +569,8 @@ export default Navbar;
 
 
 
-function MobileMenuBar({ cateData, ...props }) {
+function MobileMenuBar({ cateData, sch, ...props }) {
+  console.log(cateData)
   const [show, setMenuShow] = useState(false);
 
   const handleClose = () => setMenuShow(false);
@@ -622,14 +624,14 @@ function MobileMenuBar({ cateData, ...props }) {
         </Offcanvas.Header>
         <Offcanvas.Body>
 
-          <form action="" className="d-flex mb-3 justify-content-center" onSubmit={handleProSearch}>
+          {sch && <form action="" className="d-flex mb-3 justify-content-center" onSubmit={handleProSearch}>
             <input type="text" className="srch-input-box w-100" placeholder="Search here..." value={search}
               onChange={handleSearch} />
             <button type="submit" className="search-offbtn" onClick={(e) => {
               handleProSearch(e)
               handleClose()
             }}>Search</button>
-          </form>
+          </form>}
 
           {cateData.length > 0 &&
             cateData.map((cate) => {
@@ -671,7 +673,7 @@ function AccordianMenuList({ title, subCateDate, handleClose }) {
   );
 }
 
-export { AccordianMenuList };
+export { AccordianMenuList, MobileMenuBar, AccordianSubMenu };
 
 function AccordianSubMenu({ title, id, handleClose }) {
   const [subCate, setSubCate] = useState([]);
