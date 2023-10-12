@@ -237,23 +237,30 @@
 
 .more-profile {
   position: absolute;
-  top: 50px;
-  right: 50px;
+  top: 60px;
+  right: 100px;
 
   padding: 10px;
   z-index: -1;
 
   width: 130px;
-  /* height: 100px;/ */
 
   text-align: center;
-  background-color: #d1b647;
+  background-color: #ffffff;
 
   list-style: none;
-  color: white;
+  color: black;
+  border-radius: 5px;
+  box-shadow: 2px 2px 30px 5px rgb(236, 235, 255);
 
-  /* border: solid 1px #d1b647;
-  border-radius: 5px; */
+}
+
+@media only screen and (max-width:767.98px){
+  .more-profile {
+   
+    right: 50px;
+
+  }
 }
 
 .more-profile li {

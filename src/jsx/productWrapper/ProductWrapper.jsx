@@ -369,7 +369,7 @@ const CarouselForProduct = ({ productData, category, item }) => {
 
                     {subCategory1.length > 0 && subCategory1.map((product) => {
                         return (<CarouselCard
-                            arrows={true}
+                            // arrows={true}
                             key={product.id}
                             img={product.images.length > 0 && product.images[0].thumbImage}
                             title={product.seo_title}
@@ -444,7 +444,7 @@ const CarouselCard = ({ img, title, category, discount, sku, slug }) => {
                     <div className="sliderCardImg slider-fav-iconvw">
                         <img src={imgUrl + img} className="img-fluid sliderImg" alt="Image" />
                     </div>
-                    <div><FavoriteBorderIcon className='sldr-iconvw-fnt'/></div>
+                    <div></div>
                     <p className="mt-3 product-font">{title.length < 20 ? title : title.slice(0, 20) + '...'}</p>
                     <p className="sale-offer">Price :{'₹ '}{discount}</p>
                     <div><h6 className='addtocart-btn-sldr'>Add to cart <i className="bi bi-box-arrow-right"></i></h6></div>

@@ -541,6 +541,7 @@ function Navbar() {
                     </li>
                   </>
                 )}
+                <hr />
               </div>
             )}
 

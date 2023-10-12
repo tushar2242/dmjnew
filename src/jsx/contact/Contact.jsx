@@ -279,7 +279,7 @@ class ConBox extends React.Component {
           <div className="box-bg d-flex justify-content-center">
             <img src={img} className="img-fluid cont-img" alt="phone" />
             <div className="ms-2">
-              <h4 className="heading-text mt-2">{title}</h4>
+              <h4 className="mt-2">{title}</h4>
 
               <p>
                 <b>{contact}</b>
