@@ -160,7 +160,14 @@ function ProductFilter1({ name, ...props }) {
       <div className="mobview-filter-box">
         <SortingFilters />
         <div className="fltr-bdr-linevw"></div>
-        <FiltersBoxView />
+        {/* <FiltersBoxView /> */}
+        <div className="d-flex"><MobileMenuBar
+        cateData={cateData}
+        sch={false}
+        image={filter}
+      />
+      {/* <h6 className="sort-fltr-mb">Filters</h6> */}
+      </div>
       </div>
     </>
   );
