@@ -11,6 +11,7 @@ import "../../assets/css/trending.css";
 import ProductWrapper from "../productWrapper/ProductWrapper";
 import Loader from "../loader/Loader";
 
+
 import { RelatedProduct } from "../jewellery-page/ProductDetail";
 import { Helmet } from "react-helmet";
 
@@ -67,6 +68,7 @@ const Home = () => {
               <b>Trending Products</b>
             </h3>
             <RelatedProduct />
+            
           </div>
           <ProductWrapper />
 
