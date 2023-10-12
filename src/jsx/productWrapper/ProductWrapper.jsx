@@ -316,8 +316,8 @@ const CarouselForProduct = ({ productData, category, item }) => {
     async function fetchProductDetails() {
         try {
             const res = await axios.get(`${url}${searchEnd}${category}`);
-            console.log(`${url}${searchEnd}${category}`)
-            console.log(res.data.data)
+            // console.log(`${url}${searchEnd}${category}`)
+            // console.log(res.data.data)
             if (res.data.data.length > 0) {
                 setSubCategory(res.data.data)
             }

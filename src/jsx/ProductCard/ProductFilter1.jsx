@@ -18,11 +18,12 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addSearch } from "../redux/dmjSlice";
 import filter from '../../assets/images/filter.png';
+import { MobileMenuBar } from "../header/Navbar";
 
 const url = "https://api.diwamjewels.com/DMJ/";
 const endPoint = "api/v1/category/maincategory";
 
-
+const endPoint2 = "api/v1/category";
 
 
 function ProductFilter1({ name, ...props }) {
@@ -46,18 +47,40 @@ function ProductFilter1({ name, ...props }) {
     await dispatch(addSearch(val));
   }
 
+  async function fetchMenu() {
+    try {
+      const res = await axios.get(url + endPoint2);
+      console.log(res.data.data)
+      setCate(res.data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+
+
+
+
+
+
+
+
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchMainCategory();
+    fetchMenu()
   }, []);
 
+
+  const [cateData, setCate] = useState([]);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
+
   const handleShow = () => setShow(true);
   return (
     <>
-    {/* <div className="accor-width">
+      {/* <div className="accor-width">
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -92,52 +115,56 @@ function ProductFilter1({ name, ...props }) {
       </Accordion>
     </div> */}
 
-<div className="desktop-fltr-box">
-<div className="" style={{width:'85px',marginLeft:'40px'}}>
-<h6 onClick={handleShow} className="sort-fltr-mb">
-<img src={filter} alt="filter" className="filter-iconsz" />
-      Filters
-      </h6>
-      </div>
-      <Offcanvas show={show} onHide={handleClose} {...props} className="offcanvas-endvw-shw">
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title className="sort-fltr-mb">FILTERS BY</Offcanvas.Title>
-        </Offcanvas.Header>
-        <div className="sorting-bottomline"></div>
-        <Offcanvas.Body>
-        <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography className="pro-hd-font">Jewellery</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-          <div className="accord-details-vw">
-            {/* <p>Jewellery</p>
+      {/* <div className="desktop-fltr-box">
+        <div className="" style={{ width: '85px', marginLeft: '40px' }}>
+          <h6 onClick={handleShow} className="sort-fltr-mb">
+            <img src={filter} alt="filter" className="filter-iconsz" />
+            Filters
+          </h6>
+        </div>
+        <Offcanvas show={show} onHide={handleClose} {...props} className="offcanvas-endvw-shw">
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title className="sort-fltr-mb">FILTERS BY</Offcanvas.Title>
+          </Offcanvas.Header>
+          <div className="sorting-bottomline"></div>
+          <Offcanvas.Body>
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography className="pro-hd-font">Jewellery</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>
+                  <div className="accord-details-vw">
+                    {/* <p>Jewellery</p>
             <p>Handi Craft</p>
-            <p>Blue Pottery</p> */}
-   
-                <MultilevelFilter
-                 
-                />
-         
-           </div>
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-        </Offcanvas.Body>
-      </Offcanvas>
-</div>
+            <p>Blue Pottery</p>
+
+                    <MultilevelFilter  />
+
+                  </div>
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
+          </Offcanvas.Body>
+        </Offcanvas>
+      </div> */}
+
+      <MobileMenuBar
+        cateData={cateData}
+        sch={false}
+      />
 
 
-    <div className="mobview-filter-box">
-      <SortingFilters />
-      <div className="fltr-bdr-linevw"></div>
-      <FiltersBoxView />
-    </div>
+
+      <div className="mobview-filter-box">
+        <SortingFilters />
+        <div className="fltr-bdr-linevw"></div>
+        <FiltersBoxView />
+      </div>
     </>
   );
 }
@@ -154,19 +181,19 @@ const SortFilterBox = ({ name, ...props }) => {
   return (
     <>
       <h6 onClick={handleShow} className="sort-fltr-mb">
-       Sort
+        Sort
       </h6>
-      <Offcanvas show={show} onHide={handleClose} {...props} style={{height:'300px'}}>
+      <Offcanvas show={show} onHide={handleClose} {...props} style={{ height: '300px' }}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title className="sort-fltr-mb">SORT BY</Offcanvas.Title>
         </Offcanvas.Header>
         <div className="sorting-bottomline"></div>
         <Offcanvas.Body>
-        <RadioSorting name="Relevence"/>
-        <RadioSorting name="Popularity"/>
-        <RadioSorting name="Price : Low to High"/>
-        <RadioSorting name="Price : High to Low"/>
-        <RadioSorting name="Newest First"/>
+          <RadioSorting name="Relevence" />
+          <RadioSorting name="Popularity" />
+          <RadioSorting name="Price : Low to High" />
+          <RadioSorting name="Price : High to Low" />
+          <RadioSorting name="Newest First" />
         </Offcanvas.Body>
       </Offcanvas>
     </>
@@ -186,10 +213,10 @@ function SortingFilters() {
 const RadioSorting = (props) => {
   return (
     <>
- <div className="d-flex justify-content-between">
-           <label htmlFor="" className="radiostr-fntsz">{props.name}</label>
-           <input type="radio" />
-         </div>
+      <div className="d-flex justify-content-between">
+        <label htmlFor="" className="radiostr-fntsz">{props.name}</label>
+        <input type="radio" />
+      </div>
     </>
   )
 }
@@ -203,7 +230,7 @@ const FilterPopBox = ({ name, ...props }) => {
   return (
     <>
       <h6 onClick={handleShow} className="sort-fltr-mb">
-      Filters
+        Filters
       </h6>
       <Offcanvas show={show} onHide={handleClose} {...props} className="offcanvas-endvw-shw">
         <Offcanvas.Header closeButton>
@@ -211,10 +238,10 @@ const FilterPopBox = ({ name, ...props }) => {
         </Offcanvas.Header>
         <div className="sorting-bottomline"></div>
         <Offcanvas.Body>
-        <FilterContentInfo title="Category"/>
-        <FilterContentInfo title="Brand"/>
-        <FilterContentInfo title="Color"/>
-        <FilterContentInfo title="Size"/>
+          <FilterContentInfo title="Category" />
+          <FilterContentInfo title="Brand" />
+          <FilterContentInfo title="Color" />
+          <FilterContentInfo title="Size" />
         </Offcanvas.Body>
       </Offcanvas>
     </>
@@ -246,9 +273,9 @@ const FilterContentInfo = (props) => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-          <div className="accord-details-vw">
-           <MultilevelFilter />
-           </div>
+            <div className="accord-details-vw">
+              <MultilevelFilter />
+            </div>
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -269,11 +296,11 @@ const MultilevelFilter = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-          <div className="accord-details-vw">
-            <p>Gold Ring</p>
-            <p>Silver Ring</p>
-            <p>Metal Ring</p>
-           </div>
+            <div className="accord-details-vw">
+              <p>Gold Ring</p>
+              <p>Silver Ring</p>
+              <p>Metal Ring</p>
+            </div>
           </Typography>
         </AccordionDetails>
       </Accordion>

@@ -26,10 +26,10 @@ const Search = () => {
       <Navbar />
 
       <p className="breadcrumb-fnt-sz ms-3"> Home / Products </p>
-      
-                <ProductFilter
-                
-                /> 
+
+      <ProductFilter />
+
+
       <div>
         <FilterCard />
       </div>
