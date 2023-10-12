@@ -177,10 +177,12 @@ ul.cate-flt-list {
 margin-top:3px;
  }
  .sort-fltr-mb{
-  font-size:15px;
+  font-size:20px;
   font-weight:600;
-  letter-spacing: 0.75px;
+  // letter-spacing: 0.65px;
+  margin-top:5px;
 cursor: pointer;
+margin-left:5px;
  }
  .fltr-bdr-linevw{
   border-left:solid 1.5px rgb(49, 49, 49);
@@ -220,6 +222,10 @@ cursor: pointer;
   letter-spacing: 0.75px;
   color:rgb(80, 79, 79);
  }
+//  .home-card-icnpost img{
+//   width:200px;
+//   height:200px;
+//  }
 @media only screen and (min-width:1024px){
   .mobview-filter-box{
     display:none;
@@ -229,9 +235,16 @@ cursor: pointer;
   width:35px;
   height:35px;
 }
-
+.desktop-mob-vw-bx{
+  display: flex;
+}
 @media only screen and (max-width:1023.98px){
   .desktop-fltr-box{
     display: none;
   }
+  .desktop-mob-vw-bx{
+    display: none;
+  
+  }
 }
+

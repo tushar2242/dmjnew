@@ -25,12 +25,12 @@ const responsive = {
         items: 5
     },
     tablet: {
-        breakpoint: { max: 1024, min: 464 },
+        breakpoint: { max: 1024, min: 768 },
         items: 3
     },
     mobile: {
-        breakpoint: { max: 464, min: 0 },
-        items: 2
+        breakpoint: { max: 767, min: 0 },
+        items: 3
     }
 };
 
@@ -90,7 +90,7 @@ const CarouselForHome = (props) => {
                     containerClass="carousel-container"
                     removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
                     dotListClass="custom-dot-list-style"
-                    itemClass="carousel-item-padding-40-px"
+                    itemClass="carousel-item-padding-10-px"
                     arrows={true}
                 >
                     {productData && productData.map((item) => {
@@ -148,7 +148,7 @@ const ProductCard = ({ img, name, category, id, price, sku, slug }) => {
 
     return (
         <>
-   
+               
             <div className="card home-card-box mt-4 mb-4" onClick={() => RedirectDetailsPage(id,sku,slug)}>
                 <div className="home-card-icnpost">
                     <img src={img} alt="product" className="home-card-img" />
@@ -173,5 +173,8 @@ const ProductCard = ({ img, name, category, id, price, sku, slug }) => {
 }
 
 export { ProductCard }
+
+
+
 
 

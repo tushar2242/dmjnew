@@ -360,7 +360,7 @@ const CarouselForProduct = ({ productData, category, item }) => {
                     customTransition="all .5s"
                     transitionDuration={500}
                     containerClass="carousel-container"
-                    removeArrowOnDeviceType={["desktop", "tablet", "mobil1e"]}
+                    // removeArrowOnDeviceType={["desktop", "tablet"]}
                     dotListClass="custom-dot-list-style"
                     itemClass="carousel-item-padding-10-px"
 
@@ -396,7 +396,7 @@ const CarouselForProduct = ({ productData, category, item }) => {
                     customTransition="all .5s"
                     transitionDuration={500}
                     containerClass="carousel-container"
-                    removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
+                    // removeArrowOnDeviceType={["desktop", "tablet"]}
                     dotListClass="custom-dot-list-style"
                     itemClass="carousel-item-padding-40-px"
 
@@ -470,7 +470,6 @@ const ProductCard = ({ img, name, cate, category }) => {
 
     return (
         <>
-
 
             <div onClick={() => handleNavigate(category)} className="text-decoration-none"><div className="product-card-box">
                 <div className='sliderCard'>

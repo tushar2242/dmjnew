@@ -170,9 +170,8 @@
   padding-right: 5px;
 }
 .home-card-box{
-  
   width:100%;
-  max-width:300px;
+  /* max-width:300px; */
   border-radius: 13px;
   border:none;
   background-color: white;

@@ -541,7 +541,7 @@ function Navbar() {
                     </li>
                   </>
                 )}
-                <hr />
+               
               </div>
             )}
 
@@ -554,6 +554,7 @@ function Navbar() {
                   name={placement}
                   cateData={cateData}
                   sch={true}
+                  image={menubar}
                 />
               ))}
             </div>
@@ -612,7 +613,7 @@ function MobileMenuBar({ cateData, sch, ...props }) {
   return (
     <>
       <div className="ms-3" onClick={handleShow}>
-        <img src={menubar} alt="icon" className="menubar-icon-nav" />
+        <img src={props.image} alt="icon" className="menubar-icon-nav" />
       </div>
       <Offcanvas
         show={show}

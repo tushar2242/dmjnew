@@ -149,6 +149,9 @@ body {
 .accordion-button {
   overflow-anchor: none;
 }
+.accordion-button:not(.collapsed){
+  color:rgb(68, 3, 219);
+}
 
 .owl-carousel .owl-stage {
   -moz-backface-visibility: hidden;

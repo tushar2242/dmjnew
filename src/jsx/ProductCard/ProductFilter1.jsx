@@ -58,13 +58,6 @@ function ProductFilter1({ name, ...props }) {
   }
 
 
-
-
-
-
-
-
-
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchMainCategory();
@@ -153,11 +146,15 @@ function ProductFilter1({ name, ...props }) {
         </Offcanvas>
       </div> */}
 
+
+      <div className="desktop-mob-vw-bx">
       <MobileMenuBar
         cateData={cateData}
         sch={false}
-      />
-
+        image={filter}
+      /> 
+     <h6 className="sort-fltr-mb">Filters</h6>
+      </div>
 
 
       <div className="mobview-filter-box">
