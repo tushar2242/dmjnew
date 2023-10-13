@@ -155,8 +155,8 @@ const ProductCard = ({ img, name, category, id, price, sku, slug }) => {
                 </div>
                 
                 <div className="card-body">
-                    <h5 className='home-card-heading'>{category}</h5>
-                    <p className='home-card-bx-cont'>{name}</p>
+                    <h5 className='home-card-heading'>{category.length>10 ? category.slice(0,17) + "..." : category}</h5>
+                    <p className='home-card-bx-cont'>{name.length>10 ? name.slice(0,20) +"..." : name}</p>
                     <div className="d-flex justify-content-between">
                     <p className="home-card-price"><CurrencyRupeeIcon className='home-card-iconsz' /> {price} <span className='hm-span-fnsz'></span></p>
                     <FavoriteBorderIcon className='hm-crd-posticon' />

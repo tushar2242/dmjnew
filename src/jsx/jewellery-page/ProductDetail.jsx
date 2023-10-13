@@ -87,19 +87,19 @@ const ProductDetails = () => {
 const responsive1 = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
-    items: 5,
+    items: 6,
   },
   desktop: {
-    breakpoint: { max: 3000, min: 1022 },
-    items: 4,
+    breakpoint: { max: 3000, min: 1024 },
+    items: 5,
   },
   tablet: {
-    breakpoint: { max: 1020, min: 464 },
-    items: 2,
+    breakpoint: { max: 1023.99, min: 768 },
+    items: 3,
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
+    breakpoint: { max: 767.99, min: 0 },
+    items: 2,
   },
 };
 
@@ -1112,7 +1112,7 @@ const RelatedProduct = ({ search }) => {
           containerClass="carousel-container productcard-home-sldr"
           // removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
           dotListClass="custom-dot-list-style"
-          itemClass="carousel-item-padding-40-px productcard-home-sldr"
+          itemClass="carousel-item-padding-10-px productcard-home-sldr"
           arrows={true}
         >
           {relatedProduct.map((item) => {
