@@ -1178,11 +1178,11 @@ body {
 
 .chat-icon-boxft {
   position: fixed;
-  background: #ffffff;
+  background: #ffffffcc;
   width: 51px;
   height: 50px;
   text-align: center;
-  border-radius: 4px;
+  border-radius: 4px 10px 5px 10px;
   bottom: 20px;
   left: 10px;
   z-index: 10;
