@@ -1,4 +1,4 @@
-// import React from 'react';
+import React, { useState } from 'react';
 import HeaderCon from "../header/HeaderCon";
 import Navbar from "../header/Navbar";
 import FilterCard from "../ProductCard/FilterCard";
@@ -8,6 +8,9 @@ import Footer from "../footer/Footer";
 import "./search.css";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
 
 const Search = () => {
   useEffect(() => {
@@ -48,36 +51,57 @@ const Search = () => {
 export default Search;
 
 const ProductContentFilter = () => {
+  const searchTxt = useSelector((state) => state.product.search.payload);
+  // const { searchTxt } = useParams();
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const fetchData = () => {
+    setLoading(true);
+    const apiUrl = `https://api.diwamjewels.com/DMJ/api/v1/category/type?type=${searchTxt}`;
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        if (response.data && response.data.data) {
+          const categoryDescription = response.data.data.categoryDescription;
+          if (categoryDescription !== null) {
+            const categoryDescriptionWithoutHtml = categoryDescription.replace(/<[^>]*>/g, "");
+            setData(categoryDescriptionWithoutHtml);
+          } else {
+            setData("Category description not available");
+          }
+        } else {
+          setData("Category data not available");
+        }
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [searchTxt]);
+
   return (
     <>
       <h4 className="fltr-ftr-headingtag">
         Jewellery Designs for Festive Season{" "}
       </h4>
       <p className="fltr-para-textfnt">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-        ipsum repellat reiciendis maxime architecto quibusdam est quisquam?
-        Repellat soluta reprehenderit similique eum consectetur velit voluptates
-        repudiandae doloribus magni laboriosam modi, consequuntur, rem possimus
-        voluptate dignissimos? Recusandae quis esse alias impedit ipsam dolor
-        magnam iusto placeat at eos saepe, quod nulla expedita quaerat eius quas
-        nemo autem modi culpa ullam. Cum ullam praesentium earum, obcaecati
-        cumque corporis voluptate illum illo, tenetur similique repudiandae sed
-        adipisci ratione dolor molestiae nulla. Temporibus quidem iste pariatur
-        assumenda. Fuga explicabo asperiores pariatur! Consectetur cupiditate
-        repudiandae sit ipsum optio possimus praesentium, magnam voluptatum qui
-        ullam officia porro asperiores dignissimos aliquam tempora iusto, non
-        temporibus recusandae ut, rem nostrum architecto suscipit esse! Eaque,
-        asperiores. Iusto ducimus numquam consequuntur minima nulla? Blanditiis,
-        rerum fugiat. Maxime dicta eius asperiores quaerat non necessitatibus
-        sed explicabo vel deserunt pariatur placeat praesentium, repudiandae
-        accusantium, eligendi eum, doloribus earum facilis. Reiciendis facilis
-        architecto voluptas atque, ipsa consequuntur provident explicabo odit
-        porro, assumenda perferendis debitis doloribus. Minima dolor ad est,
-        blanditiis illo neque pariatur corporis quos aliquam rerum nesciunt
-        autem labore perspiciatis esse. Harum, delectus adipisci quos mollitia
-        architecto enim! Vero, quis corporis. Totam non laboriosam obcaecati
-        dolor molestias nesciunt. Itaque minima unde natus.
+      {loading ? (
+          'Loading data...'
+        ) : error ? (
+          `Error: ${error.message}`
+        ) : data ? (
+          data
+        ) : null}
       </p>
+
+   
     </>
   );
 };
