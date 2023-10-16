@@ -228,7 +228,7 @@ const ContentOfFooter = () =>{
                 <FooterItem head=" Important" items={info} navi={true} />
               </div>
                  <div className="footer-topline"></div>
-                 <div>
+                 {/* <div>
                  <h3 className="ppl-srch-hdfnt">Popular Searches</h3>
                  <div className="pplr-srch-inblk">
                  <PopularSearches />
@@ -236,7 +236,7 @@ const ContentOfFooter = () =>{
                  <PopularSearches />
                  <PopularSearches />
                  </div>
-                 </div>
+                 </div> */}
                  
               <div className="copy-cnt-shw footer-topline">
               <p className="text-white mt-4 mb-4">In case of any concern, <NavLink to="/contactus" style={{color:'#ABDBD3'}}><b>Contact Us</b></NavLink></p>

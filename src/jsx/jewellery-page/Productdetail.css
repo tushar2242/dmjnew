@@ -557,8 +557,16 @@
   font-weight: 600;
   color: rgb(94, 93, 93);
   letter-spacing: 0.75px;
+  font-family:'Inria Sans', sans-serif !important;
+  background-color: transparent !important;
 }
-
+.material-fnt-sz{
+  font-size:16px;
+  font-weight:600;
+  letter-spacing: 0.75px;
+  color:black;
+  font-family:'Inria Sans', sans-serif !important;
+}
 .product-display {
   display: flex;
 }
@@ -619,18 +627,23 @@
 .offer-price {
   color: #7a6200;
   letter-spacing: 0.75px;
+  font-family:'Inria Sans', sans-serif !important;
 }
-
+.pro-dtl-ft-sz span {
+  font-family:'Inria Sans', sans-serif !important;
+  background-color: transparent !important;
+}
 .offer-list-fnt {
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.75px;
-
+  font-family:'Inria Sans', sans-serif !important;
 }
 
 .offer-heading-txt {
   letter-spacing: 0.75px !important;
   color: #000000 !important;
+  font-family:'Inria Sans', sans-serif !important;
 }
 
 .out-stock {

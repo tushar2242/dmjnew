@@ -761,7 +761,7 @@ const ProductPrice = ({
       <AccordionTxt
         title="Product Details"
         des={<DetailsBox des={prodes} />}
-        className="AccordionTxt"
+        className="AccordionTxt pro-dtl-ft-sz"
       />
       <p className="tagline-line"></p>
       <AccordionTxt
@@ -770,24 +770,24 @@ const ProductPrice = ({
           variant[0].productVariantEntities.length > 0 && (
             <>
               {variant[0].productVariantEntities[0].product_width != 0 && (
-                <p>
+                <p className="pro-dtl-ft-sz">
                   Width : {variant[0].productVariantEntities[0].product_width}{" "}
                   {variant[0].productVariantEntities[0].size}
                 </p>
               )}
               {variant[0].productVariantEntities[0].product_heigth != 0 && (
-                <p>
+                <p className="pro-dtl-ft-sz">
                   Height : {variant[0].productVariantEntities[0].product_heigth}{" "}
                   {variant[0].productVariantEntities[0].size}
                 </p>
               )}
               {variant[0].productVariantEntities[0].product_weight != 0 && (
-                <p>
+                <p className="pro-dtl-ft-sz">
                   Weight : {variant[0].productVariantEntities[0].product_weight}
                 </p>
               )}
               {variant[0].productVariantEntities[0].product_depth != 0 && (
-                <p>
+                <p className="pro-dtl-ft-sz">
                   Depth : {variant[0].productVariantEntities[0].product_depth}{" "}
                   {variant[0].productVariantEntities[0].size}
                 </p>
@@ -804,9 +804,9 @@ const ProductPrice = ({
         title="Material"
         des={
           <>
-            <h5 className="offer-heading-txt d-flex">
+            <h5 className="material-fnt-sz d-flex">
               <b className="mx-2">Material:</b>
-              <p>
+              <p className="pro-dtl-ft-sz">
                 {variant[0].productVariantEntities.length > 0 &&
                   variant[0].productVariantEntities[0].material}
               </p>

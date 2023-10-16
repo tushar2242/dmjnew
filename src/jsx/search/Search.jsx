@@ -107,6 +107,7 @@ const ProductContentFilter = () => {
 };
 
 const PaginationBox = () => {
+
   return (
     <>
        <Pagination count={50} color="primary" />
