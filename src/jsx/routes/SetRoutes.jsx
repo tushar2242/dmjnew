@@ -51,6 +51,9 @@ import Sidebar from '../sidebar/Sidebar';
 import Orderdetails from '../sidebar/Orderdetails';
 // import Editprofile from '../sidebar/Editprofile';
 
+import TrackDetailsPage from '../track-order/TrackDetailsPage';
+
+
 export default class SetRoutes extends React.Component {
     render() {
         return (
@@ -111,6 +114,7 @@ export default class SetRoutes extends React.Component {
                     <Route path="/Orderdetails" element={<Orderdetails />} />
                     {/* <Route path="/Editprofile" element={<Editprofile />} /> */}
                     <Route path="/forgetpassword" element={<ForgetPassword />} />
+                    <Route path="/trackdetails" element={<TrackDetailsPage />} />
                 </Routes>
 
             </>

@@ -133,7 +133,6 @@ const DropDownMenu = ({ title, id }) => {
     navigate("/search");
   }
 
-
   return (
     <div className="ddmenu" onMouseEnter={() => {
       setIsMouseOverMain(true);
@@ -141,10 +140,10 @@ const DropDownMenu = ({ title, id }) => {
     }}
     // onMouseLeave={() => setIsMouseOverMain(false)}
     >
-      <nav role="navigation">
+      {/* <nav role="navigation"> */}
         <ul id="nav1">
 
-          <li><a onClick={() => handleNavigate(title)}>{title}</a>
+          <li className="main-cate-list-fnt"><a onClick={() => handleNavigate(title)}>{title}</a>
             <ul className="cate-menu-listvw">
 
               {subCate.length > 0 &&
@@ -161,7 +160,7 @@ const DropDownMenu = ({ title, id }) => {
           </li>
 
         </ul>
-      </nav>
+      {/* </nav> */}
     </div>
   )
 }

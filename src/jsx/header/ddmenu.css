@@ -1,6 +1,6 @@
-.ddmenu {
+/* .ddmenu {
 	position: relative;
-}
+} */
 
 .cate-menu-listvw {
 	width: 200px;
@@ -8,6 +8,7 @@
 	left: 237px;
 	top: -81px;
 	z-index: -1;
+	
 }
 
 .ddmenu a {
@@ -72,3 +73,12 @@
 	width: 100%;
 }
 
+.main-cate-list-fnt{
+	font-size:16px;
+     font-weight:600;
+	 letter-spacing: 0.75px;
+}
+
+/* .main-cate-list-fnt:hover{
+	color:#DC3545
+} */
