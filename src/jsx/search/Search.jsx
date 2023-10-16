@@ -67,7 +67,7 @@ const ProductContentFilter = () => {
           const categoryDescription = response.data.data.categoryDescription;
           if (categoryDescription !== null) {
             const categoryDescriptionWithoutHtml = categoryDescription.replace(/<[^>]*>/g, "");
-            setData(categoryDescriptionWithoutHtml);
+            setData(categoryDescription);
           } else {
             setData("Category description not available");
           }
@@ -88,18 +88,18 @@ const ProductContentFilter = () => {
 
   return (
     <>
-      <h4 className="fltr-ftr-headingtag">
-        Jewellery Designs for Festive Season{" "}
-      </h4>
-      <p className="fltr-para-textfnt">
+
+      <div className="fltr-para-textfnt">
       {loading ? (
           'Loading data...'
         ) : error ? (
           `Error: ${error.message}`
         ) : data ? (
-          data
+          <div dangerouslySetInnerHTML={{ __html: data }}>
+
+          </div>
         ) : null}
-      </p>
+      </div>
 
    
     </>
