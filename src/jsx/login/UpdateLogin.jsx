@@ -102,7 +102,7 @@ class UpdateLogin extends React.Component {
                 "gender": gender,
                 "age": age,
                 "countryCode": 91,
-                "roles": ["user"]
+                "roles": "user"
             })
             .then(response => {
                 localStorage.removeItem('userId')

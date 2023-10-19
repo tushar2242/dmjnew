@@ -11,28 +11,72 @@ const url = "https://api.diwamjewels.com/DMJ/api/v1/user/";
 const verifyEndPoint = "verify/otp";
 const endPoint = "send/otp/login";
 const signIn = "signin/withEmailOrPhoneNumber";
+const emailForget = 'forgot/password/sendOtp';
+const forgetPass = 'forgot/password'
+
 
 const ForgetPassword = () => {
   const [mobileNo, setMobileNo] = useState("");
   const [isPhone, setIsPhone] = useState("");
-  const [isOtp, setOtp] = useState(false);
+  const [isOtp, setOtp] = useState('otp');
   const [otp, setOtpValue] = useState("");
   const [isLoading, setLoading] = useState(false);
+
+
+  const [password, setPassword] = useState('')
+  const [confirmPass, setConfirmPass] = useState('')
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await localStorage.setItem("mobileNo", mobileNo);
-    setOtp(true);
   };
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+
+  async function handleForget(e) {
+    e.preventDefault();
+
+    // Check if passwords match
+    if (password !== confirmPass) {
+      alert('Passwords do not match. Please try again.');
+      return;
+    }
+
+    const headers = {
+      "Content-Type": "multipart/form-data",
+    };
+
+    const formdata = new FormData();
+
+    formdata.append("userName", mobileNo)
+    formdata.append('password', password)
+
+    try {
+      const forgetRes = await axios.post(url + forgetPass, formdata, { headers })
+      if (forgetRes.data.message === 'Password Reset Successfully') {
+        alert("Password Updated successfully")
+      }
+
+    }
+    catch (err) {
+      console.log(err)
+
+    }
+  }
+
 
   async function verifyOtp(e) {
     setLoading(true);
     e.preventDefault();
     const otpValue = {
-      userName: mobileNo,
-      otp: otp,
+      'userName': mobileNo,
+      'otp': otp,
     };
 
     try {
@@ -40,22 +84,9 @@ const ForgetPassword = () => {
 
       if (otpRes.data.message === "OTP verified") {
         // console.log('fired')
-        let formdata = new FormData();
+        setOtp('forget')
 
-        formdata.append("userName", mobileNo);
 
-        try {
-          const loginRes = await axios.post(url + signIn, formdata);
-          // console.log(loginRes.data.data)
-          localStorage.setItem("userId", loginRes.data.data.id);
-          if (loginRes.data.data.id) {
-            navigate("/");
-            window.location.reload();
-          }
-        } catch (err) {
-          console.log(err);
-          alert("Please Enter a Correct OTP");
-        }
       } else {
         console.log("Otp Expired");
       }
@@ -74,13 +105,13 @@ const ForgetPassword = () => {
 
     const formdata = new FormData();
 
-    formdata.append("mailOrPhone", mobileNo);
+    formdata.append("userName", mobileNo);
 
     try {
-      const otpRes = await axios.post(url + endPoint, formdata, { headers });
+      const otpRes = await axios.post(url + emailForget, formdata, { headers });
 
       if (otpRes.data.message === "OTP send successfully") {
-        setOtp(true);
+        setOtp('verify');
       } else {
         console.log(otpRes.data.message);
         alert("Failed to send OTP: " + otpRes.data.message);
@@ -114,7 +145,7 @@ const ForgetPassword = () => {
             <hr />
             <div className="user-login">
               <h6>
-                <b>Forget password</b>
+                <b>Update password</b>
               </h6>
               <form
                 onSubmit={(e) => {
@@ -122,7 +153,7 @@ const ForgetPassword = () => {
                 }}
               >
                 <input
-                  type="text"
+                  type="email"
                   className="login-input"
                   id="login-number"
                   placeholder="Mobile Number / Email-id *"
@@ -130,10 +161,11 @@ const ForgetPassword = () => {
                   onChange={(e) => {
                     setMobileNo(e.target.value);
                   }}
-                  required
+                  disabled={isOtp === 'otp' ? false : true}
+                  required={isOtp === 'otp' ? true : false}
                 />
 
-                {isOtp && (
+                {isOtp === 'verify' && (
                   <>
                     <b
                       style={{
@@ -157,27 +189,42 @@ const ForgetPassword = () => {
                     />
                   </>
                 )}
-                {/* <div className="pas-eicon-box">
-                  <input
-                    type="password"
-                    className="login-input"
-                    id="login-number1"
-                    placeholder="Enter the Password*"
-                    required
-                  />
-                  <VisibilityIcon className="password-icon" />
-                </div>  */}
+                {isOtp === 'forget' && (
+                  <>
 
-                {/* <div className="pas-eicon-box">
-                  <input
-                    type="password"
-                    className="login-input"
-                    id="login-number1"
-                    placeholder="Confirm Password*"
-                    required
-                  />
-                  <VisibilityIcon className="password-icon" />
-                </div>  */}
+                    <div className="pas-eicon-box">
+                      <input
+                        type="password"
+                        className="login-input"
+                        id="login-number1"
+                        placeholder="Enter the Password*"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                      />
+
+                    </div>
+
+                    <div className="pas-eicon-box">
+                      <input
+                        type={showPassword ? 'text' : 'password'}
+                        className="login-input"
+                        id="login-number1"
+                        placeholder="Confirm Password*"
+                        value={confirmPass}
+                        onChange={(e) => setConfirmPass(e.target.value)}
+                        required
+                      />
+                      <VisibilityIcon
+                        className="password-icon"
+                        onClick={togglePasswordVisibility}
+                      />
+                    </div>
+                  </>)
+                }
+
+
+
                 <p className="tp-text">
                   By Continuing, I agree to the{" "}
                   <NavLink to="/termscondition">
@@ -186,7 +233,7 @@ const ForgetPassword = () => {
                     </span>
                   </NavLink>
                 </p>
-                {isOtp ? (
+                {isOtp === 'verify' ? (
                   <button
                     type="button"
                     className="continue-btn"
@@ -194,9 +241,9 @@ const ForgetPassword = () => {
                       verifyOtp(e);
                     }}
                   >
-                    Verify and Log In
+                    Verify Otp
                   </button>
-                ) : (
+                ) : isOtp === 'otp' ? (
                   <button
                     type="button"
                     className="continue-btn"
@@ -204,9 +251,21 @@ const ForgetPassword = () => {
                       sentOtp(e);
                     }}
                   >
-                    SIGN IN
+                    Send  Otp
                   </button>
-                )}
+                )
+                  : isOtp === 'forget' ? (
+                    <button
+                      type="button"
+                      className="continue-btn"
+                      onClick={(e) => {
+                        handleForget(e)
+                      }}
+                    >
+                      Forget Password
+                    </button>
+                  ) : <></>
+                }
               </form>
             </div>
           </div>

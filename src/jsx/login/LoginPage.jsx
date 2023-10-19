@@ -17,6 +17,7 @@ const verifyEndPoint = "verify/otp";
 const endPoint = "send/otp/login";
 const signIn = "signin/withEmailOrPhoneNumber";
 
+
 export default class LoginPage extends React.Component {
   render() {
     return (
@@ -38,6 +39,13 @@ const LoginWithMobileNo = () => {
   const [isLoading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -148,9 +156,9 @@ const LoginWithMobileNo = () => {
 
                   <div className="pas-eicon-box">
                     <input
-                      type="password"
+                      type={showPassword ? 'text' : 'password'} 
                       className="login-input"
-                      id="login-number1"
+
                       placeholder="Enter the Password*"
                       value={password}
                       onChange={(e) => {
@@ -158,7 +166,10 @@ const LoginWithMobileNo = () => {
                       }}
                       required
                     />
-                    <VisibilityIcon className="password-icon" />
+                    <VisibilityIcon
+                      className="password-icon"
+                      onClick={togglePasswordVisibility}
+                    />
                   </div>
 
                   {isOtp && (
@@ -187,9 +198,9 @@ const LoginWithMobileNo = () => {
                   )}
                   {/* <label className="error" style={{ display: showError }}>Enter a Correct Email-Id / Phone No.</label> */}
                   <br />
-                 <NavLink to="/forgetpassword"><p className="for-pass-fnt">
+                  <NavLink to="/forgetpassword"><p className="for-pass-fnt">
                     <b>Forget Password ?</b>
-                  </p></NavLink> 
+                  </p></NavLink>
                   <p className="tp-text">
                     By Continuing, I agree to the{" "}
                     <NavLink to="/termscondition">
