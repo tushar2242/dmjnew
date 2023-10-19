@@ -1,12 +1,13 @@
 import "./filtercard.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Loader from "../loader/Loader";
+import { addSearch } from "../redux/dmjSlice";
 
 
 const proto = "https://api.diwamjewels.com/DMJ/";
@@ -19,6 +20,9 @@ const endPoint = "api/v1/products/search?query=";
 
 const FilterCard = () => {
   var searchSelctor = useSelector((state) => state.product.search.payload);
+  const { q } = useParams();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [searchData, setSearchData] = useState([]);
   const [isLoad, setLoad] = useState(false);
@@ -41,9 +45,17 @@ const FilterCard = () => {
     }
   };
   useEffect(() => {
+    if (searchSelctor !== q) {
+      if (searchSelctor) {
+        navigate(`/search/${searchSelctor}`);
+      }
+      else {
+        dispatch(addSearch(q));
+      }
+    }
     fetData();
     window.scrollTo(0, 0);
-  }, [searchSelctor]);
+  }, [searchSelctor, q]);
 
   return (
     <>
@@ -238,7 +250,7 @@ const ProductItemCard = ({ img, item, price }) => {
             <p className="off-font">
               ({" "}
               {item.images.length > 0 &&
-              item.images[0].productVariantEntities.length > 0
+                item.images[0].productVariantEntities.length > 0
                 ? item.images[0].productVariantEntities[0].discount
                 : 0}
               % OFF )
@@ -246,13 +258,13 @@ const ProductItemCard = ({ img, item, price }) => {
           </div>
 
           <div className="d-flex ms-2" style={{ marginTop: '-10px' }}>
-                <p className="trend-rt-box1">
-                  <b>
-                    4.5 <i className="bi bi-star-fill trend-rt-icon"></i>
-                  </b>
-                </p>
-                <p className="trend-span-fnt1">15 reviews</p>
-              </div>
+            <p className="trend-rt-box1">
+              <b>
+                4.5 <i className="bi bi-star-fill trend-rt-icon"></i>
+              </b>
+            </p>
+            <p className="trend-span-fnt1">15 reviews</p>
+          </div>
         </div>
       </div>
     </>

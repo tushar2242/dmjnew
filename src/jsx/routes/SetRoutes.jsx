@@ -89,6 +89,7 @@ export default class SetRoutes extends React.Component {
                     <Route path='/checkout' element={<CheckoutPage />} />
                     <Route path='/card' element={<FilterCard />} />
                     <Route path='/search' element={<Search />} />
+                    <Route path='/search/:q' element={<Search />} />
                     <Route path='/p/:slug/:skuid' element={<ProductDetails />} />
                     <Route path='/privacypolicy' element={<Privacy />} />
                     <Route path='/termscondition' element={<Terms />} />
