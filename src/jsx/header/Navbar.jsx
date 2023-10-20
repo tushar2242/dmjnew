@@ -17,7 +17,7 @@ import Accordion from "react-bootstrap/Accordion";
 import "../search-contentbox/search-input-box.css";
 import newlogoimg from '../../assets/images/newpnglogo.png';
 import newdmjlogo from '../../assets/images/newdmjlogo.gif';
-
+import DeskDropdown from "../desktop-dropdown/DeskDropdown";
 import axios from "axios";
 
 const url = "https://api.diwamjewels.com/DMJ/";
@@ -130,6 +130,8 @@ function Navbar() {
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setIsJwelOpen(false);
+      setIsArtOpen(false);
+      setIsCarpet(false);
     }
   };
 
@@ -158,6 +160,40 @@ function Navbar() {
   }, [searchTxt]);
 
 
+  const handleMouseEnter = () => {
+    setIsJwelOpen(true);
+    setIsArtOpen(false);
+    setIsCarpet(false);
+  };
+
+  const handleMouseEnter1 = () => {
+    setIsJwelOpen(false);
+    setIsArtOpen(true);
+    setIsCarpet(false);
+  };
+
+  const handleMouseEnter2 = () => {
+    setIsJwelOpen(false);
+    setIsArtOpen(false);
+    setIsCarpet(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsJwelOpen(false);
+    setIsArtOpen(false);
+    setIsCarpet(false);
+  };
+
+  useEffect(() => {
+    // Attach the event listener when the component mounts
+    document.addEventListener('mouseover', handleClickOutside);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      document.removeEventListener('mouseover', handleClickOutside);
+    };
+  }, []);
+
   return (
     <>
       <div className="nav-outer-dropdown nav-drop-shadow shadow desktop-navbar-vw" ref={dropdownRef}>
@@ -172,6 +208,7 @@ function Navbar() {
               <li
                 className="dropdown1 mt-2"
                 onClick={() => handleJewelEnter()}
+                onMouseEnter={handleMouseEnter}
               // onMouseLeave={() => handleLeaveMouse()}
               >
                 <NavLink
@@ -190,6 +227,7 @@ function Navbar() {
               <li
                 className="dropdown1 mt-2"
                 onClick={() => handleArtEnter()}
+                onMouseEnter={handleMouseEnter1}
               // onMouseLeave={() => handleLeaveMouse()}
               >
                 <NavLink
@@ -207,6 +245,7 @@ function Navbar() {
               <li
                 className="mt-2 dropdown1"
                 onClick={() => handleCraft()}
+                onMouseEnter={handleMouseEnter2}
               // onMouseLeave={() => handleLeaveMouse()}
               >
                 <NavLink
@@ -448,28 +487,31 @@ function Navbar() {
         </div>
 
         {isJwelOpen && cateData.length > 0 ? (
-          <NavbarDropdown
+          <DeskDropdown
             title="jewellery"
             cateData={cateData[0][0].subCategory}
             marginLeft="140px"
             handleNavMouseEnter={handleJewelEnter}
+            onMouseLeave={handleMouseLeave}
           />
         ) : null}
         {isArtOpen && cateData.length > 0 ? (
-          <NavbarDropdown
+          <DeskDropdown
             title="art"
             cateData={cateData[1][0].subCategory}
             marginLeft="170px"
             handleNavMouseEnter={handleArtEnter}
+            onMouseLeave={handleMouseLeave}
 
           />
         ) : null}
         {isCarpet && cateData.length > 0 ? (
-          <NavbarDropdown
+          <DeskDropdown
             title="carpet"
             cateData={cateData[2][0].subCategory}
             marginLeft="200px"
             handleNavMouseEnter={handleCraft}
+            onMouseLeave={handleMouseLeave}
           />
         ) : null}
       </div>
