@@ -23,7 +23,7 @@ import timer from '../../assets/images/timer.png'
 import image1 from '../../assets/images/earring.jpg'
 
 
-
+const urlimg='https://squid-app-2-7wbvi.ondigitalocean.app/'
 const url = "https://api.diwamjewels.com/DMJ/";
 const endPoint2 = "api/v1/user/";
 // const url = 'http://137.184.3.191:8080/DMJ/';
@@ -70,16 +70,16 @@ function Navbar() {
 
   const [userName, setUserName] = useState('')
 
-  async function handleSearch(e) {
-    e.preventDefault();
-    setSearch(e.target.value);
-    dispatch(addSearch(e.target.value));
-    // navigate('/search')
-  }
+  // async function handleSearch(e) {
+  //   e.preventDefault();
+  //   setSearch(e.target.value);
+  //   dispatch(addSearch(e.target.value));
 
-  async function handleProSearch() {
-    navigate("/search");
-  }
+  // }
+
+  // async function handleProSearch() {
+  //   navigate("/search");
+  // }
 
   async function handleProfile() {
     setProfile(true);
@@ -199,10 +199,53 @@ function Navbar() {
   }, []);
 
 
-  const [issearchOpen, setIsSearchOpen] = useState(false);
+  // const [issearchOpen, setIsSearchOpen] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
+  const [error, setError] = useState(null);
+  const [isResultsOpen, setIsResultsOpen] = useState(false);
 
-  const toggleOpen = () => {
-    setIsSearchOpen(!issearchOpen);
+  const searchBoxRef = useRef(null);
+
+  useEffect(() => {
+    // Add an event listener to close the results when clicking outside
+    document.addEventListener('click', handleClickSOutside);
+
+    return () => {
+      // Remove the event listener when the component unmounts
+      document.removeEventListener('click', handleClickSOutside);
+    };
+  }, []);
+
+  const handleClickSOutside = (event) => {
+    if (searchBoxRef.current && !searchBoxRef.current.contains(event.target)) {
+      setIsResultsOpen(false);
+    }
+  };
+
+  const handleSearch = (e) => {
+    const query = e.target.value;
+    setSearch(query);
+
+    // Make an API request when the user types in the search input
+    axios.get('http://137.184.3.191:8080/DMJ/api/v1/category/search', {
+      params: {
+        query: query
+      }
+    })
+      .then(response => {
+        console.log(response.data.data)
+        setSearchResults(response.data.data);
+        setIsResultsOpen(true); // Show results when there are results
+      })
+      .catch(err => {
+        setError(err);
+        setIsResultsOpen(false);
+      });
+  };
+
+  const handleProSearch = () => {
+    // You can add code to handle searching when the user clicks the search icon here
+    // You may reuse the code from the previous example if needed
   };
 
 
@@ -275,7 +318,7 @@ function Navbar() {
             </div>
           </ul>
 
-          <div className="nav-box-search" onClick={toggleOpen}>
+          <div className="nav-box-search" ref={searchBoxRef}>
             <input
               type="text"
               className="nav-search"
@@ -285,26 +328,26 @@ function Navbar() {
             <img
               src={searchIcon}
               className="nav-search-icon"
-              onClick={handleProSearch}
+              // onClick={handleProSearch}
             />
 
           </div>
 
-          
-          {issearchOpen && (
-        <>
-        <div className='srch-ipt-cntet-bx'>
-          {/* <SearchDetails title="Jewellery" />
-          <SearchDetails title="Handi Craft" />
-          <SearchDetails title="Blue Pottery" />
-          <h6 className='mt-2'><b>Discover More</b></h6> */}
-          <ImageWithSearch detail="Rings" image={image1} />
-          <ImageWithSearch detail="Necklace" image={image1} />
-          <ImageWithSearch detail="Bangles" image={image1} />
-          </div>
-        </>
-           )}
 
+          {isResultsOpen && ( // Only show search results if isResultsOpen is true
+        <div className='srch-ipt-cntet-bx'>
+          {/* <h6 className='mt-2'><b>Search Results</b></h6>
+          <ul style={{ listStyle: 'none', cursor: 'pointer' }}>
+            {searchResults.map(result => (
+              <li key={result.name}>{result.name}</li>
+            ))}
+          </ul>
+          {error && <div>Error: {error.message}</div>} */}
+          {searchResults.map(result => (
+          <ImageWithSearch key={result.name} detail={result.name} image={urlimg+result.image} />
+          ))}
+        </div>
+      )}
 
           <div className="nav-account">
             <div
