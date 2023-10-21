@@ -61,6 +61,7 @@ const ForgetPassword = () => {
       const forgetRes = await axios.post(url + forgetPass, formdata, { headers })
       if (forgetRes.data.message === 'Password Reset Successfully') {
         alert("Password Updated successfully")
+        navigate('/login')
       }
 
     }

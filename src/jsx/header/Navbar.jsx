@@ -614,7 +614,7 @@ export default Navbar;
 
 
 function MobileMenuBar({ cateData, sch, ...props }) {
-  console.log(cateData)
+  // console.log(cateData)
   const [show, setMenuShow] = useState(false);
 
   const handleClose = () => setMenuShow(false);
