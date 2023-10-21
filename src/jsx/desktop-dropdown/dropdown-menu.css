@@ -57,17 +57,19 @@ position: absolute;
 }
 .editor-pickimg{
     width:100%;
-    max-width:400px;
+    /* max-width:auto !important; */
     border-radius: 8px;
     box-shadow: 2px 2px 20px 5px rgb(243, 242, 242);
 }
 .editor-img{
-    width:100%
+    width:100% !important
 }
 .edtr-box-vw{
     background-color: transparent;
     padding:8px;
     border-radius: 5px;
+    width:100%;
+    max-width:250px;
 }
 
 .edtr-box-vw:hover{

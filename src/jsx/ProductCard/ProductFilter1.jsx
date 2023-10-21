@@ -166,7 +166,6 @@ function ProductFilter1({ name, ...props }) {
         sch={false}
         image={filter}
       />
-      {/* <h6 className="sort-fltr-mb">Filters</h6> */}
       </div>
       </div>
     </>
@@ -265,7 +264,7 @@ function FiltersBoxView() {
 const FilterContentInfo = (props) => {
   return (
     <>
-      {/* <div><p className="">Gold Ring</p></div> */}
+     
 
       <Accordion>
         <AccordionSummary

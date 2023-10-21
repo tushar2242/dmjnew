@@ -32,7 +32,6 @@ const Search = () => {
 
       <ProductFilter />
 
-
       <div>
         <FilterCard />
       </div>

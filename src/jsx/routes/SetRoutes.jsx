@@ -52,7 +52,7 @@ import Orderdetails from '../sidebar/Orderdetails';
 // import Editprofile from '../sidebar/Editprofile';
 
 import TrackDetailsPage from '../track-order/TrackDetailsPage';
-
+import CategoryFilter from '../category-filter/CategoryFilter';
 
 export default class SetRoutes extends React.Component {
     render() {
@@ -116,6 +116,7 @@ export default class SetRoutes extends React.Component {
                     {/* <Route path="/Editprofile" element={<Editprofile />} /> */}
                     <Route path="/forgetpassword" element={<ForgetPassword />} />
                     <Route path="/trackdetails" element={<TrackDetailsPage />} />
+                    <Route path="/categoryfilter" element={<CategoryFilter />} />
                 </Routes>
 
             </>
