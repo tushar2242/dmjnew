@@ -227,13 +227,9 @@ function Navbar() {
     setSearch(query);
 
     // Make an API request when the user types in the search input
-    axios.get('http://137.184.3.191:8080/DMJ/api/v1/category/search', {
-      params: {
-        query: query
-      }
-    })
+    axios.get('https://api.diwamjewels.com/DMJ/api/v1/category/search?query='+query)
       .then(response => {
-        console.log(response.data.data)
+        // console.log(response.data.data)
         setSearchResults(response.data.data);
         setIsResultsOpen(true); // Show results when there are results
       })
@@ -336,14 +332,9 @@ function Navbar() {
 
           {isResultsOpen && ( // Only show search results if isResultsOpen is true
         <div className='srch-ipt-cntet-bx'>
-          {/* <h6 className='mt-2'><b>Search Results</b></h6>
-          <ul style={{ listStyle: 'none', cursor: 'pointer' }}>
-            {searchResults.map(result => (
-              <li key={result.name}>{result.name}</li>
-            ))}
-          </ul>
-          {error && <div>Error: {error.message}</div>} */}
+          <h6 className='mt-2'><b>Search Results</b></h6>
           {searchResults.map(result => (
+            
           <ImageWithSearch key={result.name} detail={result.name} image={urlimg+result.image} />
           ))}
         </div>
