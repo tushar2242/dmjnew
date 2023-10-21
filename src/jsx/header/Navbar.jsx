@@ -19,6 +19,10 @@ import newlogoimg from '../../assets/images/newpnglogo.png';
 import newdmjlogo from '../../assets/images/newdmjlogo.gif';
 import DeskDropdown from "../desktop-dropdown/DeskDropdown";
 import axios from "axios";
+import timer from '../../assets/images/timer.png'
+import image1 from '../../assets/images/earring.jpg'
+
+
 
 const url = "https://api.diwamjewels.com/DMJ/";
 const endPoint2 = "api/v1/user/";
@@ -194,6 +198,14 @@ function Navbar() {
     };
   }, []);
 
+
+  const [issearchOpen, setIsSearchOpen] = useState(false);
+
+  const toggleOpen = () => {
+    setIsSearchOpen(!issearchOpen);
+  };
+
+
   return (
     <>
       <div className="nav-outer-dropdown nav-drop-shadow shadow desktop-navbar-vw" ref={dropdownRef}>
@@ -262,7 +274,8 @@ function Navbar() {
               </li>
             </div>
           </ul>
-          <div className="nav-box-search">
+
+          <div className="nav-box-search" onClick={toggleOpen}>
             <input
               type="text"
               className="nav-search"
@@ -274,7 +287,25 @@ function Navbar() {
               className="nav-search-icon"
               onClick={handleProSearch}
             />
+
           </div>
+
+          
+          {issearchOpen && (
+        <>
+        <div className='srch-ipt-cntet-bx'>
+          {/* <SearchDetails title="Jewellery" />
+          <SearchDetails title="Handi Craft" />
+          <SearchDetails title="Blue Pottery" />
+          <h6 className='mt-2'><b>Discover More</b></h6> */}
+          <ImageWithSearch detail="Rings" image={image1} />
+          <ImageWithSearch detail="Necklace" image={image1} />
+          <ImageWithSearch detail="Bangles" image={image1} />
+          </div>
+        </>
+           )}
+
+
           <div className="nav-account">
             <div
               className="nav-box"
@@ -423,7 +454,7 @@ function Navbar() {
                   </li>
                 </div>
               </ul>
-              <div className="nav-box-search">
+              <div className="nav-box-search" onClick={toggleOpen}>
                 <input
                   type="text"
                   className="nav-search"
@@ -436,6 +467,21 @@ function Navbar() {
                   onClick={handleProSearch}
                 />
               </div>
+
+              {issearchOpen && (
+        <>
+        <div className='srch-ipt-cntet-bx'>
+          {/* <SearchDetails title="Jewellery" />
+          <SearchDetails title="Handi Craft" />
+          <SearchDetails title="Blue Pottery" />
+          <h6 className='mt-2'><b>Discover More</b></h6> */}
+          <ImageWithSearch detail="Rings" image={image1} />
+          <ImageWithSearch detail="Necklace" image={image1} />
+          <ImageWithSearch detail="Bangles" image={image1} />
+          </div>
+        </>
+           )}
+
 
               <div className="nav-account">
                 <div
@@ -774,4 +820,64 @@ function AccordianSubMenu({ title, id, handleClose }) {
       </Accordion>
     </>
   );
+}
+
+
+
+const SearchInputContent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleOpen = () => {
+    setIsOpen(!isOpen);
+  };
+  return (
+      <>
+
+<div className="nav-box-search mt-2 mb-3" onClick={toggleOpen}>
+                      <input type="text" className='nav-search' />
+                      <img src={searchIcon} className='nav-search-icon' />
+                  </div>
+
+          
+          
+          {isOpen && (
+        <>
+        <div className='srch-ipt-cntet-bx'>
+          <SearchDetails title="Jewellery" />
+          <SearchDetails title="Handi Craft" />
+          <SearchDetails title="Blue Pottery" />
+          <h6 className='mt-2'><b>Discover More</b></h6>
+          <ImageWithSearch detail="Rings" image={image1} />
+          <ImageWithSearch detail="Necklace" image={image1} />
+          <ImageWithSearch detail="Bangles" image={image1} />
+          </div>
+        </>
+      )}
+          
+      </>
+  );
+}
+
+
+const SearchDetails = (props) => {
+  return (
+      <>
+<div className='d-flex'>
+                <img src={timer} alt="icon" className='timer-iconsz' />
+                <p className='srch-ipt-detail-ptag'>{props.title}</p>
+              </div>
+      </>
+
+  );
+}
+
+const ImageWithSearch = (props) => {
+  return (
+      <>
+       <div className='d-flex mt-2'>
+       <img src={props.image} alt="icon" className='search-img-dtl1' />
+                <p className='srch-ipt-detail-ptag mt-2'>{props.detail}</p>
+       </div>
+      </>
+  )
 }
