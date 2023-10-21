@@ -55,14 +55,15 @@ position: absolute;
     color:rgb(90, 90, 90);
     cursor: pointer;
 }
-.editor-pickimg img{
+.editor-pickimg{
     width:100%;
     max-width:400px;
-    height:200px;
     border-radius: 8px;
     box-shadow: 2px 2px 20px 5px rgb(243, 242, 242);
 }
-
+.editor-img{
+    width:100%
+}
 .edtr-box-vw{
     background-color: transparent;
     padding:8px;

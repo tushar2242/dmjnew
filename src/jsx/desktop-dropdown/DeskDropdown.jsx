@@ -111,7 +111,7 @@ const EditorPick = () => {
       <div className="col">
         <div className="edtr-box-vw">
           <div className="editor-pickimg">
-            <img src={editorimg} alt="EditorPick" />
+            <img src={editorimg} alt="EditorPick" className="editor-img"/>
           </div>
 
           <p className="subcate-fnt-sz mt-2">Editor's Pick</p>
