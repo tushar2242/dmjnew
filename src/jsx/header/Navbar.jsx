@@ -342,14 +342,14 @@ function Navbar() {
 
           <div className="nav-account">
             <div
-              className="nav-box"
+              className="nav-box ms-5"
               onClick={() => {
                 setProfile(!profile);
               }}
             >
-              <div style={{ marginTop: '19px' }}>
-                <i className="bi bi-person-circle nav-icon-item ms-5"></i><br />
-                <p className="user-name-fntsz">Hi,{userId ? userName : "Guest"}</p>
+              <div className="">
+                <i className="bi bi-person-circle nav-icon-item" style={{position:'relative',top:'-2px'}}></i><br />
+                <p className="user-name-fntsz">Hi, {userId ? userName : "Guest"}</p>
               </div>
             </div>
             {profile && (
@@ -378,21 +378,21 @@ function Navbar() {
                 )}
               </div>
             )}
-            <div className="nav-box">
+            <div className="nav-box ms-4">
               <NavLink to="/wishlist">
                 {" "}
                 <div className="show-numbericn">
-                  <i className="bi bi-suit-heart-fill nav-icon-item ms-4"></i>
+                  <i className="bi bi-suit-heart-fill nav-icon-item "></i>
                   <div className="number-icon-sz">{wishLength}</div>
                 </div>
               </NavLink>
             </div>
-            <div className="nav-box">
+            <div className="nav-box ms-4">
               <NavLink to="/addToCart">
                 {" "}
 
                 <div className="show-numbericn">
-                  <i className="bi bi-cart4 nav-icon-item ms-4"></i>
+                  <i className="bi bi-cart4 nav-icon-item"></i>
                   <div className="number-icon-sz">{cartLength}</div>
                 </div>
               </NavLink>
@@ -524,9 +524,9 @@ function Navbar() {
                     setProfile(!profile);
                   }}
                 >
-                  <div style={{ marginTop: '27px' }}>
-                    <i className="bi bi-person-circle nav-icon-item ms-5"></i><br />
-                    <p className="user-name-fntsz">Hi,{userId ? userName : "Guest"}</p>
+                  <div>
+                    <i className="bi bi-person-circle nav-icon-item ms-5" style={{position:'relative',top:'-2px'}}></i><br />
+                    <p className="user-name-fntsz">Hi, {userId ? userName : "Guest"}</p>
                   </div>
                 </div>
                 {profile && (
@@ -629,14 +629,14 @@ function Navbar() {
             </NavLink>
 
             <NavLink
-              className=""
+              className="text-decoration-none"
               onClick={() => {
                 setProfile(!profile);
               }}
             >
               <div style={{ marginTop: '-6px' }}>
                 <i className="bi bi-person-circle nav-icon-item ms-4"></i><br />
-                <p className="user-name-fntsz1">Hi,{userId ? userName : "Guest"}</p>
+                <p className="user-name-fntsz1">Hi, {userId ? userName : "Guest"}</p>
               </div>
             </NavLink>
             {profile && (

@@ -15,7 +15,7 @@
   z-index: 4000;
 
   padding-block: 7px;
-  padding-inline: 50px;
+  padding-inline: 40px;
   position: initial
 }
 
@@ -477,7 +477,6 @@
 }
 
 .number-icon-sz {
-
   position: absolute;
   font-size: 14px;
   font-weight: 700;
@@ -494,14 +493,18 @@
   font-size:12px;
   text-align: center;
   font-weight:600;
-  margin-top:-9px;
-  margin-left:40px;
+  position: absolute;
+  top:40px;
+  /* right:145px */
+  margin-left:-13px;
+  /* margin-top:-7px;
+   */
 }
 .user-name-fntsz1{
   font-size:12px;
   text-align: center;
   font-weight:600;
-  margin-top:-9px;
+  margin-top:-7px;
   margin-left:15px;
   color:black;
 }
