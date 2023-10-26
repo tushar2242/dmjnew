@@ -28,9 +28,9 @@ const CategoryFilter = () => {
           </div>
         </div>
       </div>
+      <h3 className="text-center mt-4 mb-4"><b>Category Products</b></h3>
       <ProductFilter />
       <div>
-      <h4 className="text-center"><b>Category Products</b></h4>
         <FilterCard />
       </div>
 

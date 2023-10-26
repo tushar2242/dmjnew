@@ -201,14 +201,7 @@ const LoginWithMobileNo = () => {
                   <NavLink to="/forgetpassword"><p className="for-pass-fnt">
                     <b>Forget Password ?</b>
                   </p></NavLink>
-                  <p className="tp-text">
-                    By Continuing, I agree to the{" "}
-                    <NavLink to="/termscondition">
-                      <span className="tp-color">
-                        <b>Terms of Use & Privacy Policy</b>
-                      </span>
-                    </NavLink>
-                  </p>
+                  <p className="tp-text">By Continuing, I agree to the <span className="tp-color"><b><NavLink to='/termscondition'>Terms of Use</NavLink> & <NavLink to='/privacypolicy'>Privacy Policy</NavLink></b></span></p>
                   {isOtp ? (
                     <button
                       type="button"

@@ -2,11 +2,14 @@
     width:100%;
     max-width:500px;
     background-color:white;
-    box-shadow: 2px 2px 4px 4px rgb(248, 248, 248);
-    border-radius: 5px;
+    box-shadow: 2px 2px 20px 5px rgb(248, 248, 248);
+    border-radius: 0px 0px 5px 5px;
     padding:15px;
-    margin: auto;
-    
+     left:50%;
+    position: absolute;
+    top:103%;
+    height:300px;
+    overflow-y: scroll;
   }
   .timer-iconsz{
     width:22px;
