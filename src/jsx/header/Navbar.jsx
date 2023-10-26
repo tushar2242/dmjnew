@@ -620,15 +620,15 @@ function MobileMenuBar({ cateData, sch, ...props }) {
   const handleClose = () => setMenuShow(false);
   const handleShow = () => setMenuShow(true);
 
-  async function fetchMenu() {
-    try {
-      const res = await axios.get(url + endPoint);
-      // console.log(res.data.data)
-      // setCate(res.data.data);
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  // async function fetchMenu() {
+  //   try {
+  //     const res = await axios.get(url + endPoint);
+  //     console.log(res.data.data)
+  //     // setCate(res.data.data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
 
   const [search, setSearch] = useState("");
   const searchTxt = useSelector((state) => state.product.search.payload);
@@ -637,7 +637,7 @@ function MobileMenuBar({ cateData, sch, ...props }) {
   useEffect(() => {
     // console.log(searchTxt)
     setSearch(searchTxt);
-    fetchMenu();
+
   }, [searchTxt]);
 
   async function handleSearch(e) {
@@ -682,7 +682,7 @@ function MobileMenuBar({ cateData, sch, ...props }) {
               // console.log(cate)
               return (
                 <AccordianMenuList
-                  title={cate[0].type}
+                  title={cate.length > 0 &&cate[0].type}
                   subCateDate={cate.length > 0 ? cate[0].subCategory : []}
                   handleClose={handleClose}
                 />

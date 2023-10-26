@@ -86,7 +86,7 @@ class ItemCard extends React.Component {
 
     render() {
         const { category, bgImg } = this.props;
-        // console.log(bgImg)
+        console.log(category)
 
 
         return (
