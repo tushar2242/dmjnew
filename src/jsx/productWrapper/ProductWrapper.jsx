@@ -86,7 +86,7 @@ class ItemCard extends React.Component {
 
     render() {
         const { category, bgImg } = this.props;
-        console.log(category)
+        // console.log(category)
 
 
         return (
@@ -97,37 +97,37 @@ class ItemCard extends React.Component {
                         <div className="container-fluid">
                             <div className="row">
                                 <div className="col-md-12 text-center mt-4">
-                                    <h3 className="heading-text"><b>{category[0].name}</b></h3>
-                                    <h6 className="text-secondary text-h6" dangerouslySetInnerHTML={{ __html: category[0].seo_description }}></h6>
+                                    <h3 className="heading-text"><b>{category.name}</b></h3>
+                                    <h6 className="text-secondary text-h6" dangerouslySetInnerHTML={{ __html: category.seo_description }}></h6>
                                 </div>
                             </div>
 
                             <div className="row">
 
                                 <ItemImageCard
-                                    category={category[0].name}
-                                    img={imgUrl + category[0].image} title={category[0].slug} />
+                                    category={category.name}
+                                    img={imgUrl + category.image} title={category.slug} />
                                 <div className="col-md-6 mt-3 itemImg">
 
                                     <ItemImageRowCard
-                                        category={category[0].name}
-                                        subCategory={category[0].subCategory === null ? [] : category[0].subCategory}
+                                        category={category.name}
+                                        subCategory={category.subCategory === null ? [] : category.subCategory}
                                     />
                                 </div>
                             </div>
 
                             <div className="showCardCarousel">
                                 <CarouselForProduct
-                                    category={category[0].type}
+                                    category={category.type}
                                     item="Card"
-                                    productData={category[0].subCategory === null ? [] : category[0].subCategory}
+                                    productData={category.subCategory === null ? [] : category.subCategory}
                                 />
                             </div>
 
                             {
                                 <CarouselForProduct
-                                    category={category[0].type}
-                                    productData={category[0].subCategory === null ? [] : category[0].subCategory}
+                                    category={category.type}
+                                    productData={category.subCategory === null ? [] : category.subCategory}
                                     item='img'
                                 />
                             }

@@ -569,7 +569,7 @@ function Navbar() {
         {isJwelOpen && cateData.length > 0 ? (
           <DeskDropdown
             title="jewellery"
-            cateData={cateData[0][0].subCategory}
+            cateData={cateData[0].subCategory}
             marginLeft="140px"
             handleNavMouseEnter={handleJewelEnter}
             onMouseLeave={handleMouseLeave}
@@ -578,7 +578,7 @@ function Navbar() {
         {isArtOpen && cateData.length > 0 ? (
           <DeskDropdown
             title="art"
-            cateData={cateData[1][0].subCategory}
+            cateData={cateData[1].subCategory}
             marginLeft="170px"
             handleNavMouseEnter={handleArtEnter}
             onMouseLeave={handleMouseLeave}
@@ -588,7 +588,7 @@ function Navbar() {
         {isCarpet && cateData.length > 0 ? (
           <DeskDropdown
             title="carpet"
-            cateData={cateData[2][0].subCategory}
+            cateData={cateData[2].subCategory}
             marginLeft="200px"
             handleNavMouseEnter={handleCraft}
             onMouseLeave={handleMouseLeave}

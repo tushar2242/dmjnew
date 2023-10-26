@@ -67,13 +67,14 @@ const NewDropdownMenu = ({ cateData }) => {
 
             {
               cateData.length > 0 && cateData.map((item) => {
-
+                console.log(item)
                 return (
                   <>
                     <MainCategory
                       category={item.type}
                       isActive={activeCategory === item.type}
                       onMouseOver={() => handleCategoryMouseOver(item.type, item.id)}
+                      
                     />
                   </>
                 )
