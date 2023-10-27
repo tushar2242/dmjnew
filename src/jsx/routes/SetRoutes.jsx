@@ -117,7 +117,7 @@ export default class SetRoutes extends React.Component {
                     {/* <Route path="/Editprofile" element={<Editprofile />} /> */}
                     <Route path="/forgetpassword" element={<ForgetPassword />} />
                     <Route path="/trackdetails" element={<TrackDetailsPage />} />
-                    <Route path="/categoryfilter" element={<CategoryFilter />} />
+                    <Route path="/c/:query" element={<CategoryFilter />} />
                    
                 </Routes>
 

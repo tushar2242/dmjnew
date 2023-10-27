@@ -130,84 +130,8 @@ const ProductItemCard = ({ img, item, price }) => {
     dispatch(addSearch(val));
     localStorage.setItem("productId", id);
   }
-  // console.log(item.images[0].productVariantEntities[0].price);
   return (
     <>
-      {/* <div className="grid-column">
-        <div className="text-decoration-none pro-cd-flt-box">
-          <div
-            className="card__container shadow-sm"
-          >
-            <div className=""
-              onClick={() => RedirectDetailsPage(item.id, `/p/` + item.slug + '/' + item.sku)} style={{ cursor: 'pointer' }}>
-              <div className="bg-box"></div>
-              <div className="card__top__section">
-                <div className="pro-img-box">
-                  <img src={img} alt="product" className="pro-img-card" />
-                </div>
-                <div
-                  onClick={() => RedirectDetailsPage(item.id, "/wishlist")}
-                  className="text-decoration-none"
-                >
-
-                </div>
-              </div>
-
-              <div
-                onClick={() => RedirectDetailsPage(item.id, "/p")}
-                className="text-decoration-none d-flex justify-content-between">
-
-                <p className="trend-cont-fnt ms-2">{item.name.length < 15 ? item.name : item.name.replace(/"/g, '').slice(0, 15) + '...'}</p>
-                <FavoriteBorderIcon className="card-pro-icon" />
-              </div>
-              <div className="d-flex">
-                <p className="strike-text1">
-                  <b>
-                
-                  </b>
-                </p>
-                <div className="pro-price-fx">
-                  <p className="trend-price1 ml-2">
-                    <b>
-                      <CurrencyRupeeIcon className="rup-icon-sz ms-1" />
-
-
-                      {(item.images.length > 0 && item.images[0].productVariantEntities.length > 0) && item.images[0].productVariantEntities[0].manualPrice}
-                      <span
-                        style={{
-                          textDecoration: "line-through",
-                          marginLeft: "8px",
-                          fontSize: "14px",
-                          color: "#7a7a7a",
-                        }}
-                      >
-                        <CurrencyRupeeIcon className="rup-icon-sz ms-1" />
-                        {(item.images.length > 0 && item.images[0].productVariantEntities.length > 0) && item.images[0].productVariantEntities[0].price}
-
-                      </span>
-                      {' '}
-
-                    </b>
-
-                   
-                  </p>
-                  <p className="off-font">( {(item.images.length > 0 && item.images[0].productVariantEntities.length > 0) ? item.images[0].productVariantEntities[0].discount : 0}% OFF )</p>
-                </div>
-              </div>
-              <div className="d-flex ms-2" style={{ marginTop: '-10px' }}>
-                <p className="trend-rt-box1">
-                  <b>
-                    4.5 <i className="bi bi-star-fill trend-rt-icon"></i>
-                  </b>
-                </p>
-                <p className="trend-span-fnt1">15 reviews</p>
-              </div>
-            </div>
-       
-          </div>
-        </div>
-      </div> */}
-
       <div className="grid-column mt-3">
         <div className="filtr-new-box-1" onClick={() => RedirectDetailsPage(item.id, `/p/` + item.slug + '/' + item.sku)} style={{ cursor: 'pointer' }}>
           <div className="pro-img-card">
@@ -272,3 +196,4 @@ const ProductItemCard = ({ img, item, price }) => {
 };
 
 
+export {ProductItemCard}
