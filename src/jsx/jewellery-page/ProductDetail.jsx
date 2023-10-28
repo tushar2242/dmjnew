@@ -1148,6 +1148,7 @@ const RelatedProduct = ({ search }) => {
 
 export { RelatedProduct };
 
+
 const SwitchCurrency = ({ setCurrencyValue }) => {
   // async function fetchCurrancy() {
   //   try {

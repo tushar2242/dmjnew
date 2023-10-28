@@ -35,6 +35,7 @@ const userId = localStorage.getItem("userId");
 
 
 
+
 function Navbar() {
 
 
@@ -335,7 +336,7 @@ function Navbar() {
               <h6 className='mt-2'><b>Search Results</b></h6>
               {searchResults.map(result => (
 
-                <ImageWithSearch key={result.name} detail={result.name} image={urlimg + result.image} />
+                <ImageWithSearch key={result.name} detail={result.name} image={urlimg + result.image} query={result.name} />
               ))}
             </div>
           )}
@@ -762,7 +763,7 @@ function MobileMenuBar({ cateData, sch, ...props }) {
               // console.log(cate)
               return (
                 <AccordianMenuList
-                  title={ cate.type}
+                  title={cate.type}
                   subCateDate={cate.subCategory}
                   handleClose={handleClose}
                 />
@@ -906,9 +907,15 @@ const SearchDetails = (props) => {
 }
 
 const ImageWithSearch = (props) => {
+  const navigate = useNavigate();
+
+  const handleButtonClick = (query) => {
+    navigate(`/c/${query}`);
+  };
+
   return (
     <>
-      <div className='d-flex mt-2'>
+      <div className='d-flex mt-2' onClick={() => handleButtonClick(props.query)}>
         <img src={props.image} alt="icon" className='search-img-dtl1' />
         <p className='srch-ipt-detail-ptag mt-2'>{props.detail}</p>
       </div>
