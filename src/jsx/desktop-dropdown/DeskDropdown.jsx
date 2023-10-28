@@ -29,7 +29,7 @@ const NewDropdownMenu = ({ cateData }) => {
     // console.log(value)
     try {
       const res = await axios.get(url + subSubEndPoint + value)
-      // console.log(res.data.data)
+      console.log(res.data.data)
       if (!res.data.data) {
         setSubCateData([])
       }
@@ -67,7 +67,7 @@ const NewDropdownMenu = ({ cateData }) => {
 
             {
               cateData.length > 0 && cateData.map((item) => {
-                console.log(item)
+                // console.log(item)
                 return (
                   <>
                     <MainCategory
