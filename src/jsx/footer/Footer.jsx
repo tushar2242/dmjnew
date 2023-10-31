@@ -353,7 +353,7 @@ const ShareIcon = () => {
               </NavLink></div>
              
               <div className=""> 
-              <NavLink className="link-dark stky-scl-icngap" to="/">
+              <NavLink className="link-dark stky-scl-icngap" to="https://api.whatsapp.com/send?phone=919664073873">
                 {/* <i className="bi bi-whatsapp fs-5 footer-icbx"></i> */}
                 <img src={whatsapp} alt="icon" className="chat-icon-szbox"/>
               </NavLink>
@@ -364,7 +364,7 @@ const ShareIcon = () => {
               <NavLink
                 className="link-dark"
 
-                to="/"
+                to="https://www.instagram.com/diwamjewels/"
               >
                 {/* <i className="bi bi-instagram fs-5 footer-icbx"></i> */}
                 <img src={instagram} alt="icon" className="chat-icon-szbox" />
