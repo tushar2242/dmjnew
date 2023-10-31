@@ -217,7 +217,6 @@ const ItemImageRowCard = ({ subCategory, category }) => {
     )
 }
 
-
 const SmallImageCard = ({ img, name, category }) => {
 
 

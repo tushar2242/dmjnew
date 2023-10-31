@@ -22,6 +22,7 @@ export default DeskDropdown;
 
 const NewDropdownMenu = ({ cateData }) => {
   const [activeCategory, setActiveCategory] = useState("Faishon Jewellery");
+  const [subcategoryOpen, setSubcategoryOpen] = useState(false);
   const [subCateData, setSubCateData] = useState([])
 
 
@@ -167,6 +168,12 @@ const EditorPick = () => {
 };
 
 
-
+const SubMenuCategory = () =>{
+  return (
+    <>
+      <h1>hello</h1>
+    </>
+  )
+}
 
 
