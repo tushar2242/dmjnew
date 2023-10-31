@@ -61,7 +61,7 @@ const NewDropdownMenu = ({ cateData }) => {
     <>
       <div className="new-menu-boxvw">
         <div className="d-flex">
-          <div className="" style={{ width: "350px" }}>
+          <div className="custom-scrollbar" style={{width:'350px'}}>
             {/* <p className="cate-hd-fntsz">
               {/* All Jewellery Categories <ArrowRightAltIcon /> 
             </p> */}
@@ -75,7 +75,7 @@ const NewDropdownMenu = ({ cateData }) => {
                       category={item.type}
                       isActive={activeCategory === item.type}
                       onMouseOver={() => handleCategoryMouseOver(item.type, item.id)}
-
+                       
                     />
                   </>
                 )
@@ -107,7 +107,7 @@ const NewDropdownMenu = ({ cateData }) => {
                 }
               </div>
 
-              <EditorPick />
+              {/* <EditorPick /> */}
             </div>
           )}
         </div>

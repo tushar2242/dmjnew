@@ -13,7 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Loader from "../loader/Loader";
 import axios from 'axios';
 import { ProductItemCard } from '../ProductCard/FilterCard';
-
+import Pagination from '@mui/material/Pagination';
 
 const proto = "https://api.diwamjewels.com/DMJ/";
 const imgUrl = "https://squid-app-2-7wbvi.ondigitalocean.app/";
@@ -77,13 +77,20 @@ const CategoryFilter = () => {
         </div>
       </div> */}
       {/* <h3 className="text-center mt-4 mb-4"><b>Category Products</b></h3> */}
-      <ProductFilter />
-      <div>
+      <div className="mt-4">
+      <ProductFilter  />
+      </div>
+      <div className="mb-5">
         <FilterCategoryCard
           query={query}
         />
       </div>
-
+      <div className="mt-3 mb-5">
+         <PaginationBox />
+       </div>
+       <div className="filter-ftr-content">
+        <ProductContentFilter />
+      </div>
       <Footer />
     </>
   );
@@ -180,6 +187,72 @@ const FilterCategoryCard = ({ query}) => {
           )}
         </div>
       </div>
+    </>
+  );
+};
+
+
+const PaginationBox = () => {
+
+  return (
+    <>
+       <Pagination count={100} color="warning" />
+    </>
+  )
+}
+
+const ProductContentFilter = () => {
+  const searchTxt = useSelector((state) => state.product.search.payload);
+  // const { searchTxt } = useParams();
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const fetchData = () => {
+    setLoading(true);
+    const apiUrl = `https://api.diwamjewels.com/DMJ/api/v1/category/type?type=${searchTxt}`;
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        if (response.data && response.data.data) {
+          const categoryDescription = response.data.data.categoryDescription;
+          if (categoryDescription !== null) {
+            const categoryDescriptionWithoutHtml = categoryDescription.replace(/<[^>]*>/g, "");
+            setData(categoryDescription);
+          } else {
+            setData("Category description not available");
+          }
+        } else {
+          setData("Category data not available");
+        }
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [searchTxt]);
+
+  return (
+    <>
+
+      <div className="fltr-para-textfnt">
+      {loading ? (
+          'Loading data...'
+        ) : error ? (
+          `Error: ${error.message}`
+        ) : data ? (
+          <div dangerouslySetInnerHTML={{ __html: data }}>
+
+          </div>
+        ) : null}
+      </div>
+
+   
     </>
   );
 };

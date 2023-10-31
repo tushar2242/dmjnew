@@ -8,6 +8,7 @@ position: absolute;
     width:98%;
     margin:auto;
     border-radius:0px 0px 5px 5px;
+   
     
 }
 
@@ -31,6 +32,7 @@ position: absolute;
     width:15px;
     height:auto;
     border-left: solid 1px rgb(161, 161, 161);
+    margin-left:10px;
 }
 .cate-hd-fntsz{
     font-size:16px;
@@ -82,3 +84,17 @@ position: absolute;
 .active-category{
     background-color: #fff6bc9c; 
 }
+
+/* .custom-scrollbar:hover{
+    overflow-y:scroll !important;
+    height:300px !important;
+}
+.custom-scrollbar::-webkit-scrollbar {
+    width: 2px;
+
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background-color: rgb(230, 169, 2); 
+    border-radius: 10px;
+  } */
