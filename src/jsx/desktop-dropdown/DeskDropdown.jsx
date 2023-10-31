@@ -30,7 +30,7 @@ const NewDropdownMenu = ({ cateData }) => {
     // console.log(value)
     try {
       const res = await axios.get(url + subSubEndPoint + value)
-      // console.log(res.data.data)
+      console.log(res.data.data)
       if (!res.data.data) {
         setSubCateData([])
       }
@@ -61,7 +61,7 @@ const NewDropdownMenu = ({ cateData }) => {
     <>
       <div className="new-menu-boxvw">
         <div className="d-flex">
-          <div className="custom-scrollbar" style={{width:'350px'}}>
+          <div className="" style={{ width: "350px" }}>
             {/* <p className="cate-hd-fntsz">
               {/* All Jewellery Categories <ArrowRightAltIcon /> 
             </p> */}
@@ -73,10 +73,9 @@ const NewDropdownMenu = ({ cateData }) => {
                   <>
                     <MainCategory
                       category={item.type}
-                      count={item.count}
                       isActive={activeCategory === item.type}
                       onMouseOver={() => handleCategoryMouseOver(item.type, item.id)}
-                       
+                      
                     />
                   </>
                 )
@@ -97,7 +96,7 @@ const NewDropdownMenu = ({ cateData }) => {
 
                 {
                   subCateData.length > 0 && subCateData.map((cateList) => {
-
+                    // console.log(cateList)
                     return (
                       <>
                         <SubcategoryList subcategory={cateList.type} />
@@ -117,17 +116,16 @@ const NewDropdownMenu = ({ cateData }) => {
   );
 };
 
-const MainCategory = ({ isActive, onMouseOver, onMouseOut, category, count }) => {
-
+const MainCategory = (props) => {
   return (
     <>
       <div
-        className={`hoverable-list pt-2 ${isActive ? "active-category" : ""}`}
-        onMouseOver={onMouseOver}
-        onMouseOut={onMouseOut}
+        className={`hoverable-list pt-2 ${props.isActive ? "active-category" : ""}`}
+        onMouseOver={props.onMouseOver}
+        onMouseOut={props.onMouseOut}
       >
-        <p className="main-cate-fnt-sz">{category}</p>
-        {count > 0 && <NavigateNextIcon className="" />}
+        <p className="main-cate-fnt-sz">{props.category}</p>
+        <NavigateNextIcon className="" />
       </div>
     </>
   );
@@ -156,7 +154,7 @@ const EditorPick = () => {
       <div className="col">
         <div className="edtr-box-vw">
           <div className="editor-pickimg">
-            <img src={editorimg} alt="EditorPick" className="editor-img" />
+            <img src={editorimg} alt="EditorPick" className="editor-img"/>
           </div>
 
           <p className="subcate-fnt-sz mt-2">Editor's Pick</p>
