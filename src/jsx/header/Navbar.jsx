@@ -1,6 +1,5 @@
 import { useState, memo, useRef } from "react";
 import "./newNav.css";
-
 import logo from "../../assets/images/dmjicon.png";
 import searchIcon from "./icons/search.png";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -15,7 +14,7 @@ import menubar from "../../assets/images/menuicon.png";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Accordion from "react-bootstrap/Accordion";
 import "../search-contentbox/search-input-box.css";
-import newlogoimg from '../../assets/images/newpnglogo.png';
+// import newlogoimg from '../../assets/images/newpnglogo.png';
 import newdmjlogo from '../../assets/images/newdmjlogo.gif';
 import DeskDropdown from "../desktop-dropdown/DeskDropdown";
 import axios from "axios";
@@ -26,8 +25,6 @@ import image1 from '../../assets/images/earring.jpg'
 const urlimg = 'https://squid-app-2-7wbvi.ondigitalocean.app/'
 const url = "https://api.diwamjewels.com/DMJ/";
 const endPoint2 = "api/v1/user/";
-// const url = 'http://137.184.3.191:8080/DMJ/';
-// const endPoint = 'api/v1/category/maincategory';
 const endPoint = "api/v1/category";
 const subSubEndPoint = "api/v1/category/subcategory/";
 
@@ -43,7 +40,7 @@ function Navbar() {
   async function fetchMenu() {
     try {
       const res = await axios.get(url + endPoint);
-      // console.log(res.data.data)
+      console.log(res.data.data)
       setCate(res.data.data);
     } catch (err) {
       console.log(err);
@@ -240,9 +237,10 @@ function Navbar() {
       });
   };
 
-  const handleProSearch = () => {
-    // You can add code to handle searching when the user clicks the search icon here
-    // You may reuse the code from the previous example if needed
+  const handleProSearch = (e) => {
+    e.preventDefault()
+    navigate(`/c/${search}`);
+    dispatch(addSearch(search));
   };
 
 
@@ -315,20 +313,27 @@ function Navbar() {
             </div>
           </ul>
 
-          <div className="nav-box-search" ref={searchBoxRef}>
-            <input
-              type="text"
-              className="nav-search"
-              value={search}
-              onChange={handleSearch}
-            />
-            <img
-              src={searchIcon}
-              className="nav-search-icon"
-            // onClick={handleProSearch}
-            />
+          
+            <form onSubmit={handleProSearch}>
+            <div className="nav-box-search" ref={searchBoxRef}>
 
+              <input
+                type="text"
+                className="nav-search"
+                value={search}
+                onChange={handleSearch}
+              />
+              <button type="submit" style={{background:'transparent',border:'none'}}>
+                <img
+                  src={searchIcon}
+                  className="nav-search-icon"
+                  onClick={handleProSearch}
+                />
+              </button>
+              
           </div>
+            </form>
+      
 
 
           {isResultsOpen && ( // Only show search results if isResultsOpen is true
@@ -490,26 +495,31 @@ function Navbar() {
                 </div>
               </ul>
               <div className="nav-box-search" onClick={toggleOpen}>
-                <input
-                  type="text"
-                  className="nav-search"
-                  value={search}
-                  onChange={handleSearch}
-                />
-                <img
-                  src={searchIcon}
-                  className="nav-search-icon"
-                  onClick={handleProSearch}
-                />
+                <form onSubmit={handleProSearch}>
+
+
+                  <input
+                    type="text"
+                    className="nav-search"
+                    value={search}
+                    onChange={handleSearch}
+                  />
+                  <button type="submit">
+
+
+                    <img
+                      src={searchIcon}
+                      className="nav-search-icon"
+                      onClick={handleProSearch}
+                    />
+                  </button>
+                </form>
               </div>
 
               {issearchOpen && (
                 <>
                   <div className='srch-ipt-cntet-bx'>
-                    {/* <SearchDetails title="Jewellery" />
-          <SearchDetails title="Handi Craft" />
-          <SearchDetails title="Blue Pottery" />
-          <h6 className='mt-2'><b>Discover More</b></h6> */}
+             
                     <ImageWithSearch detail="Rings" image={image1} />
                     <ImageWithSearch detail="Necklace" image={image1} />
                     <ImageWithSearch detail="Bangles" image={image1} />
@@ -701,15 +711,6 @@ function MobileMenuBar({ cateData, sch, ...props }) {
   const handleClose = () => setMenuShow(false);
   const handleShow = () => setMenuShow(true);
 
-  // async function fetchMenu() {
-  //   try {
-  //     const res = await axios.get(url + endPoint);
-  //     console.log(res.data.data)
-  //     // setCate(res.data.data);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
 
   const [search, setSearch] = useState("");
   const searchTxt = useSelector((state) => state.product.search.payload);
@@ -729,7 +730,8 @@ function MobileMenuBar({ cateData, sch, ...props }) {
   }
   async function handleProSearch(e) {
     e.preventDefault()
-    navigate("/search");
+    navigate(`/c/${e.target.value}`);
+    dispatch(addSearch(e.target.value));
     // toggleBoxVisibility()
   }
 
@@ -749,13 +751,10 @@ function MobileMenuBar({ cateData, sch, ...props }) {
         </Offcanvas.Header>
         <Offcanvas.Body>
 
-          {sch && <form action="" className="d-flex mb-3 justify-content-center" onSubmit={handleProSearch}>
+          {sch && <form className="d-flex mb-3 justify-content-center" onSubmit={handleProSearch}>
             <input type="text" className="srch-input-box w-100" placeholder="Search here..." value={search}
               onChange={handleSearch} />
-            <button type="submit" className="search-offbtn" onClick={(e) => {
-              handleProSearch(e)
-              handleClose()
-            }}>Search</button>
+            <button type="submit" className="search-offbtn">Search</button>
           </form>}
 
           {cateData.length > 0 &&

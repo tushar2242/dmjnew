@@ -159,8 +159,7 @@ const ItemImageCard = ({ img, title, category }) => {
 
     // console.log(img)
     async function handleNavigate(val) {
-        await dispatch(addSearch(val));
-        navigate('/search')
+        navigate(`/c/${val}`);
     }
 
 
@@ -226,8 +225,7 @@ const SmallImageCard = ({ img, name, category }) => {
 
     // console.log(img)
     async function handleNavigate(val) {
-        await dispatch(addSearch(val));
-        navigate('/search')
+        navigate(`/c/${val}`);
     }
 
     // const [isImgLoad, setIsImageLoad] = useState(false)
@@ -457,14 +455,13 @@ const CarouselCard = ({ img, title, category, discount, sku, slug }) => {
 
 const ProductCard = ({ img, name, cate, category }) => {
 
-
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
     // console.log(img)
     async function handleNavigate(val) {
-        await dispatch(addSearch(val));
-        navigate('/search')
+        // await dispatch(addSearch(val));
+        navigate(`/c/${val}`);
     }
 
 

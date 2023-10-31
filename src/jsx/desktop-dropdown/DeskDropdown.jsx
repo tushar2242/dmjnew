@@ -74,7 +74,7 @@ const NewDropdownMenu = ({ cateData }) => {
                       category={item.type}
                       isActive={activeCategory === item.type}
                       onMouseOver={() => handleCategoryMouseOver(item.type, item.id)}
-                      
+
                     />
                   </>
                 )
@@ -153,7 +153,7 @@ const EditorPick = () => {
       <div className="col">
         <div className="edtr-box-vw">
           <div className="editor-pickimg">
-            <img src={editorimg} alt="EditorPick" className="editor-img"/>
+            <img src={editorimg} alt="EditorPick" className="editor-img" />
           </div>
 
           <p className="subcate-fnt-sz mt-2">Editor's Pick</p>
