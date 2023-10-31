@@ -30,7 +30,7 @@ const NewDropdownMenu = ({ cateData }) => {
     // console.log(value)
     try {
       const res = await axios.get(url + subSubEndPoint + value)
-      console.log(res.data.data)
+      // console.log(res.data.data)
       if (!res.data.data) {
         setSubCateData([])
       }
@@ -73,6 +73,7 @@ const NewDropdownMenu = ({ cateData }) => {
                   <>
                     <MainCategory
                       category={item.type}
+                      count = {item.count}
                       isActive={activeCategory === item.type}
                       onMouseOver={() => handleCategoryMouseOver(item.type, item.id)}
                       
@@ -116,16 +117,16 @@ const NewDropdownMenu = ({ cateData }) => {
   );
 };
 
-const MainCategory = (props) => {
+const MainCategory = ({count,isActive,onMouseOver,onMouseOut,category}) => {
   return (
     <>
       <div
-        className={`hoverable-list pt-2 ${props.isActive ? "active-category" : ""}`}
-        onMouseOver={props.onMouseOver}
-        onMouseOut={props.onMouseOut}
+        className={`hoverable-list pt-2 ${isActive ? "active-category" : ""}`}
+        onMouseOver={onMouseOver}
+        onMouseOut={onMouseOut}
       >
-        <p className="main-cate-fnt-sz">{props.category}</p>
-        <NavigateNextIcon className="" />
+        <p className="main-cate-fnt-sz">{category}</p>
+      { count>0&& <NavigateNextIcon className="" />}
       </div>
     </>
   );
