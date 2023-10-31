@@ -197,7 +197,7 @@ const ItemImageRowCard = ({ subCategory, category }) => {
                                 <SmallImageCard
                                     key={item.id}
                                     img={item.image}
-                                    name={item.seo_title}
+                                    name={item.type}
                                     category={category}
                                 />
                             )
@@ -228,26 +228,6 @@ const SmallImageCard = ({ img, name, category }) => {
         navigate(`/c/${val}`);
     }
 
-    // const [isImgLoad, setIsImageLoad] = useState(false)
-
-    // const [subCategory1, setSubCategory] = useState([])
-
-    // async function fetchProductDetails() {
-    //     try {
-    //         const res = await axios.get(`${url}${sEnd}${category}&pageSize=0`);
-    //         // console.log(`${url}${sEnd}${category}&pageSize=0`)
-    //         console.log(res.data.fetchData)
-    //         setSubCategory(res.data.data)
-    //     }
-    //     catch (err) {
-    //         console.log(err)
-    //     }
-    // }
-
-
-    // useEffect(() => {
-    //     fetchProductDetails()
-    // }, [])
 
     return (
         <>
@@ -259,9 +239,8 @@ const SmallImageCard = ({ img, name, category }) => {
                             styleClass='img-fluid new-img'
                             img={imgUrl + img}
                         />
-                        {/* <ImageLoader1
-                            img={<img src={imgUrl + img} className="img-fluid new-img" alt="design" onLoad={() => setIsImageLoad(true)} />} /> */}
-                        <p className="mt-3 perfect-text">{name.length < 10 ? name : name.slice(0, 10) + '...'}</p>
+                       
+                        <p className="mt-3 perfect-text">{name.length < 10 ? name : name.slice(0, 15) + '...'}</p>
                         {/* <p className="sale-offer">Up to 50%</p> */}
 
                     </div>

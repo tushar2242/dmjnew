@@ -1,6 +1,6 @@
 import { useState, memo, useRef } from "react";
 import "./newNav.css";
-import logo from "../../assets/images/dmjicon.png";
+// import logo from "../../assets/images/dmjicon.png";
 import searchIcon from "./icons/search.png";
 import { NavLink, useNavigate } from "react-router-dom";
 // import earring from "../../assets/images/earring1.jpg";
@@ -25,9 +25,8 @@ import image1 from '../../assets/images/earring.jpg'
 const urlimg = 'https://squid-app-2-7wbvi.ondigitalocean.app/'
 const url = "https://api.diwamjewels.com/DMJ/";
 const endPoint2 = "api/v1/user/";
-const endPoint = "api/v1/category";
+const endPoint = "api/v1/category/navbarItem";
 const subSubEndPoint = "api/v1/category/subcategory/";
-
 const userId = localStorage.getItem("userId");
 
 
@@ -35,12 +34,10 @@ const userId = localStorage.getItem("userId");
 
 function Navbar() {
 
-
-
   async function fetchMenu() {
     try {
       const res = await axios.get(url + endPoint);
-      console.log(res.data.data)
+      // console.log(res.data.data)
       setCate(res.data.data);
     } catch (err) {
       console.log(err);
@@ -313,8 +310,8 @@ function Navbar() {
             </div>
           </ul>
 
-          
-            <form onSubmit={handleProSearch}>
+
+          <form onSubmit={handleProSearch}>
             <div className="nav-box-search" ref={searchBoxRef}>
 
               <input
@@ -323,17 +320,17 @@ function Navbar() {
                 value={search}
                 onChange={handleSearch}
               />
-              <button type="submit" style={{background:'transparent',border:'none'}}>
+              <button type="submit" style={{ background: 'transparent', border: 'none' }}>
                 <img
                   src={searchIcon}
                   className="nav-search-icon"
                   onClick={handleProSearch}
                 />
               </button>
-              
-          </div>
-            </form>
-      
+
+            </div>
+          </form>
+
 
 
           {isResultsOpen && ( // Only show search results if isResultsOpen is true
@@ -519,7 +516,7 @@ function Navbar() {
               {issearchOpen && (
                 <>
                   <div className='srch-ipt-cntet-bx'>
-             
+
                     <ImageWithSearch detail="Rings" image={image1} />
                     <ImageWithSearch detail="Necklace" image={image1} />
                     <ImageWithSearch detail="Bangles" image={image1} />
