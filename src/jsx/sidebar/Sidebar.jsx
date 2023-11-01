@@ -73,13 +73,13 @@ class Sidenavbar extends React.Component {
                 </h6>
               </li>
 
-              <li className="nav-item">
-                {/* <p className='account-fnt-sz1'> ACCOUNT</p> */}
+              {/* <li className="nav-item">
+                <p className='account-fnt-sz1'> ACCOUNT</p>
 
-                {/* <h6 className="side-tab" onClick={() => this.setDisplay('savedcard')}>Saved Cards</h6>
+                <h6 className="side-tab" onClick={() => this.setDisplay('savedcard')}>Saved Cards</h6>
                             <h6 className="side-tab" onClick={() => this.setDisplay('Vpasaved')}>Saved VPA</h6>
-                            <h6 className="side-tab" onClick={() => this.setDisplay('Address')}>Addresses</h6> */}
-              </li>
+                            <h6 className="side-tab" onClick={() => this.setDisplay('Address')}>Addresses</h6>
+              </li> */}
 
 
               {/* <li className="nav-item">
