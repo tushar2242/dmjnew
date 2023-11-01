@@ -84,7 +84,7 @@ const CheckoutPage = () => {
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>
-              <Accordion className="mt-2">
+              {/* <Accordion className="mt-2">
                 <Accordion.Item eventKey="1">
                   <Accordion.Header className="hd-tag-font">
                     Shipping Address
@@ -94,7 +94,7 @@ const CheckoutPage = () => {
                     />
                   </Accordion.Body>
                 </Accordion.Item>
-              </Accordion>
+              </Accordion> */}
 
               <DlryOptions />
 
@@ -442,49 +442,49 @@ const PaymentType = () => {
               </div>
             </Accordion.Header>
             <Accordion.Body>
-            <div className="p-2">
-              <div className="row">
-                <div className="col-md-6">
-                  <input
-                    type="text"
-                    className="input-box-bdr mt-2 w-100"
-                    placeholder="Card Holder Name"
-                    name="cardHolderName"
-                    value={formData.cardHolderName}
-                    onChange={handleInputChange}
-                  />
+              <div className="p-2">
+                <div className="row">
+                  <div className="col-md-6">
+                    <input
+                      type="text"
+                      className="input-box-bdr mt-2 w-100"
+                      placeholder="Card Holder Name"
+                      name="cardHolderName"
+                      value={formData.cardHolderName}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <input
+                      type="number"
+                      className="input-box-bdr mt-2 w-100"
+                      placeholder="Card Number"
+                      name="cardNumber"
+                      value={formData.cardNumber}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <input
+                      type="date"
+                      className="input-box-bdr mt-2 w-100"
+                      placeholder="Expiration Date"
+                      name="expirationDate"
+                      value={formData.expirationDate}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <input
+                      type="text"
+                      className="input-box-bdr mt-2 w-100"
+                      placeholder="CVV"
+                      name="cvv"
+                      value={formData.cvv}
+                      onChange={handleInputChange}
+                    />
+                  </div>
                 </div>
-                <div className="col-md-6">
-                  <input
-                    type="number"
-                    className="input-box-bdr mt-2 w-100"
-                    placeholder="Card Number"
-                    name="cardNumber"
-                    value={formData.cardNumber}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="col-md-6">
-                  <input
-                    type="date"
-                    className="input-box-bdr mt-2 w-100"
-                    placeholder="Expiration Date"
-                    name="expirationDate"
-                    value={formData.expirationDate}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="col-md-6">
-                  <input
-                    type="text"
-                    className="input-box-bdr mt-2 w-100"
-                    placeholder="CVV"
-                    name="cvv"
-                    value={formData.cvv}
-                    onChange={handleInputChange}
-                  />
-                </div>
-              </div>
               </div>
             </Accordion.Body>
           </Accordion.Item>

@@ -20,7 +20,7 @@ export default class Orderpage extends React.Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <Filter />
+                            {/* <Filter /> */}
                             <div className="order-info">
                                 <Ordercard />
                                 <Ordercard />

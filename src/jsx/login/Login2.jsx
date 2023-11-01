@@ -168,7 +168,7 @@ const LoginWithMobileNo = () => {
 
                                         :
                                         <div className="otp-container">
-                                            <input type="tel" className="login-input" value={mobileNo} disabled />
+                                            <input type="text" className="login-input" value={mobileNo} disabled />
                                             <b style={{ color: 'green', letterSpacing: '0.3px', padding: '4px' }}>Otp Sent Successfully</b>
                                             <input type="number" className="login-input" placeholder="Enter Otp" value={otp} onChange={(e) => {
                                                 setOtpValue(e.target.value)

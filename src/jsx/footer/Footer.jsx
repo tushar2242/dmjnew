@@ -274,8 +274,8 @@ const FooterItem = ({ head, items, navi }) => {
   const dispatch = useDispatch();
 
   async function handleNavigate(val) {
-    await dispatch(addSearch(val));
-    navigate("/search");
+    // await dispatch(addSearch(val));
+    navigate(`/c/${val}`);
   }
 
   return (

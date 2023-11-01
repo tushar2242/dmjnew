@@ -32,7 +32,7 @@ class Sidenavbar extends React.Component {
     super(props);
     this.state = {
       // overview: "",
-      // order: "",
+      order: "",
       profile: "",
       // savedcard: "",
       // address: "",
@@ -59,26 +59,28 @@ class Sidenavbar extends React.Component {
                             </h6>
                         </li>
                         <hr></hr> */}
-              {/* <li className="nav-item">
-                            <h6 className="side-tab" aria-current="page" onClick={() => this.setDisplay('order')}>
-                              <LocalShippingIcon className="fs-5"></LocalShippingIcon> ORDERS & RETURNS
-                            </h6>
-                        </li>
-                        <hr></hr> */}
+              <h6
+                className="side-tab"
+                onClick={() => this.setDisplay("Profile")}
+              >
+                <ManageAccountsIcon className="fs-5"></ManageAccountsIcon>{" "}
+                Profile
+              </h6>
+              <hr></hr>
+              <li className="nav-item">
+                <h6 className="side-tab" aria-current="page" onClick={() => this.setDisplay('order')}>
+                  <LocalShippingIcon className="fs-5"></LocalShippingIcon> ORDERS & RETURNS
+                </h6>
+              </li>
+
               <li className="nav-item">
                 {/* <p className='account-fnt-sz1'> ACCOUNT</p> */}
-                <h6
-                  className="side-tab"
-                  onClick={() => this.setDisplay("Profile")}
-                >
-                  <ManageAccountsIcon className="fs-5"></ManageAccountsIcon>{" "}
-                  Profile
-                </h6>
+
                 {/* <h6 className="side-tab" onClick={() => this.setDisplay('savedcard')}>Saved Cards</h6>
                             <h6 className="side-tab" onClick={() => this.setDisplay('Vpasaved')}>Saved VPA</h6>
                             <h6 className="side-tab" onClick={() => this.setDisplay('Address')}>Addresses</h6> */}
               </li>
-              <hr></hr>
+
 
               {/* <li className="nav-item">
                         <p className='account-fnt-sz1'><AddCardIcon className="fs-5"></AddCardIcon> CREDITS</p>
@@ -105,11 +107,11 @@ class Sidenavbar extends React.Component {
                                 <DashboardCustomizeIcon className="fs-5"></DashboardCustomizeIcon> OVERVIEW
                             </h6>
                         </li> */}
-              {/* <li className="list-box-view">
-                        <h6 className="side-tab" aria-current="page" onClick={() => this.setDisplay('order')}>
-                              <LocalShippingIcon className="fs-5"></LocalShippingIcon> ORDERS & RETURNS
-                            </h6>
-                        </li> */}
+              <li className="list-box-view">
+                <h6 className="side-tab" aria-current="page" onClick={() => this.setDisplay('order')}>
+                  <LocalShippingIcon className="fs-5"></LocalShippingIcon> ORDERS & RETURNS
+                </h6>
+              </li>
               <li className="list-box-view">
                 <h6
                   className="side-tab"
@@ -124,7 +126,9 @@ class Sidenavbar extends React.Component {
           </div>
         </div>
 
-        {displayElement === "Profile" ? <Profileinfo /> : null}
+        {displayElement === "Profile" ? <Profileinfo /> :
+          displayElement === "order" ? <Orderpage /> : null
+        }
 
         {/* (displayElement === 'overview') ? <Overviewpage /> :
                         (displayElement === 'order') ? <Orderpage /> :
