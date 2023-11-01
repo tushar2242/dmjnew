@@ -53,6 +53,7 @@ import Orderdetails from '../sidebar/Orderdetails';
 
 import TrackDetailsPage from '../track-order/TrackDetailsPage';
 import CategoryFilter from '../category-filter/CategoryFilter';
+import Payment from '../payment/payment';
 
 
 export default class SetRoutes extends React.Component {
@@ -105,6 +106,7 @@ export default class SetRoutes extends React.Component {
                     <Route path='/prodetails' element={<Home />} />
 
                     <Route path="/profile" element={<Sidebar />} />
+                    <Route path='/payment' element={<Payment />} />
                     {/* <Route path="/overview" element={<Overview />} />
                     <Route path="/order" element={<Order />} />
                     <Route path="/coupon" element={<Coupon />} />
@@ -118,7 +120,7 @@ export default class SetRoutes extends React.Component {
                     <Route path="/forgetpassword" element={<ForgetPassword />} />
                     <Route path="/trackdetails" element={<TrackDetailsPage />} />
                     <Route path="/c/:query" element={<CategoryFilter />} />
-                   
+
                 </Routes>
 
             </>
