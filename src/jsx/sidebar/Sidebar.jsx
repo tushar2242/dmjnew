@@ -69,7 +69,7 @@ class Sidenavbar extends React.Component {
               <hr></hr>
               <li className="nav-item">
                 <h6 className="side-tab" aria-current="page" onClick={() => this.setDisplay('order')}>
-                  <LocalShippingIcon className="fs-5"></LocalShippingIcon> ORDERS & RETURNS
+                  <LocalShippingIcon className="fs-5"></LocalShippingIcon> ORDERS
                 </h6>
               </li>
 
@@ -100,20 +100,11 @@ class Sidenavbar extends React.Component {
           </div>
         </div>
         <div className="mobile-view-tabs">
-          <div className="mob-box-view-sz">
-            <ul className="mob-box-view-sz">
-              {/* <li className="list-box-view">
-                            <h6 className="side-tab" onClick={() => this.setDisplay('overview')} aria-current="page">
-                                <DashboardCustomizeIcon className="fs-5"></DashboardCustomizeIcon> OVERVIEW
-                            </h6>
-                        </li> */}
-              <li className="list-box-view">
-                <h6 className="side-tab" aria-current="page" onClick={() => this.setDisplay('order')}>
-                  <LocalShippingIcon className="fs-5"></LocalShippingIcon> ORDERS & RETURNS
-                </h6>
-              </li>
-              <li className="list-box-view">
-                <h6
+        <div className="container-fluid">
+        <div className="row-gridvw">
+            <div className="column-size">
+            <div className="list-box-view">
+            <h6
                   className="side-tab"
                   aria-current="page"
                   onClick={() => this.setDisplay("Profile")}
@@ -121,9 +112,19 @@ class Sidenavbar extends React.Component {
                   <ManageAccountsIcon className="fs-5"></ManageAccountsIcon>{" "}
                   Profile
                 </h6>
-              </li>
-            </ul>
-          </div>
+                </div>
+            </div>
+
+            <div className="column-size">
+            <div className="list-box-view">
+            <h6 className="side-tab" aria-current="page" onClick={() => this.setDisplay('order')}>
+                  <LocalShippingIcon className="fs-5"></LocalShippingIcon> ORDERS
+                </h6>
+                </div>
+            </div>
+
+           </div>
+        </div>
         </div>
 
         {displayElement === "Profile" ? <Profileinfo /> :
