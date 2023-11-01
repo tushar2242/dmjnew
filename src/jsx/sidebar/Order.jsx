@@ -1,98 +1,159 @@
-import React from 'react';
+import React from "react";
 // import { NavLink } from 'react-router-dom';
-import deliveryimg from './box.png'
-import productimg from './product.png'
-import './dashboard.css';
-import Details from './Orderdetails';
+import deliveryimg from "./box.png";
+import productimg from "./product.png";
+import "./dashboard.css";
+import Details from "./Orderdetails";
+import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import StarRateIcon from "@mui/icons-material/StarRate";
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
 
 export default class Orderpage extends React.Component {
-    // constructor(props){
-    //     super(props);
-    //     this.state = {
-    //     orderdetail: "false",
-    //     }
-    // }
+  // constructor(props){
+  //     super(props);
+  //     this.state = {
+  //     orderdetail: "false",
+  //     }
+  // }
 
-    render() {
-        return (
-            <>
-                <div className="sidebar-content">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-12">
-                                {/* <Filter /> */}
-                                <div className="order-info">
-                                    <Ordercard />
-                                    <Ordercard />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  render() {
+    return (
+      <>
+        <div className="sidebar-content">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                {/* <Filter /> */}
+                <div className="order-info">
+                <div className="order-desktopvw">
+                  <Ordercard />
+                  <Ordercard />
+                  </div>
+
+                  <div className="ordered-mobviw">
+                   <OrderListCardMob />
+                  </div>
                 </div>
-                {<Details />}
-            </>
-        )
-    }
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* { <Details />} */}
+      </>
+    );
+  }
 }
 
 class Filter extends React.Component {
-    render() {
-        return (
-            <>
-                <div className="order-view mt-5">
-                    <h6>All orders <span>from anytime</span></h6>
-                    <form className="d-flex">
-                        <input className="form-control me-2 w-100" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success" type="submit">Search</button>
-                        <button className="filter-btn shadow-sm ms-4">Filters</button>
-                    </form>
+  render() {
+    return (
+      <>
+        <div className="order-view mt-5">
+          <form action="" className="d-flex">
+            <input
+              type="text"
+              placeholder="Search your orders here ..."
+              className="form-control ord-search-int"
+            />
+            <button className="srch-ord-btnvew" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </>
+    );
+  }
+}
 
-                </div>
-            </>
-        )
-    }
+class Ordercard extends React.Component {
+  render() {
+    return (
+      <>
+        <div className="ordered-prdctbox mt-3">
+          <div className="d-flex justify-content-between">
+            <div className="d-flex">
+              <div className="ord-prdct-img-boxv">
+                <img
+                  src={productimg}
+                  alt="product"
+                  className="ord-product-imgvw"
+                />
+              </div>
+
+              <div className="ms-3">
+                <p className="prd-namefnt">Lorem ipsum dolor sit amet.</p>
+                <p className="prd-clr-type">color: Grey</p>
+              </div>
+            </div>
+
+            <div>
+              <h6 className="ord-price-pro">
+                <CurrencyRupeeIcon className="rupee-icn-frpr" />
+                890
+              </h6>
+            </div>
+
+            <div>
+              <h6 className="dlry-date-fnts">
+                <FiberManualRecordIcon
+                  className="rupee-icn-frpr"
+                  style={{ color: "#0aa847" }}
+                />
+                Delivered on Oct 09
+              </h6>
+              <p className="prd-clr-type">Your item has been delivered</p>
+              <p className="rate-fntsz-vw">
+                <StarRateIcon style={{ fontSize: "20px" }} /> Rate & Review
+                Product
+              </p>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 }
 
 
+const OrderListCardMob = () => {
+    return (
+        <>
+          <div className="mob-vw-ordlist mt-2 mb-2">
+            <div className="d-flex justify-content-between">
+            <div className="ord-prdct-img-boxv">
+                <img
+                  src={productimg}
+                  alt="product"
+                  className="ord-product-imgvw"
+                />
+              </div>
 
-class Ordercard extends React.Component {
-    render() {
-        return (
-            <>
-                <div className="delivery-bg shadow-sm">
-                    <div className="order-display">
-                        <img src={deliveryimg} alt="Product" className="del-img mt-1" />
-                        <div className="ms-3">
-                            <h6 className="text-success">Delivered</h6>
-                            <p className="date-text">On Sunday, 27 Feb 2023</p>
-                        </div>
-                    </div>
-                    <div className="info-del-pro">
+              <div className="mt-3">
+              <h6 className="dlry-date-fnts">
+                Delivered on Oct 09
+              </h6>
 
-                        <button><div className="order-display">
-                            <img src={productimg} alt="Delivery" className="img-fluid product-image" />
-                            <div className="ms-3 mt-2">
-                                <h5>Shoes</h5>
-                                <p className="pro-info-text">U S Polo Assn Men Grey BRENTT 2.0 Sneakers</p>
-                            </div>
-                        </div></button>
-                        <hr></hr>
-                        <ul>
-                            <li className="pro-info-text">
-                                Exchange/Return window closed on Wed, 9 Mar 2023
-                            </li>
-                        </ul>
-                        <hr></hr>
-                        <p className="pro-info-text pb-3">
-                            Rate Product <i className="bi bi-star pro-icon"></i>
-                            <i className="bi bi-star pro-icon"></i>
-                            <i className="bi bi-star pro-icon"></i>
-                            <i className="bi bi-star pro-icon"></i>
-                            <i className="bi bi-star pro-icon"></i>
-                        </p>
-                    </div>
-                </div>
-            </>
-        )
-    }
+              <p className="prd-namefnt">Lorem ipsum ...</p>
+              </div>
+
+               <div className="mt-4">
+                 <NavigateNextIcon />
+               </div>
+
+            </div>
+
+            <div className="d-flex justify-content-between">
+            <p className="rate-fntsz-vw">
+                Rate & Review
+                Product
+              </p>  
+              <div>
+               <StarOutlineIcon /> <StarOutlineIcon /> <StarOutlineIcon /> <StarOutlineIcon /> <StarOutlineIcon />
+              </div> 
+            </div>
+          </div>
+        </>
+    )
 }
