@@ -6,30 +6,30 @@ import './dashboard.css';
 import Details from './Orderdetails';
 
 export default class Orderpage extends React.Component {
-// constructor(props){
-//     super(props);
-//     this.state = {
-//     orderdetail: "false",
-//     }
-// }
+    // constructor(props){
+    //     super(props);
+    //     this.state = {
+    //     orderdetail: "false",
+    //     }
+    // }
 
     render() {
         return (
             <>
-            <div className="sidebar-content">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            {/* <Filter /> */}
-                            <div className="order-info">
-                                <Ordercard />
-                                <Ordercard />
+                <div className="sidebar-content">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12">
+                                {/* <Filter /> */}
+                                <div className="order-info">
+                                    <Ordercard />
+                                    <Ordercard />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                </div>
-               { <Details />}
+                {<Details />}
             </>
         )
     }
@@ -69,7 +69,7 @@ class Ordercard extends React.Component {
                     </div>
                     <div className="info-del-pro">
 
-                       <button><div className="order-display">
+                        <button><div className="order-display">
                             <img src={productimg} alt="Delivery" className="img-fluid product-image" />
                             <div className="ms-3 mt-2">
                                 <h5>Shoes</h5>
