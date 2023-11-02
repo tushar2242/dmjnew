@@ -10,6 +10,7 @@ import { useState } from 'react';
 import FormControlLabel from "@mui/material/FormControlLabel";
 import creditcard from "./images/credit.png";
 import paypal from "./images/paypal.png";
+import qr from './images/qr.jpeg';
 import upilogo from "../../assets/images/bhim.png";
 
 const Payment = () => {
@@ -53,14 +54,14 @@ export function ControlledAccordions() {
         });
     };
     return (
-        <div>
+        <div style={{ userSelect: 'all' }}>
             <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1bh-content"
                     id="panel1bh-header"
                 >
-                    <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                    <Typography sx={{ width: '80%', flexShrink: 0 }}>
                         <div className="d-flex">
                             <img src={creditcard} alt="credit" className="cr-cd-img" />
                             <h6 className="opt-dlry-fnt mt-1">Pay By Bank</h6>
@@ -123,7 +124,7 @@ export function ControlledAccordions() {
                     aria-controls="panel2bh-content"
                     id="panel2bh-header"
                 >
-                    <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                    <Typography sx={{ width: '80%', flexShrink: 0 }}>
                         <div className="d-flex">
                             <img src={upilogo} alt="credit" className="cr-cd-img" />
                             <h6 className="opt-dlry-fnt mt-1">Pay By UPI </h6>
@@ -135,13 +136,15 @@ export function ControlledAccordions() {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        <div className="d-flex p-2">
+                        <div className="d-flex p-2 flex-column">
+
                             <input
                                 type="text"
                                 className="input-box-bdr"
                                 placeholder="123@paytm"
                                 disabled
                             />
+                            <img src={qr} alt="qr" style={{maxWidth:'400px',height:'300px',width:'100%'}}/>
                             {/* <button className="check-verify-btn">Verify</button> */}
                         </div>
                     </Typography>
