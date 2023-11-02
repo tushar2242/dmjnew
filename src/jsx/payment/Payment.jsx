@@ -42,10 +42,10 @@ export function ControlledAccordions() {
         setExpanded(isExpanded ? panel : false);
     };
     const [formData, setFormData] = useState({
-        cardHolderName: "",
-        cardNumber: "",
-        expirationDate: "",
-        cvv: "",
+        cardHolderName: "Account name - A2G Traders Pvt ltd",
+        cardNumber: "Account Number -8045832778",
+        expirationDate: "IFSC Code - KKBK0003549",
+        cvv: "SWIFT CODE -KKBKINBBXXX",
     });
 
     const handleInputChange = (e) => {
@@ -82,27 +82,30 @@ export function ControlledAccordions() {
                                         placeholder="Card Holder Name"
                                         name="cardHolderName"
                                         value={formData.cardHolderName}
-                                        onChange={handleInputChange}
+                                        // onChange={handleInputChange}
+                                        disabled
                                     />
                                 </div>
                                 <div className="col-md-6">
                                     <input
-                                        type="number"
+                                        type="text"
                                         className="input-box-bdr mt-2 w-100"
                                         placeholder="Card Number"
                                         name="cardNumber"
                                         value={formData.cardNumber}
-                                        onChange={handleInputChange}
+                                        // onChange={handleInputChange}
+                                        disabled
                                     />
                                 </div>
                                 <div className="col-md-6">
                                     <input
-                                        type="date"
+                                        type="text"
                                         className="input-box-bdr mt-2 w-100"
                                         placeholder="Expiration Date"
                                         name="expirationDate"
                                         value={formData.expirationDate}
-                                        onChange={handleInputChange}
+                                        // onChange={handleInputChange}
+                                        disabled
                                     />
                                 </div>
                                 <div className="col-md-6">
@@ -112,7 +115,8 @@ export function ControlledAccordions() {
                                         placeholder="CVV"
                                         name="cvv"
                                         value={formData.cvv}
-                                        onChange={handleInputChange}
+                                        // onChange={handleInputChange}
+                                        disabled
                                     />
                                 </div>
                             </div>
@@ -140,13 +144,13 @@ export function ControlledAccordions() {
                     <Typography>
                         <div className="d-flex p-2 flex-column">
 
-                            <input
+                            {/* <input
                                 type="text"
                                 className="input-box-bdr"
                                 placeholder="123@paytm"
                                 disabled
-                            />
-                            <img src={qr} alt="qr" style={{maxWidth:'400px',height:'300px',width:'100%'}}/>
+                            /> */}
+                            <img src={qr} alt="qr" style={{ maxWidth: '400px', height: '300px', width: '100%' }} />
                             {/* <button className="check-verify-btn">Verify</button> */}
                         </div>
                     </Typography>
@@ -191,78 +195,78 @@ export function ControlledAccordions() {
     );
 }
 
-const PaymentInputsBox = () =>{
+const PaymentInputsBox = () => {
     const [utrNumber, setUtrNumber] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [screenshots, setScreenshots] = useState(null);
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [screenshots, setScreenshots] = useState(null);
 
-  const handleUtrNumberChange = (e) => {
-    setUtrNumber(e.target.value);
-  };
+    const handleUtrNumberChange = (e) => {
+        setUtrNumber(e.target.value);
+    };
 
-  const handlePhoneNumberChange = (e) => {
-    setPhoneNumber(e.target.value);
-  };
+    const handlePhoneNumberChange = (e) => {
+        setPhoneNumber(e.target.value);
+    };
 
-  const handleScreenshotsChange = (e) => {
-    setScreenshots(e.target.files[0]);
-  };
+    const handleScreenshotsChange = (e) => {
+        setScreenshots(e.target.files[0]);
+    };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-    if (utrNumber.trim() === '') {
-      alert('UTR number is required');
-      return;
-    }
+        if (utrNumber.trim() === '') {
+            alert('UTR number is required');
+            return;
+        }
 
-    if (phoneNumber.trim() === '') {
-      alert('Phone number is required');
-      return;
-    }
+        if (phoneNumber.trim() === '') {
+            alert('Phone number is required');
+            return;
+        }
 
-    // Additional validation or form submission logic can be added here.
-  };
+        // Additional validation or form submission logic can be added here.
+    };
 
     return (
         <>
-         <form onSubmit={handleSubmit}>
-      <div className="container-fluid">
-        <div className='row'>
-          <div className="col-md-6 mt-3">
-            <input
-              type="text"
-              placeholder='Enter your UTR number'
-              className='form-control'
-              value={utrNumber}
-              onChange={handleUtrNumberChange}
-              required
-            />
-          </div>
-          <div className="col-md-6 mt-3">
-            <input
-              type="text"
-              placeholder='Enter your phone number'
-              className='form-control'
-              value={phoneNumber}
-              onChange={handlePhoneNumberChange}
-              required
-            />
-          </div>
-          <div className='mt-3'>
-            <input
-              type="file"
-              placeholder='Enter your screenshots'
-              className='form-control'
-              onChange={handleScreenshotsChange}
-              required
-            />
-          </div>
-        </div>
-      </div>
-      <div className='text-center mt-4'><button type="submit" className='payment-subbtnv'>Submit</button></div>
-    </form>
-         
+            <form onSubmit={handleSubmit}>
+                <div className="container-fluid">
+                    <div className='row'>
+                        <div className="col-md-6 mt-3">
+                            <input
+                                type="text"
+                                placeholder='Enter your UTR number'
+                                className='form-control'
+                                value={utrNumber}
+                                onChange={handleUtrNumberChange}
+                                required
+                            />
+                        </div>
+                        <div className="col-md-6 mt-3">
+                            <input
+                                type="text"
+                                placeholder='Enter your phone number'
+                                className='form-control'
+                                value={phoneNumber}
+                                onChange={handlePhoneNumberChange}
+                                required
+                            />
+                        </div>
+                        <div className='mt-3'>
+                            <input
+                                type="file"
+                                placeholder='Enter your screenshots'
+                                className='form-control'
+                                onChange={handleScreenshotsChange}
+                                required
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div className='text-center mt-4'><button type="submit" className='payment-subbtnv'>Submit</button></div>
+            </form>
+
         </>
     )
 }
