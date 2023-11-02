@@ -202,6 +202,22 @@ color:#b79d33
 .check-bx-vw-sz{
     display:none;
 }
+
+.payment-subbtnv{
+    background-color: black;
+    border:solid 1px black;
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top:6px;
+    padding-bottom: 6px;
+    border-radius: 10px;
+    width:100%;
+    max-width: 600px;
+    height:50px
+}
 @media only screen and (max-width:767.98px){
     .cr-cd-img{
         width:25px;

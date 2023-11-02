@@ -20,6 +20,8 @@ const Payment = () => {
             <Navbar />
             <div className='checkout-bg'>
                 <ControlledAccordions />
+
+                <PaymentInputsBox />
             </div>
         </>
     );
@@ -187,4 +189,80 @@ export function ControlledAccordions() {
             </Accordion> */}
         </div>
     );
+}
+
+const PaymentInputsBox = () =>{
+    const [utrNumber, setUtrNumber] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [screenshots, setScreenshots] = useState(null);
+
+  const handleUtrNumberChange = (e) => {
+    setUtrNumber(e.target.value);
+  };
+
+  const handlePhoneNumberChange = (e) => {
+    setPhoneNumber(e.target.value);
+  };
+
+  const handleScreenshotsChange = (e) => {
+    setScreenshots(e.target.files[0]);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (utrNumber.trim() === '') {
+      alert('UTR number is required');
+      return;
+    }
+
+    if (phoneNumber.trim() === '') {
+      alert('Phone number is required');
+      return;
+    }
+
+    // Additional validation or form submission logic can be added here.
+  };
+
+    return (
+        <>
+         <form onSubmit={handleSubmit}>
+      <div className="container-fluid">
+        <div className='row'>
+          <div className="col-md-6 mt-3">
+            <input
+              type="text"
+              placeholder='Enter your UTR number'
+              className='form-control'
+              value={utrNumber}
+              onChange={handleUtrNumberChange}
+              required
+            />
+          </div>
+          <div className="col-md-6 mt-3">
+            <input
+              type="text"
+              placeholder='Enter your phone number'
+              className='form-control'
+              value={phoneNumber}
+              onChange={handlePhoneNumberChange}
+              required
+            />
+          </div>
+          <div className='mt-3'>
+            <input
+              type="file"
+              placeholder='Enter your screenshots'
+              className='form-control'
+              onChange={handleScreenshotsChange}
+              required
+            />
+          </div>
+        </div>
+      </div>
+      <div className='text-center mt-4'><button type="submit" className='payment-subbtnv'>Submit</button></div>
+    </form>
+         
+        </>
+    )
 }
