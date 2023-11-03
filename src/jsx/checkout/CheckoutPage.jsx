@@ -359,14 +359,14 @@ const DlryAddress = (props) => {
             value={delivery.address}
             onChange={(e) => setDelivery({ ...delivery, address: e.target.value })}
           ></Input>
-          <br />
-          <Input
+          
+          {/* <Input
             type="text"
             className="input-box-bdr mt-1"
             required
             value={delivery.address2}
             onChange={(e) => setDelivery({ ...delivery, address2: e.target.value })}
-          ></Input>
+          ></Input> */}
           <br />
 
           <FormLabel className="fm-lbl-heading">CITY </FormLabel>
@@ -527,17 +527,25 @@ const RateOptions = (props) => {
   return (
     <>
       <div className="ct-box mt-4">
-        <h6 className="pay-font-sz">{props.rate}</h6>
-        <div>
-          <h6 className="opt-dlry-fnt">{props.dlryname}</h6>
-          <p className="dlry-date">{props.date}</p>
-        </div>
-        <FormControlLabel
+      <FormControlLabel
           value="standard"
           control={<Radio />}
-          className="ms-2"
+          className=""
         />
+        <div>
+        <div className="d-flex">
+        <h6 className="pay-font-sz">{props.rate}</h6>
+        <h6 className="wrk-place-fnt">Home</h6>
+        <p className="dlr-wrk-numft">{props.date}</p>
+        </div>
+        <h6 className="dlry-wrkadd-fntsz">{props.dlryname}</h6>
+        </div>
+       
+       
+        
       </div>
+
+       
     </>
   );
 };
