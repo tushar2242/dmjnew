@@ -1,6 +1,4 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-// import React from 'react';
+
 import HeaderCon from "../header/HeaderCon";
 import Navbar from "../header/Navbar";
 import Footer from "../footer/Footer";
