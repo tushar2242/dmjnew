@@ -27,7 +27,7 @@ import Accordion from "react-bootstrap/Accordion";
 import AddIcon from "@mui/icons-material/Add";
 import { Select } from "@mui/material";
 import PopUp from "../popup/PopUp";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 const url = "https://api.diwamjewels.com/DMJ/";
 const imgUrl = "https://squid-app-2-7wbvi.ondigitalocean.app/";
@@ -40,7 +40,6 @@ const userId = localStorage.getItem("userId");
 var cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const CheckoutPage = () => {
-
   const [userInfo, setUserInfo] = useState(false);
 
   async function fetchUserData() {
@@ -53,8 +52,6 @@ const CheckoutPage = () => {
     }
   }
 
-
-  
   useEffect(() => {
     fetchUserData();
   }, []);
@@ -64,27 +61,27 @@ const CheckoutPage = () => {
       <HeaderCon />
       <Navbar />
 
-      {userId ? <div className="checkout-bg">
-        <div className="container-fluid">
-          <div className="row fl-dirt-col">
-            <div className="col-md-7 mt-3">
-              <DeliveryCountry />
-              <PromoCode />
-              <EmailAddress
-                email={userInfo ? userInfo.email : "Login For Buy Now"}
-              />
-              <Accordion defaultActiveKey="0" className="mt-2">
-                <Accordion.Item eventKey="0">
-                  <Accordion.Header className="hd-tag-font">
-                    Delivery Address
-                  </Accordion.Header>
-                  <Accordion.Body>
-                    <DlryAddress
-                    />
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
-              {/* <Accordion className="mt-2">
+      {userId ? (
+        <div className="checkout-bg">
+          <div className="container-fluid">
+            <div className="row fl-dirt-col">
+              <div className="col-md-7 mt-3">
+                <DeliveryCountry />
+                <PromoCode />
+                <EmailAddress
+                  email={userInfo ? userInfo.email : "Login For Buy Now"}
+                />
+                <Accordion defaultActiveKey="0" className="mt-2">
+                  <Accordion.Item eventKey="0">
+                    <Accordion.Header className="hd-tag-font">
+                      Delivery Address
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <DlryAddress />
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Accordion>
+                {/* <Accordion className="mt-2">
                 <Accordion.Item eventKey="1">
                   <Accordion.Header className="hd-tag-font">
                     Shipping Address
@@ -96,31 +93,44 @@ const CheckoutPage = () => {
                 </Accordion.Item>
               </Accordion> */}
 
-              <DlryOptions />
+                <DlryOptions />
 
-              {/* <PaymentType /> */}
+                {/* <PaymentType /> */}
 
-              <Button className="ck-buy-btn"
-                type="button"
-                disabled={cart.length > 0 ? false : true}
-                style={cart.length > 0 ? { cursor: 'pointer' } : { cursor: 'not-allowed' }}
-              >BUY NOW</Button>
+                <Button
+                  className="ck-buy-btn"
+                  type="button"
+                  disabled={cart.length > 0 ? false : true}
+                  style={
+                    cart.length > 0
+                      ? { cursor: "pointer" }
+                      : { cursor: "not-allowed" }
+                  }
+                >
+                  BUY NOW
+                </Button>
 
-              <p className="cond-font">
-                By placing your order you agree to our <NavLink to="/terms">Terms & Conditions</NavLink>,
-                <NavLink to="/privacypolicy">privacy and returns policies</NavLink> . You also consent to some of your
-                data being stored by , which may be used to make future shopping
-                experiences better for you.
-              </p>
-            </div>
+                <p className="cond-font">
+                  By placing your order you agree to our{" "}
+                  <NavLink to="/terms">Terms & Conditions</NavLink>,
+                  <NavLink to="/privacypolicy">
+                    privacy and returns policies
+                  </NavLink>{" "}
+                  . You also consent to some of your data being stored by ,
+                  which may be used to make future shopping experiences better
+                  for you.
+                </p>
+              </div>
 
-            <div className="col-md-5 mt-3">
-              <CheckoutItem />
+              <div className="col-md-5 mt-3">
+                <CheckoutItem />
+              </div>
             </div>
           </div>
         </div>
-      </div> : <PopUp />
-      }
+      ) : (
+        <PopUp />
+      )}
 
       <Footer />
     </>
@@ -224,7 +234,7 @@ const EmailAddress = ({ email }) => {
 
 const DlryAddress = (props) => {
   // const { delivery, setDelivery } = props;
-  const [selectedCountry, setSelectedCountry] = useState('India');
+  const [selectedCountry, setSelectedCountry] = useState("India");
   const [delivery, setDelivery] = useState([
     {
       fName: "",
@@ -235,7 +245,7 @@ const DlryAddress = (props) => {
       city: "",
       state: "",
       postalCode: "",
-      hometype: ''
+      hometype: "",
     },
   ]);
 
@@ -243,21 +253,20 @@ const DlryAddress = (props) => {
   const [isOfficeChecked, setIsOfficeChecked] = useState(false);
 
   const handleCheckboxChange = (e) => {
-    if (e.target.name === 'home') {
+    if (e.target.name === "home") {
       setIsHomeChecked(!isHomeChecked);
       setIsOfficeChecked("false"); // Uncheck "Office"
-    } else if (e.target.name === 'office') {
+    } else if (e.target.name === "office") {
       setIsOfficeChecked(!isOfficeChecked);
       setIsHomeChecked(false); // Uncheck "Home"
     }
   };
 
-
   async function handleSubmit(e) {
     e.preventDefault();
 
     try {
-      const apiUrl = url + 'api/v1/address'; // Update with your API URL
+      const apiUrl = url + "api/v1/address"; // Update with your API URL
       const requestData = {
         name: `${delivery.fName}`,
         pincode: parseInt(delivery.postalCode),
@@ -274,43 +283,96 @@ const DlryAddress = (props) => {
       const response = await axios.post(apiUrl, requestData);
 
       if (response.status === 200) {
-        alert("Address added successfully:")
+        alert("Address added successfully:");
         // The request was successful, you can handle the success here
-        console.log('Address added successfully:', response.data);
-        window.location.reload()
+        console.log("Address added successfully:", response.data);
+        window.location.reload();
         // Optionally, you can reset the form or perform any other actions
       } else {
         // Handle other response statuses if needed
-        console.error('Failed to add address:', response);
+        console.error("Failed to add address:", response);
       }
     } catch (err) {
       // Handle any errors that occur during the request
-      console.error('API Error:', err);
+      console.error("API Error:", err);
     }
   }
 
+  const [deliveryOptions, setDeliveryOptions] = useState([]);
+  const [selectedOption, setSelectedOption] = useState(null);
 
+  useEffect(() => {
+    const apiUrl = url + "api/v1/address/userId/" + userId; // Update with your API URL
 
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        if (response.status === 200) {
+          // Store the delivery options in state
+          setDeliveryOptions(response.data.data);
+          // console.log(response.data.data)
+        } else {
+          // Handle other response statuses if needed
+          console.error("Failed to fetch delivery options:", response);
+        }
+      })
+      .catch((error) => {
+        setDeliveryOptions([]);
+        // Handle any errors that occur during the request
+        console.error("API Error:", error);
+      });
+  }, []);
 
-
-
-
-
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+  };
 
   return (
     <>
       <div className="del-ct-bg mt-2">
-        <h3
-          className="hd-tag-font text-end"
-          style={{ color: "#b79d33", cursor: "pointer" }}
+        <RadioGroup
+          aria-labelledby="demo-radio-buttons-group-label"
+          defaultValue="standard"
+          name="radio-buttons-group"
         >
-          {/* <AddIcon /> ADD NEW ADDRESS */}
+          <div className="del-ct-bg mt-2">
+            <h3 className="hd-tag-font">DELIVERY OPTIONS</h3>
+            {deliveryOptions.length > 0 &&
+              deliveryOptions.map((option) => (
+                <RateOptions
+                  key={option.id} 
+                  rate={option.name}
+                  dlryname={option.area}
+                  date={option.mobile}
+                  isSelected={option === selectedOption}
+                  onOptionSelect={() => handleOptionSelect(option)}
+                />
+              ))}
+          </div>
+        </RadioGroup>
+
+        <h3
+          className="hd-tag-font"
+          style={{
+            color: "white",
+            cursor: "pointer",
+            backgroundColor: "black",
+            width: "200px",
+            fontSize: "13px",
+            fontWeight: "500",
+            textAlign: "center",
+            paddingLeft: "15px",
+            paddingRight: "15px",
+            paddingTop: "5px",
+            paddingBottom: "5px",
+            borderRadius: "5px",
+          }}
+        >
+          <AddIcon /> ADD NEW ADDRESS
         </h3>
         <h3 className="hd-tag-font">DELIVERY ADDRESS</h3>
 
         <form onSubmit={handleSubmit}>
-
-
           <FormLabel className="fm-lbl-heading">Full NAME </FormLabel>
           <br />
           <Input
@@ -318,7 +380,9 @@ const DlryAddress = (props) => {
             className="input-box-bdr mt-1"
             required
             value={delivery.fName}
-            onChange={(e) => setDelivery({ ...delivery, fName: e.target.value })}
+            onChange={(e) =>
+              setDelivery({ ...delivery, fName: e.target.value })
+            }
           ></Input>
           <br />
 
@@ -341,10 +405,9 @@ const DlryAddress = (props) => {
             type="number"
             className="input-box-bdr mt-1"
             value={delivery.postalCode}
-
             onChange={(e) => {
               const pin = e.target.value.slice(0, 6); // Limit input to 10 digits
-              setDelivery({ ...delivery, postalCode: pin })
+              setDelivery({ ...delivery, postalCode: pin });
             }}
           ></Input>
           <br />
@@ -355,18 +418,11 @@ const DlryAddress = (props) => {
             className="input-box-bdr mt-1"
             required
             value={delivery.address}
-            onChange={(e) => setDelivery({ ...delivery, address: e.target.value })}
+            onChange={(e) =>
+              setDelivery({ ...delivery, address: e.target.value })
+            }
           ></Input>
           <br />
-          <Input
-            type="text"
-            className="input-box-bdr mt-1"
-            required
-            value={delivery.address2}
-            onChange={(e) => setDelivery({ ...delivery, address2: e.target.value })}
-          ></Input>
-          <br />
-
           <FormLabel className="fm-lbl-heading">CITY </FormLabel>
           <br />
           <Input
@@ -379,18 +435,24 @@ const DlryAddress = (props) => {
           <br />
           <FormLabel className="fm-lbl-heading">STATE </FormLabel>
           <br />
-          <Input type="text" className="input-box-bdr mt-1" required
+          <Input
+            type="text"
+            className="input-box-bdr mt-1"
+            required
             value={delivery.state}
-            onChange={(e) => setDelivery({ ...delivery, state: e.target.value })}>
-
-          </Input>
+            onChange={(e) =>
+              setDelivery({ ...delivery, state: e.target.value })
+            }
+          ></Input>
           <br />
 
           <FormLabel className="fm-lbl-heading">COUNTRY</FormLabel>
           <br />
-          <select className="input-box-bdr mt-1" required
+          <select
+            className="input-box-bdr mt-1"
+            required
             value={selectedCountry}
-            onChange={e => setSelectedCountry(e.target.value)}
+            onChange={(e) => setSelectedCountry(e.target.value)}
           >
             <option value="India">India</option>
             <option value="USA">USA</option>
@@ -399,80 +461,39 @@ const DlryAddress = (props) => {
 
           <FormLabel className="fm-lbl-heading">Select Home Type</FormLabel>
           <br />
-          <select className="input-box-bdr mt-1" required
+          <select
+            className="input-box-bdr mt-1"
+            required
             value={delivery.hometype}
-            onChange={(e) => setDelivery({ ...delivery, hometype: e.target.value })}
-
+            onChange={(e) =>
+              setDelivery({ ...delivery, hometype: e.target.value })
+            }
           >
             <option value="">Select Any Option</option>
             <option value="office">Office</option>
             <option value="Home">Home</option>
           </select>
-          <br />
-          <br />
+         
+    
 
-          {/* 
-        <div className="d-flex">
-
-        <input
-  type="checkbox"
-  name="home"
-  checked={isHomeChecked}
-  onChange={handleCheckboxChange}
-  className="check-bx-vw-sz"
-/>
-
-<input
-  type="checkbox"
-  name="office"
-  checked={isOfficeChecked}
-  onChange={handleCheckboxChange}
-  className="check-bx-vw-sz"
-/> */}
-          {/* <label className="dlry-work-btn">
-            <input
-              type="checkbox"
-              name="home"
-              checked={isHomeChecked}
-              onChange={handleCheckboxChange}
-              className="check-bx-vw-sz"
-
-            />
-            Home
-          </label>
-          <label className="dlry-work-btn">
-            <input
-              type="checkbox"
-              name="office"
-              checked={isOfficeChecked}
-              onChange={handleCheckboxChange}
-              className="check-bx-vw-sz"
-            />
-            Office
-          </label> */}
-
-
-          <Button className="dlry-btn" type="submit">DELIVER TO THIS ADDRESS</Button>
+          <Button className="dlry-btn" type="submit">
+            DELIVER TO THIS ADDRESS
+          </Button>
         </form>
       </div>
     </>
   );
 };
 
-
-
-
-
-
-
 const DlryOptions = () => {
   const [deliveryOptions, setDeliveryOptions] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
 
   useEffect(() => {
-    const apiUrl = url + 'api/v1/address/userId/' + userId; // Update with your API URL
+    const apiUrl = url + "api/v1/address/userId/" + userId; // Update with your API URL
 
-    axios.get(apiUrl)
+    axios
+      .get(apiUrl)
       .then((response) => {
         if (response.status === 200) {
           // Store the delivery options in state
@@ -480,13 +501,13 @@ const DlryOptions = () => {
           // console.log(response.data.data)
         } else {
           // Handle other response statuses if needed
-          console.error('Failed to fetch delivery options:', response);
+          console.error("Failed to fetch delivery options:", response);
         }
       })
       .catch((error) => {
-        setDeliveryOptions([])
+        setDeliveryOptions([]);
         // Handle any errors that occur during the request
-        console.error('API Error:', error);
+        console.error("API Error:", error);
       });
   }, []);
 
@@ -494,47 +515,26 @@ const DlryOptions = () => {
     setSelectedOption(option);
   };
 
-  return (
-    <>
-      <RadioGroup
-        aria-labelledby="demo-radio-buttons-group-label"
-        defaultValue="standard"
-        name="radio-buttons-group"
-      >
-        <div className="del-ct-bg mt-2">
-          <h3 className="hd-tag-font">DELIVERY OPTIONS</h3>
-          {deliveryOptions.length > 0 && deliveryOptions.map((option) => (
-            <RateOptions
-              key={option.id} // Replace with a unique identifier from your API
-              rate={option.name}
-              dlryname={option.area}
-              date={option.mobile}
-              isSelected={option === selectedOption}
-              onOptionSelect={() => handleOptionSelect(option)}
-            />
-          ))}
-        </div>
-      </RadioGroup>
-    </>
-  );
+  return <></>;
 };
-
-
 
 const RateOptions = (props) => {
   return (
     <>
       <div className="ct-box mt-4">
-        <h6 className="pay-font-sz">{props.rate}</h6>
-        <div>
-          <h6 className="opt-dlry-fnt">{props.dlryname}</h6>
-          <p className="dlry-date">{props.date}</p>
-        </div>
         <FormControlLabel
           value="standard"
           control={<Radio />}
           className="ms-2"
         />
+        <div>
+          <div className="d-flex">
+            <h6 className="pay-font-sz">{props.rate}</h6>
+            <h6 className="wrk-place-fnt">Home</h6>
+            <p className="dlr-wrk-numft">{props.date}</p>
+          </div>
+          <h6 className="dlry-wrkadd-fntsz">{props.dlryname}</h6>
+        </div>
       </div>
     </>
   );
