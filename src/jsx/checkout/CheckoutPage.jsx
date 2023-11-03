@@ -55,6 +55,8 @@ const CheckoutPage = () => {
     }
   }
 
+
+  
   useEffect(() => {
     fetchUserData();
   }, []);
@@ -76,7 +78,7 @@ const CheckoutPage = () => {
               <Accordion defaultActiveKey="0" className="mt-2">
                 <Accordion.Item eventKey="0">
                   <Accordion.Header className="hd-tag-font">
-                    Billing Address
+                    Delivery Address
                   </Accordion.Header>
                   <Accordion.Body>
                     <DlryAddress
@@ -98,7 +100,7 @@ const CheckoutPage = () => {
 
               <DlryOptions />
 
-              <PaymentType />
+              {/* <PaymentType /> */}
 
               <Button className="ck-buy-btn"
                 type="button"
@@ -235,6 +237,7 @@ const DlryAddress = (props) => {
       city: "",
       state: "",
       postalCode: "",
+      hometype: ''
     },
   ]);
 
@@ -244,12 +247,58 @@ const DlryAddress = (props) => {
   const handleCheckboxChange = (e) => {
     if (e.target.name === 'home') {
       setIsHomeChecked(!isHomeChecked);
-      setIsOfficeChecked(false); // Uncheck "Office"
+      setIsOfficeChecked("false"); // Uncheck "Office"
     } else if (e.target.name === 'office') {
       setIsOfficeChecked(!isOfficeChecked);
       setIsHomeChecked(false); // Uncheck "Home"
     }
   };
+
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      const apiUrl = url + 'api/v1/address'; // Update with your API URL
+      const requestData = {
+        name: `${delivery.fName}`,
+        pincode: parseInt(delivery.postalCode),
+        state: delivery.state,
+        city: delivery.city,
+        area: delivery.address,
+        country: selectedCountry,
+        mobile: delivery.mobileNo,
+        alternateNumber: delivery.mobileNo,
+        addType: delivery.hometype,
+        userId: userId, // Replace with the actual user ID
+      };
+
+      const response = await axios.post(apiUrl, requestData);
+
+      if (response.status === 200) {
+        alert("Address added successfully:")
+        // The request was successful, you can handle the success here
+        console.log('Address added successfully:', response.data);
+        window.location.reload()
+        // Optionally, you can reset the form or perform any other actions
+      } else {
+        // Handle other response statuses if needed
+        console.error('Failed to add address:', response);
+      }
+    } catch (err) {
+      // Handle any errors that occur during the request
+      console.error('API Error:', err);
+    }
+  }
+
+
+
+
+
+
+
+
+
   return (
     <>
       <div className="del-ct-bg mt-2">
@@ -257,91 +306,132 @@ const DlryAddress = (props) => {
           className="hd-tag-font text-end"
           style={{ color: "#b79d33", cursor: "pointer" }}
         >
-          <AddIcon /> ADD NEW ADDRESS
+          {/* <AddIcon /> ADD NEW ADDRESS */}
         </h3>
         <h3 className="hd-tag-font">DELIVERY ADDRESS</h3>
 
-        <FormLabel className="fm-lbl-heading">Full NAME </FormLabel>
-        <br />
-        <Input
-          type="text"
-          className="input-box-bdr mt-1"
-          required
-          value={delivery.fName}
-          onChange={(e) => setDelivery({ ...delivery, fName: e.target.value })}
-        ></Input>
-        <br />
+        <form onSubmit={handleSubmit}>
 
-        <FormLabel className="fm-lbl-heading">MOBILE </FormLabel>
-        <br />
-        <Input
-          type="number"
-          className="input-box-bdr mt-1"
-          required
-          value={delivery.mobileNo}
-          onChange={(e) => setDelivery({ ...delivery, mobileNo: e.target.value })}
-        ></Input>
-        <br />
-        <FormLabel className="fm-lbl-heading">POSTAL CODE </FormLabel>
-        <br />
-        <Input
-          type="number"
-          className="input-box-bdr mt-1"
-          value={delivery.postalCode}
-          onChange={(e) => setDelivery({ ...delivery, postalCode: e.target.value })}
-        ></Input>
-        <br />
-        <FormLabel className="fm-lbl-heading">ADDRESS </FormLabel>
-        <br />
-        <Input
-          type="text"
-          className="input-box-bdr mt-1"
-          required
-          value={delivery.address}
-          onChange={(e) => setDelivery({ ...delivery, address: e.target.value })}
-        ></Input>
-        <br />
-        <Input
-          type="text"
-          className="input-box-bdr mt-1"
-          required
-          value={delivery.address2}
-          onChange={(e) => setDelivery({ ...delivery, address2: e.target.value })}
-        ></Input>
-        <br />
 
-        <FormLabel className="fm-lbl-heading">CITY </FormLabel>
-        <br />
-        <Input
-          type="text"
-          className="input-box-bdr mt-1"
-          required
-          value={delivery.city}
-          onChange={(e) => setDelivery({ ...delivery, city: e.target.value })}
-        ></Input>
-        <br />
-        <FormLabel className="fm-lbl-heading">STATE </FormLabel>
-        <br />
-        <Input type="text" className="input-box-bdr mt-1" required
-          value={delivery.state}
-          onChange={(e) => setDelivery({ ...delivery, state: e.target.value })}>
+          <FormLabel className="fm-lbl-heading">Full NAME </FormLabel>
+          <br />
+          <Input
+            type="text"
+            className="input-box-bdr mt-1"
+            required
+            value={delivery.fName}
+            onChange={(e) => setDelivery({ ...delivery, fName: e.target.value })}
+          ></Input>
+          <br />
 
-        </Input>
-        <br />
+          <FormLabel className="fm-lbl-heading">MOBILE </FormLabel>
+          <br />
+          <Input
+            type="number"
+            className="input-box-bdr mt-1"
+            required
+            value={delivery.mobileNo}
+            onChange={(e) => {
+              const mobileNo = e.target.value.slice(0, 10); // Limit input to 10 digits
+              setDelivery({ ...delivery, mobileNo });
+            }}
+          ></Input>
+          <br />
+          <FormLabel className="fm-lbl-heading">POSTAL CODE </FormLabel>
+          <br />
+          <Input
+            type="number"
+            className="input-box-bdr mt-1"
+            value={delivery.postalCode}
 
-        <FormLabel className="fm-lbl-heading">COUNTRY</FormLabel>
-        <br />
-        <select className="input-box-bdr mt-1" required
-          value={selectedCountry}
-          onChange={e => setSelectedCountry(e.target.value)}
-        >
-          <option value="India">India</option>
-          <option value="USA">USA</option>
-        </select>
-        <br />
+            onChange={(e) => {
+              const pin = e.target.value.slice(0, 6); // Limit input to 10 digits
+              setDelivery({ ...delivery, postalCode: pin })
+            }}
+          ></Input>
+          <br />
+          <FormLabel className="fm-lbl-heading">ADDRESS </FormLabel>
+          <br />
+          <Input
+            type="text"
+            className="input-box-bdr mt-1"
+            required
+            value={delivery.address}
+            onChange={(e) => setDelivery({ ...delivery, address: e.target.value })}
+          ></Input>
+          <br />
+          <Input
+            type="text"
+            className="input-box-bdr mt-1"
+            required
+            value={delivery.address2}
+            onChange={(e) => setDelivery({ ...delivery, address2: e.target.value })}
+          ></Input>
+          <br />
 
+          <FormLabel className="fm-lbl-heading">CITY </FormLabel>
+          <br />
+          <Input
+            type="text"
+            className="input-box-bdr mt-1"
+            required
+            value={delivery.city}
+            onChange={(e) => setDelivery({ ...delivery, city: e.target.value })}
+          ></Input>
+          <br />
+          <FormLabel className="fm-lbl-heading">STATE </FormLabel>
+          <br />
+          <Input type="text" className="input-box-bdr mt-1" required
+            value={delivery.state}
+            onChange={(e) => setDelivery({ ...delivery, state: e.target.value })}>
+
+          </Input>
+          <br />
+
+          <FormLabel className="fm-lbl-heading">COUNTRY</FormLabel>
+          <br />
+          <select className="input-box-bdr mt-1" required
+            value={selectedCountry}
+            onChange={e => setSelectedCountry(e.target.value)}
+          >
+            <option value="India">India</option>
+            <option value="USA">USA</option>
+          </select>
+          <br />
+
+          <FormLabel className="fm-lbl-heading">Select Home Type</FormLabel>
+          <br />
+          <select className="input-box-bdr mt-1" required
+            value={delivery.hometype}
+            onChange={(e) => setDelivery({ ...delivery, hometype: e.target.value })}
+
+          >
+            <option value="">Select Any Option</option>
+            <option value="office">Office</option>
+            <option value="Home">Home</option>
+          </select>
+          <br />
+          <br />
+
+          {/* 
         <div className="d-flex">
-          <label className="dlry-work-btn">
+
+        <input
+  type="checkbox"
+  name="home"
+  checked={isHomeChecked}
+  onChange={handleCheckboxChange}
+  className="check-bx-vw-sz"
+/>
+
+<input
+  type="checkbox"
+  name="office"
+  checked={isOfficeChecked}
+  onChange={handleCheckboxChange}
+  className="check-bx-vw-sz"
+/> */}
+          {/* <label className="dlry-work-btn">
             <input
               type="checkbox"
               name="home"
@@ -361,16 +451,51 @@ const DlryAddress = (props) => {
               className="check-bx-vw-sz"
             />
             Office
-          </label>
-        </div>
+          </label> */}
 
-        <Button className="dlry-btn">DELIVER TO THIS ADDRESS</Button>
+
+          <Button className="dlry-btn" type="submit">DELIVER TO THIS ADDRESS</Button>
+        </form>
       </div>
     </>
   );
 };
 
+
+
+
+
+
+
 const DlryOptions = () => {
+  const [deliveryOptions, setDeliveryOptions] = useState([]);
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  useEffect(() => {
+    const apiUrl = url + 'api/v1/address/userId/' + userId; // Update with your API URL
+
+    axios.get(apiUrl)
+      .then((response) => {
+        if (response.status === 200) {
+          // Store the delivery options in state
+          setDeliveryOptions(response.data.data);
+          // console.log(response.data.data)
+        } else {
+          // Handle other response statuses if needed
+          console.error('Failed to fetch delivery options:', response);
+        }
+      })
+      .catch((error) => {
+        setDeliveryOptions([])
+        // Handle any errors that occur during the request
+        console.error('API Error:', error);
+      });
+  }, []);
+
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+  };
+
   return (
     <>
       <RadioGroup
@@ -380,21 +505,23 @@ const DlryOptions = () => {
       >
         <div className="del-ct-bg mt-2">
           <h3 className="hd-tag-font">DELIVERY OPTIONS</h3>
-          <RateOptions
-            rate="$7.00"
-            dlryname="Standard Delivery"
-            date="Delivered on or before Tuesday, 27 June, 2023"
-          />
-          <RateOptions
-            rate="$22.50"
-            dlryname="Express Delivery"
-            date="Delivered on or before Tuesday, 27 June, 2023"
-          />
+          {deliveryOptions.length > 0 && deliveryOptions.map((option) => (
+            <RateOptions
+              key={option.id} // Replace with a unique identifier from your API
+              rate={option.name}
+              dlryname={option.area}
+              date={option.mobile}
+              isSelected={option === selectedOption}
+              onOptionSelect={() => handleOptionSelect(option)}
+            />
+          ))}
         </div>
       </RadioGroup>
     </>
   );
 };
+
+
 
 const RateOptions = (props) => {
   return (
