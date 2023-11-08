@@ -106,7 +106,7 @@ export default class SetRoutes extends React.Component {
                     <Route path='/prodetails' element={<Home />} />
 
                     <Route path="/profile" element={<Sidebar />} />
-                    <Route path='/payment' element={<Payment />} />
+                    <Route path='/payment/:orderId' element={<Payment />} />
                     {/* <Route path="/overview" element={<Overview />} />
                     <Route path="/order" element={<Order />} />
                     <Route path="/coupon" element={<Coupon />} />

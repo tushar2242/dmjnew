@@ -8,7 +8,13 @@ const initialState = {
     totalDis: '',
     totalAmount: '',
     amount: [],
-    product: []
+    product: [],
+    amount: 0,
+    price: 0,
+    discount: 0,
+    quantity: 0,
+    productVariantId: 0,
+    orderId: 0,
 }
 
 const productSlice = createSlice({
@@ -32,12 +38,21 @@ const productSlice = createSlice({
         },
         updateProduct: (state, payload) => {
             state.product = payload
-        }
+        },
+        setProductData: (state, action) => {
+            // Update state properties with the data from the action payload
+            state.amount = parseFloat(action.payload.amount);
+            state.price = parseFloat(action.payload.price);
+            state.discount = parseFloat(action.payload.discount);
+            state.quantity = parseInt(action.payload.quantity);
+            state.productVariantId = parseInt(action.payload.productVariantId);
+            state.orderId = parseInt(action.payload.orderId);
+        },
     }
 
 });
 
 
-export const { addSearch, updateAmount,updateProduct } = productSlice.actions
+export const { addSearch, updateAmount, updateProduct,setProductData } = productSlice.actions
 
 export default productSlice.reducer;

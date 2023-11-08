@@ -12,16 +12,28 @@ import creditcard from "./images/credit.png";
 import paypal from "./images/paypal.png";
 import qr from './images/qr.jpeg';
 import upilogo from "../../assets/images/bhim.png";
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+
+
+const url = "https://api.diwamjewels.com/DMJ/";
+var userId = localStorage.getItem('userId')
 
 const Payment = () => {
+
+    const { orderId } = useParams();
+
+
     return (
         <>
             <HeaderCon />
             <Navbar />
             <div className='checkout-bg'>
                 <ControlledAccordions />
-
-                <PaymentInputsBox />
+                <PaymentInputsBox
+                    orderId={orderId}
+                    userId={userId}
+                />
             </div>
         </>
     );
@@ -89,7 +101,7 @@ export function ControlledAccordions() {
                                 <div className="col-md-6">
                                     <input
                                         type="text"
-                                        className="input-box-bdr mt-2 w-100"
+                                        className="input-box-bdr mt-2 form-control"
                                         placeholder="Card Number"
                                         name="cardNumber"
                                         value={formData.cardNumber}
@@ -195,34 +207,58 @@ export function ControlledAccordions() {
     );
 }
 
-const PaymentInputsBox = () => {
+const PaymentInputsBox = ({ userId, orderId }) => {
     const [utrNumber, setUtrNumber] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [screenshots, setScreenshots] = useState(null);
 
+    const navigate = useNavigate()
+
     const handleUtrNumberChange = (e) => {
-        setUtrNumber(e.target.value);
+        const inputValue = e.target.value;
+
+        // Define a maximum length for UTR number (e.g., 10 characters)
+        const maxUtrNumberLength = 16;
+
+        if (inputValue.length <= maxUtrNumberLength) {
+            setUtrNumber(inputValue);
+        }
     };
 
     const handlePhoneNumberChange = (e) => {
-        setPhoneNumber(e.target.value);
+        const inputValue = e.target.value;
+
+        // Define a maximum length for phone number (e.g., 12 characters)
+        const maxPhoneNumberLength = 12;
+
+        if (inputValue.length <= maxPhoneNumberLength) {
+            setPhoneNumber(inputValue);
+        }
     };
 
     const handleScreenshotsChange = (e) => {
         setScreenshots(e.target.files[0]);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
-        if (utrNumber.trim() === '') {
-            alert('UTR number is required');
-            return;
+        let payDetail = {
+            "utrNumber": utrNumber,
+            "screenShot": "",
+            "mobile": phoneNumber,
+            "userId": userId,
+            "orderId": orderId
         }
-
-        if (phoneNumber.trim() === '') {
-            alert('Phone number is required');
-            return;
+        try {
+            const payRes = await axios.post(url + 'api/v1/userPayment', payDetail);
+            if(payRes.data.status ==="OK"){
+                alert('Payment Done We Will Reach You Shortly')
+                navigate('/')
+                localStorage.removeItem('cart')
+            }
+        }
+        catch (err) {
+            console.log(err)
         }
 
         // Additional validation or form submission logic can be added here.
@@ -236,7 +272,7 @@ const PaymentInputsBox = () => {
                         <div className="col-md-6 mt-3">
                             <input
                                 type="text"
-                                placeholder='Enter your UTR number'
+                                placeholder='Enter your UTR/Transiction  number'
                                 className='form-control'
                                 value={utrNumber}
                                 onChange={handleUtrNumberChange}
@@ -245,7 +281,7 @@ const PaymentInputsBox = () => {
                         </div>
                         <div className="col-md-6 mt-3">
                             <input
-                                type="text"
+                                type="number"
                                 placeholder='Enter your phone number'
                                 className='form-control'
                                 value={phoneNumber}
@@ -253,7 +289,7 @@ const PaymentInputsBox = () => {
                                 required
                             />
                         </div>
-                        <div className='mt-3'>
+                        {/* <div className='mt-3'>
                             <input
                                 type="file"
                                 placeholder='Enter your screenshots'
@@ -261,7 +297,7 @@ const PaymentInputsBox = () => {
                                 onChange={handleScreenshotsChange}
                                 required
                             />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className='text-center mt-4'><button type="submit" className='payment-subbtnv'>Submit</button></div>
